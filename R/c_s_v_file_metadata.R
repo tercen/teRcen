@@ -1,0 +1,36 @@
+#' CSVFileMetadata
+#'
+#' @export
+#' @format \code{\link{R6Class}} object, super class \code{\link{FileMetadata}}.
+#' @field contentType of type String inherited from super class \code{\link{FileMetadata}}.
+#' @field cacheControl of type String inherited from super class \code{\link{FileMetadata}}.
+#' @field contentEncoding of type String inherited from super class \code{\link{FileMetadata}}.
+#' @field contentLanguage of type String inherited from super class \code{\link{FileMetadata}}.
+#' @field md5Hash of type String inherited from super class \code{\link{FileMetadata}}.
+#' @field separator of type String.
+#' @field quote of type String.
+CSVFileMetadata <- R6::R6Class("CSVFileMetadata", inherit = FileMetadata, public = list(separator = NULL, 
+    quote = NULL, initialize = function(json = NULL) {
+        if (!is.null(json)) {
+            self$initJson(json)
+        } else {
+            self$init()
+        }
+    }, init = function() {
+        super$init()
+        self$separator = ""
+        self$quote = ""
+    }, initJson = function(json) {
+        super$initJson(json)
+        self$separator = json$separator
+        self$quote = json$quote
+    }, toTson = function() {
+        m = super$toTson()
+        m$kind = rtson::tson.scalar(jsonlite::unbox("CSVFileMetadata"))
+        m$separator = rtson::tson.scalar(jsonlite::unbox(self$separator))
+        m$quote = rtson::tson.scalar(jsonlite::unbox(self$quote))
+        return(m)
+    }, print = function(...) {
+        cat(yaml::as.yaml(self$toTson()))
+        invisible(self)
+    }))

@@ -1,0 +1,23 @@
+Package: tercen
+Type: Package
+Title: Tercen R client api
+Version: 0.1
+Date: 2017-09-03
+Author: Alexandre Maurel
+Maintainer: Alexandre Maurel <alexandre.maurel@tercen.com>
+Description: Access Tercen data, workflow and computation resources with R.
+  Build R operator for Tercen.
+License: Apache License Version 2.0
+Suggests:
+    testthat
+Imports:
+    R6,
+    httr,
+    rtson,
+    jsonlite,
+    dplyr,
+    rlang,
+    tibble
+URL: https://tercen.com
+BugReports: https://github.com/tercen/rtercen/issues
+RoxygenNote: 6.0.1

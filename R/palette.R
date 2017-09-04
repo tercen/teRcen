@@ -1,0 +1,27 @@
+#' Palette
+#'
+#' @export
+#' @format \code{\link{R6Class}} object, sub classes \code{\link{JetPalette}}, \code{\link{CategoryPalette}}, \code{\link{RampPalette}}.
+#' @field backcolor of type int.
+Palette <- R6::R6Class("Palette", inherit = Base, public = list(backcolor = NULL, 
+    initialize = function(json = NULL) {
+        if (!is.null(json)) {
+            self$initJson(json)
+        } else {
+            self$init()
+        }
+    }, init = function() {
+        super$init()
+        self$backcolor = 0
+    }, initJson = function(json) {
+        super$initJson(json)
+        self$backcolor = json$backcolor
+    }, toTson = function() {
+        m = super$toTson()
+        m$kind = rtson::tson.scalar(jsonlite::unbox("Palette"))
+        m$backcolor = rtson::tson.int(jsonlite::unbox(self$backcolor))
+        return(m)
+    }, print = function(...) {
+        cat(yaml::as.yaml(self$toTson()))
+        invisible(self)
+    }))
