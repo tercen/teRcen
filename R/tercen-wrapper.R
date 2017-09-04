@@ -13,9 +13,9 @@ AbstractOperatorContext <- R6Class(
       cnames = as.list(names)
       
       names(cnames) = NULL
-       
+      
       qtSchema = self$schema
-        
+      
       if (length(cnames) == 0){
         where = sapply(qtSchema$columns, function(c) (c$type != 'uint64' && c$type != 'int64') )
         cnames = lapply(qtSchema$columns[where], function(c) c$name)
@@ -138,7 +138,7 @@ OperatorContext <- R6Class(
     }
   ),
   active = list(
-     
+    
     workflow = function(value){
       if (!missing(value)) stop('read only')
       stop('not inpl')
@@ -158,22 +158,17 @@ tercenCtx <- function(workflowId=getOption("tercen.workflowId"),stepId=getOption
   if (is.null(taskId)){
     return (OperatorContextDev$new(workflowId=workflowId, stepId=stepId))
   } else {
-    print('tercenCtx return OperatorContext')
     return (OperatorContext$new())
   }
 }
 
 #' @export
 select.AbstractOperatorContext <- function(ctx, ...){
-  print('select.AbstractOperatorContext')
   return (ctx$select(getNames(ctx$names, ...)))
 }
 
 getNames = function(names, ...){
-  print('getNames0')
   dots = rlang::quos(...)
   ll = lapply(dots, function(x) rlang::eval_tidy(x, names ))
-  print('getNames')
-  print(ll)
   return (unlist(ll))
 }
