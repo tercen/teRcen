@@ -17,6 +17,10 @@ Worker
 \item{\code{uri}}{of type String.}
 
 \item{\code{threads}}{of type int.}
+
+\item{\code{availableMemory}}{of type int.}
+
+\item{\code{maxMemory}}{of type int.}
 }}
 
 \keyword{datasets}

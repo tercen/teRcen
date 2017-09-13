@@ -18,15 +18,14 @@ Table <- R6::R6Class("Table", inherit = Base, public = list(nRows = NULL, proper
         self$properties = TableProperties$new()
         self$columns = list()
     }, initJson = function(json) {
-   
         super$initJson(json)
         self$nRows = json$nRows
         self$properties = createObjectFromJson(json$properties)
         self$columns = lapply(json$columns, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("Table"))
-        m$nRows = rtson::tson.int(jsonlite::unbox(self$nRows))
+        m$kind = rtson::tson.scalar("Table")
+        m$nRows = rtson::tson.int(self$nRows)
         m$properties = self$properties$toTson()
         m$columns = lapply(self$columns, function(each) each$toTson())
         return(m)

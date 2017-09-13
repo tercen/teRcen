@@ -17,8 +17,8 @@ Url <- R6::R6Class("Url", inherit = Base, public = list(uri = NULL, initialize =
     self$uri = json$uri
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar(jsonlite::unbox("Url"))
-    m$uri = rtson::tson.scalar(jsonlite::unbox(self$uri))
+    m$kind = rtson::tson.scalar("Url")
+    m$uri = rtson::tson.scalar(self$uri)
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

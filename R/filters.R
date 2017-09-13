@@ -18,7 +18,7 @@ Filters <- R6::R6Class("Filters", inherit = Base, public = list(namedFilters = N
         self$namedFilters = lapply(json$namedFilters, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("Filters"))
+        m$kind = rtson::tson.scalar("Filters")
         m$namedFilters = lapply(self$namedFilters, function(each) each$toTson())
         return(m)
     }, print = function(...) {

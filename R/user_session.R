@@ -21,7 +21,7 @@ UserSession <- R6::R6Class("UserSession", inherit = Base, public = list(user = N
         self$token = createObjectFromJson(json$token)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("UserSession"))
+        m$kind = rtson::tson.scalar("UserSession")
         m$user = self$user$toTson()
         m$token = self$token$toTson()
         return(m)

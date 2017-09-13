@@ -31,7 +31,7 @@ Crosstab <- R6::R6Class("Crosstab", inherit = StepModel, public = list(axis = NU
         self$rowTable = createObjectFromJson(json$rowTable)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("Crosstab"))
+        m$kind = rtson::tson.scalar("Crosstab")
         m$axis = self$axis$toTson()
         m$columnTable = self$columnTable$toTson()
         m$filters = self$filters$toTson()

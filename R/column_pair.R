@@ -21,9 +21,9 @@ ColumnPair <- R6::R6Class("ColumnPair", inherit = Base, public = list(lColumns =
         self$rColumns = json$rColumns
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("ColumnPair"))
-        m$lColumns = lapply(self$lColumns, function(each) rtson::tson.scalar(jsonlite::unbox(each)))
-        m$rColumns = lapply(self$rColumns, function(each) rtson::tson.scalar(jsonlite::unbox(each)))
+        m$kind = rtson::tson.scalar("ColumnPair")
+        m$lColumns = lapply(self$lColumns, function(each) rtson::tson.scalar(each))
+        m$rColumns = lapply(self$rColumns, function(each) rtson::tson.scalar(each))
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

@@ -17,7 +17,7 @@ JetPalette <- R6::R6Class("JetPalette", inherit = RampPalette, public = list(ini
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar(jsonlite::unbox("JetPalette"))
+    m$kind = rtson::tson.scalar("JetPalette")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

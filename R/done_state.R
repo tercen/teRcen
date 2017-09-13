@@ -14,7 +14,7 @@ DoneState <- R6::R6Class("DoneState", inherit = State, public = list(initialize 
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar(jsonlite::unbox("DoneState"))
+    m$kind = rtson::tson.scalar("DoneState")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

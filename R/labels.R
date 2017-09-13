@@ -17,7 +17,7 @@ Labels <- R6::R6Class("Labels", inherit = Base, public = list(factors = NULL, in
     self$factors = lapply(json$factors, createObjectFromJson)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar(jsonlite::unbox("Labels"))
+    m$kind = rtson::tson.scalar("Labels")
     m$factors = lapply(self$factors, function(each) each$toTson())
     return(m)
 }, print = function(...) {

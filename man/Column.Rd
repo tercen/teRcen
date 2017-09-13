@@ -20,6 +20,8 @@ Column
 
 \item{\code{nRows}}{of type int inherited from super class \code{\link{ColumnSchema}}.}
 
+\item{\code{size}}{of type int inherited from super class \code{\link{ColumnSchema}}.}
+
 \item{\code{id}}{of type String inherited from super class \code{\link{IdObject}}.}
 
 \item{\code{values}}{of type dynamic.}

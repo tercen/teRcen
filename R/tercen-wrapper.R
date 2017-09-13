@@ -7,27 +7,38 @@ library(dplyr)
 
 AbstractOperatorContext <- R6Class(
   "AbstractOperatorContext", 
+  private = list(
+    .schema = NULL,
+    .cschema = NULL,
+    .rschema = NULL
+  ),
   public = list(
-    
     select = function(names=list(), offset=0, nr=-1) {
+      return (self$selectSchema(self$schema, names=names,offset=offset,nr=nr))
+    },
+    cselect = function(names=list(), offset=0, nr=-1) {
+      return (self$selectSchema(self$cschema,names=names,offset=offset,nr=nr))
+    },
+    rselect = function(names=list(), offset=0, nr=-1) {
+      return (self$selectSchema(self$rschema, names=names,offset=offset,nr=nr))
+    },
+    selectSchema = function(schema=NULL, names=list(), offset=0, nr=-1) {
       cnames = as.list(names)
-      
       names(cnames) = NULL
-      
       qtSchema = self$schema
       
       if (length(cnames) == 0){
-        where = sapply(qtSchema$columns, function(c) (c$type != 'uint64' && c$type != 'int64') )
-        cnames = lapply(qtSchema$columns[where], function(c) c$name)
+        where = sapply(schema$columns, function(c) (c$type != 'uint64' && c$type != 'int64') )
+        cnames = lapply(schema$columns[where], function(c) c$name)
       }
       
       nRows  = nr
       
       if (nRows < 0){
-        nRows = qtSchema$nRows - offset
+        nRows = schema$nRows - offset
       }
       
-      table = self$client$tableSchemaService$select(qtSchema$id, cnames, offset, nRows)
+      table = self$client$tableSchemaService$select(schema$id, cnames, offset, nRows)
       df = as_tibble(table)
       
       return(df)
@@ -45,7 +56,24 @@ AbstractOperatorContext <- R6Class(
     
     schema = function(value) {
       if (!missing(value)) stop('read only')
-      return ( self$client$tableSchemaService$findByQueryHash(keys=list(self$query$qtHash))[[1]])
+      if (is.null(private$.schema)){
+        private$.schema = self$client$tableSchemaService$findByQueryHash(keys=list(self$query$qtHash))[[1]]
+      }
+      return ( private$.schema )
+    },
+    cschema = function(value) {
+      if (!missing(value)) stop('read only')
+      if (is.null(private$.cschema)){
+        private$.cschema = self$client$tableSchemaService$findByQueryHash(keys=list(self$query$columnHash))[[1]]
+      }
+      return ( private$.cschema )
+    },
+    rschema = function(value) {
+      if (!missing(value)) stop('read only')
+      if (is.null(private$.rschema)){
+        private$.rschema = self$client$tableSchemaService$findByQueryHash(keys=list(self$query$rowHash))[[1]]
+      }
+      return ( private$.rschema )
     },
     namespace = function(value) {
       if (!missing(value)) stop('read only')
@@ -56,6 +84,18 @@ AbstractOperatorContext <- R6Class(
       ll = lapply(self$schema$columns, function(each) each$name)
       names(ll)=ll
       return(ll) 
+    },
+    cnames = function(value) {
+      if (!missing(value)) stop('read only')
+      ll = lapply(self$cschema$columns, function(each) each$name)
+      names(ll)=ll
+      return(ll) 
+    },
+    rnames = function(value) {
+      if (!missing(value)) stop('read only')
+      ll = lapply(self$rschema$columns, function(each) each$name)
+      names(ll)=ll
+      return(ll) 
     }
   )
 )
@@ -63,6 +103,9 @@ AbstractOperatorContext <- R6Class(
 OperatorContextDev <- R6Class(
   "OperatorContextDev", 
   inherit = AbstractOperatorContext,
+  private = list(
+    .query = NULL
+  ),
   public = list(
     client = NULL, 
     workflowId = NULL,
@@ -89,6 +132,8 @@ OperatorContextDev <- R6Class(
       fileDoc$metadata$contentType = 'application/octet-stream'
       fileDoc$metadata$contentEncoding = 'iso-8859-1'
       
+      print(fileDoc)
+      
       fileDoc = self$client$fileService$upload(fileDoc, bytes)
       
       task = ComputationTask$new()
@@ -112,7 +157,10 @@ OperatorContextDev <- R6Class(
     },
     query = function(value) {
       if (!missing(value)) stop('read only')
-      return (self$client$workflowService$getCubeQuery(self$workflowId, self$stepId))
+      if (is.null(private$.query)){
+        private$.query = self$client$workflowService$getCubeQuery(self$workflowId, self$stepId)
+      }
+      return (private$.query)
     } 
   )
 )
@@ -120,6 +168,9 @@ OperatorContextDev <- R6Class(
 OperatorContext <- R6Class(
   "OperatorContext", 
   inherit = AbstractOperatorContext,
+  private = list(
+    .query = NULL
+  ),
   public = list(
     client = NULL,
     task = NULL,
@@ -146,7 +197,10 @@ OperatorContext <- R6Class(
     },
     query = function(value) {
       if (!missing(value)) stop('read only')
-      return (self$task$query)
+      if (is.null(private$.query)){
+        private$.query = self$task$query
+      }
+      return (private$.query)
     } 
   )
 )
@@ -160,6 +214,16 @@ tercenCtx <- function(workflowId=getOption("tercen.workflowId"),stepId=getOption
   } else {
     return (OperatorContext$new())
   }
+}
+
+#' @export
+cselect <- function(ctx, ...){
+  return (ctx$cselect(getNames(ctx$cnames, ...)))
+}
+
+#' @export
+rselect <- function(ctx, ...){
+  return (ctx$rselect(getNames(ctx$rnames, ...)))
 }
 
 #' @export

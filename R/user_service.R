@@ -2,6 +2,10 @@ UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = 
     client) {
     super$initialize(baseRestUri, client)
     self$uri = "user"
+}, findUserByNameByLastModifiedDate = function(startKey = NULL, endKey = NULL, limit = 20, 
+    skip = 0, descending = TRUE, useFactory = FALSE) {
+    return(self$findStartKeys("findUserByNameByLastModifiedDate", startKey = startKey, 
+        endKey = endKey, limit = limit, skip = skip, descending = descending, useFactory = useFactory))
 }, findUserByName = function(keys = NULL, useFactory = FALSE) {
     return(self$findKeys("userByName", keys = keys, useFactory = useFactory))
 }, findUserByEmail = function(keys = NULL, useFactory = FALSE) {

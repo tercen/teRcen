@@ -24,10 +24,10 @@ TableProperties <- R6::R6Class("TableProperties", inherit = Base, public = list(
         self$ascending = json$ascending
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("TableProperties"))
-        m$name = rtson::tson.scalar(jsonlite::unbox(self$name))
-        m$sortOrder = lapply(self$sortOrder, function(each) rtson::tson.scalar(jsonlite::unbox(each)))
-        m$ascending = rtson::tson.scalar(jsonlite::unbox(self$ascending))
+        m$kind = rtson::tson.scalar("TableProperties")
+        m$name = rtson::tson.scalar(self$name)
+        m$sortOrder = lapply(self$sortOrder, function(each) rtson::tson.scalar(each))
+        m$ascending = rtson::tson.scalar(self$ascending)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

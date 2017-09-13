@@ -27,7 +27,7 @@ JoinStep <- R6::R6Class("JoinStep", inherit = NamespaceStep, public = list(initi
     self$model = createObjectFromJson(json$model)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar(jsonlite::unbox("JoinStep"))
+    m$kind = rtson::tson.scalar("JoinStep")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

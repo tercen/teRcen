@@ -18,6 +18,8 @@ User
 
 \item{\code{name}}{of type String inherited from super class \code{\link{Document}}.}
 
+\item{\code{createdBy}}{of type String inherited from super class \code{\link{Document}}.}
+
 \item{\code{tags}}{list of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}

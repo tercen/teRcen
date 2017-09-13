@@ -26,9 +26,9 @@ MappingFactor <- R6::R6Class("MappingFactor", inherit = Factor, public = list(de
         self$factors = lapply(json$factors, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("MappingFactor"))
-        m$description = rtson::tson.scalar(jsonlite::unbox(self$description))
-        m$factorName = rtson::tson.scalar(jsonlite::unbox(self$factorName))
+        m$kind = rtson::tson.scalar("MappingFactor")
+        m$description = rtson::tson.scalar(self$description)
+        m$factorName = rtson::tson.scalar(self$factorName)
         m$factors = lapply(self$factors, function(each) each$toTson())
         return(m)
     }, print = function(...) {

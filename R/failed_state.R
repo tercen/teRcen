@@ -21,9 +21,9 @@ FailedState <- R6::R6Class("FailedState", inherit = State, public = list(error =
         self$reason = json$reason
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("FailedState"))
-        m$error = rtson::tson.scalar(jsonlite::unbox(self$error))
-        m$reason = rtson::tson.scalar(jsonlite::unbox(self$reason))
+        m$kind = rtson::tson.scalar("FailedState")
+        m$error = rtson::tson.scalar(self$error)
+        m$reason = rtson::tson.scalar(self$reason)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

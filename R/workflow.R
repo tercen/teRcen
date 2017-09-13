@@ -5,6 +5,7 @@
 #' @field projectId of type String inherited from super class \code{\link{ProjectDocument}}.
 #' @field description of type String inherited from super class \code{\link{Document}}.
 #' @field name of type String inherited from super class \code{\link{Document}}.
+#' @field createdBy of type String inherited from super class \code{\link{Document}}.
 #' @field tags list of type String inherited from super class \code{\link{Document}}.
 #' @field isDeleted of type bool inherited from super class \code{\link{PersistentObject}}.
 #' @field rev of type String inherited from super class \code{\link{PersistentObject}}.
@@ -32,7 +33,7 @@ Workflow <- R6::R6Class("Workflow", inherit = ProjectDocument, public = list(lin
         self$steps = lapply(json$steps, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("Workflow"))
+        m$kind = rtson::tson.scalar("Workflow")
         m$links = lapply(self$links, function(each) each$toTson())
         m$steps = lapply(self$steps, function(each) each$toTson())
         return(m)

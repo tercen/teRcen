@@ -18,8 +18,8 @@ Privilege <- R6::R6Class("Privilege", inherit = Base, public = list(type = NULL,
         self$type = json$type
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("Privilege"))
-        m$type = rtson::tson.scalar(jsonlite::unbox(self$type))
+        m$kind = rtson::tson.scalar("Privilege")
+        m$type = rtson::tson.scalar(self$type)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

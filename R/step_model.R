@@ -14,7 +14,7 @@ StepModel <- R6::R6Class("StepModel", inherit = Base, public = list(initialize =
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar(jsonlite::unbox("StepModel"))
+    m$kind = rtson::tson.scalar("StepModel")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

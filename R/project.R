@@ -4,6 +4,7 @@
 #' @format \code{\link{R6Class}} object, super class \code{\link{Document}}.
 #' @field description of type String inherited from super class \code{\link{Document}}.
 #' @field name of type String inherited from super class \code{\link{Document}}.
+#' @field createdBy of type String inherited from super class \code{\link{Document}}.
 #' @field tags list of type String inherited from super class \code{\link{Document}}.
 #' @field isDeleted of type bool inherited from super class \code{\link{PersistentObject}}.
 #' @field rev of type String inherited from super class \code{\link{PersistentObject}}.
@@ -24,7 +25,7 @@ Project <- R6::R6Class("Project", inherit = Document, public = list(initialize =
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar(jsonlite::unbox("Project"))
+    m$kind = rtson::tson.scalar("Project")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

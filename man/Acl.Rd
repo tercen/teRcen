@@ -16,10 +16,6 @@ Acl
 \describe{
 \item{\code{owner}}{of type String.}
 
-\item{\code{resourceId}}{of type String.}
-
-\item{\code{resourceType}}{of type String.}
-
 \item{\code{aces}}{list of class \code{\link{Ace}}.}
 }}
 

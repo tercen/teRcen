@@ -27,6 +27,9 @@ createObjectFromJson = function(json) {
     if (kind == "WhereRelation") {
         return(WhereRelation$new(json = json))
     }
+    if (kind == "StorageProfile") {
+        return(StorageProfile$new(json = json))
+    }
     if (kind == "RSourceOperator") {
         return(RSourceOperator$new(json = json))
     }
@@ -45,11 +48,17 @@ createObjectFromJson = function(json) {
     if (kind == "Property") {
         return(Property$new(json = json))
     }
+    if (kind == "GarbageTasks") {
+        return(GarbageTasks$new(json = json))
+    }
     if (kind == "ModelStep") {
         return(ModelStep$new(json = json))
     }
     if (kind == "Filters") {
         return(Filters$new(json = json))
+    }
+    if (kind == "TableSummary") {
+        return(TableSummary$new(json = json))
     }
     if (kind == "ChartHeatmap") {
         return(ChartHeatmap$new(json = json))
@@ -129,6 +138,9 @@ createObjectFromJson = function(json) {
     if (kind == "OutStep") {
         return(OutStep$new(json = json))
     }
+    if (kind == "Schema") {
+        return(Schema$new(json = json))
+    }
     if (kind == "Token") {
         return(Token$new(json = json))
     }
@@ -182,6 +194,9 @@ createObjectFromJson = function(json) {
     }
     if (kind == "Step") {
         return(Step$new(json = json))
+    }
+    if (kind == "GarbageObject") {
+        return(GarbageObject$new(json = json))
     }
     if (kind == "Crosstab") {
         return(Crosstab$new(json = json))
@@ -312,11 +327,11 @@ createObjectFromJson = function(json) {
     if (kind == "StringColorElement") {
         return(StringColorElement$new(json = json))
     }
-    if (kind == "EnumeratedProperty") {
-        return(EnumeratedProperty$new(json = json))
-    }
     if (kind == "NamedFilter") {
         return(NamedFilter$new(json = json))
+    }
+    if (kind == "EnumeratedProperty") {
+        return(EnumeratedProperty$new(json = json))
     }
     if (kind == "NamespaceStep") {
         return(NamespaceStep$new(json = json))
@@ -354,8 +369,14 @@ createObjectFromJson = function(json) {
     if (kind == "CompositeRelation") {
         return(CompositeRelation$new(json = json))
     }
+    if (kind == "StorageSummary") {
+        return(StorageSummary$new(json = json))
+    }
     if (kind == "ColumnSchema") {
         return(ColumnSchema$new(json = json))
+    }
+    if (kind == "RunProfile") {
+        return(RunProfile$new(json = json))
     }
     if (kind == "ComputedTableSchema") {
         return(ComputedTableSchema$new(json = json))

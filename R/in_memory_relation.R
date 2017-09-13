@@ -15,7 +15,7 @@ InMemoryRelation <- R6::R6Class("InMemoryRelation", inherit = Relation, public =
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar(jsonlite::unbox("InMemoryRelation"))
+    m$kind = rtson::tson.scalar("InMemoryRelation")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

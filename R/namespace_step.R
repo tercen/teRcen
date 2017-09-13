@@ -27,8 +27,8 @@ NamespaceStep <- R6::R6Class("NamespaceStep", inherit = RelationStep, public = l
         self$namespace = json$namespace
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("NamespaceStep"))
-        m$namespace = rtson::tson.scalar(jsonlite::unbox(self$namespace))
+        m$kind = rtson::tson.scalar("NamespaceStep")
+        m$namespace = rtson::tson.scalar(self$namespace)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

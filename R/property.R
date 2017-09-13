@@ -17,8 +17,8 @@ Property <- R6::R6Class("Property", inherit = Base, public = list(name = NULL, i
     self$name = json$name
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar(jsonlite::unbox("Property"))
-    m$name = rtson::tson.scalar(jsonlite::unbox(self$name))
+    m$kind = rtson::tson.scalar("Property")
+    m$name = rtson::tson.scalar(self$name)
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

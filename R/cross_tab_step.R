@@ -27,7 +27,7 @@ CrossTabStep <- R6::R6Class("CrossTabStep", inherit = NamespaceStep, public = li
     self$model = createObjectFromJson(json$model)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar(jsonlite::unbox("CrossTabStep"))
+    m$kind = rtson::tson.scalar("CrossTabStep")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

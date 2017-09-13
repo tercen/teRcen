@@ -21,8 +21,8 @@ StepState <- R6::R6Class("StepState", inherit = Base, public = list(taskId = NUL
         self$taskState = createObjectFromJson(json$taskState)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("StepState"))
-        m$taskId = rtson::tson.scalar(jsonlite::unbox(self$taskId))
+        m$kind = rtson::tson.scalar("StepState")
+        m$taskId = rtson::tson.scalar(self$taskId)
         m$taskState = self$taskState$toTson()
         return(m)
     }, print = function(...) {

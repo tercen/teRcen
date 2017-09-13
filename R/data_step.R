@@ -29,7 +29,7 @@ DataStep <- R6::R6Class("DataStep", inherit = CrossTabStep, public = list(joinOp
         self$joinOperators = lapply(json$joinOperators, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("DataStep"))
+        m$kind = rtson::tson.scalar("DataStep")
         m$joinOperators = lapply(self$joinOperators, function(each) each$toTson())
         return(m)
     }, print = function(...) {

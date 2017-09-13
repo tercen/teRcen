@@ -15,7 +15,7 @@ SimpleRelation <- R6::R6Class("SimpleRelation", inherit = Relation, public = lis
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar(jsonlite::unbox("SimpleRelation"))
+    m$kind = rtson::tson.scalar("SimpleRelation")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

@@ -19,8 +19,8 @@ DoubleColorElement <- R6::R6Class("DoubleColorElement", inherit = ColorElement, 
         self$doubleValue = as.double(json$doubleValue)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("DoubleColorElement"))
-        m$doubleValue = rtson::tson.scalar(jsonlite::unbox(self$doubleValue))
+        m$kind = rtson::tson.scalar("DoubleColorElement")
+        m$doubleValue = rtson::tson.scalar(self$doubleValue)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

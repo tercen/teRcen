@@ -20,6 +20,8 @@ FileDocument
 
 \item{\code{name}}{of type String inherited from super class \code{\link{Document}}.}
 
+\item{\code{createdBy}}{of type String inherited from super class \code{\link{Document}}.}
+
 \item{\code{tags}}{list of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
@@ -29,6 +31,8 @@ FileDocument
 \item{\code{id}}{of type String inherited from super class \code{\link{IdObject}}.}
 
 \item{\code{dataUri}}{of type String.}
+
+\item{\code{size}}{of type int.}
 
 \item{\code{acl}}{object of class \code{\link{Acl}} inherited from super class \code{\link{Document}}.}
 

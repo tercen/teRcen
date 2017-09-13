@@ -1,9 +1,10 @@
 #' ProjectDocument
 #'
 #' @export
-#' @format \code{\link{R6Class}} object, super class \code{\link{Document}}, sub classes \code{\link{RSourceOperator}}, \code{\link{SourceOperator}}, \code{\link{ExternalOperator}}, \code{\link{CubeQueryTableSchema}}, \code{\link{ComputedTableSchema}}, \code{\link{Operator}}, \code{\link{TableSchema}}, \code{\link{FileDocument}}, \code{\link{Workflow}}.
+#' @format \code{\link{R6Class}} object, super class \code{\link{Document}}, sub classes \code{\link{CubeQueryTableSchema}}, \code{\link{TableSchema}}, \code{\link{ComputedTableSchema}}, \code{\link{RSourceOperator}}, \code{\link{SourceOperator}}, \code{\link{ExternalOperator}}, \code{\link{Schema}}, \code{\link{Operator}}, \code{\link{FileDocument}}, \code{\link{Workflow}}.
 #' @field description of type String inherited from super class \code{\link{Document}}.
 #' @field name of type String inherited from super class \code{\link{Document}}.
+#' @field createdBy of type String inherited from super class \code{\link{Document}}.
 #' @field tags list of type String inherited from super class \code{\link{Document}}.
 #' @field isDeleted of type bool inherited from super class \code{\link{PersistentObject}}.
 #' @field rev of type String inherited from super class \code{\link{PersistentObject}}.
@@ -28,8 +29,8 @@ ProjectDocument <- R6::R6Class("ProjectDocument", inherit = Document, public = l
         self$projectId = json$projectId
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("ProjectDocument"))
-        m$projectId = rtson::tson.scalar(jsonlite::unbox(self$projectId))
+        m$kind = rtson::tson.scalar("ProjectDocument")
+        m$projectId = rtson::tson.scalar(self$projectId)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

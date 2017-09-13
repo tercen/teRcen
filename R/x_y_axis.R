@@ -33,7 +33,7 @@ XYAxis <- R6::R6Class("XYAxis", inherit = Base, public = list(chart = NULL, colo
         self$yAxis = createObjectFromJson(json$yAxis)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("XYAxis"))
+        m$kind = rtson::tson.scalar("XYAxis")
         m$chart = self$chart$toTson()
         m$colors = self$colors$toTson()
         m$errors = self$errors$toTson()

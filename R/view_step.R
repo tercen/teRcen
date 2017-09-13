@@ -22,7 +22,7 @@ ViewStep <- R6::R6Class("ViewStep", inherit = Step, public = list(initialize = f
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar(jsonlite::unbox("ViewStep"))
+    m$kind = rtson::tson.scalar("ViewStep")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

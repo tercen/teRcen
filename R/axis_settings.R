@@ -14,7 +14,7 @@ AxisSettings <- R6::R6Class("AxisSettings", inherit = Base, public = list(initia
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar(jsonlite::unbox("AxisSettings"))
+    m$kind = rtson::tson.scalar("AxisSettings")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

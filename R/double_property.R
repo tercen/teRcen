@@ -15,7 +15,7 @@ DoubleProperty <- R6::R6Class("DoubleProperty", inherit = Property, public = lis
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar(jsonlite::unbox("DoubleProperty"))
+    m$kind = rtson::tson.scalar("DoubleProperty")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

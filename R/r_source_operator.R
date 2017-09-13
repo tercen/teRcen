@@ -6,6 +6,7 @@
 #' @field projectId of type String inherited from super class \code{\link{ProjectDocument}}.
 #' @field description of type String inherited from super class \code{\link{Document}}.
 #' @field name of type String inherited from super class \code{\link{Document}}.
+#' @field createdBy of type String inherited from super class \code{\link{Document}}.
 #' @field tags list of type String inherited from super class \code{\link{Document}}.
 #' @field isDeleted of type bool inherited from super class \code{\link{PersistentObject}}.
 #' @field rev of type String inherited from super class \code{\link{PersistentObject}}.
@@ -27,7 +28,7 @@ RSourceOperator <- R6::R6Class("RSourceOperator", inherit = SourceOperator, publ
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar(jsonlite::unbox("RSourceOperator"))
+    m$kind = rtson::tson.scalar("RSourceOperator")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

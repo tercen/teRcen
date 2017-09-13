@@ -24,10 +24,10 @@ MeltStepModel <- R6::R6Class("MeltStepModel", inherit = StepModel, public = list
         self$factors = lapply(json$factors, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("MeltStepModel"))
+        m$kind = rtson::tson.scalar("MeltStepModel")
         m$factors = lapply(self$factors, function(each) each$toTson())
-        m$variableName = rtson::tson.scalar(jsonlite::unbox(self$variableName))
-        m$valueName = rtson::tson.scalar(jsonlite::unbox(self$valueName))
+        m$variableName = rtson::tson.scalar(self$variableName)
+        m$valueName = rtson::tson.scalar(self$valueName)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

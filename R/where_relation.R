@@ -22,7 +22,7 @@ WhereRelation <- R6::R6Class("WhereRelation", inherit = Relation, public = list(
         self$filters = createObjectFromJson(json$filters)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("WhereRelation"))
+        m$kind = rtson::tson.scalar("WhereRelation")
         m$relation = self$relation$toTson()
         m$filters = self$filters$toTson()
         return(m)

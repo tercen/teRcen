@@ -21,7 +21,7 @@ XYAxisList <- R6::R6Class("XYAxisList", inherit = Base, public = list(rectangleS
         self$xyAxis = lapply(json$xyAxis, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("XYAxisList"))
+        m$kind = rtson::tson.scalar("XYAxisList")
         m$rectangleSelections = lapply(self$rectangleSelections, function(each) each$toTson())
         m$xyAxis = lapply(self$xyAxis, function(each) each$toTson())
         return(m)

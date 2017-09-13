@@ -18,8 +18,8 @@ Palette <- R6::R6Class("Palette", inherit = Base, public = list(backcolor = NULL
         self$backcolor = json$backcolor
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("Palette"))
-        m$backcolor = rtson::tson.int(jsonlite::unbox(self$backcolor))
+        m$kind = rtson::tson.scalar("Palette")
+        m$backcolor = rtson::tson.int(self$backcolor)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

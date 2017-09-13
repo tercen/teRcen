@@ -30,12 +30,12 @@ JoinMeltOperator <- R6::R6Class("JoinMeltOperator", inherit = JoinOperator, publ
         self$valueType = json$valueType
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("JoinMeltOperator"))
-        m$rightRelationId = rtson::tson.scalar(jsonlite::unbox(self$rightRelationId))
-        m$names = lapply(self$names, function(each) rtson::tson.scalar(jsonlite::unbox(each)))
-        m$valueName = rtson::tson.scalar(jsonlite::unbox(self$valueName))
-        m$variableName = rtson::tson.scalar(jsonlite::unbox(self$variableName))
-        m$valueType = rtson::tson.scalar(jsonlite::unbox(self$valueType))
+        m$kind = rtson::tson.scalar("JoinMeltOperator")
+        m$rightRelationId = rtson::tson.scalar(self$rightRelationId)
+        m$names = lapply(self$names, function(each) rtson::tson.scalar(each))
+        m$valueName = rtson::tson.scalar(self$valueName)
+        m$variableName = rtson::tson.scalar(self$variableName)
+        m$valueType = rtson::tson.scalar(self$valueType)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

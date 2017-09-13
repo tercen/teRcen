@@ -26,7 +26,7 @@ MeltStep <- R6::R6Class("MeltStep", inherit = RelationStep, public = list(initia
     self$model = createObjectFromJson(json$model)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar(jsonlite::unbox("MeltStep"))
+    m$kind = rtson::tson.scalar("MeltStep")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

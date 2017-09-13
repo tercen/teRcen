@@ -15,7 +15,7 @@ ChartLine <- R6::R6Class("ChartLine", inherit = ChartSize, public = list(initial
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar(jsonlite::unbox("ChartLine"))
+    m$kind = rtson::tson.scalar("ChartLine")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

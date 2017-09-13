@@ -4,7 +4,7 @@
 \name{Document}
 \alias{Document}
 \title{Document}
-\format{\code{\link{R6Class}} object, super class \code{\link{PersistentObject}}, sub classes \code{\link{Team}}, \code{\link{RSourceOperator}}, \code{\link{SourceOperator}}, \code{\link{ExternalOperator}}, \code{\link{CubeQueryTableSchema}}, \code{\link{ComputedTableSchema}}, \code{\link{Operator}}, \code{\link{TableSchema}}, \code{\link{FileDocument}}, \code{\link{Workflow}}, \code{\link{User}}, \code{\link{ProjectDocument}}, \code{\link{Project}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{PersistentObject}}, sub classes \code{\link{Team}}, \code{\link{CubeQueryTableSchema}}, \code{\link{TableSchema}}, \code{\link{ComputedTableSchema}}, \code{\link{RSourceOperator}}, \code{\link{SourceOperator}}, \code{\link{ExternalOperator}}, \code{\link{Schema}}, \code{\link{Operator}}, \code{\link{FileDocument}}, \code{\link{Workflow}}, \code{\link{User}}, \code{\link{ProjectDocument}}, \code{\link{Project}}.}
 \usage{
 Document
 }
@@ -23,6 +23,8 @@ Document
 \item{\code{description}}{of type String.}
 
 \item{\code{name}}{of type String.}
+
+\item{\code{createdBy}}{of type String.}
 
 \item{\code{tags}}{list of type String.}
 

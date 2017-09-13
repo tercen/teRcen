@@ -18,8 +18,8 @@ ColumnSchemaMetaData <- R6::R6Class("ColumnSchemaMetaData", inherit = Base, publ
         self$quartiles = json$quartiles
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("ColumnSchemaMetaData"))
-        m$quartiles = lapply(self$quartiles, function(each) rtson::tson.scalar(jsonlite::unbox(each)))
+        m$kind = rtson::tson.scalar("ColumnSchemaMetaData")
+        m$quartiles = lapply(self$quartiles, function(each) rtson::tson.scalar(each))
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

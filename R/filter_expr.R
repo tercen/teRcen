@@ -24,9 +24,9 @@ FilterExpr <- R6::R6Class("FilterExpr", inherit = FilterTopExpr, public = list(f
         self$factor = createObjectFromJson(json$factor)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("FilterExpr"))
-        m$filterOp = rtson::tson.scalar(jsonlite::unbox(self$filterOp))
-        m$stringValue = rtson::tson.scalar(jsonlite::unbox(self$stringValue))
+        m$kind = rtson::tson.scalar("FilterExpr")
+        m$filterOp = rtson::tson.scalar(self$filterOp)
+        m$stringValue = rtson::tson.scalar(self$stringValue)
         m$factor = self$factor$toTson()
         return(m)
     }, print = function(...) {

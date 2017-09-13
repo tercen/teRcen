@@ -38,9 +38,9 @@ Step <- R6::R6Class("Step", inherit = IdObject, public = list(groupId = NULL, na
         self$model = createObjectFromJson(json$model)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("Step"))
-        m$groupId = rtson::tson.scalar(jsonlite::unbox(self$groupId))
-        m$name = rtson::tson.scalar(jsonlite::unbox(self$name))
+        m$kind = rtson::tson.scalar("Step")
+        m$groupId = rtson::tson.scalar(self$groupId)
+        m$name = rtson::tson.scalar(self$name)
         m$inputs = lapply(self$inputs, function(each) each$toTson())
         m$outputs = lapply(self$outputs, function(each) each$toTson())
         m$rectangle = self$rectangle$toTson()

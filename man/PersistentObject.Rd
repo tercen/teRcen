@@ -4,7 +4,7 @@
 \name{PersistentObject}
 \alias{PersistentObject}
 \title{PersistentObject}
-\format{\code{\link{R6Class}} object, super class \code{\link{IdObject}}, sub classes \code{\link{ComputationTask}}, \code{\link{CSVTask}}, \code{\link{CubeQueryTask}}, \code{\link{Team}}, \code{\link{RSourceOperator}}, \code{\link{SourceOperator}}, \code{\link{ExternalOperator}}, \code{\link{CubeQueryTableSchema}}, \code{\link{ComputedTableSchema}}, \code{\link{Operator}}, \code{\link{TableSchema}}, \code{\link{FileDocument}}, \code{\link{Workflow}}, \code{\link{User}}, \code{\link{ProjectDocument}}, \code{\link{Project}}, \code{\link{Task}}, \code{\link{Document}}, \code{\link{UserSecret}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{IdObject}}, sub classes \code{\link{GarbageTasks}}, \code{\link{ComputationTask}}, \code{\link{CSVTask}}, \code{\link{CubeQueryTask}}, \code{\link{Team}}, \code{\link{CubeQueryTableSchema}}, \code{\link{TableSchema}}, \code{\link{ComputedTableSchema}}, \code{\link{RSourceOperator}}, \code{\link{SourceOperator}}, \code{\link{ExternalOperator}}, \code{\link{Schema}}, \code{\link{Operator}}, \code{\link{FileDocument}}, \code{\link{Workflow}}, \code{\link{User}}, \code{\link{ProjectDocument}}, \code{\link{Project}}, \code{\link{GarbageObject}}, \code{\link{Task}}, \code{\link{Document}}, \code{\link{UserSecret}}.}
 \usage{
 PersistentObject
 }

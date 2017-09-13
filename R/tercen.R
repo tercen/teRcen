@@ -7,6 +7,22 @@ library(dplyr)
 library(rlang)
 library(tibble)
 
+.onLoad <- function(libname, pkgname) {
+    
+    # Unlock the class
+    TableSchemaService$unlock()
+    
+    TableSchemaService$set("public", "select", function(tableId, cnames, offset, 
+        limit) {
+        bytes = self$selectStream(tableId, cnames, offset, limit)
+        table = createObjectFromJson(rtson::fromTSON(bytes))
+        return(table)
+    }, overwrite = TRUE)
+    
+    # Lock the class again
+    TableSchemaService$lock()
+}
+
 #' Tercen Client for R
 #' 
 #' Access Tercen at \url{http://tercen.com} 
@@ -19,9 +35,8 @@ NULL
 
 #' @export
 TercenClient <- R6Class("TercenClient", inherit = ServiceFactory, public = list(session = NULL, 
-    initialize = function(username = getOption("tercen.username"), 
-        password = getOption("tercen.password"), authToken = NULL, 
-        serviceUri = getOption("tercen.serviceUri" , default="https://tercen.com/service")) {
+    initialize = function(username = getOption("tercen.username"), password = getOption("tercen.password"), 
+        authToken = NULL, serviceUri = getOption("tercen.serviceUri", default = "https://tercen.com/service")) {
         argsMap = parseCommandArgs()
         if (!is.null(argsMap$serviceUri)) {
             super$initialize(argsMap$serviceUri)
@@ -267,12 +282,12 @@ parseCommandArgs <- function() {
 }
 
 #' @export
-as_tibble.Table <- function(table, ...){
-  l = lapply(table$columns, function(column) column$values)
-  names(l) = lapply(table$columns, function(column) column$name)
-  return (as_tibble(l))
+as_tibble.Table <- function(table, ...) {
+    l = lapply(table$columns, function(column) column$values)
+    names(l) = lapply(table$columns, function(column) column$name)
+    return(as_tibble(l))
 }
-  
+
 #' @export
 dataframe.as.table = function(df) {
     table = Table$new()

@@ -21,7 +21,7 @@ JoinOperator1 <- R6::R6Class("JoinOperator1", inherit = JoinOperator, public = l
         self$rightRelation = createObjectFromJson(json$rightRelation)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("JoinOperator1"))
+        m$kind = rtson::tson.scalar("JoinOperator1")
         m$leftPair = self$leftPair$toTson()
         m$rightRelation = self$rightRelation$toTson()
         return(m)

@@ -20,11 +20,19 @@ Task
 
 \item{\code{id}}{of type String inherited from super class \code{\link{IdObject}}.}
 
+\item{\code{owner}}{of type String.}
+
 \item{\code{projectId}}{of type String.}
 
 \item{\code{taskHash}}{of type String.}
 
+\item{\code{runProfile}}{of type String.}
+
 \item{\code{state}}{object of class \code{\link{State}}.}
+
+\item{\code{createdDate}}{object of class \code{\link{Date}}.}
+
+\item{\code{lastModifiedDate}}{object of class \code{\link{Date}}.}
 
 \item{\code{runDate}}{object of class \code{\link{Date}}.}
 

@@ -27,11 +27,11 @@ Token <- R6::R6Class("Token", inherit = Base, public = list(userId = NULL, issue
         self$expiry = createObjectFromJson(json$expiry)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("Token"))
-        m$userId = rtson::tson.scalar(jsonlite::unbox(self$userId))
+        m$kind = rtson::tson.scalar("Token")
+        m$userId = rtson::tson.scalar(self$userId)
         m$issuedAt = self$issuedAt$toTson()
         m$expiry = self$expiry$toTson()
-        m$token = rtson::tson.scalar(jsonlite::unbox(self$token))
+        m$token = rtson::tson.scalar(self$token)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

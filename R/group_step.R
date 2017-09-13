@@ -23,7 +23,7 @@ GroupStep <- R6::R6Class("GroupStep", inherit = RelationStep, public = list(init
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar(jsonlite::unbox("GroupStep"))
+    m$kind = rtson::tson.scalar("GroupStep")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

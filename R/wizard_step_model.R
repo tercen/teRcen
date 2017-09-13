@@ -27,9 +27,9 @@ WizardStepModel <- R6::R6Class("WizardStepModel", inherit = StepModel, public = 
         self$steps = lapply(json$steps, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("WizardStepModel"))
-        m$name = rtson::tson.scalar(jsonlite::unbox(self$name))
-        m$description = rtson::tson.scalar(jsonlite::unbox(self$description))
+        m$kind = rtson::tson.scalar("WizardStepModel")
+        m$name = rtson::tson.scalar(self$name)
+        m$description = rtson::tson.scalar(self$description)
         m$factors = lapply(self$factors, function(each) each$toTson())
         m$steps = lapply(self$steps, function(each) each$toTson())
         return(m)

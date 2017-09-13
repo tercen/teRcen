@@ -22,7 +22,7 @@ CompositeRelation <- R6::R6Class("CompositeRelation", inherit = Relation, public
         self$joinOperators = lapply(json$joinOperators, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("CompositeRelation"))
+        m$kind = rtson::tson.scalar("CompositeRelation")
         m$mainRelation = self$mainRelation$toTson()
         m$joinOperators = lapply(self$joinOperators, function(each) each$toTson())
         return(m)

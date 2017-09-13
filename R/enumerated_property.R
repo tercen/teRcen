@@ -15,7 +15,7 @@ EnumeratedProperty <- R6::R6Class("EnumeratedProperty", inherit = Property, publ
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar(jsonlite::unbox("EnumeratedProperty"))
+    m$kind = rtson::tson.scalar("EnumeratedProperty")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

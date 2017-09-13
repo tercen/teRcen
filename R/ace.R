@@ -21,7 +21,7 @@ Ace <- R6::R6Class("Ace", inherit = Base, public = list(principals = NULL, privi
         self$privileges = lapply(json$privileges, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("Ace"))
+        m$kind = rtson::tson.scalar("Ace")
         m$principals = lapply(self$principals, function(each) each$toTson())
         m$privileges = lapply(self$privileges, function(each) each$toTson())
         return(m)

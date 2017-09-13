@@ -5,6 +5,7 @@
 #' @field projectId of type String inherited from super class \code{\link{ProjectDocument}}.
 #' @field description of type String inherited from super class \code{\link{Document}}.
 #' @field name of type String inherited from super class \code{\link{Document}}.
+#' @field createdBy of type String inherited from super class \code{\link{Document}}.
 #' @field tags list of type String inherited from super class \code{\link{Document}}.
 #' @field isDeleted of type bool inherited from super class \code{\link{PersistentObject}}.
 #' @field rev of type String inherited from super class \code{\link{PersistentObject}}.
@@ -30,7 +31,7 @@ ExternalOperator <- R6::R6Class("ExternalOperator", inherit = Operator, public =
         self$url = createObjectFromJson(json$url)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("ExternalOperator"))
+        m$kind = rtson::tson.scalar("ExternalOperator")
         m$url = self$url$toTson()
         return(m)
     }, print = function(...) {

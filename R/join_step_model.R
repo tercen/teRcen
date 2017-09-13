@@ -24,10 +24,10 @@ JoinStepModel <- R6::R6Class("JoinStepModel", inherit = StepModel, public = list
         self$rightFactors = lapply(json$rightFactors, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("JoinStepModel"))
+        m$kind = rtson::tson.scalar("JoinStepModel")
         m$leftFactors = lapply(self$leftFactors, function(each) each$toTson())
         m$rightFactors = lapply(self$rightFactors, function(each) each$toTson())
-        m$rightPrefix = rtson::tson.scalar(jsonlite::unbox(self$rightPrefix))
+        m$rightPrefix = rtson::tson.scalar(self$rightPrefix)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

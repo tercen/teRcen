@@ -15,7 +15,7 @@ StringProperty <- R6::R6Class("StringProperty", inherit = Property, public = lis
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar(jsonlite::unbox("StringProperty"))
+    m$kind = rtson::tson.scalar("StringProperty")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

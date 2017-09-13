@@ -4,7 +4,7 @@
 \name{ProjectDocument}
 \alias{ProjectDocument}
 \title{ProjectDocument}
-\format{\code{\link{R6Class}} object, super class \code{\link{Document}}, sub classes \code{\link{RSourceOperator}}, \code{\link{SourceOperator}}, \code{\link{ExternalOperator}}, \code{\link{CubeQueryTableSchema}}, \code{\link{ComputedTableSchema}}, \code{\link{Operator}}, \code{\link{TableSchema}}, \code{\link{FileDocument}}, \code{\link{Workflow}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{Document}}, sub classes \code{\link{CubeQueryTableSchema}}, \code{\link{TableSchema}}, \code{\link{ComputedTableSchema}}, \code{\link{RSourceOperator}}, \code{\link{SourceOperator}}, \code{\link{ExternalOperator}}, \code{\link{Schema}}, \code{\link{Operator}}, \code{\link{FileDocument}}, \code{\link{Workflow}}.}
 \usage{
 ProjectDocument
 }
@@ -17,6 +17,8 @@ ProjectDocument
 \item{\code{description}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{name}}{of type String inherited from super class \code{\link{Document}}.}
+
+\item{\code{createdBy}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{tags}}{list of type String inherited from super class \code{\link{Document}}.}
 

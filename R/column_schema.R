@@ -6,9 +6,10 @@
 #' @field name of type String.
 #' @field type of type String.
 #' @field nRows of type int.
+#' @field size of type int.
 #' @field metaData object of class \code{\link{ColumnSchemaMetaData}}.
 ColumnSchema <- R6::R6Class("ColumnSchema", inherit = IdObject, public = list(name = NULL, 
-    type = NULL, nRows = NULL, metaData = NULL, initialize = function(json = NULL) {
+    type = NULL, nRows = NULL, size = NULL, metaData = NULL, initialize = function(json = NULL) {
         if (!is.null(json)) {
             self$initJson(json)
         } else {
@@ -19,19 +20,22 @@ ColumnSchema <- R6::R6Class("ColumnSchema", inherit = IdObject, public = list(na
         self$name = ""
         self$type = ""
         self$nRows = 0
+        self$size = 0
         self$metaData = ColumnSchemaMetaData$new()
     }, initJson = function(json) {
         super$initJson(json)
         self$name = json$name
         self$type = json$type
         self$nRows = json$nRows
+        self$size = json$size
         self$metaData = createObjectFromJson(json$metaData)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("ColumnSchema"))
-        m$name = rtson::tson.scalar(jsonlite::unbox(self$name))
-        m$type = rtson::tson.scalar(jsonlite::unbox(self$type))
-        m$nRows = rtson::tson.int(jsonlite::unbox(self$nRows))
+        m$kind = rtson::tson.scalar("ColumnSchema")
+        m$name = rtson::tson.scalar(self$name)
+        m$type = rtson::tson.scalar(self$type)
+        m$nRows = rtson::tson.int(self$nRows)
+        m$size = rtson::tson.int(self$size)
         m$metaData = self$metaData$toTson()
         return(m)
     }, print = function(...) {

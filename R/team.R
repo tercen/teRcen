@@ -10,6 +10,7 @@
 #' @field maxInvitation of type int inherited from super class \code{\link{User}}.
 #' @field description of type String inherited from super class \code{\link{Document}}.
 #' @field name of type String inherited from super class \code{\link{Document}}.
+#' @field createdBy of type String inherited from super class \code{\link{Document}}.
 #' @field tags list of type String inherited from super class \code{\link{Document}}.
 #' @field isDeleted of type bool inherited from super class \code{\link{PersistentObject}}.
 #' @field rev of type String inherited from super class \code{\link{PersistentObject}}.
@@ -34,8 +35,8 @@ Team <- R6::R6Class("Team", inherit = User, public = list(owner = NULL, initiali
     self$owner = json$owner
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar(jsonlite::unbox("Team"))
-    m$owner = rtson::tson.scalar(jsonlite::unbox(self$owner))
+    m$kind = rtson::tson.scalar("Team")
+    m$owner = rtson::tson.scalar(self$owner)
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

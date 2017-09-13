@@ -22,6 +22,8 @@ ColumnSchema
 
 \item{\code{nRows}}{of type int.}
 
+\item{\code{size}}{of type int.}
+
 \item{\code{metaData}}{object of class \code{\link{ColumnSchemaMetaData}}.}
 }}
 

@@ -22,7 +22,7 @@ CategoryPalette <- R6::R6Class("CategoryPalette", inherit = Palette, public = li
         self$stringColorElements = lapply(json$stringColorElements, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("CategoryPalette"))
+        m$kind = rtson::tson.scalar("CategoryPalette")
         m$colorList = self$colorList$toTson()
         m$stringColorElements = lapply(self$stringColorElements, function(each) each$toTson())
         return(m)

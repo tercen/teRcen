@@ -4,6 +4,7 @@
 #' @format \code{\link{R6Class}} object, super class \code{\link{Document}}, sub classes \code{\link{Team}}.
 #' @field description of type String inherited from super class \code{\link{Document}}.
 #' @field name of type String inherited from super class \code{\link{Document}}.
+#' @field createdBy of type String inherited from super class \code{\link{Document}}.
 #' @field tags list of type String inherited from super class \code{\link{Document}}.
 #' @field isDeleted of type bool inherited from super class \code{\link{PersistentObject}}.
 #' @field rev of type String inherited from super class \code{\link{PersistentObject}}.
@@ -47,14 +48,14 @@ User <- R6::R6Class("User", inherit = Document, public = list(email = NULL, isVa
         self$teamAcl = createObjectFromJson(json$teamAcl)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("User"))
-        m$email = rtson::tson.scalar(jsonlite::unbox(self$email))
-        m$isValidated = rtson::tson.scalar(jsonlite::unbox(self$isValidated))
-        m$roles = lapply(self$roles, function(each) rtson::tson.scalar(jsonlite::unbox(each)))
+        m$kind = rtson::tson.scalar("User")
+        m$email = rtson::tson.scalar(self$email)
+        m$isValidated = rtson::tson.scalar(self$isValidated)
+        m$roles = lapply(self$roles, function(each) rtson::tson.scalar(each))
         m$teamAcl = self$teamAcl$toTson()
-        m$invitedByUsername = rtson::tson.scalar(jsonlite::unbox(self$invitedByUsername))
-        m$invitationCounts = rtson::tson.int(jsonlite::unbox(self$invitationCounts))
-        m$maxInvitation = rtson::tson.int(jsonlite::unbox(self$maxInvitation))
+        m$invitedByUsername = rtson::tson.scalar(self$invitedByUsername)
+        m$invitationCounts = rtson::tson.int(self$invitationCounts)
+        m$maxInvitation = rtson::tson.int(self$maxInvitation)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

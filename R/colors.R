@@ -21,7 +21,7 @@ Colors <- R6::R6Class("Colors", inherit = Base, public = list(factors = NULL, pa
         self$palette = createObjectFromJson(json$palette)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("Colors"))
+        m$kind = rtson::tson.scalar("Colors")
         m$factors = lapply(self$factors, function(each) each$toTson())
         m$palette = self$palette$toTson()
         return(m)

@@ -4,7 +4,7 @@
 \name{TableSchema}
 \alias{TableSchema}
 \title{TableSchema}
-\format{\code{\link{R6Class}} object, super class \code{\link{ProjectDocument}}, sub classes \code{\link{CubeQueryTableSchema}}, \code{\link{ComputedTableSchema}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{Schema}}.}
 \usage{
 TableSchema
 }
@@ -14,11 +14,17 @@ TableSchema
 \section{Fields}{
 
 \describe{
+\item{\code{nRows}}{of type int inherited from super class \code{\link{Schema}}.}
+
+\item{\code{dataDirectory}}{of type String inherited from super class \code{\link{Schema}}.}
+
 \item{\code{projectId}}{of type String inherited from super class \code{\link{ProjectDocument}}.}
 
 \item{\code{description}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{name}}{of type String inherited from super class \code{\link{Document}}.}
+
+\item{\code{createdBy}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{tags}}{list of type String inherited from super class \code{\link{Document}}.}
 
@@ -28,9 +34,7 @@ TableSchema
 
 \item{\code{id}}{of type String inherited from super class \code{\link{IdObject}}.}
 
-\item{\code{nRows}}{of type int.}
-
-\item{\code{dataDirectory}}{of type String.}
+\item{\code{columns}}{list of class \code{\link{ColumnSchema}} inherited from super class \code{\link{Schema}}.}
 
 \item{\code{acl}}{object of class \code{\link{Acl}} inherited from super class \code{\link{Document}}.}
 
@@ -39,8 +43,6 @@ TableSchema
 \item{\code{lastModifiedDate}}{object of class \code{\link{Date}} inherited from super class \code{\link{Document}}.}
 
 \item{\code{urls}}{list of class \code{\link{Url}} inherited from super class \code{\link{Document}}.}
-
-\item{\code{columns}}{list of class \code{\link{ColumnSchema}}.}
 }}
 
 \keyword{datasets}

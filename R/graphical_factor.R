@@ -21,7 +21,7 @@ GraphicalFactor <- R6::R6Class("GraphicalFactor", inherit = Base, public = list(
         self$rectangle = createObjectFromJson(json$rectangle)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar(jsonlite::unbox("GraphicalFactor"))
+        m$kind = rtson::tson.scalar("GraphicalFactor")
         m$factor = self$factor$toTson()
         m$rectangle = self$rectangle$toTson()
         return(m)

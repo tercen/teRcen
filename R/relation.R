@@ -15,7 +15,7 @@ Relation <- R6::R6Class("Relation", inherit = IdObject, public = list(initialize
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar(jsonlite::unbox("Relation"))
+    m$kind = rtson::tson.scalar("Relation")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

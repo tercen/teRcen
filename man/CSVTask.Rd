@@ -14,9 +14,13 @@ CSVTask
 \section{Fields}{
 
 \describe{
+\item{\code{owner}}{of type String inherited from super class \code{\link{Task}}.}
+
 \item{\code{projectId}}{of type String inherited from super class \code{\link{Task}}.}
 
 \item{\code{taskHash}}{of type String inherited from super class \code{\link{Task}}.}
+
+\item{\code{runProfile}}{of type String inherited from super class \code{\link{Task}}.}
 
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 
@@ -29,6 +33,10 @@ CSVTask
 \item{\code{schemaId}}{of type String.}
 
 \item{\code{state}}{object of class \code{\link{State}} inherited from super class \code{\link{Task}}.}
+
+\item{\code{createdDate}}{object of class \code{\link{Date}} inherited from super class \code{\link{Task}}.}
+
+\item{\code{lastModifiedDate}}{object of class \code{\link{Date}} inherited from super class \code{\link{Task}}.}
 
 \item{\code{runDate}}{object of class \code{\link{Date}} inherited from super class \code{\link{Task}}.}
 

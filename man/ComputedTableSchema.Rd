@@ -4,7 +4,7 @@
 \name{ComputedTableSchema}
 \alias{ComputedTableSchema}
 \title{ComputedTableSchema}
-\format{\code{\link{R6Class}} object, super class \code{\link{TableSchema}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{Schema}}.}
 \usage{
 ComputedTableSchema
 }
@@ -14,15 +14,17 @@ ComputedTableSchema
 \section{Fields}{
 
 \describe{
-\item{\code{nRows}}{of type int inherited from super class \code{\link{TableSchema}}.}
+\item{\code{nRows}}{of type int inherited from super class \code{\link{Schema}}.}
 
-\item{\code{dataDirectory}}{of type String inherited from super class \code{\link{TableSchema}}.}
+\item{\code{dataDirectory}}{of type String inherited from super class \code{\link{Schema}}.}
 
 \item{\code{projectId}}{of type String inherited from super class \code{\link{ProjectDocument}}.}
 
 \item{\code{description}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{name}}{of type String inherited from super class \code{\link{Document}}.}
+
+\item{\code{createdBy}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{tags}}{list of type String inherited from super class \code{\link{Document}}.}
 
@@ -32,7 +34,7 @@ ComputedTableSchema
 
 \item{\code{id}}{of type String inherited from super class \code{\link{IdObject}}.}
 
-\item{\code{columns}}{list of class \code{\link{ColumnSchema}} inherited from super class \code{\link{TableSchema}}.}
+\item{\code{columns}}{list of class \code{\link{ColumnSchema}} inherited from super class \code{\link{Schema}}.}
 
 \item{\code{acl}}{object of class \code{\link{Acl}} inherited from super class \code{\link{Document}}.}
 

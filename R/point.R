@@ -20,9 +20,9 @@ Point <- R6::R6Class("Point", inherit = Base, public = list(x = NULL, y = NULL, 
     self$y = as.double(json$y)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar(jsonlite::unbox("Point"))
-    m$x = rtson::tson.scalar(jsonlite::unbox(self$x))
-    m$y = rtson::tson.scalar(jsonlite::unbox(self$y))
+    m$kind = rtson::tson.scalar("Point")
+    m$x = rtson::tson.scalar(self$x)
+    m$y = rtson::tson.scalar(self$y)
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))
