@@ -4,7 +4,7 @@
 \name{State}
 \alias{State}
 \title{State}
-\format{\code{\link{R6Class}} object, sub classes \code{\link{RunningState}}, \code{\link{FailedState}}, \code{\link{CanceledState}}, \code{\link{DoneState}}, \code{\link{InitState}}.}
+\format{\code{\link{R6Class}} object, sub classes \code{\link{RunningState}}, \code{\link{FailedState}}, \code{\link{CanceledState}}, \code{\link{RunningDependentState}}, \code{\link{DoneState}}, \code{\link{InitState}}, \code{\link{PendingState}}.}
 \usage{
 State
 }

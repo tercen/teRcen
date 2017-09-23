@@ -18,8 +18,6 @@ Token
 
 \item{\code{token}}{of type String.}
 
-\item{\code{issuedAt}}{object of class \code{\link{Date}}.}
-
 \item{\code{expiry}}{object of class \code{\link{Date}}.}
 }}
 

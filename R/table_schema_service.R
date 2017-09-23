@@ -43,4 +43,25 @@ TableSchemaService <- R6::R6Class("TableSchemaService", inherit = HttpClientServ
             answer = content(response)
         }
         return(answer)
+    }, selectCSV = function(tableId, cnames, offset, limit, separator, quote, encoding) {
+        answer = NULL
+        response = NULL
+        uri = paste0("schema", "/", "selectCSV")
+        params = list()
+        params[["tableId"]] = unbox(tableId)
+        params[["cnames"]] = cnames
+        params[["offset"]] = unbox(offset)
+        params[["limit"]] = unbox(limit)
+        params[["separator"]] = unbox(separator)
+        params[["quote"]] = unbox(quote)
+        params[["encoding"]] = unbox(encoding)
+        url = self$getServiceUri(uri)
+        url$query = list(params = jsonlite::toJSON(params))
+        response = self$client$get(url)
+        if (status_code(response) != 200) {
+            self$onResponseError(response, "selectCSV")
+        } else {
+            answer = content(response)
+        }
+        return(answer)
     }))

@@ -5,6 +5,7 @@
 #' @field isDeleted of type bool inherited from super class \code{\link{PersistentObject}}.
 #' @field rev of type String inherited from super class \code{\link{PersistentObject}}.
 #' @field id of type String inherited from super class \code{\link{IdObject}}.
+#' @field duration of type double.
 #' @field owner of type String.
 #' @field projectId of type String.
 #' @field taskHash of type String.
@@ -17,8 +18,8 @@
 #' @field aclContext object of class \code{\link{AclContext}}.
 Task <- R6::R6Class("Task", inherit = PersistentObject, public = list(state = NULL, 
     createdDate = NULL, lastModifiedDate = NULL, runDate = NULL, completedDate = NULL, 
-    aclContext = NULL, owner = NULL, projectId = NULL, taskHash = NULL, runProfile = NULL, 
-    initialize = function(json = NULL) {
+    duration = NULL, aclContext = NULL, owner = NULL, projectId = NULL, taskHash = NULL, 
+    runProfile = NULL, initialize = function(json = NULL) {
         if (!is.null(json)) {
             self$initJson(json)
         } else {
@@ -26,6 +27,7 @@ Task <- R6::R6Class("Task", inherit = PersistentObject, public = list(state = NU
         }
     }, init = function() {
         super$init()
+        self$duration = 0
         self$owner = ""
         self$projectId = ""
         self$taskHash = ""
@@ -38,6 +40,7 @@ Task <- R6::R6Class("Task", inherit = PersistentObject, public = list(state = NU
         self$aclContext = AclContext$new()
     }, initJson = function(json) {
         super$initJson(json)
+        self$duration = as.double(json$duration)
         self$owner = json$owner
         self$projectId = json$projectId
         self$taskHash = json$taskHash
@@ -56,6 +59,7 @@ Task <- R6::R6Class("Task", inherit = PersistentObject, public = list(state = NU
         m$lastModifiedDate = self$lastModifiedDate$toTson()
         m$runDate = self$runDate$toTson()
         m$completedDate = self$completedDate$toTson()
+        m$duration = rtson::tson.scalar(self$duration)
         m$aclContext = self$aclContext$toTson()
         m$owner = rtson::tson.scalar(self$owner)
         m$projectId = rtson::tson.scalar(self$projectId)

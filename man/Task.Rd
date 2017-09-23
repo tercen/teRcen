@@ -20,6 +20,8 @@ Task
 
 \item{\code{id}}{of type String inherited from super class \code{\link{IdObject}}.}
 
+\item{\code{duration}}{of type double.}
+
 \item{\code{owner}}{of type String.}
 
 \item{\code{projectId}}{of type String.}

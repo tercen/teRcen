@@ -40,8 +40,6 @@ Team
 
 \item{\code{id}}{of type String inherited from super class \code{\link{IdObject}}.}
 
-\item{\code{owner}}{of type String.}
-
 \item{\code{teamAcl}}{object of class \code{\link{Acl}} inherited from super class \code{\link{User}}.}
 
 \item{\code{acl}}{object of class \code{\link{Acl}} inherited from super class \code{\link{Document}}.}

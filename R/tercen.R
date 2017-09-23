@@ -47,8 +47,13 @@ TercenClient <- R6Class("TercenClient", inherit = ServiceFactory, public = list(
             self$userService$client$token = token
         } else {
             super$initialize(serviceUri)
-            self$session = self$userService$connect(username, password)
-            self$userService$client$token = self$session$token$token
+            if (is.null(authToken)) {
+                if (is.null(username) && is.null(password)) stop("username and password are required")
+                self$session = self$userService$connect(username, password)
+                self$userService$client$token = self$session$token$token
+            } else {
+                self$userService$client$token = authToken
+            }
         }
     }))
 
@@ -161,14 +166,20 @@ HttpClientService <- R6::R6Class("HttpClientService", public = list(client = NUL
         }
         self$client = client
     }, onResponseError = function(response, msg = "") {
-        stop(paste0("Failed : ", msg, " : status=", status_code(response), " body=", 
-            content(response)))
+        body = content(response)
+        if (is.list(body)) {
+            stop(jsonlite::toJSON(body, auto_unbox = TRUE))
+        } else {
+            stop(paste0("Failed : ", msg, " : status=", status_code(response), " body=", 
+                toString(content(response))))
+        }
+        
     }, toTson = function(object) {
         return(object$toTson())
     }, fromTson = function(object) {
         return(createObjectFromJson(object))
     }, getServiceUri = function(uri, ...) {
-        return(paste0(self$baseRestUri, uri, ...))
+        return(httr::parse_url(paste0(self$baseRestUri, uri, ...)))
     }, create = function(object) {
         url = self$getServiceUri(self$uri)
         body = self$toTson(object)

@@ -10,18 +10,32 @@ TeamService <- R6::R6Class("TeamService", inherit = HttpClientService, public = 
     return(self$findKeys("teamByOwner", keys = keys, useFactory = useFactory))
 }, findTeamByName = function(keys = NULL, useFactory = FALSE) {
     return(self$findKeys("teamByName", keys = keys, useFactory = useFactory))
-}, storageInUse = function(teamName) {
+}, profiles = function(teamId) {
     answer = NULL
     response = NULL
-    uri = paste0("team", "/", "storageInUse")
+    uri = paste0("team", "/", "profiles")
     params = list()
-    params[["teamName"]] = unbox(teamName)
+    params[["teamId"]] = unbox(teamId)
     url = self$getServiceUri(uri)
     response = self$client$post(url, body = params)
     if (status_code(response) != 200) {
-        self$onResponseError(response, "storageInUse")
+        self$onResponseError(response, "profiles")
     } else {
-        answer = content(response)[[1]]
+        answer = createObjectFromJson(content(response))
+    }
+    return(answer)
+}, resourceSummary = function(teamId) {
+    answer = NULL
+    response = NULL
+    uri = paste0("team", "/", "resourceSummary")
+    params = list()
+    params[["teamId"]] = unbox(teamId)
+    url = self$getServiceUri(uri)
+    response = self$client$post(url, body = params)
+    if (status_code(response) != 200) {
+        self$onResponseError(response, "resourceSummary")
+    } else {
+        answer = createObjectFromJson(content(response))
     }
     return(answer)
 }))

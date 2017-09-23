@@ -1,7 +1,7 @@
 #' ExternalOperator
 #'
 #' @export
-#' @format \code{\link{R6Class}} object, super class \code{\link{Operator}}.
+#' @format \code{\link{R6Class}} object, super class \code{\link{Operator}}, sub classes \code{\link{WebAppOperator}}.
 #' @field projectId of type String inherited from super class \code{\link{ProjectDocument}}.
 #' @field description of type String inherited from super class \code{\link{Document}}.
 #' @field name of type String inherited from super class \code{\link{Document}}.

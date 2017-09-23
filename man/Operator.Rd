@@ -4,7 +4,7 @@
 \name{Operator}
 \alias{Operator}
 \title{Operator}
-\format{\code{\link{R6Class}} object, super class \code{\link{ProjectDocument}}, sub classes \code{\link{RSourceOperator}}, \code{\link{SourceOperator}}, \code{\link{ExternalOperator}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{ProjectDocument}}, sub classes \code{\link{RSourceOperator}}, \code{\link{WebAppOperator}}, \code{\link{SourceOperator}}, \code{\link{ExternalOperator}}.}
 \usage{
 Operator
 }

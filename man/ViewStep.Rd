@@ -4,7 +4,7 @@
 \name{ViewStep}
 \alias{ViewStep}
 \title{ViewStep}
-\format{\code{\link{R6Class}} object, super class \code{\link{Step}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{Step}}, sub classes \code{\link{UrlViewStep}}.}
 \usage{
 ViewStep
 }

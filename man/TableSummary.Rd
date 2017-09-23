@@ -14,13 +14,13 @@ TableSummary
 \section{Fields}{
 
 \describe{
-\item{\code{n}}{of type double.}
+\item{\code{n}}{of type int.}
 
-\item{\code{size}}{of type double.}
+\item{\code{size}}{of type int.}
 
-\item{\code{nr}}{of type double.}
+\item{\code{nr}}{of type int.}
 
-\item{\code{nc}}{of type double.}
+\item{\code{nc}}{of type int.}
 }}
 
 \keyword{datasets}

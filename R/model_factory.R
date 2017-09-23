@@ -45,6 +45,9 @@ createObjectFromJson = function(json) {
     if (kind == "IntegerProperty") {
         return(IntegerProperty$new(json = json))
     }
+    if (kind == "ResourceSummary") {
+        return(ResourceSummary$new(json = json))
+    }
     if (kind == "Property") {
         return(Property$new(json = json))
     }
@@ -60,6 +63,9 @@ createObjectFromJson = function(json) {
     if (kind == "TableSummary") {
         return(TableSummary$new(json = json))
     }
+    if (kind == "TaskEvent") {
+        return(TaskEvent$new(json = json))
+    }
     if (kind == "ChartHeatmap") {
         return(ChartHeatmap$new(json = json))
     }
@@ -71,6 +77,12 @@ createObjectFromJson = function(json) {
     }
     if (kind == "CubeQuery") {
         return(CubeQuery$new(json = json))
+    }
+    if (kind == "Summary") {
+        return(Summary$new(json = json))
+    }
+    if (kind == "TaskStateEvent") {
+        return(TaskStateEvent$new(json = json))
     }
     if (kind == "User") {
         return(User$new(json = json))
@@ -89,6 +101,9 @@ createObjectFromJson = function(json) {
     }
     if (kind == "Palette") {
         return(Palette$new(json = json))
+    }
+    if (kind == "TaskLogEvent") {
+        return(TaskLogEvent$new(json = json))
     }
     if (kind == "UserSession") {
         return(UserSession$new(json = json))
@@ -141,6 +156,12 @@ createObjectFromJson = function(json) {
     if (kind == "Schema") {
         return(Schema$new(json = json))
     }
+    if (kind == "TaskSummary") {
+        return(TaskSummary$new(json = json))
+    }
+    if (kind == "RunningDependentState") {
+        return(RunningDependentState$new(json = json))
+    }
     if (kind == "Token") {
         return(Token$new(json = json))
     }
@@ -161,6 +182,9 @@ createObjectFromJson = function(json) {
     }
     if (kind == "ComputationTask") {
         return(ComputationTask$new(json = json))
+    }
+    if (kind == "UrlViewStep") {
+        return(UrlViewStep$new(json = json))
     }
     if (kind == "DoneState") {
         return(DoneState$new(json = json))
@@ -192,11 +216,17 @@ createObjectFromJson = function(json) {
     if (kind == "DoubleColorElement") {
         return(DoubleColorElement$new(json = json))
     }
+    if (kind == "TaskProgressEvent") {
+        return(TaskProgressEvent$new(json = json))
+    }
     if (kind == "Step") {
         return(Step$new(json = json))
     }
     if (kind == "GarbageObject") {
         return(GarbageObject$new(json = json))
+    }
+    if (kind == "Profiles") {
+        return(Profiles$new(json = json))
     }
     if (kind == "Crosstab") {
         return(Crosstab$new(json = json))
@@ -212,6 +242,9 @@ createObjectFromJson = function(json) {
     }
     if (kind == "ColumnSchemaMetaData") {
         return(ColumnSchemaMetaData$new(json = json))
+    }
+    if (kind == "Event") {
+        return(Event$new(json = json))
     }
     if (kind == "Privilege") {
         return(Privilege$new(json = json))
@@ -255,11 +288,17 @@ createObjectFromJson = function(json) {
     if (kind == "JetPalette") {
         return(JetPalette$new(json = json))
     }
+    if (kind == "PendingState") {
+        return(PendingState$new(json = json))
+    }
     if (kind == "ChartPoint") {
         return(ChartPoint$new(json = json))
     }
     if (kind == "ColumnPair") {
         return(ColumnPair$new(json = json))
+    }
+    if (kind == "Profile") {
+        return(Profile$new(json = json))
     }
     if (kind == "FilterExpr") {
         return(FilterExpr$new(json = json))
@@ -278,6 +317,9 @@ createObjectFromJson = function(json) {
     }
     if (kind == "ProjectDocument") {
         return(ProjectDocument$new(json = json))
+    }
+    if (kind == "WebAppOperator") {
+        return(WebAppOperator$new(json = json))
     }
     if (kind == "OperatorResult") {
         return(OperatorResult$new(json = json))
@@ -302,6 +344,9 @@ createObjectFromJson = function(json) {
     }
     if (kind == "StringProperty") {
         return(StringProperty$new(json = json))
+    }
+    if (kind == "UrlModel") {
+        return(UrlModel$new(json = json))
     }
     if (kind == "XYAxis") {
         return(XYAxis$new(json = json))
@@ -339,6 +384,9 @@ createObjectFromJson = function(json) {
     if (kind == "ExternalOperator") {
         return(ExternalOperator$new(json = json))
     }
+    if (kind == "TableProfile") {
+        return(TableProfile$new(json = json))
+    }
     if (kind == "MeltStepModel") {
         return(MeltStepModel$new(json = json))
     }
@@ -360,6 +408,9 @@ createObjectFromJson = function(json) {
     if (kind == "ViewStep") {
         return(ViewStep$new(json = json))
     }
+    if (kind == "ApiCallProfile") {
+        return(ApiCallProfile$new(json = json))
+    }
     if (kind == "Colors") {
         return(Colors$new(json = json))
     }
@@ -368,9 +419,6 @@ createObjectFromJson = function(json) {
     }
     if (kind == "CompositeRelation") {
         return(CompositeRelation$new(json = json))
-    }
-    if (kind == "StorageSummary") {
-        return(StorageSummary$new(json = json))
     }
     if (kind == "ColumnSchema") {
         return(ColumnSchema$new(json = json))
@@ -383,6 +431,9 @@ createObjectFromJson = function(json) {
     }
     if (kind == "TableProperties") {
         return(TableProperties$new(json = json))
+    }
+    if (kind == "CpuTimeProfile") {
+        return(CpuTimeProfile$new(json = json))
     }
     if (kind == "AxisSettings") {
         return(AxisSettings$new(json = json))

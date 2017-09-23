@@ -14,6 +14,8 @@ CSVTask
 \section{Fields}{
 
 \describe{
+\item{\code{duration}}{of type double inherited from super class \code{\link{Task}}.}
+
 \item{\code{owner}}{of type String inherited from super class \code{\link{Task}}.}
 
 \item{\code{projectId}}{of type String inherited from super class \code{\link{Task}}.}

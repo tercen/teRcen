@@ -14,6 +14,8 @@ Worker
 \section{Fields}{
 
 \describe{
+\item{\code{name}}{of type String.}
+
 \item{\code{uri}}{of type String.}
 
 \item{\code{threads}}{of type int.}

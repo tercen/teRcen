@@ -30,6 +30,10 @@ Workflow
 
 \item{\code{id}}{of type String inherited from super class \code{\link{IdObject}}.}
 
+\item{\code{isApp}}{of type bool.}
+
+\item{\code{isTemplate}}{of type bool.}
+
 \item{\code{acl}}{object of class \code{\link{Acl}} inherited from super class \code{\link{Document}}.}
 
 \item{\code{createdDate}}{object of class \code{\link{Date}} inherited from super class \code{\link{Document}}.}

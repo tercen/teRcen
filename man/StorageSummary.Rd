@@ -19,6 +19,8 @@ StorageSummary
 \item{\code{computedTableSummary}}{object of class \code{\link{TableSummary}}.}
 
 \item{\code{queryTableSummary}}{object of class \code{\link{TableSummary}}.}
+
+\item{\code{taskSummary}}{object of class \code{\link{TaskSummary}}.}
 }}
 
 \keyword{datasets}

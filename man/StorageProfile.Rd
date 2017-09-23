@@ -4,7 +4,7 @@
 \name{StorageProfile}
 \alias{StorageProfile}
 \title{StorageProfile}
-\format{\code{\link{R6Class}} object.}
+\format{\code{\link{R6Class}} object, super class \code{\link{Profile}}.}
 \usage{
 StorageProfile
 }
@@ -14,7 +14,7 @@ StorageProfile
 \section{Fields}{
 
 \describe{
-\item{\code{name}}{of type String.}
+\item{\code{name}}{of type String inherited from super class \code{\link{Profile}}.}
 
 \item{\code{size}}{of type int.}
 }}

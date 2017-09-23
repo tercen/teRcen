@@ -110,12 +110,23 @@ OperatorContextDev <- R6Class(
     client = NULL, 
     workflowId = NULL,
     stepId = NULL,
+    task = NULL,
     initialize = function( workflowId=getOption("tercen.workflowId"),
-                           stepId=getOption("tercen.stepId")) {
+                           stepId=getOption("tercen.stepId"),
+                           taskId=NULL,
+                           authToken=NULL, 
+                           serviceUri=getOption("tercen.serviceUri", default = "https://tercen.com/service")) {
       
       self$client = TercenClient$new()
       self$workflowId = workflowId
       self$stepId = stepId
+      
+      print('OperatorContextDev initialize taskId')
+      print(taskId)
+      
+      if (!is.null(taskId)){
+        self$task = self$client$taskService$get(taskId)
+      }
     },
     save = function(computed.df){
       
@@ -131,22 +142,29 @@ OperatorContextDev <- R6Class(
       fileDoc$acl$owner = workflow$acl$owner
       fileDoc$metadata$contentType = 'application/octet-stream'
       fileDoc$metadata$contentEncoding = 'iso-8859-1'
-      
-      print(fileDoc)
-      
+        
       fileDoc = self$client$fileService$upload(fileDoc, bytes)
       
-      task = ComputationTask$new()
-      task$projectId = workflow$projectId
-      task$query = self$query
-      task$fileResultId = fileDoc$id
+      # the task can be null if run from a R session
+      if (is.null(self$task)){
+        print('task is null, create a task')
+        task = ComputationTask$new()
+        task$projectId = workflow$projectId
+        task$query = self$query
+        task$fileResultId = fileDoc$id
+        self$task = self$client$taskService$create(task)
+      } else {
+        self$task$fileResultId = fileDoc$id
+        rev = self$client$taskService$update(self$task)
+        self$task$rev = rev
+      }
       
-      task = self$client$taskService$create(task)
+      self$client$taskService$runTask(self$task$id)
       
-      task = self$client$taskService$waitDone(task$id)
+      self$task = self$client$taskService$waitDone(self$task$id)
       
-      if (inherits(task$state, 'FailedState')){
-        stop(task$state$reason)
+      if (inherits(self$task$state, 'FailedState')){
+        stop(self$task$state$reason)
       }
     }
   ),
@@ -158,7 +176,11 @@ OperatorContextDev <- R6Class(
     query = function(value) {
       if (!missing(value)) stop('read only')
       if (is.null(private$.query)){
-        private$.query = self$client$workflowService$getCubeQuery(self$workflowId, self$stepId)
+        if (is.null(self$task)){
+          private$.query = self$client$workflowService$getCubeQuery(self$workflowId, self$stepId)
+        } else {
+          private$.query = self$task$query
+        }
       }
       return (private$.query)
     } 
@@ -204,15 +226,20 @@ OperatorContext <- R6Class(
     } 
   )
 )
-
-
+ 
 #' @export
-tercenCtx <- function(workflowId=getOption("tercen.workflowId"),stepId=getOption("tercen.stepId")){
-  taskId = parseCommandArgs()$taskId
-  if (is.null(taskId)){
-    return (OperatorContextDev$new(workflowId=workflowId, stepId=stepId))
-  } else {
+tercenCtx <- function(workflowId=getOption("tercen.workflowId"),
+                      stepId=getOption("tercen.stepId"), 
+                      taskId = NULL,
+                      authToken = NULL, 
+                      serviceUri = getOption("tercen.serviceUri", default = "https://tercen.com/service")){
+ 
+  if (!is.null(parseCommandArgs()$taskId)){
     return (OperatorContext$new())
+  } else {
+    print('tercenCtx   taskId')
+    print(taskId)
+    return (OperatorContextDev$new(workflowId=workflowId, stepId=stepId, taskId=taskId, authToken=authToken, serviceUri=serviceUri))
   }
 }
 

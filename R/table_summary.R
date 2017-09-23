@@ -2,10 +2,10 @@
 #'
 #' @export
 #' @format \code{\link{R6Class}} object.
-#' @field n of type double.
-#' @field size of type double.
-#' @field nr of type double.
-#' @field nc of type double.
+#' @field n of type int.
+#' @field size of type int.
+#' @field nr of type int.
+#' @field nc of type int.
 TableSummary <- R6::R6Class("TableSummary", inherit = Base, public = list(n = NULL, 
     size = NULL, nr = NULL, nc = NULL, initialize = function(json = NULL) {
         if (!is.null(json)) {
@@ -21,17 +21,17 @@ TableSummary <- R6::R6Class("TableSummary", inherit = Base, public = list(n = NU
         self$nc = 0
     }, initJson = function(json) {
         super$initJson(json)
-        self$n = as.double(json$n)
-        self$size = as.double(json$size)
-        self$nr = as.double(json$nr)
-        self$nc = as.double(json$nc)
+        self$n = json$n
+        self$size = json$size
+        self$nr = json$nr
+        self$nc = json$nc
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("TableSummary")
-        m$n = rtson::tson.scalar(self$n)
-        m$size = rtson::tson.scalar(self$size)
-        m$nr = rtson::tson.scalar(self$nr)
-        m$nc = rtson::tson.scalar(self$nc)
+        m$n = rtson::tson.int(self$n)
+        m$size = rtson::tson.int(self$size)
+        m$nr = rtson::tson.int(self$nr)
+        m$nc = rtson::tson.int(self$nc)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

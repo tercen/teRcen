@@ -1,7 +1,7 @@
 #' State
 #'
 #' @export
-#' @format \code{\link{R6Class}} object, sub classes \code{\link{RunningState}}, \code{\link{FailedState}}, \code{\link{CanceledState}}, \code{\link{DoneState}}, \code{\link{InitState}}.
+#' @format \code{\link{R6Class}} object, sub classes \code{\link{RunningState}}, \code{\link{FailedState}}, \code{\link{CanceledState}}, \code{\link{RunningDependentState}}, \code{\link{DoneState}}, \code{\link{InitState}}, \code{\link{PendingState}}.
 State <- R6::R6Class("State", inherit = Base, public = list(initialize = function(json = NULL) {
     if (!is.null(json)) {
         self$initJson(json)

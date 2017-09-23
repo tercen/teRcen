@@ -18,6 +18,8 @@ OperatorRef
 
 \item{\code{operatorId}}{of type String.}
 
+\item{\code{operatorKind}}{of type String.}
+
 \item{\code{version}}{of type String.}
 
 \item{\code{propertyValues}}{list of class \code{\link{PropertyValue}}.}

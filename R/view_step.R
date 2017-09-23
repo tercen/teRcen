@@ -1,7 +1,7 @@
 #' ViewStep
 #'
 #' @export
-#' @format \code{\link{R6Class}} object, super class \code{\link{Step}}.
+#' @format \code{\link{R6Class}} object, super class \code{\link{Step}}, sub classes \code{\link{UrlViewStep}}.
 #' @field groupId of type String inherited from super class \code{\link{Step}}.
 #' @field name of type String inherited from super class \code{\link{Step}}.
 #' @field id of type String inherited from super class \code{\link{IdObject}}.

@@ -42,4 +42,61 @@ UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = 
         answer = createObjectFromJson(content(response))
     }
     return(answer)
+}, summary = function(userId) {
+    answer = NULL
+    response = NULL
+    uri = paste0("user", "/", "summary")
+    params = list()
+    params[["userId"]] = unbox(userId)
+    url = self$getServiceUri(uri)
+    response = self$client$post(url, body = params)
+    if (status_code(response) != 200) {
+        self$onResponseError(response, "summary")
+    } else {
+        answer = createObjectFromJson(content(response))
+    }
+    return(answer)
+}, resourceSummary = function(userId) {
+    answer = NULL
+    response = NULL
+    uri = paste0("user", "/", "resourceSummary")
+    params = list()
+    params[["userId"]] = unbox(userId)
+    url = self$getServiceUri(uri)
+    response = self$client$post(url, body = params)
+    if (status_code(response) != 200) {
+        self$onResponseError(response, "resourceSummary")
+    } else {
+        answer = createObjectFromJson(content(response))
+    }
+    return(answer)
+}, profiles = function(userId) {
+    answer = NULL
+    response = NULL
+    uri = paste0("user", "/", "profiles")
+    params = list()
+    params[["userId"]] = unbox(userId)
+    url = self$getServiceUri(uri)
+    response = self$client$post(url, body = params)
+    if (status_code(response) != 200) {
+        self$onResponseError(response, "profiles")
+    } else {
+        answer = createObjectFromJson(content(response))
+    }
+    return(answer)
+}, createToken = function(userId, validityInSeconds) {
+    answer = NULL
+    response = NULL
+    uri = paste0("user", "/", "createToken")
+    params = list()
+    params[["userId"]] = unbox(userId)
+    params[["validityInSeconds"]] = unbox(validityInSeconds)
+    url = self$getServiceUri(uri)
+    response = self$client$post(url, body = params)
+    if (status_code(response) != 200) {
+        self$onResponseError(response, "createToken")
+    } else {
+        answer = content(response)[[1]]
+    }
+    return(answer)
 }))

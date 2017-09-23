@@ -6,4 +6,8 @@ DocumentService <- R6::R6Class("DocumentService", inherit = HttpClientService, p
     skip = 0, descending = TRUE, useFactory = FALSE) {
     return(self$findStartKeys("findProjectByOwnersAndCreatedDate", startKey = startKey, 
         endKey = endKey, limit = limit, skip = skip, descending = descending, useFactory = useFactory))
+}, findWorkflowByTagOwnerCreatedDate = function(startKey = NULL, endKey = NULL, limit = 20, 
+    skip = 0, descending = TRUE, useFactory = FALSE) {
+    return(self$findStartKeys("findWorkflowByTagOwnerCreatedDate", startKey = startKey, 
+        endKey = endKey, limit = limit, skip = skip, descending = descending, useFactory = useFactory))
 }))

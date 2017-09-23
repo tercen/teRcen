@@ -8,6 +8,34 @@ TaskService <- R6::R6Class("TaskService", inherit = HttpClientService, public = 
     skip = 0, descending = TRUE, useFactory = FALSE) {
     return(self$findStartKeys("findGCTaskByLastModifiedDate", startKey = startKey, 
         endKey = endKey, limit = limit, skip = skip, descending = descending, useFactory = useFactory))
+}, runTask = function(taskId) {
+    answer = NULL
+    response = NULL
+    uri = paste0("task", "/", "runTask")
+    params = list()
+    params[["taskId"]] = unbox(taskId)
+    url = self$getServiceUri(uri)
+    response = self$client$post(url, body = params)
+    if (status_code(response) != 200) {
+        self$onResponseError(response, "runTask")
+    } else {
+        answer = NULL
+    }
+    return(answer)
+}, cancelTask = function(taskId) {
+    answer = NULL
+    response = NULL
+    uri = paste0("task", "/", "cancelTask")
+    params = list()
+    params[["taskId"]] = unbox(taskId)
+    url = self$getServiceUri(uri)
+    response = self$client$post(url, body = params)
+    if (status_code(response) != 200) {
+        self$onResponseError(response, "cancelTask")
+    } else {
+        answer = NULL
+    }
+    return(answer)
 }, waitDone = function(taskId) {
     answer = NULL
     response = NULL
@@ -34,6 +62,22 @@ TaskService <- R6::R6Class("TaskService", inherit = HttpClientService, public = 
         self$onResponseError(response, "updateWorker")
     } else {
         answer = NULL
+    }
+    return(answer)
+}, taskDurationByTeam = function(teamId, year, month) {
+    answer = NULL
+    response = NULL
+    uri = paste0("task", "/", "taskDurationByTeam")
+    params = list()
+    params[["teamId"]] = unbox(teamId)
+    params[["year"]] = unbox(year)
+    params[["month"]] = unbox(month)
+    url = self$getServiceUri(uri)
+    response = self$client$post(url, body = params)
+    if (status_code(response) != 200) {
+        self$onResponseError(response, "taskDurationByTeam")
+    } else {
+        answer = content(response)[[1]]
     }
     return(answer)
 }))

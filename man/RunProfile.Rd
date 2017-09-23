@@ -4,7 +4,7 @@
 \name{RunProfile}
 \alias{RunProfile}
 \title{RunProfile}
-\format{\code{\link{R6Class}} object.}
+\format{\code{\link{R6Class}} object, super class \code{\link{Profile}}.}
 \usage{
 RunProfile
 }
@@ -14,7 +14,7 @@ RunProfile
 \section{Fields}{
 
 \describe{
-\item{\code{name}}{of type String.}
+\item{\code{name}}{of type String inherited from super class \code{\link{Profile}}.}
 
 \item{\code{memory}}{of type int.}
 

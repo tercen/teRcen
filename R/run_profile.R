@@ -1,8 +1,8 @@
 #' RunProfile
 #'
 #' @export
-#' @format \code{\link{R6Class}} object.
-#' @field name of type String.
+#' @format \code{\link{R6Class}} object, super class \code{\link{Profile}}.
+#' @field name of type String inherited from super class \code{\link{Profile}}.
 #' @field memory of type int.
 #' @field kernelMemory of type int.
 #' @field blkioWeight of type int.
@@ -11,8 +11,8 @@
 #' @field timeout of type int.
 #' @field storageSize of type String.
 #' @field cpusetCpus of type String.
-RunProfile <- R6::R6Class("RunProfile", inherit = Base, public = list(name = NULL, 
-    memory = NULL, kernelMemory = NULL, blkioWeight = NULL, pidsLimit = NULL, ulimits_nofile = NULL, 
+RunProfile <- R6::R6Class("RunProfile", inherit = Profile, public = list(memory = NULL, 
+    kernelMemory = NULL, blkioWeight = NULL, pidsLimit = NULL, ulimits_nofile = NULL, 
     timeout = NULL, storageSize = NULL, cpusetCpus = NULL, initialize = function(json = NULL) {
         if (!is.null(json)) {
             self$initJson(json)
@@ -21,7 +21,6 @@ RunProfile <- R6::R6Class("RunProfile", inherit = Base, public = list(name = NUL
         }
     }, init = function() {
         super$init()
-        self$name = ""
         self$memory = 0
         self$kernelMemory = 0
         self$blkioWeight = 0
@@ -32,7 +31,6 @@ RunProfile <- R6::R6Class("RunProfile", inherit = Base, public = list(name = NUL
         self$cpusetCpus = ""
     }, initJson = function(json) {
         super$initJson(json)
-        self$name = json$name
         self$memory = json$memory
         self$kernelMemory = json$kernelMemory
         self$blkioWeight = json$blkioWeight
@@ -44,7 +42,6 @@ RunProfile <- R6::R6Class("RunProfile", inherit = Base, public = list(name = NUL
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("RunProfile")
-        m$name = rtson::tson.scalar(self$name)
         m$memory = rtson::tson.int(self$memory)
         m$kernelMemory = rtson::tson.int(self$kernelMemory)
         m$blkioWeight = rtson::tson.int(self$blkioWeight)

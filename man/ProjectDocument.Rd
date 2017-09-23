@@ -4,7 +4,7 @@
 \name{ProjectDocument}
 \alias{ProjectDocument}
 \title{ProjectDocument}
-\format{\code{\link{R6Class}} object, super class \code{\link{Document}}, sub classes \code{\link{CubeQueryTableSchema}}, \code{\link{TableSchema}}, \code{\link{ComputedTableSchema}}, \code{\link{RSourceOperator}}, \code{\link{SourceOperator}}, \code{\link{ExternalOperator}}, \code{\link{Schema}}, \code{\link{Operator}}, \code{\link{FileDocument}}, \code{\link{Workflow}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{Document}}, sub classes \code{\link{CubeQueryTableSchema}}, \code{\link{TableSchema}}, \code{\link{ComputedTableSchema}}, \code{\link{RSourceOperator}}, \code{\link{WebAppOperator}}, \code{\link{SourceOperator}}, \code{\link{ExternalOperator}}, \code{\link{Schema}}, \code{\link{Operator}}, \code{\link{FileDocument}}, \code{\link{Workflow}}.}
 \usage{
 ProjectDocument
 }

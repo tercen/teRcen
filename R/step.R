@@ -1,7 +1,7 @@
 #' Step
 #'
 #' @export
-#' @format \code{\link{R6Class}} object, super class \code{\link{IdObject}}, sub classes \code{\link{DataStep}}, \code{\link{ViewDataStep}}, \code{\link{JoinStep}}, \code{\link{CrossTabStep}}, \code{\link{InStep}}, \code{\link{GroupStep}}, \code{\link{OutStep}}, \code{\link{TableStep}}, \code{\link{MeltStep}}, \code{\link{WizardStep}}, \code{\link{NamespaceStep}}, \code{\link{RelationStep}}, \code{\link{ModelStep}}, \code{\link{ViewStep}}.
+#' @format \code{\link{R6Class}} object, super class \code{\link{IdObject}}, sub classes \code{\link{DataStep}}, \code{\link{ViewDataStep}}, \code{\link{JoinStep}}, \code{\link{CrossTabStep}}, \code{\link{InStep}}, \code{\link{GroupStep}}, \code{\link{OutStep}}, \code{\link{TableStep}}, \code{\link{MeltStep}}, \code{\link{WizardStep}}, \code{\link{NamespaceStep}}, \code{\link{RelationStep}}, \code{\link{UrlViewStep}}, \code{\link{ModelStep}}, \code{\link{ViewStep}}.
 #' @field id of type String inherited from super class \code{\link{IdObject}}.
 #' @field groupId of type String.
 #' @field name of type String.

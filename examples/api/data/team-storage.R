@@ -1,8 +1,14 @@
 library(tercen)
 
 client = TercenClient$new()
+client$session
+client$session$user$id
 
-client$projectService$storageSummary('d6503339d1d411d381caaabe1e10963f')
+client$userService$profiles(client$session$user$id)
+client$userService$storageSummary(client$session$user$id)
+
+client$teamService$storageSummary('team5')
+client$projectService$storageSummary('51be7057e11c4f7b0f5b0df7c101487b')
 
 client$projectDocumentService$findWorkflowBySchema(keys=list("ab373f854417408dc10d4b94c905e8e4"))
 
