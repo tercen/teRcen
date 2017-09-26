@@ -45,6 +45,8 @@ Workflow
 \item{\code{links}}{list of class \code{\link{Link}}.}
 
 \item{\code{steps}}{list of class \code{\link{Step}}.}
+
+\item{\code{offset}}{object of class \code{\link{Point}}.}
 }}
 
 \keyword{datasets}

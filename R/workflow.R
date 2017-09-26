@@ -18,8 +18,9 @@
 #' @field urls list of class \code{\link{Url}} inherited from super class \code{\link{Document}}.
 #' @field links list of class \code{\link{Link}}.
 #' @field steps list of class \code{\link{Step}}.
+#' @field offset object of class \code{\link{Point}}.
 Workflow <- R6::R6Class("Workflow", inherit = ProjectDocument, public = list(links = NULL, 
-    steps = NULL, isApp = NULL, isTemplate = NULL, initialize = function(json = NULL) {
+    steps = NULL, isApp = NULL, isTemplate = NULL, offset = NULL, initialize = function(json = NULL) {
         if (!is.null(json)) {
             self$initJson(json)
         } else {
@@ -31,12 +32,14 @@ Workflow <- R6::R6Class("Workflow", inherit = ProjectDocument, public = list(lin
         self$isTemplate = TRUE
         self$links = list()
         self$steps = list()
+        self$offset = Point$new()
     }, initJson = function(json) {
         super$initJson(json)
         self$isApp = json$isApp
         self$isTemplate = json$isTemplate
         self$links = lapply(json$links, createObjectFromJson)
         self$steps = lapply(json$steps, createObjectFromJson)
+        self$offset = createObjectFromJson(json$offset)
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("Workflow")
@@ -44,6 +47,7 @@ Workflow <- R6::R6Class("Workflow", inherit = ProjectDocument, public = list(lin
         m$steps = lapply(self$steps, function(each) each$toTson())
         m$isApp = rtson::tson.scalar(self$isApp)
         m$isTemplate = rtson::tson.scalar(self$isTemplate)
+        m$offset = self$offset$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

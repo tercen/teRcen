@@ -1,11 +1,11 @@
 WorkerService <- R6::R6Class("WorkerService", inherit = HttpClientService, public = list(initialize = function(baseRestUri, 
     client) {
     super$initialize(baseRestUri, client)
-    self$uri = "worker"
+    self$uri = "api/v1/worker"
 }, exec = function(task) {
     answer = NULL
     response = NULL
-    uri = paste0("worker", "/", "exec")
+    uri = paste0("api/v1/worker", "/", "exec")
     params = list()
     params[["task"]] = task$toTson()
     url = self$getServiceUri(uri)

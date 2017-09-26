@@ -6,11 +6,12 @@
 #' @field isDeleted of type bool inherited from super class \code{\link{PersistentObject}}.
 #' @field rev of type String inherited from super class \code{\link{PersistentObject}}.
 #' @field id of type String inherited from super class \code{\link{IdObject}}.
+#' @field message of type String.
 #' @field total of type int.
 #' @field actual of type int.
 #' @field date object of class \code{\link{Date}} inherited from super class \code{\link{Event}}.
-TaskProgressEvent <- R6::R6Class("TaskProgressEvent", inherit = TaskEvent, public = list(total = NULL, 
-    actual = NULL, initialize = function(json = NULL) {
+TaskProgressEvent <- R6::R6Class("TaskProgressEvent", inherit = TaskEvent, public = list(message = NULL, 
+    total = NULL, actual = NULL, initialize = function(json = NULL) {
         if (!is.null(json)) {
             self$initJson(json)
         } else {
@@ -18,15 +19,18 @@ TaskProgressEvent <- R6::R6Class("TaskProgressEvent", inherit = TaskEvent, publi
         }
     }, init = function() {
         super$init()
+        self$message = ""
         self$total = 0
         self$actual = 0
     }, initJson = function(json) {
         super$initJson(json)
+        self$message = json$message
         self$total = json$total
         self$actual = json$actual
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("TaskProgressEvent")
+        m$message = rtson::tson.scalar(self$message)
         m$total = rtson::tson.int(self$total)
         m$actual = rtson::tson.int(self$actual)
         return(m)

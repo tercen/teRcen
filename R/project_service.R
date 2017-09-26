@@ -1,11 +1,11 @@
 ProjectService <- R6::R6Class("ProjectService", inherit = HttpClientService, public = list(initialize = function(baseRestUri, 
     client) {
     super$initialize(baseRestUri, client)
-    self$uri = "project"
+    self$uri = "api/v1/project"
 }, profiles = function(projectId) {
     answer = NULL
     response = NULL
-    uri = paste0("project", "/", "profiles")
+    uri = paste0("api/v1/project", "/", "profiles")
     params = list()
     params[["projectId"]] = unbox(projectId)
     url = self$getServiceUri(uri)
@@ -19,7 +19,7 @@ ProjectService <- R6::R6Class("ProjectService", inherit = HttpClientService, pub
 }, resourceSummary = function(projectId) {
     answer = NULL
     response = NULL
-    uri = paste0("project", "/", "resourceSummary")
+    uri = paste0("api/v1/project", "/", "resourceSummary")
     params = list()
     params[["projectId"]] = unbox(projectId)
     url = self$getServiceUri(uri)

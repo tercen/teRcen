@@ -1,10 +1,10 @@
 UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = list(initialize = function(baseRestUri, 
     client) {
     super$initialize(baseRestUri, client)
-    self$uri = "user"
-}, findUserByNameByLastModifiedDate = function(startKey = NULL, endKey = NULL, limit = 20, 
+    self$uri = "api/v1/user"
+}, findUserByCreatedDateAndName = function(startKey = NULL, endKey = NULL, limit = 20, 
     skip = 0, descending = TRUE, useFactory = FALSE) {
-    return(self$findStartKeys("findUserByNameByLastModifiedDate", startKey = startKey, 
+    return(self$findStartKeys("findUserByCreatedDateAndName", startKey = startKey, 
         endKey = endKey, limit = limit, skip = skip, descending = descending, useFactory = useFactory))
 }, findUserByName = function(keys = NULL, useFactory = FALSE) {
     return(self$findKeys("userByName", keys = keys, useFactory = useFactory))
@@ -15,7 +15,7 @@ UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = 
 }, connect = function(usernameOrEmail, password) {
     answer = NULL
     response = NULL
-    uri = paste0("user", "/", "connect")
+    uri = paste0("api/v1/user", "/", "connect")
     params = list()
     params[["usernameOrEmail"]] = unbox(usernameOrEmail)
     params[["password"]] = unbox(password)
@@ -30,7 +30,7 @@ UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = 
 }, createUser = function(user, password) {
     answer = NULL
     response = NULL
-    uri = paste0("user", "/", "createUser")
+    uri = paste0("api/v1/user", "/", "createUser")
     params = list()
     params[["user"]] = user$toTson()
     params[["password"]] = unbox(password)
@@ -45,7 +45,7 @@ UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = 
 }, summary = function(userId) {
     answer = NULL
     response = NULL
-    uri = paste0("user", "/", "summary")
+    uri = paste0("api/v1/user", "/", "summary")
     params = list()
     params[["userId"]] = unbox(userId)
     url = self$getServiceUri(uri)
@@ -59,7 +59,7 @@ UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = 
 }, resourceSummary = function(userId) {
     answer = NULL
     response = NULL
-    uri = paste0("user", "/", "resourceSummary")
+    uri = paste0("api/v1/user", "/", "resourceSummary")
     params = list()
     params[["userId"]] = unbox(userId)
     url = self$getServiceUri(uri)
@@ -73,7 +73,7 @@ UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = 
 }, profiles = function(userId) {
     answer = NULL
     response = NULL
-    uri = paste0("user", "/", "profiles")
+    uri = paste0("api/v1/user", "/", "profiles")
     params = list()
     params[["userId"]] = unbox(userId)
     url = self$getServiceUri(uri)
@@ -87,7 +87,7 @@ UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = 
 }, createToken = function(userId, validityInSeconds) {
     answer = NULL
     response = NULL
-    uri = paste0("user", "/", "createToken")
+    uri = paste0("api/v1/user", "/", "createToken")
     params = list()
     params[["userId"]] = unbox(userId)
     params[["validityInSeconds"]] = unbox(validityInSeconds)
@@ -97,6 +97,50 @@ UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = 
         self$onResponseError(response, "createToken")
     } else {
         answer = content(response)[[1]]
+    }
+    return(answer)
+}, isTokenValid = function(token) {
+    answer = NULL
+    response = NULL
+    uri = paste0("api/v1/user", "/", "isTokenValid")
+    params = list()
+    params[["token"]] = unbox(token)
+    url = self$getServiceUri(uri)
+    response = self$client$post(url, body = params)
+    if (status_code(response) != 200) {
+        self$onResponseError(response, "isTokenValid")
+    } else {
+        answer = content(response)[[1]]
+    }
+    return(answer)
+}, setTeamPrivilege = function(username, principal, privilege) {
+    answer = NULL
+    response = NULL
+    uri = paste0("api/v1/user", "/", "setTeamPrivilege")
+    params = list()
+    params[["username"]] = unbox(username)
+    params[["principal"]] = principal$toTson()
+    params[["privilege"]] = privilege$toTson()
+    url = self$getServiceUri(uri)
+    response = self$client$post(url, body = params)
+    if (status_code(response) != 200) {
+        self$onResponseError(response, "setTeamPrivilege")
+    } else {
+        answer = content(response)[[1]]
+    }
+    return(answer)
+}, getServerVersion = function(module) {
+    answer = NULL
+    response = NULL
+    uri = paste0("api/v1/user", "/", "getServerVersion")
+    params = list()
+    params[["module"]] = unbox(module)
+    url = self$getServiceUri(uri)
+    response = self$client$post(url, body = params)
+    if (status_code(response) != 200) {
+        self$onResponseError(response, "getServerVersion")
+    } else {
+        answer = createObjectFromJson(content(response))
     }
     return(answer)
 }))

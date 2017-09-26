@@ -1,7 +1,7 @@
 ProjectDocumentService <- R6::R6Class("ProjectDocumentService", inherit = HttpClientService, 
     public = list(initialize = function(baseRestUri, client) {
         super$initialize(baseRestUri, client)
-        self$uri = "pd"
+        self$uri = "api/v1/pd"
     }, findProjectObjectsByLastModifiedDate = function(startKey = NULL, endKey = NULL, 
         limit = 20, skip = 0, descending = TRUE, useFactory = FALSE) {
         return(self$findStartKeys("findProjectObjectsByLastModifiedDate", startKey = startKey, 

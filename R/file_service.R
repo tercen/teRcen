@@ -1,11 +1,11 @@
 FileService <- R6::R6Class("FileService", inherit = HttpClientService, public = list(initialize = function(baseRestUri, 
     client) {
     super$initialize(baseRestUri, client)
-    self$uri = "file"
+    self$uri = "api/v1/file"
 }, upload = function(file, bytes) {
     answer = NULL
     response = NULL
-    uri = paste0("file", "/", "upload")
+    uri = paste0("api/v1/file", "/", "upload")
     parts = list()
     parts[[1]] = MultiPart$new(list(`Content-Type` = "application/json"), string = jsonlite::toJSON(list(file$toTson())))
     parts[[2]] = MultiPart$new(list(`Content-Type` = "application/octet-stream"), 

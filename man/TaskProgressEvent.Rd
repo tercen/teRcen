@@ -22,6 +22,8 @@ TaskProgressEvent
 
 \item{\code{id}}{of type String inherited from super class \code{\link{IdObject}}.}
 
+\item{\code{message}}{of type String.}
+
 \item{\code{total}}{of type int.}
 
 \item{\code{actual}}{of type int.}

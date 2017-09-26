@@ -1,11 +1,11 @@
 WorkflowService <- R6::R6Class("WorkflowService", inherit = HttpClientService, public = list(initialize = function(baseRestUri, 
     client) {
     super$initialize(baseRestUri, client)
-    self$uri = "workflow"
+    self$uri = "api/v1/workflow"
 }, getCubeQuery = function(workflowId, stepId) {
     answer = NULL
     response = NULL
-    uri = paste0("workflow", "/", "getCubeQuery")
+    uri = paste0("api/v1/workflow", "/", "getCubeQuery")
     params = list()
     params[["workflowId"]] = unbox(workflowId)
     params[["stepId"]] = unbox(stepId)

@@ -57,6 +57,9 @@ createObjectFromJson = function(json) {
     if (kind == "ModelStep") {
         return(ModelStep$new(json = json))
     }
+    if (kind == "Version") {
+        return(Version$new(json = json))
+    }
     if (kind == "Filters") {
         return(Filters$new(json = json))
     }
@@ -161,6 +164,9 @@ createObjectFromJson = function(json) {
     }
     if (kind == "RunningDependentState") {
         return(RunningDependentState$new(json = json))
+    }
+    if (kind == "StartProcess") {
+        return(StartProcess$new(json = json))
     }
     if (kind == "Token") {
         return(Token$new(json = json))
@@ -275,6 +281,9 @@ createObjectFromJson = function(json) {
     }
     if (kind == "WizardStepModel") {
         return(WizardStepModel$new(json = json))
+    }
+    if (kind == "Ulimits") {
+        return(Ulimits$new(json = json))
     }
     if (kind == "Factor") {
         return(Factor$new(json = json))

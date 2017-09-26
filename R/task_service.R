@@ -1,7 +1,7 @@
 TaskService <- R6::R6Class("TaskService", inherit = HttpClientService, public = list(initialize = function(baseRestUri, 
     client) {
     super$initialize(baseRestUri, client)
-    self$uri = "task"
+    self$uri = "api/v1/task"
 }, findByHash = function(keys = NULL, useFactory = FALSE) {
     return(self$findKeys("findByHash", keys = keys, useFactory = useFactory))
 }, findGCTaskByLastModifiedDate = function(startKey = NULL, endKey = NULL, limit = 20, 
@@ -11,7 +11,7 @@ TaskService <- R6::R6Class("TaskService", inherit = HttpClientService, public = 
 }, runTask = function(taskId) {
     answer = NULL
     response = NULL
-    uri = paste0("task", "/", "runTask")
+    uri = paste0("api/v1/task", "/", "runTask")
     params = list()
     params[["taskId"]] = unbox(taskId)
     url = self$getServiceUri(uri)
@@ -25,7 +25,7 @@ TaskService <- R6::R6Class("TaskService", inherit = HttpClientService, public = 
 }, cancelTask = function(taskId) {
     answer = NULL
     response = NULL
-    uri = paste0("task", "/", "cancelTask")
+    uri = paste0("api/v1/task", "/", "cancelTask")
     params = list()
     params[["taskId"]] = unbox(taskId)
     url = self$getServiceUri(uri)
@@ -39,7 +39,7 @@ TaskService <- R6::R6Class("TaskService", inherit = HttpClientService, public = 
 }, waitDone = function(taskId) {
     answer = NULL
     response = NULL
-    uri = paste0("task", "/", "waitDone")
+    uri = paste0("api/v1/task", "/", "waitDone")
     params = list()
     params[["taskId"]] = unbox(taskId)
     url = self$getServiceUri(uri)
@@ -53,7 +53,7 @@ TaskService <- R6::R6Class("TaskService", inherit = HttpClientService, public = 
 }, updateWorker = function(worker) {
     answer = NULL
     response = NULL
-    uri = paste0("task", "/", "updateWorker")
+    uri = paste0("api/v1/task", "/", "updateWorker")
     params = list()
     params[["worker"]] = worker$toTson()
     url = self$getServiceUri(uri)
@@ -67,7 +67,7 @@ TaskService <- R6::R6Class("TaskService", inherit = HttpClientService, public = 
 }, taskDurationByTeam = function(teamId, year, month) {
     answer = NULL
     response = NULL
-    uri = paste0("task", "/", "taskDurationByTeam")
+    uri = paste0("api/v1/task", "/", "taskDurationByTeam")
     params = list()
     params[["teamId"]] = unbox(teamId)
     params[["year"]] = unbox(year)

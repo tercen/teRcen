@@ -1,7 +1,7 @@
 TableSchemaService <- R6::R6Class("TableSchemaService", inherit = HttpClientService, 
     public = list(initialize = function(baseRestUri, client) {
         super$initialize(baseRestUri, client)
-        self$uri = "schema"
+        self$uri = "api/v1/schema"
     }, findByQueryHash = function(keys = NULL, useFactory = FALSE) {
         return(self$findKeys("findByQueryHash", keys = keys, useFactory = useFactory))
     }, findSchemaByDataDirectory = function(startKey = NULL, endKey = NULL, limit = 20, 
@@ -12,7 +12,7 @@ TableSchemaService <- R6::R6Class("TableSchemaService", inherit = HttpClientServ
     }, select = function(tableId, cnames, offset, limit) {
         answer = NULL
         response = NULL
-        uri = paste0("schema", "/", "select")
+        uri = paste0("api/v1/schema", "/", "select")
         params = list()
         params[["tableId"]] = unbox(tableId)
         params[["cnames"]] = cnames
@@ -29,7 +29,7 @@ TableSchemaService <- R6::R6Class("TableSchemaService", inherit = HttpClientServ
     }, selectStream = function(tableId, cnames, offset, limit) {
         answer = NULL
         response = NULL
-        uri = paste0("schema", "/", "selectStream")
+        uri = paste0("api/v1/schema", "/", "selectStream")
         params = list()
         params[["tableId"]] = unbox(tableId)
         params[["cnames"]] = cnames
@@ -46,7 +46,7 @@ TableSchemaService <- R6::R6Class("TableSchemaService", inherit = HttpClientServ
     }, selectCSV = function(tableId, cnames, offset, limit, separator, quote, encoding) {
         answer = NULL
         response = NULL
-        uri = paste0("schema", "/", "selectCSV")
+        uri = paste0("api/v1/schema", "/", "selectCSV")
         params = list()
         params[["tableId"]] = unbox(tableId)
         params[["cnames"]] = cnames

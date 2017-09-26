@@ -1,7 +1,7 @@
 PersistentService <- R6::R6Class("PersistentService", inherit = HttpClientService, 
     public = list(initialize = function(baseRestUri, client) {
         super$initialize(baseRestUri, client)
-        self$uri = "po"
+        self$uri = "api/v1/po"
     }, findWorkflowByTask = function(keys = NULL, useFactory = FALSE) {
         return(self$findKeys("findWorkflowByTask", keys = keys, useFactory = useFactory))
     }, findDeleted = function(keys = NULL, useFactory = FALSE) {
@@ -11,7 +11,7 @@ PersistentService <- R6::R6Class("PersistentService", inherit = HttpClientServic
     }, summary = function(teamOrProjectId) {
         answer = NULL
         response = NULL
-        uri = paste0("po", "/", "summary")
+        uri = paste0("api/v1/po", "/", "summary")
         params = list()
         params[["teamOrProjectId"]] = unbox(teamOrProjectId)
         url = self$getServiceUri(uri)

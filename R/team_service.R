@@ -1,7 +1,7 @@
 TeamService <- R6::R6Class("TeamService", inherit = HttpClientService, public = list(initialize = function(baseRestUri, 
     client) {
     super$initialize(baseRestUri, client)
-    self$uri = "team"
+    self$uri = "api/v1/team"
 }, findTeamByNameByLastModifiedDate = function(startKey = NULL, endKey = NULL, limit = 20, 
     skip = 0, descending = TRUE, useFactory = FALSE) {
     return(self$findStartKeys("findTeamByNameByLastModifiedDate", startKey = startKey, 
@@ -13,7 +13,7 @@ TeamService <- R6::R6Class("TeamService", inherit = HttpClientService, public = 
 }, profiles = function(teamId) {
     answer = NULL
     response = NULL
-    uri = paste0("team", "/", "profiles")
+    uri = paste0("api/v1/team", "/", "profiles")
     params = list()
     params[["teamId"]] = unbox(teamId)
     url = self$getServiceUri(uri)
@@ -27,7 +27,7 @@ TeamService <- R6::R6Class("TeamService", inherit = HttpClientService, public = 
 }, resourceSummary = function(teamId) {
     answer = NULL
     response = NULL
-    uri = paste0("team", "/", "resourceSummary")
+    uri = paste0("api/v1/team", "/", "resourceSummary")
     params = list()
     params[["teamId"]] = unbox(teamId)
     url = self$getServiceUri(uri)

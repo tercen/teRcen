@@ -13,6 +13,10 @@ AbstractOperatorContext <- R6Class(
     .rschema = NULL
   ),
   public = list(
+    
+    client = NULL, 
+    task = NULL,
+    
     select = function(names=list(), offset=0, nr=-1) {
       return (self$selectSchema(self$schema, names=names,offset=offset,nr=nr))
     },
@@ -50,10 +54,36 @@ AbstractOperatorContext <- R6Class(
         return (paste0(ns,'.',x))
       })
       return(df)
+    },
+    log = function(message){
+      taskId = self$taskId
+      if (!is.null(taskId)){
+        evt = TaskLogEvent$new()
+        evt$message = message
+        evt$taskId = taskId
+        self$client$eventService$create(evt)
+      }
+    },
+    progress = function(message, actual, total){
+      taskId = self$taskId
+      if (!is.null(taskId)){
+        evt = TaskProgressEvent$new()
+        evt$message = message
+        evt$taskId = taskId
+        evt$actual = actual
+        evt$total = total
+        self$client$eventService$create(evt)
+      }
     }
   ),
   active = list(
-    
+    taskId = function(value) {
+      if (!missing(value)) stop('read only')
+      if (is.null(self$task)){
+        return(NULL)
+      }
+      return (self$task$id)
+    },
     schema = function(value) {
       if (!missing(value)) stop('read only')
       if (is.null(private$.schema)){
@@ -107,10 +137,10 @@ OperatorContextDev <- R6Class(
     .query = NULL
   ),
   public = list(
-    client = NULL, 
+
     workflowId = NULL,
     stepId = NULL,
-    task = NULL,
+    
     initialize = function( workflowId=getOption("tercen.workflowId"),
                            stepId=getOption("tercen.stepId"),
                            taskId=NULL,
@@ -120,10 +150,7 @@ OperatorContextDev <- R6Class(
       self$client = TercenClient$new()
       self$workflowId = workflowId
       self$stepId = stepId
-      
-      print('OperatorContextDev initialize taskId')
-      print(taskId)
-      
+        
       if (!is.null(taskId)){
         self$task = self$client$taskService$get(taskId)
       }
@@ -169,6 +196,7 @@ OperatorContextDev <- R6Class(
     }
   ),
   active = list(
+    
     workflow = function(value){
       if (!missing(value)) stop('read only')
       return (self$client$workflowService$get(self$workflowId))
@@ -195,7 +223,7 @@ OperatorContext <- R6Class(
   ),
   public = list(
     client = NULL,
-    task = NULL,
+
     initialize = function() { 
       self$client = TercenClient$new()
       self$task = self$client$taskService$get(parseCommandArgs()$taskId)
