@@ -16,4 +16,18 @@ EventService <- R6::R6Class("EventService", inherit = HttpClientService, public 
         answer = content(response)
     }
     return(answer)
+}, onTaskState = function(taskId) {
+    answer = NULL
+    response = NULL
+    uri = paste0("api/v1/evt", "/", "onTaskState")
+    params = list()
+    params[["taskId"]] = unbox(taskId)
+    url = self$getServiceUri(uri)
+    response = self$client$post(url, body = params)
+    if (status_code(response) != 200) {
+        self$onResponseError(response, "onTaskState")
+    } else {
+        answer = content(response)
+    }
+    return(answer)
 }))

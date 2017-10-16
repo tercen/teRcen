@@ -42,6 +42,21 @@ UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = 
         answer = createObjectFromJson(content(response))
     }
     return(answer)
+}, updatePassword = function(userId, password) {
+    answer = NULL
+    response = NULL
+    uri = paste0("api/v1/user", "/", "updatePassword")
+    params = list()
+    params[["userId"]] = unbox(userId)
+    params[["password"]] = unbox(password)
+    url = self$getServiceUri(uri)
+    response = self$client$post(url, body = params)
+    if (status_code(response) != 200) {
+        self$onResponseError(response, "updatePassword")
+    } else {
+        answer = NULL
+    }
+    return(answer)
 }, summary = function(userId) {
     answer = NULL
     response = NULL

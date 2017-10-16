@@ -2,7 +2,6 @@
 #'
 #' @export
 #' @format \code{\link{R6Class}} object, super class \code{\link{NamespaceStep}}.
-#' @field namespace of type String inherited from super class \code{\link{NamespaceStep}}.
 #' @field groupId of type String inherited from super class \code{\link{Step}}.
 #' @field name of type String inherited from super class \code{\link{Step}}.
 #' @field id of type String inherited from super class \code{\link{IdObject}}.

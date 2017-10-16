@@ -1,7 +1,7 @@
 #' Property
 #'
 #' @export
-#' @format \code{\link{R6Class}} object, sub classes \code{\link{DoubleProperty}}, \code{\link{IntegerProperty}}, \code{\link{StringProperty}}, \code{\link{EnumeratedProperty}}, \code{\link{BooleanProperty}}.
+#' @format \code{\link{R6Class}} object, sub classes \code{\link{EnumeratedProperty}}, \code{\link{DoubleProperty}}, \code{\link{StringProperty}}, \code{\link{BooleanProperty}}.
 #' @field name of type String.
 Property <- R6::R6Class("Property", inherit = Base, public = list(name = NULL, initialize = function(json = NULL) {
     if (!is.null(json)) {

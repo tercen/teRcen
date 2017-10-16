@@ -3,7 +3,7 @@
 #' @export
 #' @format \code{\link{R6Class}} object.
 #' @field name of type String.
-#' @field value of type Object.
+#' @field value of type String.
 PropertyValue <- R6::R6Class("PropertyValue", inherit = Base, public = list(name = NULL, 
     value = NULL, initialize = function(json = NULL) {
         if (!is.null(json)) {
@@ -14,7 +14,7 @@ PropertyValue <- R6::R6Class("PropertyValue", inherit = Base, public = list(name
     }, init = function() {
         super$init()
         self$name = ""
-        self$value = null
+        self$value = ""
     }, initJson = function(json) {
         super$initJson(json)
         self$name = json$name

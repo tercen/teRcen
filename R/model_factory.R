@@ -42,9 +42,6 @@ createObjectFromJson = function(json) {
     if (kind == "CategoryPalette") {
         return(CategoryPalette$new(json = json))
     }
-    if (kind == "IntegerProperty") {
-        return(IntegerProperty$new(json = json))
-    }
     if (kind == "ResourceSummary") {
         return(ResourceSummary$new(json = json))
     }

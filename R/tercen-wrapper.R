@@ -168,7 +168,6 @@ OperatorContextDev <- R6Class(
       fileDoc$projectId = workflow$projectId
       fileDoc$acl$owner = workflow$acl$owner
       fileDoc$metadata$contentType = 'application/octet-stream'
-      fileDoc$metadata$contentEncoding = 'iso-8859-1'
         
       fileDoc = self$client$fileService$upload(fileDoc, bytes)
       
@@ -176,6 +175,7 @@ OperatorContextDev <- R6Class(
       if (is.null(self$task)){
         print('task is null, create a task')
         task = ComputationTask$new()
+        task$state = InitState$new()
         task$projectId = workflow$projectId
         task$query = self$query
         task$fileResultId = fileDoc$id
