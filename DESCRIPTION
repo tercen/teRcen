@@ -1,7 +1,7 @@
 Package: tercen
 Type: Package
 Title: Tercen R client api
-Version: 0.4
+Version: 0.4.1
 Date: 2017-09-03
 Author: Alexandre Maurel
 Maintainer: Alexandre Maurel <alexandre.maurel@tercen.com>
@@ -18,7 +18,8 @@ Imports:
     dplyr,
     rlang,
     purrr,
-    tibble
+    tibble,
+    yaml
 URL: https://tercen.com
 BugReports: https://github.com/tercen/rtercen/issues
 RoxygenNote: 6.0.1
