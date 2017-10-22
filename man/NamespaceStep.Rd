@@ -20,8 +20,6 @@ NamespaceStep
 
 \item{\code{id}}{of type String inherited from super class \code{\link{IdObject}}.}
 
-\item{\code{namespace}}{of type String.}
-
 \item{\code{model}}{object of class \code{\link{StepModel}} inherited from super class \code{\link{ModelStep}}.}
 
 \item{\code{inputs}}{list of class \code{\link{InputPort}} inherited from super class \code{\link{Step}}.}

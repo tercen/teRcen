@@ -4,7 +4,7 @@
 \name{EnumeratedProperty}
 \alias{EnumeratedProperty}
 \title{EnumeratedProperty}
-\format{\code{\link{R6Class}} object, super class \code{\link{Property}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{StringProperty}}.}
 \usage{
 EnumeratedProperty
 }
@@ -14,7 +14,11 @@ EnumeratedProperty
 \section{Fields}{
 
 \describe{
+\item{\code{defaultValue}}{of type String inherited from super class \code{\link{StringProperty}}.}
+
 \item{\code{name}}{of type String inherited from super class \code{\link{Property}}.}
+
+\item{\code{values}}{list of type String.}
 }}
 
 \keyword{datasets}

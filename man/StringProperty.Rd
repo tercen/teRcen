@@ -4,7 +4,7 @@
 \name{StringProperty}
 \alias{StringProperty}
 \title{StringProperty}
-\format{\code{\link{R6Class}} object, super class \code{\link{Property}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{Property}}, sub classes \code{\link{EnumeratedProperty}}.}
 \usage{
 StringProperty
 }
@@ -15,6 +15,8 @@ StringProperty
 
 \describe{
 \item{\code{name}}{of type String inherited from super class \code{\link{Property}}.}
+
+\item{\code{defaultValue}}{of type String.}
 }}
 
 \keyword{datasets}

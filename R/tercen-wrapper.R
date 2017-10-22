@@ -147,7 +147,7 @@ OperatorContextDev <- R6Class(
                            authToken=NULL, 
                            serviceUri=getOption("tercen.serviceUri", default = "https://tercen.com/service")) {
       
-      self$client = TercenClient$new()
+      self$client = TercenClient$new(authToken=authToken)
       self$workflowId = workflowId
       self$stepId = stepId
         
@@ -228,6 +228,7 @@ OperatorContext <- R6Class(
       self$client = TercenClient$new()
       self$task = self$client$taskService$get(parseCommandArgs()$taskId)
     },
+    
     save = function(computed.df){
       
       result = OperatorResult$new()

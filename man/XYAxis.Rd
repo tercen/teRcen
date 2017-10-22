@@ -14,6 +14,8 @@ XYAxis
 \section{Fields}{
 
 \describe{
+\item{\code{taskId}}{of type String.}
+
 \item{\code{chart}}{object of class \code{\link{Chart}}.}
 
 \item{\code{colors}}{object of class \code{\link{Colors}}.}

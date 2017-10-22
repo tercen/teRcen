@@ -4,7 +4,7 @@
 \name{Property}
 \alias{Property}
 \title{Property}
-\format{\code{\link{R6Class}} object, sub classes \code{\link{DoubleProperty}}, \code{\link{IntegerProperty}}, \code{\link{StringProperty}}, \code{\link{EnumeratedProperty}}, \code{\link{BooleanProperty}}.}
+\format{\code{\link{R6Class}} object, sub classes \code{\link{EnumeratedProperty}}, \code{\link{DoubleProperty}}, \code{\link{StringProperty}}, \code{\link{BooleanProperty}}.}
 \usage{
 Property
 }

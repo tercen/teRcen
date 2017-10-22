@@ -14,6 +14,8 @@ Crosstab
 \section{Fields}{
 
 \describe{
+\item{\code{taskId}}{of type String.}
+
 \item{\code{axis}}{object of class \code{\link{XYAxisList}}.}
 
 \item{\code{columnTable}}{object of class \code{\link{CrosstabTable}}.}

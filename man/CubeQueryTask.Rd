@@ -30,6 +30,10 @@ CubeQueryTask
 
 \item{\code{id}}{of type String inherited from super class \code{\link{IdObject}}.}
 
+\item{\code{removeOnGC}}{of type bool.}
+
+\item{\code{schemaIds}}{list of type String.}
+
 \item{\code{state}}{object of class \code{\link{State}} inherited from super class \code{\link{Task}}.}
 
 \item{\code{createdDate}}{object of class \code{\link{Date}} inherited from super class \code{\link{Task}}.}

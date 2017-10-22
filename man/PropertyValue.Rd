@@ -16,7 +16,7 @@ PropertyValue
 \describe{
 \item{\code{name}}{of type String.}
 
-\item{\code{value}}{of type Object.}
+\item{\code{value}}{of type String.}
 }}
 
 \keyword{datasets}

@@ -30,9 +30,6 @@ createObjectFromJson = function(json) {
     if (kind == "StorageProfile") {
         return(StorageProfile$new(json = json))
     }
-    if (kind == "RSourceOperator") {
-        return(RSourceOperator$new(json = json))
-    }
     if (kind == "OperatorSettings") {
         return(OperatorSettings$new(json = json))
     }
@@ -89,6 +86,9 @@ createObjectFromJson = function(json) {
     }
     if (kind == "Filter") {
         return(Filter$new(json = json))
+    }
+    if (kind == "ShinyOperator") {
+        return(ShinyOperator$new(json = json))
     }
     if (kind == "GroupStep") {
         return(GroupStep$new(json = json))
@@ -147,6 +147,9 @@ createObjectFromJson = function(json) {
     if (kind == "ColorElement") {
         return(ColorElement$new(json = json))
     }
+    if (kind == "ROperator") {
+        return(ROperator$new(json = json))
+    }
     if (kind == "RampPalette") {
         return(RampPalette$new(json = json))
     }
@@ -165,11 +168,11 @@ createObjectFromJson = function(json) {
     if (kind == "StartProcess") {
         return(StartProcess$new(json = json))
     }
-    if (kind == "Token") {
-        return(Token$new(json = json))
-    }
     if (kind == "InputPort") {
         return(InputPort$new(json = json))
+    }
+    if (kind == "Token") {
+        return(Token$new(json = json))
     }
     if (kind == "JoinOperator") {
         return(JoinOperator$new(json = json))
@@ -213,8 +216,8 @@ createObjectFromJson = function(json) {
     if (kind == "UnionRelation") {
         return(UnionRelation$new(json = json))
     }
-    if (kind == "XYAxisList") {
-        return(XYAxisList$new(json = json))
+    if (kind == "RunWebAppTask") {
+        return(RunWebAppTask$new(json = json))
     }
     if (kind == "DoubleColorElement") {
         return(DoubleColorElement$new(json = json))
@@ -227,6 +230,9 @@ createObjectFromJson = function(json) {
     }
     if (kind == "GarbageObject") {
         return(GarbageObject$new(json = json))
+    }
+    if (kind == "XYAxisList") {
+        return(XYAxisList$new(json = json))
     }
     if (kind == "Profiles") {
         return(Profiles$new(json = json))
@@ -303,8 +309,8 @@ createObjectFromJson = function(json) {
     if (kind == "ColumnPair") {
         return(ColumnPair$new(json = json))
     }
-    if (kind == "Profile") {
-        return(Profile$new(json = json))
+    if (kind == "CreateGitOperatorTask") {
+        return(CreateGitOperatorTask$new(json = json))
     }
     if (kind == "FilterExpr") {
         return(FilterExpr$new(json = json))
@@ -312,11 +318,11 @@ createObjectFromJson = function(json) {
     if (kind == "TableSchema") {
         return(TableSchema$new(json = json))
     }
+    if (kind == "Profile") {
+        return(Profile$new(json = json))
+    }
     if (kind == "Date") {
         return(Date$new(json = json))
-    }
-    if (kind == "SourceOperator") {
-        return(SourceOperator$new(json = json))
     }
     if (kind == "StepState") {
         return(StepState$new(json = json))
@@ -387,9 +393,6 @@ createObjectFromJson = function(json) {
     if (kind == "NamespaceStep") {
         return(NamespaceStep$new(json = json))
     }
-    if (kind == "ExternalOperator") {
-        return(ExternalOperator$new(json = json))
-    }
     if (kind == "TableProfile") {
         return(TableProfile$new(json = json))
     }
@@ -452,6 +455,9 @@ createObjectFromJson = function(json) {
     }
     if (kind == "ChartBar") {
         return(ChartBar$new(json = json))
+    }
+    if (kind == "GitOperator") {
+        return(GitOperator$new(json = json))
     }
     if (kind == "Worker") {
         return(Worker$new(json = json))

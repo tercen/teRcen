@@ -14,8 +14,6 @@ JoinStep
 \section{Fields}{
 
 \describe{
-\item{\code{namespace}}{of type String inherited from super class \code{\link{NamespaceStep}}.}
-
 \item{\code{groupId}}{of type String inherited from super class \code{\link{Step}}.}
 
 \item{\code{name}}{of type String inherited from super class \code{\link{Step}}.}

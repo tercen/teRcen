@@ -1,7 +1,7 @@
-#' WebAppOperator
+#' ShinyOperator
 #'
 #' @export
-#' @format \code{\link{R6Class}} object, super class \code{\link{GitOperator}}, sub classes \code{\link{ShinyOperator}}.
+#' @format \code{\link{R6Class}} object, super class \code{\link{WebAppOperator}}.
 #' @field path of type String inherited from super class \code{\link{GitOperator}}.
 #' @field version of type String inherited from super class \code{\link{GitOperator}}.
 #' @field projectId of type String inherited from super class \code{\link{ProjectDocument}}.
@@ -18,7 +18,7 @@
 #' @field createdDate object of class \code{\link{Date}} inherited from super class \code{\link{Document}}.
 #' @field lastModifiedDate object of class \code{\link{Date}} inherited from super class \code{\link{Document}}.
 #' @field urls list of class \code{\link{Url}} inherited from super class \code{\link{Document}}.
-WebAppOperator <- R6::R6Class("WebAppOperator", inherit = GitOperator, public = list(initialize = function(json = NULL) {
+ShinyOperator <- R6::R6Class("ShinyOperator", inherit = WebAppOperator, public = list(initialize = function(json = NULL) {
     if (!is.null(json)) {
         self$initJson(json)
     } else {
@@ -30,7 +30,7 @@ WebAppOperator <- R6::R6Class("WebAppOperator", inherit = GitOperator, public = 
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar("WebAppOperator")
+    m$kind = rtson::tson.scalar("ShinyOperator")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))
