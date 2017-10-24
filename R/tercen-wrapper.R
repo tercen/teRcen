@@ -243,12 +243,12 @@ OperatorContext <- R6Class(
     },
     
     save = function(computed.df){
-      
+       
       result = OperatorResult$new()
       result$tables = list(tercen::dataframe.as.table(computed.df))
       bytes = rtson::toTSON(result$toTson())
       
-      if (length(self$task$fileResultId) == 0){
+      if (nchar(self$task$fileResultId) == 0){
         # webapp scenario
         fileDoc = FileDocument$new()
         fileDoc$name = 'result'
