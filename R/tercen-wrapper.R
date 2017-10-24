@@ -248,8 +248,32 @@ OperatorContext <- R6Class(
       result$tables = list(tercen::dataframe.as.table(computed.df))
       bytes = rtson::toTSON(result$toTson())
       
-      fileDoc = self$client$fileService$get(self$task$fileResultId)
-      self$client$fileService$upload(fileDoc, bytes)
+      if (length(self$task$fileResultId) == 0){
+        # webapp scenario
+        fileDoc = FileDocument$new()
+        fileDoc$name = 'result'
+        fileDoc$projectId = self$task$projectId
+        fileDoc$acl$owner = self$task$owner
+        fileDoc$metadata$contentType = 'application/octet-stream'
+      
+        fileDoc = self$client$fileService$upload(fileDoc, bytes)
+        
+        self$task$fileResultId = fileDoc$id
+        rev = self$client$taskService$update(self$task)
+        self$task$rev = rev
+        
+        self$client$taskService$runTask(self$task$id)
+        
+        self$task = self$client$taskService$waitDone(self$task$id)
+        
+        if (inherits(self$task$state, 'FailedState')){
+          stop(self$task$state$reason)
+        }
+        
+      } else {
+        fileDoc = self$client$fileService$get(self$task$fileResultId)
+        self$client$fileService$upload(fileDoc, bytes)
+      }
     }
   ),
   active = list(
