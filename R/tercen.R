@@ -40,20 +40,19 @@ TercenClient <- R6Class("TercenClient", inherit = ServiceFactory, public = list(
         argsMap = parseCommandArgs()
         if (!is.null(argsMap$serviceUri)) {
             super$initialize(argsMap$serviceUri)
-            token = authToken
-            if (is.null(token)) {
-                token = argsMap$token
-            }
-            self$userService$client$token = token
         } else {
             super$initialize(serviceUri)
-            if (is.null(authToken)) {
-                if (is.null(username) && is.null(password)) stop("username and password are required")
-                self$session = self$userService$connect(username, password)
-                self$userService$client$token = self$session$token$token
-            } else {
-                self$userService$client$token = authToken
-            }
+        }
+        token = argsMap$token 
+        if (is.null(token)) {
+          token = authToken
+        }
+        if (is.null(token)) {
+          if (is.null(username) || is.null(password)) stop("token or username and password are required")
+          self$session = self$userService$connect(username, password)
+          self$userService$client$token = self$session$token$token
+        } else {
+          self$userService$client$token = token
         }
     }))
 

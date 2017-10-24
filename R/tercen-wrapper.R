@@ -145,9 +145,12 @@ OperatorContextDev <- R6Class(
                            stepId=getOption("tercen.stepId"),
                            taskId=NULL,
                            authToken=NULL, 
+                           username = getOption("tercen.username"),
+                           password = getOption("tercen.password"),
                            serviceUri=getOption("tercen.serviceUri", default = "https://tercen.com/service")) {
       
-      self$client = TercenClient$new(authToken=authToken)
+      self$client = TercenClient$new(authToken=authToken, username=username, password=password, serviceUri=serviceUri)
+      
       self$workflowId = workflowId
       self$stepId = stepId
         
@@ -224,9 +227,19 @@ OperatorContext <- R6Class(
   public = list(
     client = NULL,
 
-    initialize = function() { 
-      self$client = TercenClient$new()
-      self$task = self$client$taskService$get(parseCommandArgs()$taskId)
+    initialize = function(taskId = NULL,
+                          authToken = NULL, 
+                          username = getOption("tercen.username"),
+                          password = getOption("tercen.password"),
+                          serviceUri = getOption("tercen.serviceUri", default = "https://tercen.com/service")) { 
+      
+      self$client = TercenClient$new(authToken=authToken, username=username, password=password, serviceUri=serviceUri)
+      
+      if (is.null(taskId)){
+        self$task = self$client$taskService$get(parseCommandArgs()$taskId)
+      } else {
+        self$task = self$client$taskService$get(taskId)
+      }
     },
     
     save = function(computed.df){
@@ -261,14 +274,23 @@ tercenCtx <- function(workflowId=getOption("tercen.workflowId"),
                       stepId=getOption("tercen.stepId"), 
                       taskId = NULL,
                       authToken = NULL, 
+                      username = getOption("tercen.username"), password = getOption("tercen.password"),
                       serviceUri = getOption("tercen.serviceUri", default = "https://tercen.com/service")){
  
-  if (!is.null(parseCommandArgs()$taskId)){
-    return (OperatorContext$new())
+  if (is.null(workflowId)){
+    return (OperatorContext$new(taskId=taskId,
+                                authToken=authToken,
+                                username=username, 
+                                password=password, 
+                                serviceUri=serviceUri))
   } else {
-    print('tercenCtx   taskId')
-    print(taskId)
-    return (OperatorContextDev$new(workflowId=workflowId, stepId=stepId, taskId=taskId, authToken=authToken, serviceUri=serviceUri))
+    return (OperatorContextDev$new(workflowId=workflowId,
+                                   stepId=stepId,
+                                   taskId=taskId,
+                                   authToken=authToken,
+                                   username=username,
+                                   password=password,
+                                   serviceUri=serviceUri))
   }
 }
 
