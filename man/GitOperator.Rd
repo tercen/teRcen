@@ -14,8 +14,6 @@ GitOperator
 \section{Fields}{
 
 \describe{
-\item{\code{projectId}}{of type String inherited from super class \code{\link{ProjectDocument}}.}
-
 \item{\code{description}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{name}}{of type String inherited from super class \code{\link{Document}}.}
@@ -24,6 +22,10 @@ GitOperator
 
 \item{\code{tags}}{list of type String inherited from super class \code{\link{Document}}.}
 
+\item{\code{version}}{of type String inherited from super class \code{\link{Document}}.}
+
+\item{\code{authors}}{list of type String inherited from super class \code{\link{Document}}.}
+
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 
 \item{\code{rev}}{of type String inherited from super class \code{\link{PersistentObject}}.}
@@ -31,8 +33,6 @@ GitOperator
 \item{\code{id}}{of type String inherited from super class \code{\link{IdObject}}.}
 
 \item{\code{path}}{of type String.}
-
-\item{\code{version}}{of type String.}
 
 \item{\code{properties}}{list of class \code{\link{Property}} inherited from super class \code{\link{Operator}}.}
 
@@ -44,7 +44,9 @@ GitOperator
 
 \item{\code{urls}}{list of class \code{\link{Url}} inherited from super class \code{\link{Document}}.}
 
-\item{\code{url}}{object of class \code{\link{Url}}.}
+\item{\code{meta}}{list of class \code{\link{Pair}} inherited from super class \code{\link{Document}}.}
+
+\item{\code{url}}{object of class \code{\link{Url}} inherited from super class \code{\link{Document}}.}
 }}
 
 \keyword{datasets}

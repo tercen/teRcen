@@ -4,9 +4,9 @@
 #' @format \code{\link{R6Class}} object, super class \code{\link{CubeQueryTask}}.
 #' @field removeOnGC of type bool inherited from super class \code{\link{CubeQueryTask}}.
 #' @field schemaIds list of type String inherited from super class \code{\link{CubeQueryTask}}.
+#' @field projectId of type String inherited from super class \code{\link{ProjectTask}}.
 #' @field duration of type double inherited from super class \code{\link{Task}}.
 #' @field owner of type String inherited from super class \code{\link{Task}}.
-#' @field projectId of type String inherited from super class \code{\link{Task}}.
 #' @field taskHash of type String inherited from super class \code{\link{Task}}.
 #' @field runProfile of type String inherited from super class \code{\link{Task}}.
 #' @field isDeleted of type bool inherited from super class \code{\link{PersistentObject}}.

@@ -14,6 +14,8 @@ Filters
 \section{Fields}{
 
 \describe{
+\item{\code{removeNaN}}{of type bool.}
+
 \item{\code{namedFilters}}{list of class \code{\link{NamedFilter}}.}
 }}
 

@@ -4,7 +4,7 @@
 \name{CrossTabStep}
 \alias{CrossTabStep}
 \title{CrossTabStep}
-\format{\code{\link{R6Class}} object, super class \code{\link{NamespaceStep}}, sub classes \code{\link{DataStep}}, \code{\link{ViewDataStep}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{NamespaceStep}}, sub classes \code{\link{DataStep}}.}
 \usage{
 CrossTabStep
 }
@@ -20,8 +20,6 @@ CrossTabStep
 
 \item{\code{id}}{of type String inherited from super class \code{\link{IdObject}}.}
 
-\item{\code{model}}{object of class \code{\link{StepModel}} inherited from super class \code{\link{ModelStep}}.}
-
 \item{\code{inputs}}{list of class \code{\link{InputPort}} inherited from super class \code{\link{Step}}.}
 
 \item{\code{outputs}}{list of class \code{\link{OutputPort}} inherited from super class \code{\link{Step}}.}
@@ -29,8 +27,6 @@ CrossTabStep
 \item{\code{rectangle}}{object of class \code{\link{Rectangle}} inherited from super class \code{\link{Step}}.}
 
 \item{\code{state}}{object of class \code{\link{StepState}} inherited from super class \code{\link{Step}}.}
-
-\item{\code{model}}{object of class \code{\link{StepModel}} inherited from super class \code{\link{Step}}.}
 
 \item{\code{model}}{object of class \code{\link{Crosstab}}.}
 }}

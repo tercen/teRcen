@@ -34,6 +34,10 @@ Team
 
 \item{\code{tags}}{list of type String inherited from super class \code{\link{Document}}.}
 
+\item{\code{version}}{of type String inherited from super class \code{\link{Document}}.}
+
+\item{\code{authors}}{list of type String inherited from super class \code{\link{Document}}.}
+
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 
 \item{\code{rev}}{of type String inherited from super class \code{\link{PersistentObject}}.}
@@ -49,6 +53,10 @@ Team
 \item{\code{lastModifiedDate}}{object of class \code{\link{Date}} inherited from super class \code{\link{Document}}.}
 
 \item{\code{urls}}{list of class \code{\link{Url}} inherited from super class \code{\link{Document}}.}
+
+\item{\code{meta}}{list of class \code{\link{Pair}} inherited from super class \code{\link{Document}}.}
+
+\item{\code{url}}{object of class \code{\link{Url}} inherited from super class \code{\link{Document}}.}
 }}
 
 \keyword{datasets}

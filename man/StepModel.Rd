@@ -4,7 +4,7 @@
 \name{StepModel}
 \alias{StepModel}
 \title{StepModel}
-\format{\code{\link{R6Class}} object, sub classes \code{\link{TableStepModel}}, \code{\link{Crosstab}}, \code{\link{JoinStepModel}}, \code{\link{WizardStepModel}}, \code{\link{UrlModel}}, \code{\link{MeltStepModel}}.}
+\format{\code{\link{R6Class}} object, sub classes \code{\link{TableStepModel}}, \code{\link{Crosstab}}, \code{\link{JoinStepModel}}, \code{\link{WizardStepModel}}, \code{\link{MeltStepModel}}.}
 \usage{
 StepModel
 }

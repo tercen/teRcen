@@ -17,4 +17,18 @@ WorkflowService <- R6::R6Class("WorkflowService", inherit = HttpClientService, p
         answer = createObjectFromJson(content(response))
     }
     return(answer)
+}, copy = function(workflowId) {
+    answer = NULL
+    response = NULL
+    uri = paste0("api/v1/workflow", "/", "copy")
+    params = list()
+    params[["workflowId"]] = unbox(workflowId)
+    url = self$getServiceUri(uri)
+    response = self$client$post(url, body = params)
+    if (status_code(response) != 200) {
+        self$onResponseError(response, "copy")
+    } else {
+        answer = createObjectFromJson(content(response))
+    }
+    return(answer)
 }))

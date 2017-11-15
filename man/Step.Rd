@@ -4,7 +4,7 @@
 \name{Step}
 \alias{Step}
 \title{Step}
-\format{\code{\link{R6Class}} object, super class \code{\link{IdObject}}, sub classes \code{\link{DataStep}}, \code{\link{ViewDataStep}}, \code{\link{JoinStep}}, \code{\link{CrossTabStep}}, \code{\link{InStep}}, \code{\link{GroupStep}}, \code{\link{OutStep}}, \code{\link{TableStep}}, \code{\link{MeltStep}}, \code{\link{WizardStep}}, \code{\link{NamespaceStep}}, \code{\link{RelationStep}}, \code{\link{UrlViewStep}}, \code{\link{ModelStep}}, \code{\link{ViewStep}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{IdObject}}, sub classes \code{\link{DataStep}}, \code{\link{MeltStep}}, \code{\link{JoinStep}}, \code{\link{WizardStep}}, \code{\link{CrossTabStep}}, \code{\link{InStep}}, \code{\link{GroupStep}}, \code{\link{OutStep}}, \code{\link{TableStep}}, \code{\link{NamespaceStep}}, \code{\link{RelationStep}}, \code{\link{ModelStep}}, \code{\link{ViewStep}}.}
 \usage{
 Step
 }
@@ -27,8 +27,6 @@ Step
 \item{\code{rectangle}}{object of class \code{\link{Rectangle}}.}
 
 \item{\code{state}}{object of class \code{\link{StepState}}.}
-
-\item{\code{model}}{object of class \code{\link{StepModel}}.}
 }}
 
 \keyword{datasets}

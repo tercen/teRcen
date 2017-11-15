@@ -4,7 +4,7 @@
 \name{ProjectDocument}
 \alias{ProjectDocument}
 \title{ProjectDocument}
-\format{\code{\link{R6Class}} object, super class \code{\link{Document}}, sub classes \code{\link{CubeQueryTableSchema}}, \code{\link{TableSchema}}, \code{\link{ComputedTableSchema}}, \code{\link{ShinyOperator}}, \code{\link{ROperator}}, \code{\link{WebAppOperator}}, \code{\link{GitOperator}}, \code{\link{Schema}}, \code{\link{Operator}}, \code{\link{FileDocument}}, \code{\link{Workflow}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{Document}}, sub classes \code{\link{CubeQueryTableSchema}}, \code{\link{TableSchema}}, \code{\link{ComputedTableSchema}}, \code{\link{Schema}}, \code{\link{FileDocument}}, \code{\link{Workflow}}.}
 \usage{
 ProjectDocument
 }
@@ -22,6 +22,10 @@ ProjectDocument
 
 \item{\code{tags}}{list of type String inherited from super class \code{\link{Document}}.}
 
+\item{\code{version}}{of type String inherited from super class \code{\link{Document}}.}
+
+\item{\code{authors}}{list of type String inherited from super class \code{\link{Document}}.}
+
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 
 \item{\code{rev}}{of type String inherited from super class \code{\link{PersistentObject}}.}
@@ -37,6 +41,10 @@ ProjectDocument
 \item{\code{lastModifiedDate}}{object of class \code{\link{Date}} inherited from super class \code{\link{Document}}.}
 
 \item{\code{urls}}{list of class \code{\link{Url}} inherited from super class \code{\link{Document}}.}
+
+\item{\code{meta}}{list of class \code{\link{Pair}} inherited from super class \code{\link{Document}}.}
+
+\item{\code{url}}{object of class \code{\link{Url}} inherited from super class \code{\link{Document}}.}
 }}
 
 \keyword{datasets}

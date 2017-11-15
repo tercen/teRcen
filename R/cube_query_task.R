@@ -1,10 +1,10 @@
 #' CubeQueryTask
 #'
 #' @export
-#' @format \code{\link{R6Class}} object, super class \code{\link{Task}}, sub classes \code{\link{ComputationTask}}.
+#' @format \code{\link{R6Class}} object, super class \code{\link{ProjectTask}}, sub classes \code{\link{ComputationTask}}.
+#' @field projectId of type String inherited from super class \code{\link{ProjectTask}}.
 #' @field duration of type double inherited from super class \code{\link{Task}}.
 #' @field owner of type String inherited from super class \code{\link{Task}}.
-#' @field projectId of type String inherited from super class \code{\link{Task}}.
 #' @field taskHash of type String inherited from super class \code{\link{Task}}.
 #' @field runProfile of type String inherited from super class \code{\link{Task}}.
 #' @field isDeleted of type bool inherited from super class \code{\link{PersistentObject}}.
@@ -19,7 +19,7 @@
 #' @field completedDate object of class \code{\link{Date}} inherited from super class \code{\link{Task}}.
 #' @field aclContext object of class \code{\link{AclContext}} inherited from super class \code{\link{Task}}.
 #' @field query object of class \code{\link{CubeQuery}}.
-CubeQueryTask <- R6::R6Class("CubeQueryTask", inherit = Task, public = list(query = NULL, 
+CubeQueryTask <- R6::R6Class("CubeQueryTask", inherit = ProjectTask, public = list(query = NULL, 
     removeOnGC = NULL, schemaIds = NULL, initialize = function(json = NULL) {
         if (!is.null(json)) {
             self$initJson(json)

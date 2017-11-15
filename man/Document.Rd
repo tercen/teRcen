@@ -4,7 +4,7 @@
 \name{Document}
 \alias{Document}
 \title{Document}
-\format{\code{\link{R6Class}} object, super class \code{\link{PersistentObject}}, sub classes \code{\link{Team}}, \code{\link{CubeQueryTableSchema}}, \code{\link{TableSchema}}, \code{\link{ComputedTableSchema}}, \code{\link{ShinyOperator}}, \code{\link{ROperator}}, \code{\link{WebAppOperator}}, \code{\link{GitOperator}}, \code{\link{Schema}}, \code{\link{Operator}}, \code{\link{FileDocument}}, \code{\link{Workflow}}, \code{\link{User}}, \code{\link{ProjectDocument}}, \code{\link{Project}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{PersistentObject}}, sub classes \code{\link{Team}}, \code{\link{ShinyOperator}}, \code{\link{ROperator}}, \code{\link{WebAppOperator}}, \code{\link{GitOperator}}, \code{\link{CubeQueryTableSchema}}, \code{\link{TableSchema}}, \code{\link{ComputedTableSchema}}, \code{\link{Schema}}, \code{\link{FileDocument}}, \code{\link{Workflow}}, \code{\link{User}}, \code{\link{Operator}}, \code{\link{ProjectDocument}}, \code{\link{Project}}.}
 \usage{
 Document
 }
@@ -28,6 +28,10 @@ Document
 
 \item{\code{tags}}{list of type String.}
 
+\item{\code{version}}{of type String.}
+
+\item{\code{authors}}{list of type String.}
+
 \item{\code{acl}}{object of class \code{\link{Acl}}.}
 
 \item{\code{createdDate}}{object of class \code{\link{Date}}.}
@@ -35,6 +39,10 @@ Document
 \item{\code{lastModifiedDate}}{object of class \code{\link{Date}}.}
 
 \item{\code{urls}}{list of class \code{\link{Url}}.}
+
+\item{\code{meta}}{list of class \code{\link{Pair}}.}
+
+\item{\code{url}}{object of class \code{\link{Url}}.}
 }}
 
 \keyword{datasets}

@@ -18,6 +18,8 @@ MappingFactor
 
 \item{\code{type}}{of type String inherited from super class \code{\link{Factor}}.}
 
+\item{\code{isSingle}}{of type bool.}
+
 \item{\code{description}}{of type String.}
 
 \item{\code{factorName}}{of type String.}

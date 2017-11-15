@@ -2,7 +2,6 @@ library(R6)
 library(httr)
 library(jsonlite)
 library(rtson)
-library(purrr)
 library(dplyr)
 
 AbstractOperatorContext <- R6Class(
@@ -49,7 +48,7 @@ AbstractOperatorContext <- R6Class(
     },
     addNamespace = function(df){
       ns = self$namespace
-      names(df) = names(df) %>% purrr::map(function(x){
+      names(df) = sapply(names(df), function(x){
         if (substr(x,1,1) == '.') return(x)
         return (paste0(ns,'.',x))
       })
@@ -320,21 +319,20 @@ tercenCtx <- function(workflowId=getOption("tercen.workflowId"),
 
 #' @export
 cselect <- function(ctx, ...){
-  return (ctx$cselect(getNames(ctx$cnames, ...)))
+  return (ctx$cselect(argNames(...)))
 }
 
 #' @export
 rselect <- function(ctx, ...){
-  return (ctx$rselect(getNames(ctx$rnames, ...)))
+  return (ctx$rselect(argNames(...)))
 }
 
 #' @export
 select.AbstractOperatorContext <- function(ctx, ...){
-  return (ctx$select(getNames(ctx$names, ...)))
+  return (ctx$select(argNames(...)))
 }
-
-getNames = function(names, ...){
-  dots = rlang::quos(...)
-  ll = lapply(dots, function(x) rlang::eval_tidy(x, names ))
-  return (unlist(ll))
+ 
+argNames = function(...){
+  nn = as.list(substitute(list(...)))[-1L]
+  return (lapply(nn, toString))
 }

@@ -21,4 +21,19 @@ FileService <- R6::R6Class("FileService", inherit = HttpClientService, public = 
         answer = createObjectFromJson(content(response))
     }
     return(answer)
+}, download = function(fileDocumentId) {
+    answer = NULL
+    response = NULL
+    uri = paste0("api/v1/file", "/", "download")
+    params = list()
+    params[["fileDocumentId"]] = unbox(fileDocumentId)
+    url = self$getServiceUri(uri)
+    url$query = list(params = jsonlite::toJSON(params))
+    response = self$client$get(url)
+    if (status_code(response) != 200) {
+        self$onResponseError(response, "download")
+    } else {
+        answer = content(response)
+    }
+    return(answer)
 }))

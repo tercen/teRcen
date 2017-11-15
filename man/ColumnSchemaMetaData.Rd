@@ -14,7 +14,7 @@ ColumnSchemaMetaData
 \section{Fields}{
 
 \describe{
-\item{\code{quartiles}}{list of type double.}
+\item{\code{quartiles}}{list of type String.}
 }}
 
 \keyword{datasets}

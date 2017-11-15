@@ -2,9 +2,7 @@ library(R6)
 library(httr)
 library(jsonlite)
 library(rtson)
-library(purrr)
 library(dplyr)
-library(rlang)
 library(tibble)
 
 .onLoad <- function(libname, pkgname) {
@@ -30,7 +28,7 @@ library(tibble)
 #' @name tercen-package
 #' @aliases tercen
 #' @docType package
-#' @import R6 httr rtson jsonlite dplyr rlang tibble
+#' @import R6 httr rtson jsonlite dplyr tibble
 NULL
 
 #' @export
@@ -43,16 +41,16 @@ TercenClient <- R6Class("TercenClient", inherit = ServiceFactory, public = list(
         } else {
             super$initialize(serviceUri)
         }
-        token = argsMap$token 
+        token = argsMap$token
         if (is.null(token)) {
-          token = authToken
+            token = authToken
         }
         if (is.null(token)) {
-          if (is.null(username) || is.null(password)) stop("token or username and password are required")
-          self$session = self$userService$connect(username, password)
-          self$userService$client$token = self$session$token$token
+            if (is.null(username) || is.null(password)) stop("token or username and password are required")
+            self$session = self$userService$connect(username, password)
+            self$userService$client$token = self$session$token$token
         } else {
-          self$userService$client$token = token
+            self$userService$client$token = token
         }
     }))
 

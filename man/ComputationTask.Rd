@@ -18,11 +18,11 @@ ComputationTask
 
 \item{\code{schemaIds}}{list of type String inherited from super class \code{\link{CubeQueryTask}}.}
 
+\item{\code{projectId}}{of type String inherited from super class \code{\link{ProjectTask}}.}
+
 \item{\code{duration}}{of type double inherited from super class \code{\link{Task}}.}
 
 \item{\code{owner}}{of type String inherited from super class \code{\link{Task}}.}
-
-\item{\code{projectId}}{of type String inherited from super class \code{\link{Task}}.}
 
 \item{\code{taskHash}}{of type String inherited from super class \code{\link{Task}}.}
 

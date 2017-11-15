@@ -1,24 +1,26 @@
-#' CreateRGitOperatorTask
+#' ImportGitWorkflowTask
 #'
 #' @export
-#' @format \code{\link{R6Class}} object, super class \code{\link{Task}}.
+#' @format \code{\link{R6Class}} object, super class \code{\link{ProjectTask}}.
+#' @field projectId of type String inherited from super class \code{\link{ProjectTask}}.
 #' @field duration of type double inherited from super class \code{\link{Task}}.
 #' @field owner of type String inherited from super class \code{\link{Task}}.
-#' @field projectId of type String inherited from super class \code{\link{Task}}.
 #' @field taskHash of type String inherited from super class \code{\link{Task}}.
 #' @field runProfile of type String inherited from super class \code{\link{Task}}.
 #' @field isDeleted of type bool inherited from super class \code{\link{PersistentObject}}.
 #' @field rev of type String inherited from super class \code{\link{PersistentObject}}.
 #' @field id of type String inherited from super class \code{\link{IdObject}}.
+#' @field version of type String.
+#' @field workflowId of type String.
 #' @field state object of class \code{\link{State}} inherited from super class \code{\link{Task}}.
 #' @field createdDate object of class \code{\link{Date}} inherited from super class \code{\link{Task}}.
 #' @field lastModifiedDate object of class \code{\link{Date}} inherited from super class \code{\link{Task}}.
 #' @field runDate object of class \code{\link{Date}} inherited from super class \code{\link{Task}}.
 #' @field completedDate object of class \code{\link{Date}} inherited from super class \code{\link{Task}}.
 #' @field aclContext object of class \code{\link{AclContext}} inherited from super class \code{\link{Task}}.
-#' @field operator object of class \code{\link{RGitOperator}}.
-CreateRGitOperatorTask <- R6::R6Class("CreateRGitOperatorTask", inherit = Task, public = list(operator = NULL, 
-    initialize = function(json = NULL) {
+#' @field url object of class \code{\link{Url}}.
+ImportGitWorkflowTask <- R6::R6Class("ImportGitWorkflowTask", inherit = ProjectTask, 
+    public = list(url = NULL, version = NULL, workflowId = NULL, initialize = function(json = NULL) {
         if (!is.null(json)) {
             self$initJson(json)
         } else {
@@ -26,14 +28,20 @@ CreateRGitOperatorTask <- R6::R6Class("CreateRGitOperatorTask", inherit = Task, 
         }
     }, init = function() {
         super$init()
-        self$operator = RGitOperator$new()
+        self$version = ""
+        self$workflowId = ""
+        self$url = Url$new()
     }, initJson = function(json) {
         super$initJson(json)
-        self$operator = createObjectFromJson(json$operator)
+        self$version = json$version
+        self$workflowId = json$workflowId
+        self$url = createObjectFromJson(json$url)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("CreateRGitOperatorTask")
-        m$operator = self$operator$toTson()
+        m$kind = rtson::tson.scalar("ImportGitWorkflowTask")
+        m$url = self$url$toTson()
+        m$version = rtson::tson.scalar(self$version)
+        m$workflowId = rtson::tson.scalar(self$workflowId)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

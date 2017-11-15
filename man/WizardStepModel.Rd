@@ -14,11 +14,13 @@ WizardStepModel
 \section{Fields}{
 
 \describe{
-\item{\code{name}}{of type String.}
+\item{\code{namespace}}{of type String.}
 
 \item{\code{description}}{of type String.}
 
 \item{\code{factors}}{list of class \code{\link{MappingFactor}}.}
+
+\item{\code{filters}}{list of class \code{\link{MappingFilter}}.}
 
 \item{\code{steps}}{list of class \code{\link{Step}}.}
 }}

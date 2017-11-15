@@ -4,7 +4,7 @@
 \name{MeltStep}
 \alias{MeltStep}
 \title{MeltStep}
-\format{\code{\link{R6Class}} object, super class \code{\link{RelationStep}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{NamespaceStep}}.}
 \usage{
 MeltStep
 }
@@ -20,8 +20,6 @@ MeltStep
 
 \item{\code{id}}{of type String inherited from super class \code{\link{IdObject}}.}
 
-\item{\code{model}}{object of class \code{\link{StepModel}} inherited from super class \code{\link{ModelStep}}.}
-
 \item{\code{inputs}}{list of class \code{\link{InputPort}} inherited from super class \code{\link{Step}}.}
 
 \item{\code{outputs}}{list of class \code{\link{OutputPort}} inherited from super class \code{\link{Step}}.}
@@ -29,8 +27,6 @@ MeltStep
 \item{\code{rectangle}}{object of class \code{\link{Rectangle}} inherited from super class \code{\link{Step}}.}
 
 \item{\code{state}}{object of class \code{\link{StepState}} inherited from super class \code{\link{Step}}.}
-
-\item{\code{model}}{object of class \code{\link{StepModel}} inherited from super class \code{\link{Step}}.}
 
 \item{\code{model}}{object of class \code{\link{MeltStepModel}}.}
 }}

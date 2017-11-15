@@ -14,9 +14,11 @@ MeltStepModel
 \section{Fields}{
 
 \describe{
-\item{\code{variableName}}{of type String.}
+\item{\code{namespace}}{of type String.}
 
-\item{\code{valueName}}{of type String.}
+\item{\code{selectionPattern}}{of type String.}
+
+\item{\code{factorType}}{of type String.}
 
 \item{\code{factors}}{list of class \code{\link{Factor}}.}
 }}

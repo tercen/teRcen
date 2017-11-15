@@ -20,7 +20,11 @@ GroupStep
 
 \item{\code{id}}{of type String inherited from super class \code{\link{IdObject}}.}
 
-\item{\code{model}}{object of class \code{\link{StepModel}} inherited from super class \code{\link{ModelStep}}.}
+\item{\code{appId}}{of type String.}
+
+\item{\code{appName}}{of type String.}
+
+\item{\code{version}}{of type String.}
 
 \item{\code{inputs}}{list of class \code{\link{InputPort}} inherited from super class \code{\link{Step}}.}
 
@@ -29,8 +33,6 @@ GroupStep
 \item{\code{rectangle}}{object of class \code{\link{Rectangle}} inherited from super class \code{\link{Step}}.}
 
 \item{\code{state}}{object of class \code{\link{StepState}} inherited from super class \code{\link{Step}}.}
-
-\item{\code{model}}{object of class \code{\link{StepModel}} inherited from super class \code{\link{Step}}.}
 }}
 
 \keyword{datasets}

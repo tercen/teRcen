@@ -1,8 +1,7 @@
-#' CSVTask
+#' ProjectTask
 #'
 #' @export
-#' @format \code{\link{R6Class}} object, super class \code{\link{ProjectTask}}.
-#' @field projectId of type String inherited from super class \code{\link{ProjectTask}}.
+#' @format \code{\link{R6Class}} object, super class \code{\link{Task}}, sub classes \code{\link{ComputationTask}}, \code{\link{ExportWorkflowTask}}, \code{\link{RunWebAppTask}}, \code{\link{CSVTask}}, \code{\link{CubeQueryTask}}, \code{\link{ImportWorkflowTask}}, \code{\link{ImportGitWorkflowTask}}.
 #' @field duration of type double inherited from super class \code{\link{Task}}.
 #' @field owner of type String inherited from super class \code{\link{Task}}.
 #' @field taskHash of type String inherited from super class \code{\link{Task}}.
@@ -10,16 +9,15 @@
 #' @field isDeleted of type bool inherited from super class \code{\link{PersistentObject}}.
 #' @field rev of type String inherited from super class \code{\link{PersistentObject}}.
 #' @field id of type String inherited from super class \code{\link{IdObject}}.
-#' @field fileDocumentId of type String.
-#' @field schemaId of type String.
+#' @field projectId of type String.
 #' @field state object of class \code{\link{State}} inherited from super class \code{\link{Task}}.
 #' @field createdDate object of class \code{\link{Date}} inherited from super class \code{\link{Task}}.
 #' @field lastModifiedDate object of class \code{\link{Date}} inherited from super class \code{\link{Task}}.
 #' @field runDate object of class \code{\link{Date}} inherited from super class \code{\link{Task}}.
 #' @field completedDate object of class \code{\link{Date}} inherited from super class \code{\link{Task}}.
 #' @field aclContext object of class \code{\link{AclContext}} inherited from super class \code{\link{Task}}.
-CSVTask <- R6::R6Class("CSVTask", inherit = ProjectTask, public = list(fileDocumentId = NULL, 
-    schemaId = NULL, initialize = function(json = NULL) {
+ProjectTask <- R6::R6Class("ProjectTask", inherit = Task, public = list(projectId = NULL, 
+    initialize = function(json = NULL) {
         if (!is.null(json)) {
             self$initJson(json)
         } else {
@@ -27,17 +25,14 @@ CSVTask <- R6::R6Class("CSVTask", inherit = ProjectTask, public = list(fileDocum
         }
     }, init = function() {
         super$init()
-        self$fileDocumentId = ""
-        self$schemaId = ""
+        self$projectId = ""
     }, initJson = function(json) {
         super$initJson(json)
-        self$fileDocumentId = json$fileDocumentId
-        self$schemaId = json$schemaId
+        self$projectId = json$projectId
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("CSVTask")
-        m$fileDocumentId = rtson::tson.scalar(self$fileDocumentId)
-        m$schemaId = rtson::tson.scalar(self$schemaId)
+        m$kind = rtson::tson.scalar("ProjectTask")
+        m$projectId = rtson::tson.scalar(self$projectId)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

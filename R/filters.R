@@ -2,9 +2,10 @@
 #'
 #' @export
 #' @format \code{\link{R6Class}} object.
+#' @field removeNaN of type bool.
 #' @field namedFilters list of class \code{\link{NamedFilter}}.
-Filters <- R6::R6Class("Filters", inherit = Base, public = list(namedFilters = NULL, 
-    initialize = function(json = NULL) {
+Filters <- R6::R6Class("Filters", inherit = Base, public = list(removeNaN = NULL, 
+    namedFilters = NULL, initialize = function(json = NULL) {
         if (!is.null(json)) {
             self$initJson(json)
         } else {
@@ -12,13 +13,16 @@ Filters <- R6::R6Class("Filters", inherit = Base, public = list(namedFilters = N
         }
     }, init = function() {
         super$init()
+        self$removeNaN = TRUE
         self$namedFilters = list()
     }, initJson = function(json) {
         super$initJson(json)
+        self$removeNaN = json$removeNaN
         self$namedFilters = lapply(json$namedFilters, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("Filters")
+        m$removeNaN = rtson::tson.scalar(self$removeNaN)
         m$namedFilters = lapply(self$namedFilters, function(each) each$toTson())
         return(m)
     }, print = function(...) {

@@ -4,7 +4,7 @@
 \name{Operator}
 \alias{Operator}
 \title{Operator}
-\format{\code{\link{R6Class}} object, super class \code{\link{ProjectDocument}}, sub classes \code{\link{ShinyOperator}}, \code{\link{ROperator}}, \code{\link{WebAppOperator}}, \code{\link{GitOperator}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{Document}}, sub classes \code{\link{ShinyOperator}}, \code{\link{ROperator}}, \code{\link{WebAppOperator}}, \code{\link{GitOperator}}.}
 \usage{
 Operator
 }
@@ -14,8 +14,6 @@ Operator
 \section{Fields}{
 
 \describe{
-\item{\code{projectId}}{of type String inherited from super class \code{\link{ProjectDocument}}.}
-
 \item{\code{description}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{name}}{of type String inherited from super class \code{\link{Document}}.}
@@ -23,6 +21,10 @@ Operator
 \item{\code{createdBy}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{tags}}{list of type String inherited from super class \code{\link{Document}}.}
+
+\item{\code{version}}{of type String inherited from super class \code{\link{Document}}.}
+
+\item{\code{authors}}{list of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 
@@ -37,6 +39,10 @@ Operator
 \item{\code{lastModifiedDate}}{object of class \code{\link{Date}} inherited from super class \code{\link{Document}}.}
 
 \item{\code{urls}}{list of class \code{\link{Url}} inherited from super class \code{\link{Document}}.}
+
+\item{\code{meta}}{list of class \code{\link{Pair}} inherited from super class \code{\link{Document}}.}
+
+\item{\code{url}}{object of class \code{\link{Url}} inherited from super class \code{\link{Document}}.}
 
 \item{\code{properties}}{list of class \code{\link{Property}}.}
 }}

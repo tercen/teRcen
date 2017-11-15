@@ -2,7 +2,7 @@
 #'
 #' @export
 #' @format \code{\link{R6Class}} object.
-#' @field quartiles list of type double.
+#' @field quartiles list of type String.
 ColumnSchemaMetaData <- R6::R6Class("ColumnSchemaMetaData", inherit = Base, public = list(quartiles = NULL, 
     initialize = function(json = NULL) {
         if (!is.null(json)) {

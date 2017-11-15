@@ -165,11 +165,14 @@ createObjectFromJson = function(json) {
     if (kind == "RunningDependentState") {
         return(RunningDependentState$new(json = json))
     }
-    if (kind == "StartProcess") {
-        return(StartProcess$new(json = json))
+    if (kind == "ExportWorkflowTask") {
+        return(ExportWorkflowTask$new(json = json))
     }
     if (kind == "InputPort") {
         return(InputPort$new(json = json))
+    }
+    if (kind == "StartProcess") {
+        return(StartProcess$new(json = json))
     }
     if (kind == "Token") {
         return(Token$new(json = json))
@@ -188,9 +191,6 @@ createObjectFromJson = function(json) {
     }
     if (kind == "ComputationTask") {
         return(ComputationTask$new(json = json))
-    }
-    if (kind == "UrlViewStep") {
-        return(UrlViewStep$new(json = json))
     }
     if (kind == "DoneState") {
         return(DoneState$new(json = json))
@@ -219,11 +219,11 @@ createObjectFromJson = function(json) {
     if (kind == "RunWebAppTask") {
         return(RunWebAppTask$new(json = json))
     }
-    if (kind == "DoubleColorElement") {
-        return(DoubleColorElement$new(json = json))
-    }
     if (kind == "TaskProgressEvent") {
         return(TaskProgressEvent$new(json = json))
+    }
+    if (kind == "DoubleColorElement") {
+        return(DoubleColorElement$new(json = json))
     }
     if (kind == "Step") {
         return(Step$new(json = json))
@@ -249,6 +249,9 @@ createObjectFromJson = function(json) {
     if (kind == "Operator") {
         return(Operator$new(json = json))
     }
+    if (kind == "ProjectTask") {
+        return(ProjectTask$new(json = json))
+    }
     if (kind == "ColumnSchemaMetaData") {
         return(ColumnSchemaMetaData$new(json = json))
     }
@@ -263,9 +266,6 @@ createObjectFromJson = function(json) {
     }
     if (kind == "Port") {
         return(Port$new(json = json))
-    }
-    if (kind == "ViewDataStep") {
-        return(ViewDataStep$new(json = json))
     }
     if (kind == "JoinStep") {
         return(JoinStep$new(json = json))
@@ -357,9 +357,6 @@ createObjectFromJson = function(json) {
     if (kind == "StringProperty") {
         return(StringProperty$new(json = json))
     }
-    if (kind == "UrlModel") {
-        return(UrlModel$new(json = json))
-    }
     if (kind == "XYAxis") {
         return(XYAxis$new(json = json))
     }
@@ -371,6 +368,9 @@ createObjectFromJson = function(json) {
     }
     if (kind == "Attribute") {
         return(Attribute$new(json = json))
+    }
+    if (kind == "ImportWorkflowTask") {
+        return(ImportWorkflowTask$new(json = json))
     }
     if (kind == "Project") {
         return(Project$new(json = json))
@@ -389,6 +389,9 @@ createObjectFromJson = function(json) {
     }
     if (kind == "EnumeratedProperty") {
         return(EnumeratedProperty$new(json = json))
+    }
+    if (kind == "ImportGitWorkflowTask") {
+        return(ImportGitWorkflowTask$new(json = json))
     }
     if (kind == "NamespaceStep") {
         return(NamespaceStep$new(json = json))
@@ -452,6 +455,9 @@ createObjectFromJson = function(json) {
     }
     if (kind == "Chart") {
         return(Chart$new(json = json))
+    }
+    if (kind == "MappingFilter") {
+        return(MappingFilter$new(json = json))
     }
     if (kind == "ChartBar") {
         return(ChartBar$new(json = json))

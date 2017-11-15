@@ -4,7 +4,7 @@
 \name{Task}
 \alias{Task}
 \title{Task}
-\format{\code{\link{R6Class}} object, super class \code{\link{PersistentObject}}, sub classes \code{\link{ComputationTask}}, \code{\link{RunWebAppTask}}, \code{\link{CSVTask}}, \code{\link{CubeQueryTask}}, \code{\link{CreateGitOperatorTask}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{PersistentObject}}, sub classes \code{\link{ComputationTask}}, \code{\link{ExportWorkflowTask}}, \code{\link{RunWebAppTask}}, \code{\link{CSVTask}}, \code{\link{CubeQueryTask}}, \code{\link{ImportWorkflowTask}}, \code{\link{ImportGitWorkflowTask}}, \code{\link{ProjectTask}}, \code{\link{CreateGitOperatorTask}}.}
 \usage{
 Task
 }
@@ -23,8 +23,6 @@ Task
 \item{\code{duration}}{of type double.}
 
 \item{\code{owner}}{of type String.}
-
-\item{\code{projectId}}{of type String.}
 
 \item{\code{taskHash}}{of type String.}
 
