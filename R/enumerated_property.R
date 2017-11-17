@@ -4,6 +4,7 @@
 #' @format \code{\link{R6Class}} object, super class \code{\link{StringProperty}}.
 #' @field defaultValue of type String inherited from super class \code{\link{StringProperty}}.
 #' @field name of type String inherited from super class \code{\link{Property}}.
+#' @field description of type String inherited from super class \code{\link{Property}}.
 #' @field values list of type String.
 EnumeratedProperty <- R6::R6Class("EnumeratedProperty", inherit = StringProperty, 
     public = list(values = NULL, initialize = function(json = NULL) {

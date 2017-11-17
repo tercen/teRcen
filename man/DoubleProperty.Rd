@@ -16,6 +16,8 @@ DoubleProperty
 \describe{
 \item{\code{name}}{of type String inherited from super class \code{\link{Property}}.}
 
+\item{\code{description}}{of type String inherited from super class \code{\link{Property}}.}
+
 \item{\code{defaultValue}}{of type double.}
 }}
 

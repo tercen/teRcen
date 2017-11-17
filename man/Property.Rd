@@ -15,6 +15,8 @@ Property
 
 \describe{
 \item{\code{name}}{of type String.}
+
+\item{\code{description}}{of type String.}
 }}
 
 \keyword{datasets}

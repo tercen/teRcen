@@ -219,11 +219,11 @@ createObjectFromJson = function(json) {
     if (kind == "RunWebAppTask") {
         return(RunWebAppTask$new(json = json))
     }
-    if (kind == "TaskProgressEvent") {
-        return(TaskProgressEvent$new(json = json))
-    }
     if (kind == "DoubleColorElement") {
         return(DoubleColorElement$new(json = json))
+    }
+    if (kind == "TaskProgressEvent") {
+        return(TaskProgressEvent$new(json = json))
     }
     if (kind == "Step") {
         return(Step$new(json = json))

@@ -183,6 +183,7 @@ OperatorContextDev <- R6Class(
         print('task is null, create a task')
         task = ComputationTask$new()
         task$state = InitState$new()
+        task$owner = workflow$acl$owner
         task$projectId = workflow$projectId
         task$query = self$query
         task$fileResultId = fileDoc$id
