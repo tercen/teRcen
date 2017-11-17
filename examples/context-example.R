@@ -4,6 +4,9 @@ library(dplyr)
 getOption("tercen.serviceUri")
 getOption("tercen.username")
 getOption("tercen.password")
+ 
+options("tercen.workflowId"= "89295163a4460e6423fe002f813ad971")
+options("tercen.stepId"= "3-1")
 getOption("tercen.workflowId")
 getOption("tercen.stepId")
 
@@ -13,6 +16,7 @@ ctx = tercenCtx()
 
 ctx$namespace
 ctx$query
+ctx$op.value('scale')
 
 # columns names of the xy table
 ctx$names
@@ -32,8 +36,8 @@ ctx$rschema
 ctx$select()
 ctx$select(nr=1)
 ctx$select(offset=10, nr=3)
-ctx$select(c('.values','.cindex','.rindex'), nr=3)
-ctx$select('.values', nr=3)
+ctx$select(c('.y','.ci','.ri'), nr=3)
+ctx$select('.y', nr=3)
 
 # select column table
 ctx$cselect()

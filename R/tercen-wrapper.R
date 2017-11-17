@@ -15,7 +15,12 @@ AbstractOperatorContext <- R6Class(
     
     client = NULL, 
     task = NULL,
-    
+    op.value = function(name){
+      property = Find(function(propertyValue) propertyValue$name == name ,
+                      self$query$operatorSettings$operatorRef$propertyValues)
+      if (is.null(property)) return(NULL)
+      return(property$value)
+    },
     select = function(names=list(), offset=0, nr=-1) {
       return (self$selectSchema(self$schema, names=names,offset=offset,nr=nr))
     },
