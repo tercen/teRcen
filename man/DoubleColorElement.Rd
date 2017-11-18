@@ -16,7 +16,7 @@ DoubleColorElement
 \describe{
 \item{\code{color}}{of type int inherited from super class \code{\link{ColorElement}}.}
 
-\item{\code{doubleValue}}{of type double.}
+\item{\code{stringValue}}{of type String.}
 }}
 
 \keyword{datasets}
