@@ -19,5 +19,5 @@ Imports:
     tibble,
     yaml
 URL: https://tercen.com
-BugReports: https://github.com/tercen/rtercen/issues
+BugReports: https://github.com/tercen/teRcen/issues
 RoxygenNote: 6.0.1
