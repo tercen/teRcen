@@ -153,6 +153,9 @@ createObjectFromJson = function(json) {
     if (kind == "RampPalette") {
         return(RampPalette$new(json = json))
     }
+    if (kind == "DistinctRelation") {
+        return(DistinctRelation$new(json = json))
+    }
     if (kind == "OutStep") {
         return(OutStep$new(json = json))
     }
@@ -165,11 +168,11 @@ createObjectFromJson = function(json) {
     if (kind == "RunningDependentState") {
         return(RunningDependentState$new(json = json))
     }
-    if (kind == "ExportWorkflowTask") {
-        return(ExportWorkflowTask$new(json = json))
-    }
     if (kind == "InputPort") {
         return(InputPort$new(json = json))
+    }
+    if (kind == "ExportWorkflowTask") {
+        return(ExportWorkflowTask$new(json = json))
     }
     if (kind == "StartProcess") {
         return(StartProcess$new(json = json))

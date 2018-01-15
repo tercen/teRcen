@@ -16,9 +16,9 @@ CompositeRelation
 \describe{
 \item{\code{id}}{of type String inherited from super class \code{\link{IdObject}}.}
 
-\item{\code{mainRelation}}{object of class \code{\link{Relation}}.}
-
 \item{\code{joinOperators}}{list of class \code{\link{JoinOperator}}.}
+
+\item{\code{mainRelation}}{object of class \code{\link{Relation}}.}
 }}
 
 \keyword{datasets}

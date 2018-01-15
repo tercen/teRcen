@@ -5,8 +5,8 @@ getOption("tercen.serviceUri")
 getOption("tercen.username")
 getOption("tercen.password")
  
-options("tercen.workflowId"= "89295163a4460e6423fe002f813ad971")
-options("tercen.stepId"= "3-1")
+options("tercen.workflowId"= "bbb78735166d6862b70afaaac9038c39")
+options("tercen.stepId"= "92-21")
 getOption("tercen.workflowId")
 getOption("tercen.stepId")
 
@@ -16,6 +16,12 @@ ctx = tercenCtx()
 
 ctx$namespace
 ctx$query
+ctx$yAxis
+ctx$xAxis
+ctx$colors
+ctx$labels
+ctx$errors
+
 ctx$op.value('scale')
 
 # columns names of the xy table
