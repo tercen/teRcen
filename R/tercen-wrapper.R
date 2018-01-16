@@ -198,7 +198,7 @@ OperatorContextDev <- R6Class(
       
       result = OperatorResult$new()
       
-      if (is.list(computed.df)){
+      if (inherits(computed.df, 'list')){
         result$tables = lapply(computed.df, tercen::dataframe.as.table)
       } else {
         result$tables = list(tercen::dataframe.as.table(computed.df))
