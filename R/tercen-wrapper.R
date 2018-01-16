@@ -197,7 +197,13 @@ OperatorContextDev <- R6Class(
     save = function(computed.df){
       
       result = OperatorResult$new()
-      result$tables = list(tercen::dataframe.as.table(computed.df))
+      
+      if (is.list(computed.df)){
+        result$tables = lapply(computed.df, tercen::dataframe.as.table)
+      } else {
+        result$tables = list(tercen::dataframe.as.table(computed.df))
+      }
+      
       bytes = rtson::toTSON(result$toTson())
       
       workflow = self$workflow
@@ -282,7 +288,13 @@ OperatorContext <- R6Class(
     save = function(computed.df){
        
       result = OperatorResult$new()
-      result$tables = list(tercen::dataframe.as.table(computed.df))
+      
+      if (is.list(computed.df)){
+        result$tables = lapply(computed.df, tercen::dataframe.as.table)
+      } else {
+        result$tables = list(tercen::dataframe.as.table(computed.df))
+      }
+      
       bytes = rtson::toTSON(result$toTson())
       
       if (nchar(self$task$fileResultId) == 0){
