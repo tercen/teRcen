@@ -162,6 +162,17 @@ AbstractOperatorContext <- R6Class(
       color.factor.names = lapply(color.factors, function(factor) factor$name)
       ll = unique(sapply(color.factor.names, remove.prefix))
       return (ll[nchar(ll) > 0])
+    },
+    hasXAxis = function(value){
+      if (!missing(value)) stop('read only')
+      return (is.null(base::Find(function(each) each$name == '.x', self$schema$columns)))
+    },
+    hasNumericXAxis = function(value){
+      if (!missing(value)) stop('read only')
+      column = base::Find(function(each) each$name == '.x', self$schema$columns)
+      if (is.null(column)) return(FALSE)
+      if (column$type != 'double') return(FALSE)
+      return(TRUE)
     }
   )
 )
