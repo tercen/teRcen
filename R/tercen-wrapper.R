@@ -165,7 +165,7 @@ AbstractOperatorContext <- R6Class(
     },
     hasXAxis = function(value){
       if (!missing(value)) stop('read only')
-      return (is.null(base::Find(function(each) each$name == '.x', self$schema$columns)))
+      return (!is.null(base::Find(function(each) each$name == '.x', self$schema$columns)))
     },
     hasNumericXAxis = function(value){
       if (!missing(value)) stop('read only')
