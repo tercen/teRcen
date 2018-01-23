@@ -468,6 +468,9 @@ createObjectFromJson = function(json) {
     if (kind == "GitOperator") {
         return(GitOperator$new(json = json))
     }
+    if (kind == "FormulaProperty") {
+        return(FormulaProperty$new(json = json))
+    }
     if (kind == "Worker") {
         return(Worker$new(json = json))
     }
