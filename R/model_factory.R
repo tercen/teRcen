@@ -237,8 +237,8 @@ createObjectFromJson = function(json) {
     if (kind == "XYAxisList") {
         return(XYAxisList$new(json = json))
     }
-    if (kind == "Profiles") {
-        return(Profiles$new(json = json))
+    if (kind == "FactorsProperty") {
+        return(FactorsProperty$new(json = json))
     }
     if (kind == "Crosstab") {
         return(Crosstab$new(json = json))
@@ -248,6 +248,9 @@ createObjectFromJson = function(json) {
     }
     if (kind == "Task") {
         return(Task$new(json = json))
+    }
+    if (kind == "Profiles") {
+        return(Profiles$new(json = json))
     }
     if (kind == "Operator") {
         return(Operator$new(json = json))
