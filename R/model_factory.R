@@ -342,6 +342,9 @@ createObjectFromJson = function(json) {
     if (kind == "OperatorResult") {
         return(OperatorResult$new(json = json))
     }
+    if (kind == "ExportTableTask") {
+        return(ExportTableTask$new(json = json))
+    }
     if (kind == "FileDocument") {
         return(FileDocument$new(json = json))
     }
@@ -411,6 +414,9 @@ createObjectFromJson = function(json) {
     if (kind == "Pair") {
         return(Pair$new(json = json))
     }
+    if (kind == "ExportModel") {
+        return(ExportModel$new(json = json))
+    }
     if (kind == "InMemoryRelation") {
         return(InMemoryRelation$new(json = json))
     }
@@ -422,6 +428,9 @@ createObjectFromJson = function(json) {
     }
     if (kind == "BooleanProperty") {
         return(BooleanProperty$new(json = json))
+    }
+    if (kind == "ExportStep") {
+        return(ExportStep$new(json = json))
     }
     if (kind == "ViewStep") {
         return(ViewStep$new(json = json))
@@ -476,6 +485,9 @@ createObjectFromJson = function(json) {
     }
     if (kind == "Worker") {
         return(Worker$new(json = json))
+    }
+    if (kind == "Lock") {
+        return(Lock$new(json = json))
     }
     if (kind == "GroupByRelation") {
         return(GroupByRelation$new(json = json))

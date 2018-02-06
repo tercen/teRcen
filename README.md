@@ -4,5 +4,5 @@
 
 ```R
 install.packages('devtools')
-devtools::install_github("tercen/teRcen", ref = "0.4.17")
+devtools::install_github("tercen/teRcen", ref = "0.4.18")
 ```

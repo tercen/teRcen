@@ -1,7 +1,7 @@
 #' StepModel
 #'
 #' @export
-#' @format \code{\link{R6Class}} object, sub classes \code{\link{TableStepModel}}, \code{\link{Crosstab}}, \code{\link{JoinStepModel}}, \code{\link{WizardStepModel}}, \code{\link{MeltStepModel}}.
+#' @format \code{\link{R6Class}} object, sub classes \code{\link{TableStepModel}}, \code{\link{Crosstab}}, \code{\link{JoinStepModel}}, \code{\link{WizardStepModel}}, \code{\link{MeltStepModel}}, \code{\link{ExportModel}}.
 StepModel <- R6::R6Class("StepModel", inherit = Base, public = list(initialize = function(json = NULL) {
     if (!is.null(json)) {
         self$initJson(json)

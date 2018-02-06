@@ -29,6 +29,8 @@ ProjectDocumentService <- R6::R6Class("ProjectDocumentService", inherit = HttpCl
             useFactory = useFactory))
     }, findWorkflowBySchema = function(keys = NULL, useFactory = FALSE) {
         return(self$findKeys("findWorkflowBySchema", keys = keys, useFactory = useFactory))
+    }, findWorkflowByOperator = function(keys = NULL, useFactory = FALSE) {
+        return(self$findKeys("findWorkflowByOperator", keys = keys, useFactory = useFactory))
     }, findWorkflowTemplateByOwnerCreatedDate = function(startKey = NULL, endKey = NULL, 
         limit = 20, skip = 0, descending = TRUE, useFactory = FALSE) {
         return(self$findStartKeys("findWorkflowTemplateByOwnerCreatedDate", startKey = startKey, 

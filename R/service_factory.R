@@ -1,5 +1,5 @@
 ServiceFactory <- R6::R6Class("ServiceFactory", public = list(workerService = NULL, 
-    garbageCollectorService = NULL, fileService = NULL, persistentService = NULL, 
+    garbageCollectorService = NULL, fileService = NULL, lockService = NULL, persistentService = NULL, 
     tableSchemaService = NULL, taskService = NULL, eventService = NULL, userSecretService = NULL, 
     workflowService = NULL, userService = NULL, projectDocumentService = NULL, teamService = NULL, 
     projectService = NULL, documentService = NULL, operatorService = NULL, initialize = function(baseRestUri) {
@@ -7,6 +7,7 @@ ServiceFactory <- R6::R6Class("ServiceFactory", public = list(workerService = NU
         self$workerService = WorkerService$new(baseRestUri, client)
         self$garbageCollectorService = GarbageCollectorService$new(baseRestUri, client)
         self$fileService = FileService$new(baseRestUri, client)
+        self$lockService = LockService$new(baseRestUri, client)
         self$persistentService = PersistentService$new(baseRestUri, client)
         self$tableSchemaService = TableSchemaService$new(baseRestUri, client)
         self$taskService = TaskService$new(baseRestUri, client)

@@ -14,6 +14,7 @@
 #' @field isDeleted of type bool inherited from super class \code{\link{PersistentObject}}.
 #' @field rev of type String inherited from super class \code{\link{PersistentObject}}.
 #' @field id of type String inherited from super class \code{\link{IdObject}}.
+#' @field namespace of type String.
 #' @field columns list of class \code{\link{ColumnSchema}} inherited from super class \code{\link{Schema}}.
 #' @field acl object of class \code{\link{Acl}} inherited from super class \code{\link{Document}}.
 #' @field createdDate object of class \code{\link{Date}} inherited from super class \code{\link{Document}}.
@@ -21,21 +22,25 @@
 #' @field urls list of class \code{\link{Url}} inherited from super class \code{\link{Document}}.
 #' @field meta list of class \code{\link{Pair}} inherited from super class \code{\link{Document}}.
 #' @field url object of class \code{\link{Url}} inherited from super class \code{\link{Document}}.
-ComputedTableSchema <- R6::R6Class("ComputedTableSchema", inherit = Schema, public = list(initialize = function(json = NULL) {
-    if (!is.null(json)) {
-        self$initJson(json)
-    } else {
-        self$init()
-    }
-}, init = function() {
-    super$init()
-}, initJson = function(json) {
-    super$initJson(json)
-}, toTson = function() {
-    m = super$toTson()
-    m$kind = rtson::tson.scalar("ComputedTableSchema")
-    return(m)
-}, print = function(...) {
-    cat(yaml::as.yaml(self$toTson()))
-    invisible(self)
-}))
+ComputedTableSchema <- R6::R6Class("ComputedTableSchema", inherit = Schema, public = list(namespace = NULL, 
+    initialize = function(json = NULL) {
+        if (!is.null(json)) {
+            self$initJson(json)
+        } else {
+            self$init()
+        }
+    }, init = function() {
+        super$init()
+        self$namespace = ""
+    }, initJson = function(json) {
+        super$initJson(json)
+        self$namespace = json$namespace
+    }, toTson = function() {
+        m = super$toTson()
+        m$kind = rtson::tson.scalar("ComputedTableSchema")
+        m$namespace = rtson::tson.scalar(self$namespace)
+        return(m)
+    }, print = function(...) {
+        cat(yaml::as.yaml(self$toTson()))
+        invisible(self)
+    }))
