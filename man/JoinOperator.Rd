@@ -4,11 +4,19 @@
 \name{JoinOperator}
 \alias{JoinOperator}
 \title{JoinOperator}
-\format{\code{\link{R6Class}} object, sub classes \code{\link{JoinOperator1}}.}
+\format{\code{\link{R6Class}} object.}
 \usage{
 JoinOperator
 }
 \description{
 JoinOperator
 }
+\section{Fields}{
+
+\describe{
+\item{\code{leftPair}}{object of class \code{\link{ColumnPair}}.}
+
+\item{\code{rightRelation}}{object of class \code{\link{Relation}}.}
+}}
+
 \keyword{datasets}
