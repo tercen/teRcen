@@ -12,9 +12,6 @@ createObjectFromJson = function(json) {
     if (kind == "DoubleProperty") {
         return(DoubleProperty$new(json = json))
     }
-    if (kind == "JoinMeltOperator") {
-        return(JoinMeltOperator$new(json = json))
-    }
     if (kind == "Rectangle") {
         return(Rectangle$new(json = json))
     }
@@ -428,6 +425,9 @@ createObjectFromJson = function(json) {
     }
     if (kind == "BooleanProperty") {
         return(BooleanProperty$new(json = json))
+    }
+    if (kind == "GatherRelation") {
+        return(GatherRelation$new(json = json))
     }
     if (kind == "ExportStep") {
         return(ExportStep$new(json = json))

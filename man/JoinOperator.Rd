@@ -4,7 +4,7 @@
 \name{JoinOperator}
 \alias{JoinOperator}
 \title{JoinOperator}
-\format{\code{\link{R6Class}} object, sub classes \code{\link{JoinMeltOperator}}, \code{\link{JoinOperator1}}.}
+\format{\code{\link{R6Class}} object, sub classes \code{\link{JoinOperator1}}.}
 \usage{
 JoinOperator
 }

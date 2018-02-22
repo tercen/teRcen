@@ -1,7 +1,7 @@
 #' JoinOperator
 #'
 #' @export
-#' @format \code{\link{R6Class}} object, sub classes \code{\link{JoinMeltOperator}}, \code{\link{JoinOperator1}}.
+#' @format \code{\link{R6Class}} object, sub classes \code{\link{JoinOperator1}}.
 JoinOperator <- R6::R6Class("JoinOperator", inherit = Base, public = list(initialize = function(json = NULL) {
     if (!is.null(json)) {
         self$initJson(json)
