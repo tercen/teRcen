@@ -138,8 +138,8 @@ createObjectFromJson = function(json) {
     if (kind == "CubeAxisQuery") {
         return(CubeAxisQuery$new(json = json))
     }
-    if (kind == "JoinOperator1") {
-        return(JoinOperator1$new(json = json))
+    if (kind == "Schema") {
+        return(Schema$new(json = json))
     }
     if (kind == "ColorElement") {
         return(ColorElement$new(json = json))
@@ -156,20 +156,17 @@ createObjectFromJson = function(json) {
     if (kind == "OutStep") {
         return(OutStep$new(json = json))
     }
-    if (kind == "Schema") {
-        return(Schema$new(json = json))
-    }
     if (kind == "TaskSummary") {
         return(TaskSummary$new(json = json))
     }
     if (kind == "RunningDependentState") {
         return(RunningDependentState$new(json = json))
     }
-    if (kind == "InputPort") {
-        return(InputPort$new(json = json))
-    }
     if (kind == "ExportWorkflowTask") {
         return(ExportWorkflowTask$new(json = json))
+    }
+    if (kind == "InputPort") {
+        return(InputPort$new(json = json))
     }
     if (kind == "StartProcess") {
         return(StartProcess$new(json = json))
