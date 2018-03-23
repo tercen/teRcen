@@ -20,9 +20,9 @@
 #' @field runDate object of class \code{\link{Date}} inherited from super class \code{\link{Task}}.
 #' @field completedDate object of class \code{\link{Date}} inherited from super class \code{\link{Task}}.
 #' @field aclContext object of class \code{\link{AclContext}} inherited from super class \code{\link{Task}}.
-#' @field result list of class \code{\link{JoinOperator}}.
+#' @field computedRelation object of class \code{\link{Relation}}.
 ComputationTask <- R6::R6Class("ComputationTask", inherit = CubeQueryTask, public = list(fileResultId = NULL, 
-    result = NULL, initialize = function(json = NULL) {
+    computedRelation = NULL, initialize = function(json = NULL) {
         if (!is.null(json)) {
             self$initJson(json)
         } else {
@@ -31,16 +31,16 @@ ComputationTask <- R6::R6Class("ComputationTask", inherit = CubeQueryTask, publi
     }, init = function() {
         super$init()
         self$fileResultId = ""
-        self$result = list()
+        self$computedRelation = Relation$new()
     }, initJson = function(json) {
         super$initJson(json)
         self$fileResultId = json$fileResultId
-        self$result = lapply(json$result, createObjectFromJson)
+        self$computedRelation = createObjectFromJson(json$computedRelation)
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("ComputationTask")
         m$fileResultId = rtson::tson.scalar(self$fileResultId)
-        m$result = lapply(self$result, function(each) each$toTson())
+        m$computedRelation = self$computedRelation$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

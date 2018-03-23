@@ -5,8 +5,10 @@ getOption("tercen.serviceUri")
 getOption("tercen.username")
 getOption("tercen.password")
 
-options("tercen.workflowId"= "bbb78735166d6862b70afaaac9038c39")
-options("tercen.stepId"= "36-13")
+
+
+options("tercen.workflowId"= "9d5379a435c8457a347584e162003e09")
+options("tercen.stepId"= "32-13")
 getOption("tercen.workflowId")
 getOption("tercen.stepId")
  

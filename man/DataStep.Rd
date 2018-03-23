@@ -30,7 +30,7 @@ DataStep
 
 \item{\code{state}}{object of class \code{\link{StepState}} inherited from super class \code{\link{Step}}.}
 
-\item{\code{joinOperators}}{list of class \code{\link{JoinOperator}}.}
+\item{\code{computedRelation}}{object of class \code{\link{Relation}}.}
 }}
 
 \keyword{datasets}

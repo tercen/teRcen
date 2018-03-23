@@ -14,6 +14,10 @@ ColumnSchemaMetaData
 \section{Fields}{
 
 \describe{
+\item{\code{sort}}{list of type String.}
+
+\item{\code{ascending}}{of type bool.}
+
 \item{\code{quartiles}}{list of type String.}
 }}
 

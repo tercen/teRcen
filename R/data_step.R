@@ -10,8 +10,8 @@
 #' @field outputs list of class \code{\link{OutputPort}} inherited from super class \code{\link{Step}}.
 #' @field rectangle object of class \code{\link{Rectangle}} inherited from super class \code{\link{Step}}.
 #' @field state object of class \code{\link{StepState}} inherited from super class \code{\link{Step}}.
-#' @field joinOperators list of class \code{\link{JoinOperator}}.
-DataStep <- R6::R6Class("DataStep", inherit = CrossTabStep, public = list(joinOperators = NULL, 
+#' @field computedRelation object of class \code{\link{Relation}}.
+DataStep <- R6::R6Class("DataStep", inherit = CrossTabStep, public = list(computedRelation = NULL, 
     initialize = function(json = NULL) {
         if (!is.null(json)) {
             self$initJson(json)
@@ -20,14 +20,14 @@ DataStep <- R6::R6Class("DataStep", inherit = CrossTabStep, public = list(joinOp
         }
     }, init = function() {
         super$init()
-        self$joinOperators = list()
+        self$computedRelation = Relation$new()
     }, initJson = function(json) {
         super$initJson(json)
-        self$joinOperators = lapply(json$joinOperators, createObjectFromJson)
+        self$computedRelation = createObjectFromJson(json$computedRelation)
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("DataStep")
-        m$joinOperators = lapply(self$joinOperators, function(each) each$toTson())
+        m$computedRelation = self$computedRelation$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

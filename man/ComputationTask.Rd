@@ -50,7 +50,7 @@ ComputationTask
 
 \item{\code{aclContext}}{object of class \code{\link{AclContext}} inherited from super class \code{\link{Task}}.}
 
-\item{\code{result}}{list of class \code{\link{JoinOperator}}.}
+\item{\code{computedRelation}}{object of class \code{\link{Relation}}.}
 }}
 
 \keyword{datasets}

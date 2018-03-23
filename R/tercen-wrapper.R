@@ -22,6 +22,51 @@ AbstractOperatorContext <- R6Class(
       return(property$value)
     },
     select = function(names=list(), offset=0, nr=-1) {
+      if (self$isPairwise){
+        
+        cnames = unique(unlist(list('.pji', '.prg', '.pcg', '.axisIndex', names)))
+        
+        if ('.x' %in% names && !self$hasXAxis) {
+          cnames = cnames[cnames != '.x']
+          if (!('.y' %in% names)) {
+            cnames = unlist(list(cnames, '.y'))
+          }
+        }
+        
+        table = self$select_raw(names=cnames,offset=0,nr=-1)
+        
+        leftNames = cnames
+        rightNames = list('.pji', '.prg', '.pcg', '.axisIndex')
+        
+        if ('.x' %in% names) {
+          if (self$hasXAxis) {
+            rightNames = unlist(list(rightNames, '.x'))
+            leftNames = leftNames[leftNames != '.x']
+          } else {
+            rightNames = unlist(list(rightNames, '.y'))
+          }
+        } 
+        
+        right = table %>% select_(.dots = rightNames)
+        
+        if ('.y' %in% names(right)){
+          right = right %>% rename_(.dots = list(.x='.y'))
+        }
+        
+        left = table %>% select_(.dots = leftNames)
+         
+        pairwise = left %>% 
+          left_join(right, by=c('.axisIndex', '.prg', '.pcg', '.pji')) %>%
+          select_(.dots = names)
+        
+        return (pairwise)
+         
+
+      } else {
+        return (self$select_raw(names=names,offset=offset,nr=nr))
+      }
+    },
+    select_raw = function(names=list(), offset=0, nr=-1) {
       return (self$selectSchema(self$schema, names=names,offset=offset,nr=nr))
     },
     cselect = function(names=list(), offset=0, nr=-1) {
@@ -81,6 +126,10 @@ AbstractOperatorContext <- R6Class(
     }
   ),
   active = list(
+    isPairwise = function(value) {
+      if (!missing(value)) stop('read only')
+      return (length(intersect(self$cnames, self$rnames)) > 0)
+    },
     taskId = function(value) {
       if (!missing(value)) stop('read only')
       if (is.null(self$task)){

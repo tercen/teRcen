@@ -15,6 +15,8 @@ SimpleRelation
 
 \describe{
 \item{\code{id}}{of type String inherited from super class \code{\link{IdObject}}.}
+
+\item{\code{index}}{of type int.}
 }}
 
 \keyword{datasets}
