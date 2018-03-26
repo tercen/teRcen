@@ -47,6 +47,11 @@ AbstractOperatorContext <- R6Class(
           }
         } 
         
+        if ('.ci' %in% names) {
+          rightNames = unlist(list(rightNames, '.ci'))
+          leftNames = leftNames[leftNames != '.ci']
+        } 
+        
         right = table %>% select_(.dots = rightNames)
         
         if ('.y' %in% names(right)){
