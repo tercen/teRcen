@@ -189,32 +189,32 @@ AbstractOperatorContext <- R6Class(
       if (!missing(value)) stop('read only')
       color.factors = unlist(lapply(self$query$axisQueries, function(axisQuery) axisQuery$colors))
       color.factor.names = lapply(color.factors, function(factor) factor$name)
-      return(unique(sapply(color.factor.names, remove.prefix))) 
+      return(color.factor.names) 
     },
     labels = function(value) {
       if (!missing(value)) stop('read only')
       color.factors = unlist(lapply(self$query$axisQueries, function(axisQuery) axisQuery$labels))
       color.factor.names = lapply(color.factors, function(factor) factor$name)
-      return(unique(sapply(color.factor.names, remove.prefix))) 
+      return(color.factor.names) 
     },
     errors = function(value) {
       if (!missing(value)) stop('read only')
       color.factors = unlist(lapply(self$query$axisQueries, function(axisQuery) axisQuery$errors))
       color.factor.names = lapply(color.factors, function(factor) factor$name)
-      return(unique(sapply(color.factor.names, remove.prefix))) 
+      return(color.factor.names) 
     },
     xAxis = function(value) {
       if (!missing(value)) stop('read only')
       color.factors = lapply(self$query$axisQueries, function(axisQuery) axisQuery$xAxis)
       color.factor.names = lapply(color.factors, function(factor) factor$name)
-      ll = unique(sapply(color.factor.names, remove.prefix))
+      ll = unique(color.factor.names)
       return (ll[nchar(ll) > 0])
     },
     yAxis = function(value) {
       if (!missing(value)) stop('read only')
       color.factors = lapply(self$query$axisQueries, function(axisQuery) axisQuery$yAxis)
       color.factor.names = lapply(color.factors, function(factor) factor$name)
-      ll = unique(sapply(color.factor.names, remove.prefix))
+      ll = unique(color.factor.names)
       return (ll[nchar(ll) > 0])
     },
     hasXAxis = function(value){
