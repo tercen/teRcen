@@ -133,7 +133,9 @@ AbstractOperatorContext <- R6Class(
   active = list(
     isPairwise = function(value) {
       if (!missing(value)) stop('read only')
-      return (length(intersect(self$cnames, self$rnames)) > 0)
+      intersec = intersect(self$cnames, self$rnames)
+      intersec = intersec[nchar(intersec) > 0]
+      return (length(intersec) > 0)
     },
     taskId = function(value) {
       if (!missing(value)) stop('read only')
