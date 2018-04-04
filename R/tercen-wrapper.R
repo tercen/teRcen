@@ -23,56 +23,10 @@ AbstractOperatorContext <- R6Class(
     },
     select = function(names=list(), offset=0, nr=-1) {
       if (self$isPairwise){
-        
-        cnames = unique(unlist(list('.pji', '.prg', '.pcg', '.axisIndex', names)))
-        
-        if ('.x' %in% names && !self$hasXAxis) {
-          cnames = cnames[cnames != '.x']
-          if (!('.y' %in% names)) {
-            cnames = unlist(list(cnames, '.y'))
-          }
-        }
-        
-        table = self$select_raw(names=cnames,offset=0,nr=-1)
-        
-        leftNames = cnames
-        rightNames = list('.pji', '.prg', '.pcg', '.axisIndex')
-        
-        if ('.x' %in% names) {
-          if (self$hasXAxis) {
-            rightNames = unlist(list(rightNames, '.x'))
-            leftNames = leftNames[leftNames != '.x']
-          } else {
-            rightNames = unlist(list(rightNames, '.y'))
-          }
-        } 
-        
-        if ('.ci' %in% names) {
-          rightNames = unlist(list(rightNames, '.ci'))
-          leftNames = leftNames[leftNames != '.ci']
-        } 
-        
-        right = table %>% select_(.dots = rightNames)
-        
-        if ('.y' %in% names(right)){
-          right = right %>% rename_(.dots = list(.x='.y'))
-        }
-        
-        left = table %>% select_(.dots = leftNames)
-         
-        pairwise = left %>% 
-          left_join(right, by=c('.axisIndex', '.prg', '.pcg', '.pji')) %>%
-          select_(.dots = names)
-        
-        return (pairwise)
-         
-
+        return (self$selectSchemaPairwise(self$schema, names=names,offset=offset,nr=nr))
       } else {
-        return (self$select_raw(names=names,offset=offset,nr=nr))
+        return (self$selectSchema(self$schema, names=names,offset=offset,nr=nr))
       }
-    },
-    select_raw = function(names=list(), offset=0, nr=-1) {
-      return (self$selectSchema(self$schema, names=names,offset=offset,nr=nr))
     },
     cselect = function(names=list(), offset=0, nr=-1) {
       return (self$selectSchema(self$cschema,names=names,offset=offset,nr=nr))
@@ -83,23 +37,24 @@ AbstractOperatorContext <- R6Class(
     selectSchema = function(schema=NULL, names=list(), offset=0, nr=-1) {
       cnames = as.list(names)
       names(cnames) = NULL
-      qtSchema = self$schema
       
       if (length(cnames) == 0){
         where = sapply(schema$columns, function(c) (c$type != 'uint64' && c$type != 'int64') )
         cnames = lapply(schema$columns[where], function(c) c$name)
       }
       
-      nRows  = nr
+      return(as_tibble(self$client$tableSchemaService$select(schema$id, cnames, offset, nr)))
+    },
+    selectSchemaPairwise = function(schema=NULL, names=list(), offset=0, nr=-1) {
+      cnames = as.list(names)
+      names(cnames) = NULL
       
-      if (nRows < 0){
-        nRows = schema$nRows - offset
+      if (length(cnames) == 0){
+        where = sapply(schema$columns, function(c) (c$type != 'uint64' && c$type != 'int64') )
+        cnames = lapply(schema$columns[where], function(c) c$name)
       }
       
-      table = self$client$tableSchemaService$select(schema$id, cnames, offset, nRows)
-      df = as_tibble(table)
-      
-      return(df)
+      return(as_tibble(self$client$tableSchemaService$selectPairwise(schema$id, cnames, offset, nr)))
     },
     addNamespace = function(df){
       ns = self$namespace
@@ -240,7 +195,7 @@ OperatorContextDev <- R6Class(
     .query = NULL
   ),
   public = list(
-
+    
     workflowId = NULL,
     stepId = NULL,
     
@@ -256,7 +211,7 @@ OperatorContextDev <- R6Class(
       
       self$workflowId = workflowId
       self$stepId = stepId
-        
+      
       if (!is.null(taskId)){
         self$task = self$client$taskService$get(taskId)
       }
@@ -280,7 +235,7 @@ OperatorContextDev <- R6Class(
       fileDoc$projectId = workflow$projectId
       fileDoc$acl$owner = workflow$acl$owner
       fileDoc$metadata$contentType = 'application/octet-stream'
-        
+      
       fileDoc = self$client$fileService$upload(fileDoc, bytes)
       
       # the task can be null if run from a R session
@@ -336,7 +291,7 @@ OperatorContext <- R6Class(
   ),
   public = list(
     client = NULL,
-
+    
     initialize = function(taskId = NULL,
                           authToken = NULL, 
                           username = getOption("tercen.username"),
@@ -353,7 +308,7 @@ OperatorContext <- R6Class(
     },
     
     save = function(computed.df){
-       
+      
       result = OperatorResult$new()
       
       if (inherits(computed.df, 'list')){
@@ -371,7 +326,7 @@ OperatorContext <- R6Class(
         fileDoc$projectId = self$task$projectId
         fileDoc$acl$owner = self$task$owner
         fileDoc$metadata$contentType = 'application/octet-stream'
-      
+        
         fileDoc = self$client$fileService$upload(fileDoc, bytes)
         
         self$task$fileResultId = fileDoc$id
@@ -408,7 +363,7 @@ OperatorContext <- R6Class(
     } 
   )
 )
- 
+
 #' @export
 tercenCtx <- function(workflowId=getOption("tercen.workflowId"),
                       stepId=getOption("tercen.stepId"), 
@@ -416,7 +371,7 @@ tercenCtx <- function(workflowId=getOption("tercen.workflowId"),
                       authToken = NULL, 
                       username = getOption("tercen.username"), password = getOption("tercen.password"),
                       serviceUri = getOption("tercen.serviceUri", default = "https://tercen.com/service")){
- 
+  
   if (is.null(workflowId)){
     return (OperatorContext$new(taskId=taskId,
                                 authToken=authToken,
@@ -448,7 +403,7 @@ rselect <- function(ctx, ...){
 select.AbstractOperatorContext <- function(ctx, ...){
   return (ctx$select(argNames(...)))
 }
- 
+
 argNames = function(...){
   nn = as.list(substitute(list(...)))[-1L]
   return (lapply(nn, toString))

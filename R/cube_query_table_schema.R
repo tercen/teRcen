@@ -22,8 +22,9 @@
 #' @field urls list of class \code{\link{Url}} inherited from super class \code{\link{Document}}.
 #' @field meta list of class \code{\link{Pair}} inherited from super class \code{\link{Document}}.
 #' @field url object of class \code{\link{Url}} inherited from super class \code{\link{Document}}.
+#' @field query object of class \code{\link{CubeQuery}}.
 CubeQueryTableSchema <- R6::R6Class("CubeQueryTableSchema", inherit = Schema, public = list(queryHash = NULL, 
-    initialize = function(json = NULL) {
+    query = NULL, initialize = function(json = NULL) {
         if (!is.null(json)) {
             self$initJson(json)
         } else {
@@ -32,13 +33,16 @@ CubeQueryTableSchema <- R6::R6Class("CubeQueryTableSchema", inherit = Schema, pu
     }, init = function() {
         super$init()
         self$queryHash = ""
+        self$query = CubeQuery$new()
     }, initJson = function(json) {
         super$initJson(json)
         self$queryHash = json$queryHash
+        self$query = createObjectFromJson(json$query)
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("CubeQueryTableSchema")
         m$queryHash = rtson::tson.scalar(self$queryHash)
+        m$query = self$query$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

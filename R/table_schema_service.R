@@ -26,6 +26,23 @@ TableSchemaService <- R6::R6Class("TableSchemaService", inherit = HttpClientServ
             answer = createObjectFromJson(rtson::fromTSON(content(response)))
         }
         return(answer)
+    }, selectPairwise = function(tableId, cnames, offset, limit) {
+        answer = NULL
+        response = NULL
+        uri = paste0("api/v1/schema", "/", "selectPairwise")
+        params = list()
+        params[["tableId"]] = unbox(tableId)
+        params[["cnames"]] = cnames
+        params[["offset"]] = unbox(offset)
+        params[["limit"]] = unbox(limit)
+        url = self$getServiceUri(uri)
+        response = self$client$post(url, body = params)
+        if (status_code(response) != 200) {
+            self$onResponseError(response, "selectPairwise")
+        } else {
+            answer = createObjectFromJson(rtson::fromTSON(content(response)))
+        }
+        return(answer)
     }, selectStream = function(tableId, cnames, offset, limit) {
         answer = NULL
         response = NULL
