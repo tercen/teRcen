@@ -192,6 +192,7 @@ HttpClientService <- R6::R6Class("HttpClientService", public = list(client = NUL
         if (status_code(response) != 200) {
             self$onResponseError(response, "get")
         }
+         
         object = self$fromTson(rtson::fromTSON(content(response)))
         return(object)
     }, delete = function(id, rev) {

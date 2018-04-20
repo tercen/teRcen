@@ -296,7 +296,8 @@ OperatorContext <- R6Class(
                           authToken = NULL, 
                           username = getOption("tercen.username"),
                           password = getOption("tercen.password"),
-                          serviceUri = getOption("tercen.serviceUri", default = "https://tercen.com/service")) { 
+                          serviceUri = getOption("tercen.serviceUri",
+                          default = "https://tercen.com/service")) { 
       
       self$client = TercenClient$new(authToken=authToken, username=username, password=password, serviceUri=serviceUri)
       
