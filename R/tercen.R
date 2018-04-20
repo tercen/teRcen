@@ -203,7 +203,7 @@ HttpClientService <- R6::R6Class("HttpClientService", public = list(client = NUL
     }, update = function(object) {
         url = self$getServiceUri(self$uri)
         body = self$toTson(object)
-        response = self$client$post(url, body = body)
+        response = self$client$post(url, body = rtson::toTSON(body), encode = "raw")
         if (status_code(response) != 200) {
             self$onResponseError(response, "update")
         }
