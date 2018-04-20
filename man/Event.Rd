@@ -4,7 +4,7 @@
 \name{Event}
 \alias{Event}
 \title{Event}
-\format{\code{\link{R6Class}} object, super class \code{\link{PersistentObject}}, sub classes \code{\link{TaskStateEvent}}, \code{\link{TaskLogEvent}}, \code{\link{TaskProgressEvent}}, \code{\link{TaskEvent}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{PersistentObject}}, sub classes \code{\link{TaskStateEvent}}, \code{\link{TaskLogEvent}}, \code{\link{TaskProgressEvent}}, \code{\link{TaskDataEvent}}, \code{\link{TaskEvent}}.}
 \usage{
 Event
 }

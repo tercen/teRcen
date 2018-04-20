@@ -10,7 +10,7 @@ EventService <- R6::R6Class("EventService", inherit = HttpClientService, public 
     params[["taskId"]] = unbox(taskId)
     params[["start"]] = unbox(start)
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = params)
+    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
     if (status_code(response) != 200) {
         self$onResponseError(response, "listenTask")
     } else {
@@ -24,11 +24,25 @@ EventService <- R6::R6Class("EventService", inherit = HttpClientService, public 
     params = list()
     params[["taskId"]] = unbox(taskId)
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = params)
+    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
     if (status_code(response) != 200) {
         self$onResponseError(response, "onTaskState")
     } else {
         answer = content(response)
+    }
+    return(answer)
+}, taskListenerCount = function(taskId) {
+    answer = NULL
+    response = NULL
+    uri = paste0("api/v1/evt", "/", "taskListenerCount")
+    params = list()
+    params[["taskId"]] = unbox(taskId)
+    url = self$getServiceUri(uri)
+    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
+    if (status_code(response) != 200) {
+        self$onResponseError(response, "taskListenerCount")
+    } else {
+        answer = rtson::fromTSON(content(response))[[1]]
     }
     return(answer)
 }))

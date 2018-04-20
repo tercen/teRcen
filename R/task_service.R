@@ -15,7 +15,7 @@ TaskService <- R6::R6Class("TaskService", inherit = HttpClientService, public = 
     params = list()
     params[["taskId"]] = unbox(taskId)
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = params)
+    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
     if (status_code(response) != 200) {
         self$onResponseError(response, "runTask")
     } else {
@@ -29,7 +29,7 @@ TaskService <- R6::R6Class("TaskService", inherit = HttpClientService, public = 
     params = list()
     params[["taskId"]] = unbox(taskId)
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = params)
+    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
     if (status_code(response) != 200) {
         self$onResponseError(response, "cancelTask")
     } else {
@@ -43,11 +43,11 @@ TaskService <- R6::R6Class("TaskService", inherit = HttpClientService, public = 
     params = list()
     params[["taskId"]] = unbox(taskId)
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = params)
+    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
     if (status_code(response) != 200) {
         self$onResponseError(response, "waitDone")
     } else {
-        answer = createObjectFromJson(content(response))
+        answer = createObjectFromJson(rtson::fromTSON(content(response)))
     }
     return(answer)
 }, updateWorker = function(worker) {
@@ -57,7 +57,7 @@ TaskService <- R6::R6Class("TaskService", inherit = HttpClientService, public = 
     params = list()
     params[["worker"]] = worker$toTson()
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = params)
+    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
     if (status_code(response) != 200) {
         self$onResponseError(response, "updateWorker")
     } else {
@@ -70,14 +70,14 @@ TaskService <- R6::R6Class("TaskService", inherit = HttpClientService, public = 
     uri = paste0("api/v1/task", "/", "taskDurationByTeam")
     params = list()
     params[["teamId"]] = unbox(teamId)
-    params[["year"]] = unbox(year)
-    params[["month"]] = unbox(month)
+    params[["year"]] = unbox(as.integer(year))
+    params[["month"]] = unbox(as.integer(month))
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = params)
+    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
     if (status_code(response) != 200) {
         self$onResponseError(response, "taskDurationByTeam")
     } else {
-        answer = content(response)[[1]]
+        answer = rtson::fromTSON(content(response))[[1]]
     }
     return(answer)
 }))

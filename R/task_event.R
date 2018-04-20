@@ -1,7 +1,7 @@
 #' TaskEvent
 #'
 #' @export
-#' @format \code{\link{R6Class}} object, super class \code{\link{Event}}, sub classes \code{\link{TaskStateEvent}}, \code{\link{TaskLogEvent}}, \code{\link{TaskProgressEvent}}.
+#' @format \code{\link{R6Class}} object, super class \code{\link{Event}}, sub classes \code{\link{TaskStateEvent}}, \code{\link{TaskLogEvent}}, \code{\link{TaskProgressEvent}}, \code{\link{TaskDataEvent}}.
 #' @field isDeleted of type bool inherited from super class \code{\link{PersistentObject}}.
 #' @field rev of type String inherited from super class \code{\link{PersistentObject}}.
 #' @field id of type String inherited from super class \code{\link{IdObject}}.

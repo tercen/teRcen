@@ -15,11 +15,11 @@ TableSchemaService <- R6::R6Class("TableSchemaService", inherit = HttpClientServ
         uri = paste0("api/v1/schema", "/", "select")
         params = list()
         params[["tableId"]] = unbox(tableId)
-        params[["cnames"]] = cnames
-        params[["offset"]] = unbox(offset)
-        params[["limit"]] = unbox(limit)
+        params[["cnames"]] = lapply(cnames, unbox)
+        params[["offset"]] = unbox(as.integer(offset))
+        params[["limit"]] = unbox(as.integer(limit))
         url = self$getServiceUri(uri)
-        response = self$client$post(url, body = params)
+        response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
         if (status_code(response) != 200) {
             self$onResponseError(response, "select")
         } else {
@@ -32,11 +32,11 @@ TableSchemaService <- R6::R6Class("TableSchemaService", inherit = HttpClientServ
         uri = paste0("api/v1/schema", "/", "selectPairwise")
         params = list()
         params[["tableId"]] = unbox(tableId)
-        params[["cnames"]] = cnames
-        params[["offset"]] = unbox(offset)
-        params[["limit"]] = unbox(limit)
+        params[["cnames"]] = lapply(cnames, unbox)
+        params[["offset"]] = unbox(as.integer(offset))
+        params[["limit"]] = unbox(as.integer(limit))
         url = self$getServiceUri(uri)
-        response = self$client$post(url, body = params)
+        response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
         if (status_code(response) != 200) {
             self$onResponseError(response, "selectPairwise")
         } else {
@@ -49,11 +49,11 @@ TableSchemaService <- R6::R6Class("TableSchemaService", inherit = HttpClientServ
         uri = paste0("api/v1/schema", "/", "selectStream")
         params = list()
         params[["tableId"]] = unbox(tableId)
-        params[["cnames"]] = cnames
-        params[["offset"]] = unbox(offset)
-        params[["limit"]] = unbox(limit)
+        params[["cnames"]] = lapply(cnames, unbox)
+        params[["offset"]] = unbox(as.integer(offset))
+        params[["limit"]] = unbox(as.integer(limit))
         url = self$getServiceUri(uri)
-        response = self$client$post(url, body = params)
+        response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
         if (status_code(response) != 200) {
             self$onResponseError(response, "selectStream")
         } else {
@@ -66,9 +66,9 @@ TableSchemaService <- R6::R6Class("TableSchemaService", inherit = HttpClientServ
         uri = paste0("api/v1/schema", "/", "selectCSV")
         params = list()
         params[["tableId"]] = unbox(tableId)
-        params[["cnames"]] = cnames
-        params[["offset"]] = unbox(offset)
-        params[["limit"]] = unbox(limit)
+        params[["cnames"]] = lapply(cnames, unbox)
+        params[["offset"]] = unbox(as.integer(offset))
+        params[["limit"]] = unbox(as.integer(limit))
         params[["separator"]] = unbox(separator)
         params[["quote"]] = unbox(quote)
         params[["encoding"]] = unbox(encoding)

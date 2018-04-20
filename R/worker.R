@@ -5,8 +5,8 @@
 #' @field name of type String.
 #' @field uri of type String.
 #' @field threads of type int.
-#' @field availableMemory of type int.
-#' @field maxMemory of type int.
+#' @field availableMemory of type double.
+#' @field maxMemory of type double.
 Worker <- R6::R6Class("Worker", inherit = Base, public = list(name = NULL, uri = NULL, 
     threads = NULL, availableMemory = NULL, maxMemory = NULL, initialize = function(json = NULL) {
         if (!is.null(json)) {
@@ -26,16 +26,16 @@ Worker <- R6::R6Class("Worker", inherit = Base, public = list(name = NULL, uri =
         self$name = json$name
         self$uri = json$uri
         self$threads = json$threads
-        self$availableMemory = json$availableMemory
-        self$maxMemory = json$maxMemory
+        self$availableMemory = as.double(json$availableMemory)
+        self$maxMemory = as.double(json$maxMemory)
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("Worker")
         m$name = rtson::tson.scalar(self$name)
         m$uri = rtson::tson.scalar(self$uri)
         m$threads = rtson::tson.int(self$threads)
-        m$availableMemory = rtson::tson.int(self$availableMemory)
-        m$maxMemory = rtson::tson.int(self$maxMemory)
+        m$availableMemory = rtson::tson.scalar(self$availableMemory)
+        m$maxMemory = rtson::tson.scalar(self$maxMemory)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

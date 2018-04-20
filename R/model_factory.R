@@ -93,6 +93,9 @@ createObjectFromJson = function(json) {
     if (kind == "Errors") {
         return(Errors$new(json = json))
     }
+    if (kind == "GlTask") {
+        return(GlTask$new(json = json))
+    }
     if (kind == "FailedState") {
         return(FailedState$new(json = json))
     }
@@ -345,11 +348,14 @@ createObjectFromJson = function(json) {
     if (kind == "Document") {
         return(Document$new(json = json))
     }
-    if (kind == "CrossTabStep") {
-        return(CrossTabStep$new(json = json))
+    if (kind == "TaskDataEvent") {
+        return(TaskDataEvent$new(json = json))
     }
     if (kind == "OutputPort") {
         return(OutputPort$new(json = json))
+    }
+    if (kind == "CrossTabStep") {
+        return(CrossTabStep$new(json = json))
     }
     if (kind == "PersistentObject") {
         return(PersistentObject$new(json = json))

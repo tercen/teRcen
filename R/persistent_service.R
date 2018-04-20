@@ -15,11 +15,11 @@ PersistentService <- R6::R6Class("PersistentService", inherit = HttpClientServic
         params = list()
         params[["teamOrProjectId"]] = unbox(teamOrProjectId)
         url = self$getServiceUri(uri)
-        response = self$client$post(url, body = params)
+        response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
         if (status_code(response) != 200) {
             self$onResponseError(response, "summary")
         } else {
-            answer = createObjectFromJson(content(response))
+            answer = createObjectFromJson(rtson::fromTSON(content(response)))
         }
         return(answer)
     }))

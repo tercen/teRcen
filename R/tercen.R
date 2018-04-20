@@ -163,12 +163,12 @@ HttpClientService <- R6::R6Class("HttpClientService", public = list(client = NUL
         }
         self$client = client
     }, onResponseError = function(response, msg = "") {
-        body = content(response)
+        body = rtson::fromTSON(content(response))
         if (is.list(body)) {
             stop(jsonlite::toJSON(body, auto_unbox = TRUE))
         } else {
             stop(paste0("Failed : ", msg, " : status=", status_code(response), " body=", 
-                toString(content(response))))
+                toString(body)))
         }
         
     }, toTson = function(object) {
@@ -180,11 +180,11 @@ HttpClientService <- R6::R6Class("HttpClientService", public = list(client = NUL
     }, create = function(object) {
         url = self$getServiceUri(self$uri)
         body = self$toTson(object)
-        response = self$client$put(url, body = body)
+        response = self$client$put(url, body = rtson::toTSON(body), encode = "raw")
         if (status_code(response) != 200) {
             self$onResponseError(response, "create")
         }
-        object = self$fromTson(content(response))
+        object = self$fromTson(rtson::fromTSON(content(response)))
         return(object)
     }, get = function(id, useFactory = TRUE) {
         url = self$getServiceUri(self$uri)
@@ -192,7 +192,7 @@ HttpClientService <- R6::R6Class("HttpClientService", public = list(client = NUL
         if (status_code(response) != 200) {
             self$onResponseError(response, "get")
         }
-        object = self$fromTson(content(response))
+        object = self$fromTson(rtson::fromTSON(content(response)))
         return(object)
     }, delete = function(id, rev) {
         url = self$getServiceUri(self$uri)
@@ -207,38 +207,54 @@ HttpClientService <- R6::R6Class("HttpClientService", public = list(client = NUL
         if (status_code(response) != 200) {
             self$onResponseError(response, "update")
         }
-        object$rev = content(response)
+        object$rev = rtson::fromTSON(content(response))[[1]]
         return(object$rev)
     }, list = function(ids, useFactory = TRUE) {
         url = self$getServiceUri(self$uri, "/list")
-        body = ids
-        response = self$client$post(url, body:body, query = list(useFactory = tolower(toString(useFactory))))
+        body = body = lapply(ids, jsonlite::unbox)
+        response = self$client$post(url, body = rtson::toTSON(body), encode = "raw", 
+            query = list(useFactory = tolower(toString(useFactory))))
         if (status_code(response) != 200) {
             self$onResponseError(response, "list")
         }
-        list = content(response)
+        list = rtson::fromTSON(content(response))
         objects = lapply(list, function(each) self$fromTson(each))
         return(objects)
     }, findStartKeys = function(viewName, startKey = NULL, endKey = NULL, limit = 20, 
         skip = 0, descending = TRUE, useFactory = FALSE) {
         url = self$getServiceUri(self$uri, "/", viewName)
+        if (is.list(startKey)) {
+            startKey = lapply(startKey, jsonlite::unbox)
+        } else {
+            startKey = jsonlite::unbox(limit)
+        }
+        
+        if (is.list(endKey)) {
+            endKey = lapply(endKey, jsonlite::unbox)
+        } else {
+            endKey = jsonlite::unbox(limit)
+        }
+        
         body = list(startKey = startKey, endKey = endKey, limit = jsonlite::unbox(limit), 
             skip = jsonlite::unbox(skip), descending = jsonlite::unbox(descending))
-        response = self$client$post(url, body = body, query = list(useFactory = tolower(toString(useFactory))))
+        response = self$client$post(url, body = rtson::toTSON(body), encode = "raw", 
+            query = list(useFactory = tolower(toString(useFactory))))
         if (status_code(response) != 200) {
             self$onResponseError(response, "findStartKeys")
         }
-        list = content(response)
+        list = rtson::fromTSON(content(response))
         objects = lapply(list, function(each) self$fromTson(each))
         return(objects)
     }, findKeys = function(viewName, keys = NULL, useFactory = FALSE) {
         url = self$getServiceUri(self$uri, "/", viewName)
-        body = keys
-        response = self$client$post(url, body = body, query = list(useFactory = tolower(toString(useFactory))))
+        body = lapply(keys, jsonlite::unbox)
+        # rtson::tson.scalar(keys)
+        response = self$client$post(url, body = rtson::toTSON(body), encode = "raw", 
+            query = list(useFactory = tolower(toString(useFactory))))
         if (status_code(response) != 200) {
             self$onResponseError(response, "findKeys")
         }
-        list = content(response)
+        list = rtson::fromTSON(content(response))
         objects = lapply(list, function(each) self$fromTson(each))
         return(objects)
     }))

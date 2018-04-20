@@ -18,7 +18,7 @@ FileService <- R6::R6Class("FileService", inherit = HttpClientService, public = 
     if (status_code(response) != 200) {
         self$onResponseError(response, "upload")
     } else {
-        answer = createObjectFromJson(content(response))
+        answer = createObjectFromJson(rtson::fromTSON(content(response)))
     }
     return(answer)
 }, download = function(fileDocumentId) {

@@ -20,9 +20,9 @@ Worker
 
 \item{\code{threads}}{of type int.}
 
-\item{\code{availableMemory}}{of type int.}
+\item{\code{availableMemory}}{of type double.}
 
-\item{\code{maxMemory}}{of type int.}
+\item{\code{maxMemory}}{of type double.}
 }}
 
 \keyword{datasets}

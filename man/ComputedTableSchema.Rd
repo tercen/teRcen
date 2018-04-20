@@ -38,8 +38,6 @@ ComputedTableSchema
 
 \item{\code{id}}{of type String inherited from super class \code{\link{IdObject}}.}
 
-\item{\code{namespace}}{of type String.}
-
 \item{\code{columns}}{list of class \code{\link{ColumnSchema}} inherited from super class \code{\link{Schema}}.}
 
 \item{\code{acl}}{object of class \code{\link{Acl}} inherited from super class \code{\link{Document}}.}
@@ -53,6 +51,8 @@ ComputedTableSchema
 \item{\code{meta}}{list of class \code{\link{Pair}} inherited from super class \code{\link{Document}}.}
 
 \item{\code{url}}{object of class \code{\link{Url}} inherited from super class \code{\link{Document}}.}
+
+\item{\code{query}}{object of class \code{\link{CubeQuery}}.}
 }}
 
 \keyword{datasets}

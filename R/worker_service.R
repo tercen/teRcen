@@ -9,7 +9,7 @@ WorkerService <- R6::R6Class("WorkerService", inherit = HttpClientService, publi
     params = list()
     params[["task"]] = task$toTson()
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = params)
+    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
     if (status_code(response) != 200) {
         self$onResponseError(response, "exec")
     } else {

@@ -5,10 +5,14 @@ getOption("tercen.serviceUri")
 getOption("tercen.username")
 getOption("tercen.password")
  
-options("tercen.workflowId"= "bbb78735166d6862b70afaaac9038c39")
-options("tercen.stepId"= "92-21")
+options("tercen.workflowId"= "9d5379a435c8457a347584e162003e09")
+options("tercen.stepId"= "12-9")
 getOption("tercen.workflowId")
 getOption("tercen.stepId")
+
+ctx = tercenCtx()
+ctx$names
+ 
 
 (ctx = tercenCtx()) %>% select()
 ctx %>% cselect()
@@ -41,7 +45,7 @@ ctx$rschema
 # select xy table
 ctx$select()
 ctx$select(nr=1)
-ctx$select(offset=10, nr=3)
+ctx$select(offset=10L, nr=3L)
 ctx$select(c('.y','.ci','.ri'), nr=3)
 ctx$select('.y', nr=3)
 
