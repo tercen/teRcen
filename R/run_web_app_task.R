@@ -37,7 +37,7 @@ RunWebAppTask <- R6::R6Class("RunWebAppTask", inherit = ProjectTask, public = li
         m = super$toTson()
         m$kind = rtson::tson.scalar("RunWebAppTask")
         m$operatorId = rtson::tson.scalar(self$operatorId)
-        m$url = self$url$toTson()
+        if (!is.null(self$url)) m$url = self$url$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

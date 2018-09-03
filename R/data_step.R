@@ -27,7 +27,7 @@ DataStep <- R6::R6Class("DataStep", inherit = CrossTabStep, public = list(comput
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("DataStep")
-        m$computedRelation = self$computedRelation$toTson()
+        if (!is.null(self$computedRelation)) m$computedRelation = self$computedRelation$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

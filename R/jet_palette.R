@@ -5,6 +5,7 @@
 #' @field isUserDefined of type bool inherited from super class \code{\link{RampPalette}}.
 #' @field backcolor of type int inherited from super class \code{\link{Palette}}.
 #' @field doubleColorElements list of class \code{\link{DoubleColorElement}} inherited from super class \code{\link{RampPalette}}.
+#' @field properties list of class \code{\link{PropertyValue}} inherited from super class \code{\link{Palette}}.
 JetPalette <- R6::R6Class("JetPalette", inherit = RampPalette, public = list(initialize = function(json = NULL) {
     if (!is.null(json)) {
         self$initJson(json)

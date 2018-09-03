@@ -20,7 +20,11 @@ CubeAxisQuery
 
 \item{\code{yAxis}}{object of class \code{\link{Factor}}.}
 
+\item{\code{yAxisSettings}}{object of class \code{\link{AxisSettings}}.}
+
 \item{\code{xAxis}}{object of class \code{\link{Factor}}.}
+
+\item{\code{xAxisSettings}}{object of class \code{\link{AxisSettings}}.}
 
 \item{\code{errors}}{list of class \code{\link{Factor}}.}
 

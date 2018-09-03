@@ -19,7 +19,7 @@ TableStepModel <- R6::R6Class("TableStepModel", inherit = StepModel, public = li
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("TableStepModel")
-        m$relation = self$relation$toTson()
+        if (!is.null(self$relation)) m$relation = self$relation$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

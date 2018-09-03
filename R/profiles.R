@@ -32,11 +32,11 @@ Profiles <- R6::R6Class("Profiles", inherit = Base, public = list(apiProfile = N
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("Profiles")
-        m$apiProfile = self$apiProfile$toTson()
-        m$tableProfile = self$tableProfile$toTson()
-        m$cpuTimeProfile = self$cpuTimeProfile$toTson()
-        m$storageProfile = self$storageProfile$toTson()
-        m$runProfile = self$runProfile$toTson()
+        if (!is.null(self$apiProfile)) m$apiProfile = self$apiProfile$toTson()
+        if (!is.null(self$tableProfile)) m$tableProfile = self$tableProfile$toTson()
+        if (!is.null(self$cpuTimeProfile)) m$cpuTimeProfile = self$cpuTimeProfile$toTson()
+        if (!is.null(self$storageProfile)) m$storageProfile = self$storageProfile$toTson()
+        if (!is.null(self$runProfile)) m$runProfile = self$runProfile$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

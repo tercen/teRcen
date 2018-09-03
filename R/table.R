@@ -26,7 +26,7 @@ Table <- R6::R6Class("Table", inherit = Base, public = list(nRows = NULL, proper
         m = super$toTson()
         m$kind = rtson::tson.scalar("Table")
         m$nRows = rtson::tson.int(self$nRows)
-        m$properties = self$properties$toTson()
+        if (!is.null(self$properties)) m$properties = self$properties$toTson()
         m$columns = lapply(self$columns, function(each) each$toTson())
         return(m)
     }, print = function(...) {

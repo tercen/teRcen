@@ -22,8 +22,8 @@ Rectangle <- R6::R6Class("Rectangle", inherit = Base, public = list(extent = NUL
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("Rectangle")
-        m$extent = self$extent$toTson()
-        m$topLeft = self$topLeft$toTson()
+        if (!is.null(self$extent)) m$extent = self$extent$toTson()
+        if (!is.null(self$topLeft)) m$topLeft = self$topLeft$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

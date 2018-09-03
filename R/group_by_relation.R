@@ -23,7 +23,7 @@ GroupByRelation <- R6::R6Class("GroupByRelation", inherit = Relation, public = l
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("GroupByRelation")
-        m$relation = self$relation$toTson()
+        if (!is.null(self$relation)) m$relation = self$relation$toTson()
         m$group = lapply(self$group, function(each) rtson::tson.scalar(each))
         return(m)
     }, print = function(...) {

@@ -22,8 +22,8 @@ GraphicalFactor <- R6::R6Class("GraphicalFactor", inherit = Base, public = list(
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("GraphicalFactor")
-        m$factor = self$factor$toTson()
-        m$rectangle = self$rectangle$toTson()
+        if (!is.null(self$factor)) m$factor = self$factor$toTson()
+        if (!is.null(self$rectangle)) m$rectangle = self$rectangle$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

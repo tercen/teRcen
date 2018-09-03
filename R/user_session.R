@@ -22,8 +22,8 @@ UserSession <- R6::R6Class("UserSession", inherit = Base, public = list(user = N
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("UserSession")
-        m$user = self$user$toTson()
-        m$token = self$token$toTson()
+        if (!is.null(self$user)) m$user = self$user$toTson()
+        if (!is.null(self$token)) m$token = self$token$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

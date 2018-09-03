@@ -56,7 +56,7 @@ User <- R6::R6Class("User", inherit = Document, public = list(email = NULL, isVa
         m$email = rtson::tson.scalar(self$email)
         m$isValidated = rtson::tson.scalar(self$isValidated)
         m$roles = lapply(self$roles, function(each) rtson::tson.scalar(each))
-        m$teamAcl = self$teamAcl$toTson()
+        if (!is.null(self$teamAcl)) m$teamAcl = self$teamAcl$toTson()
         m$invitedByUsername = rtson::tson.scalar(self$invitedByUsername)
         m$invitationCounts = rtson::tson.int(self$invitationCounts)
         m$maxInvitation = rtson::tson.int(self$maxInvitation)

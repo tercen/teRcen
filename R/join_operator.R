@@ -22,8 +22,8 @@ JoinOperator <- R6::R6Class("JoinOperator", inherit = Base, public = list(leftPa
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("JoinOperator")
-        m$leftPair = self$leftPair$toTson()
-        m$rightRelation = self$rightRelation$toTson()
+        if (!is.null(self$leftPair)) m$leftPair = self$leftPair$toTson()
+        if (!is.null(self$rightRelation)) m$rightRelation = self$rightRelation$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

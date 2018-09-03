@@ -19,6 +19,8 @@ JetPalette
 \item{\code{backcolor}}{of type int inherited from super class \code{\link{Palette}}.}
 
 \item{\code{doubleColorElements}}{list of class \code{\link{DoubleColorElement}} inherited from super class \code{\link{RampPalette}}.}
+
+\item{\code{properties}}{list of class \code{\link{PropertyValue}} inherited from super class \code{\link{Palette}}.}
 }}
 
 \keyword{datasets}

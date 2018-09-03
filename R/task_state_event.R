@@ -27,7 +27,7 @@ TaskStateEvent <- R6::R6Class("TaskStateEvent", inherit = TaskEvent, public = li
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("TaskStateEvent")
-        m$state = self$state$toTson()
+        if (!is.null(self$state)) m$state = self$state$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

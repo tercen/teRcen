@@ -23,7 +23,7 @@ StepState <- R6::R6Class("StepState", inherit = Base, public = list(taskId = NUL
         m = super$toTson()
         m$kind = rtson::tson.scalar("StepState")
         m$taskId = rtson::tson.scalar(self$taskId)
-        m$taskState = self$taskState$toTson()
+        if (!is.null(self$taskState)) m$taskState = self$taskState$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

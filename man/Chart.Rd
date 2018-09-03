@@ -11,4 +11,12 @@ Chart
 \description{
 Chart
 }
+\section{Fields}{
+
+\describe{
+\item{\code{name}}{of type String.}
+
+\item{\code{properties}}{object of class \code{\link{Properties}}.}
+}}
+
 \keyword{datasets}

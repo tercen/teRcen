@@ -192,7 +192,7 @@ HttpClientService <- R6::R6Class("HttpClientService", public = list(client = NUL
         if (status_code(response) != 200) {
             self$onResponseError(response, "get")
         }
-         
+        
         object = self$fromTson(rtson::fromTSON(content(response)))
         return(object)
     }, delete = function(id, rev) {
@@ -309,7 +309,12 @@ parseCommandArgs <- function() {
 #' @export
 as_tibble.Table <- function(table, ...) {
     l = lapply(table$columns, function(column) column$values)
-    names(l) = lapply(table$columns, function(column) column$name)
+    names(l) = lapply(table$columns, function(column) {
+        if (nchar(column$name) == 0) {
+            return(".all")
+        }
+        return(column$name)
+    })
     return(as_tibble(l))
 }
 

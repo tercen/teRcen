@@ -36,7 +36,7 @@ ColumnSchema <- R6::R6Class("ColumnSchema", inherit = IdObject, public = list(na
         m$type = rtson::tson.scalar(self$type)
         m$nRows = rtson::tson.int(self$nRows)
         m$size = rtson::tson.int(self$size)
-        m$metaData = self$metaData$toTson()
+        if (!is.null(self$metaData)) m$metaData = self$metaData$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

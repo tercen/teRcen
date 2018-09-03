@@ -18,6 +18,8 @@ RampPalette
 
 \item{\code{isUserDefined}}{of type bool.}
 
+\item{\code{properties}}{list of class \code{\link{PropertyValue}} inherited from super class \code{\link{Palette}}.}
+
 \item{\code{doubleColorElements}}{list of class \code{\link{DoubleColorElement}}.}
 }}
 

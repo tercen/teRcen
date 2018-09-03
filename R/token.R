@@ -26,7 +26,7 @@ Token <- R6::R6Class("Token", inherit = Base, public = list(userId = NULL, expir
         m = super$toTson()
         m$kind = rtson::tson.scalar("Token")
         m$userId = rtson::tson.scalar(self$userId)
-        m$expiry = self$expiry$toTson()
+        if (!is.null(self$expiry)) m$expiry = self$expiry$toTson()
         m$token = rtson::tson.scalar(self$token)
         return(m)
     }, print = function(...) {

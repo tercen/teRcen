@@ -26,7 +26,7 @@ CrossTabStep <- R6::R6Class("CrossTabStep", inherit = NamespaceStep, public = li
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("CrossTabStep")
-        m$model = self$model$toTson()
+        if (!is.null(self$model)) m$model = self$model$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

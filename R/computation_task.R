@@ -40,7 +40,7 @@ ComputationTask <- R6::R6Class("ComputationTask", inherit = CubeQueryTask, publi
         m = super$toTson()
         m$kind = rtson::tson.scalar("ComputationTask")
         m$fileResultId = rtson::tson.scalar(self$fileResultId)
-        m$computedRelation = self$computedRelation$toTson()
+        if (!is.null(self$computedRelation)) m$computedRelation = self$computedRelation$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

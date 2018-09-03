@@ -4,9 +4,9 @@ library(dplyr)
 getOption("tercen.serviceUri")
 getOption("tercen.username")
 getOption("tercen.password")
- 
+   
 options("tercen.workflowId"= "9d5379a435c8457a347584e162003e09")
-options("tercen.stepId"= "356-26")
+options("tercen.stepId"= "641-34")
 getOption("tercen.workflowId")
 getOption("tercen.stepId")
  
@@ -17,4 +17,6 @@ getOption("tercen.stepId")
   ctx$addNamespace() %>%
   ctx$save()
  
+
+tercenCtx()$query
  

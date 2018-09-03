@@ -23,7 +23,7 @@ OperatorSettings <- R6::R6Class("OperatorSettings", inherit = Base, public = lis
         m = super$toTson()
         m$kind = rtson::tson.scalar("OperatorSettings")
         m$namespace = rtson::tson.scalar(self$namespace)
-        m$operatorRef = self$operatorRef$toTson()
+        if (!is.null(self$operatorRef)) m$operatorRef = self$operatorRef$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

@@ -26,7 +26,7 @@ RenameRelation <- R6::R6Class("RenameRelation", inherit = Relation, public = lis
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("RenameRelation")
-        m$relation = self$relation$toTson()
+        if (!is.null(self$relation)) m$relation = self$relation$toTson()
         m$inNames = lapply(self$inNames, function(each) rtson::tson.scalar(each))
         m$outNames = lapply(self$outNames, function(each) rtson::tson.scalar(each))
         return(m)

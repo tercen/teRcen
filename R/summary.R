@@ -28,10 +28,10 @@ Summary <- R6::R6Class("Summary", inherit = Base, public = list(tableSummary = N
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("Summary")
-        m$tableSummary = self$tableSummary$toTson()
-        m$computedTableSummary = self$computedTableSummary$toTson()
-        m$queryTableSummary = self$queryTableSummary$toTson()
-        m$taskSummary = self$taskSummary$toTson()
+        if (!is.null(self$tableSummary)) m$tableSummary = self$tableSummary$toTson()
+        if (!is.null(self$computedTableSummary)) m$computedTableSummary = self$computedTableSummary$toTson()
+        if (!is.null(self$queryTableSummary)) m$queryTableSummary = self$queryTableSummary$toTson()
+        if (!is.null(self$taskSummary)) m$taskSummary = self$taskSummary$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

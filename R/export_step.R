@@ -26,7 +26,7 @@ ExportStep <- R6::R6Class("ExportStep", inherit = ModelStep, public = list(model
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("ExportStep")
-        m$model = self$model$toTson()
+        if (!is.null(self$model)) m$model = self$model$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

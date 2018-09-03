@@ -43,7 +43,7 @@ Workflow <- R6::R6Class("Workflow", inherit = ProjectDocument, public = list(lin
         m$kind = rtson::tson.scalar("Workflow")
         m$links = lapply(self$links, function(each) each$toTson())
         m$steps = lapply(self$steps, function(each) each$toTson())
-        m$offset = self$offset$toTson()
+        if (!is.null(self$offset)) m$offset = self$offset$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

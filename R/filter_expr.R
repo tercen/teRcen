@@ -27,7 +27,7 @@ FilterExpr <- R6::R6Class("FilterExpr", inherit = FilterTopExpr, public = list(f
         m$kind = rtson::tson.scalar("FilterExpr")
         m$filterOp = rtson::tson.scalar(self$filterOp)
         m$stringValue = rtson::tson.scalar(self$stringValue)
-        m$factor = self$factor$toTson()
+        if (!is.null(self$factor)) m$factor = self$factor$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

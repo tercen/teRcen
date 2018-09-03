@@ -16,6 +16,8 @@ CategoryPalette
 \describe{
 \item{\code{backcolor}}{of type int inherited from super class \code{\link{Palette}}.}
 
+\item{\code{properties}}{list of class \code{\link{PropertyValue}} inherited from super class \code{\link{Palette}}.}
+
 \item{\code{colorList}}{object of class \code{\link{ColorList}}.}
 
 \item{\code{stringColorElements}}{list of class \code{\link{StringColorElement}}.}

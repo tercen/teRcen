@@ -15,8 +15,29 @@ ctx$names
  
 
 (ctx = tercenCtx()) %>% select()
+tercenCtx()$query
+tercenCtx()$select()
+tercenCtx()$rschema
+tercenCtx()$cschema
+tercenCtx()$workflow
+tercenCtx()$workflow
+
+rbenchmark::benchmark("workflow"= {
+  tercenCtx()$workflow
+}, 
+"select"= {
+  tercenCtx()$select()
+}, 
+replications = 1,
+columns = c("test", "replications", "elapsed",
+            "relative", "user.self", "sys.self"))
+
+
+ctx %>% select()
 ctx %>% cselect()
 ctx = tercenCtx()
+
+ctx
 
 ctx$namespace
 ctx$query

@@ -1,11 +1,11 @@
-#' Palette
+#' Properties
 #'
 #' @export
-#' @format \code{\link{R6Class}} object, sub classes \code{\link{JetPalette}}, \code{\link{CategoryPalette}}, \code{\link{RampPalette}}.
-#' @field backcolor of type int.
-#' @field properties list of class \code{\link{PropertyValue}}.
-Palette <- R6::R6Class("Palette", inherit = Base, public = list(backcolor = NULL, 
-    properties = NULL, initialize = function(json = NULL) {
+#' @format \code{\link{R6Class}} object.
+#' @field properties list of class \code{\link{Property}}.
+#' @field propertyValues list of class \code{\link{PropertyValue}}.
+Properties <- R6::R6Class("Properties", inherit = Base, public = list(properties = NULL, 
+    propertyValues = NULL, initialize = function(json = NULL) {
         if (!is.null(json)) {
             self$initJson(json)
         } else {
@@ -13,17 +13,17 @@ Palette <- R6::R6Class("Palette", inherit = Base, public = list(backcolor = NULL
         }
     }, init = function() {
         super$init()
-        self$backcolor = 0
         self$properties = list()
+        self$propertyValues = list()
     }, initJson = function(json) {
         super$initJson(json)
-        self$backcolor = json$backcolor
         self$properties = lapply(json$properties, createObjectFromJson)
+        self$propertyValues = lapply(json$propertyValues, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("Palette")
-        m$backcolor = rtson::tson.int(self$backcolor)
+        m$kind = rtson::tson.scalar("Properties")
         m$properties = lapply(self$properties, function(each) each$toTson())
+        m$propertyValues = lapply(self$propertyValues, function(each) each$toTson())
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

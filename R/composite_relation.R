@@ -24,7 +24,7 @@ CompositeRelation <- R6::R6Class("CompositeRelation", inherit = Relation, public
         m = super$toTson()
         m$kind = rtson::tson.scalar("CompositeRelation")
         m$joinOperators = lapply(self$joinOperators, function(each) each$toTson())
-        m$mainRelation = self$mainRelation$toTson()
+        if (!is.null(self$mainRelation)) m$mainRelation = self$mainRelation$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

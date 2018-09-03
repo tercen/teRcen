@@ -23,8 +23,8 @@ WhereRelation <- R6::R6Class("WhereRelation", inherit = Relation, public = list(
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("WhereRelation")
-        m$relation = self$relation$toTson()
-        m$filters = self$filters$toTson()
+        if (!is.null(self$relation)) m$relation = self$relation$toTson()
+        if (!is.null(self$filters)) m$filters = self$filters$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

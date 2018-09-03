@@ -39,7 +39,7 @@ CubeQueryTask <- R6::R6Class("CubeQueryTask", inherit = ProjectTask, public = li
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("CubeQueryTask")
-        m$query = self$query$toTson()
+        if (!is.null(self$query)) m$query = self$query$toTson()
         m$removeOnGC = rtson::tson.scalar(self$removeOnGC)
         m$schemaIds = lapply(self$schemaIds, function(each) rtson::tson.scalar(each))
         return(m)

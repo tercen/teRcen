@@ -39,8 +39,8 @@ Step <- R6::R6Class("Step", inherit = IdObject, public = list(groupId = NULL, na
         m$name = rtson::tson.scalar(self$name)
         m$inputs = lapply(self$inputs, function(each) each$toTson())
         m$outputs = lapply(self$outputs, function(each) each$toTson())
-        m$rectangle = self$rectangle$toTson()
-        m$state = self$state$toTson()
+        if (!is.null(self$rectangle)) m$rectangle = self$rectangle$toTson()
+        if (!is.null(self$state)) m$state = self$state$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

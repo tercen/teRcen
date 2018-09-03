@@ -26,7 +26,7 @@ JoinStep <- R6::R6Class("JoinStep", inherit = NamespaceStep, public = list(model
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("JoinStep")
-        m$model = self$model$toTson()
+        if (!is.null(self$model)) m$model = self$model$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

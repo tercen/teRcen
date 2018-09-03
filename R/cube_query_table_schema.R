@@ -42,7 +42,7 @@ CubeQueryTableSchema <- R6::R6Class("CubeQueryTableSchema", inherit = Schema, pu
         m = super$toTson()
         m$kind = rtson::tson.scalar("CubeQueryTableSchema")
         m$queryHash = rtson::tson.scalar(self$queryHash)
-        m$query = self$query$toTson()
+        if (!is.null(self$query)) m$query = self$query$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

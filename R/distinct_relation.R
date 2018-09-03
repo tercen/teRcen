@@ -23,7 +23,7 @@ DistinctRelation <- R6::R6Class("DistinctRelation", inherit = Relation, public =
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("DistinctRelation")
-        m$relation = self$relation$toTson()
+        if (!is.null(self$relation)) m$relation = self$relation$toTson()
         m$group = lapply(self$group, function(each) rtson::tson.scalar(each))
         return(m)
     }, print = function(...) {

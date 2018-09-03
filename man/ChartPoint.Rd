@@ -15,6 +15,10 @@ ChartPoint
 
 \describe{
 \item{\code{pointSize}}{of type int inherited from super class \code{\link{ChartSize}}.}
+
+\item{\code{name}}{of type String inherited from super class \code{\link{Chart}}.}
+
+\item{\code{properties}}{object of class \code{\link{Properties}} inherited from super class \code{\link{Chart}}.}
 }}
 
 \keyword{datasets}

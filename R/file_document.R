@@ -42,7 +42,7 @@ FileDocument <- R6::R6Class("FileDocument", inherit = ProjectDocument, public = 
         m = super$toTson()
         m$kind = rtson::tson.scalar("FileDocument")
         m$dataUri = rtson::tson.scalar(self$dataUri)
-        m$metadata = self$metadata$toTson()
+        if (!is.null(self$metadata)) m$metadata = self$metadata$toTson()
         m$size = rtson::tson.int(self$size)
         return(m)
     }, print = function(...) {

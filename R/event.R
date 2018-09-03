@@ -22,7 +22,7 @@ Event <- R6::R6Class("Event", inherit = PersistentObject, public = list(date = N
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("Event")
-        m$date = self$date$toTson()
+        if (!is.null(self$date)) m$date = self$date$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

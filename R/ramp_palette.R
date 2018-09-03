@@ -4,6 +4,7 @@
 #' @format \code{\link{R6Class}} object, super class \code{\link{Palette}}, sub classes \code{\link{JetPalette}}.
 #' @field backcolor of type int inherited from super class \code{\link{Palette}}.
 #' @field isUserDefined of type bool.
+#' @field properties list of class \code{\link{PropertyValue}} inherited from super class \code{\link{Palette}}.
 #' @field doubleColorElements list of class \code{\link{DoubleColorElement}}.
 RampPalette <- R6::R6Class("RampPalette", inherit = Palette, public = list(isUserDefined = NULL, 
     doubleColorElements = NULL, initialize = function(json = NULL) {

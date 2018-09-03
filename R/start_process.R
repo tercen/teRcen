@@ -38,7 +38,7 @@ StartProcess <- R6::R6Class("StartProcess", inherit = IdObject, public = list(ex
         m$kind = rtson::tson.scalar("StartProcess")
         m$executable = rtson::tson.scalar(self$executable)
         m$arguments = lapply(self$arguments, function(each) rtson::tson.scalar(each))
-        m$ulimits = self$ulimits$toTson()
+        if (!is.null(self$ulimits)) m$ulimits = self$ulimits$toTson()
         m$timeout = rtson::tson.int(self$timeout)
         m$pid = rtson::tson.int(self$pid)
         m$script = rtson::tson.scalar(self$script)

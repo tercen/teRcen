@@ -23,7 +23,7 @@ Colors <- R6::R6Class("Colors", inherit = Base, public = list(factors = NULL, pa
         m = super$toTson()
         m$kind = rtson::tson.scalar("Colors")
         m$factors = lapply(self$factors, function(each) each$toTson())
-        m$palette = self$palette$toTson()
+        if (!is.null(self$palette)) m$palette = self$palette$toTson()
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

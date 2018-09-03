@@ -32,7 +32,7 @@ GatherRelation <- R6::R6Class("GatherRelation", inherit = Relation, public = lis
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("GatherRelation")
-        m$relation = self$relation$toTson()
+        if (!is.null(self$relation)) m$relation = self$relation$toTson()
         m$names = lapply(self$names, function(each) rtson::tson.scalar(each))
         m$valueName = rtson::tson.scalar(self$valueName)
         m$variableName = rtson::tson.scalar(self$variableName)

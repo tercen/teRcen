@@ -15,6 +15,8 @@ Palette
 
 \describe{
 \item{\code{backcolor}}{of type int.}
+
+\item{\code{properties}}{list of class \code{\link{PropertyValue}}.}
 }}
 
 \keyword{datasets}
