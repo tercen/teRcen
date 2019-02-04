@@ -65,11 +65,11 @@ createObjectFromJson = function(json) {
     if (kind == "ChartHeatmap") {
         return(ChartHeatmap$new(json = json))
     }
-    if (kind == "Column") {
-        return(Column$new(json = json))
-    }
     if (kind == "Point") {
         return(Point$new(json = json))
+    }
+    if (kind == "Column") {
+        return(Column$new(json = json))
     }
     if (kind == "CubeQuery") {
         return(CubeQuery$new(json = json))
@@ -155,6 +155,9 @@ createObjectFromJson = function(json) {
     if (kind == "RampPalette") {
         return(RampPalette$new(json = json))
     }
+    if (kind == "DistinctRelation") {
+        return(DistinctRelation$new(json = json))
+    }
     if (kind == "OutStep") {
         return(OutStep$new(json = json))
     }
@@ -167,17 +170,14 @@ createObjectFromJson = function(json) {
     if (kind == "ExportWorkflowTask") {
         return(ExportWorkflowTask$new(json = json))
     }
-    if (kind == "StartProcess") {
-        return(StartProcess$new(json = json))
-    }
     if (kind == "InputPort") {
         return(InputPort$new(json = json))
     }
+    if (kind == "StartProcess") {
+        return(StartProcess$new(json = json))
+    }
     if (kind == "Token") {
         return(Token$new(json = json))
-    }
-    if (kind == "DistinctRelation") {
-        return(DistinctRelation$new(json = json))
     }
     if (kind == "Properties") {
         return(Properties$new(json = json))
@@ -218,11 +218,11 @@ createObjectFromJson = function(json) {
     if (kind == "MeltStep") {
         return(MeltStep$new(json = json))
     }
-    if (kind == "RunWebAppTask") {
-        return(RunWebAppTask$new(json = json))
-    }
     if (kind == "UnionRelation") {
         return(UnionRelation$new(json = json))
+    }
+    if (kind == "RunWebAppTask") {
+        return(RunWebAppTask$new(json = json))
     }
     if (kind == "DoubleColorElement") {
         return(DoubleColorElement$new(json = json))
@@ -256,6 +256,9 @@ createObjectFromJson = function(json) {
     }
     if (kind == "Operator") {
         return(Operator$new(json = json))
+    }
+    if (kind == "RunComputationTask") {
+        return(RunComputationTask$new(json = json))
     }
     if (kind == "ProjectTask") {
         return(ProjectTask$new(json = json))
@@ -314,11 +317,11 @@ createObjectFromJson = function(json) {
     if (kind == "ChartPoint") {
         return(ChartPoint$new(json = json))
     }
-    if (kind == "CreateGitOperatorTask") {
-        return(CreateGitOperatorTask$new(json = json))
-    }
     if (kind == "ColumnPair") {
         return(ColumnPair$new(json = json))
+    }
+    if (kind == "CreateGitOperatorTask") {
+        return(CreateGitOperatorTask$new(json = json))
     }
     if (kind == "FilterExpr") {
         return(FilterExpr$new(json = json))
@@ -329,11 +332,11 @@ createObjectFromJson = function(json) {
     if (kind == "Profile") {
         return(Profile$new(json = json))
     }
-    if (kind == "StepState") {
-        return(StepState$new(json = json))
-    }
     if (kind == "Date") {
         return(Date$new(json = json))
+    }
+    if (kind == "StepState") {
+        return(StepState$new(json = json))
     }
     if (kind == "ProjectDocument") {
         return(ProjectDocument$new(json = json))
@@ -434,14 +437,14 @@ createObjectFromJson = function(json) {
     if (kind == "BooleanProperty") {
         return(BooleanProperty$new(json = json))
     }
+    if (kind == "GatherRelation") {
+        return(GatherRelation$new(json = json))
+    }
     if (kind == "ExportStep") {
         return(ExportStep$new(json = json))
     }
     if (kind == "ViewStep") {
         return(ViewStep$new(json = json))
-    }
-    if (kind == "GatherRelation") {
-        return(GatherRelation$new(json = json))
     }
     if (kind == "ApiCallProfile") {
         return(ApiCallProfile$new(json = json))
@@ -463,6 +466,9 @@ createObjectFromJson = function(json) {
     }
     if (kind == "ComputedTableSchema") {
         return(ComputedTableSchema$new(json = json))
+    }
+    if (kind == "SaveComputationResultTask") {
+        return(SaveComputationResultTask$new(json = json))
     }
     if (kind == "TableProperties") {
         return(TableProperties$new(json = json))
@@ -497,11 +503,11 @@ createObjectFromJson = function(json) {
     if (kind == "Lock") {
         return(Lock$new(json = json))
     }
-    if (kind == "UserSecret") {
-        return(UserSecret$new(json = json))
-    }
     if (kind == "GroupByRelation") {
         return(GroupByRelation$new(json = json))
+    }
+    if (kind == "UserSecret") {
+        return(UserSecret$new(json = json))
     }
     stop("bad kind")
 }

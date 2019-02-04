@@ -14,9 +14,9 @@ ResourceSummary
 \section{Fields}{
 
 \describe{
-\item{\code{storage}}{of type int.}
+\item{\code{storage}}{of type double.}
 
-\item{\code{usedStorage}}{of type int.}
+\item{\code{usedStorage}}{of type double.}
 
 \item{\code{cpuTime}}{of type double.}
 

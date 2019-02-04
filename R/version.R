@@ -7,8 +7,9 @@
 #' @field patch of type int.
 #' @field tag of type String.
 #' @field date of type String.
+#' @field commit of type String.
 Version <- R6::R6Class("Version", inherit = Base, public = list(major = NULL, minor = NULL, 
-    patch = NULL, tag = NULL, date = NULL, initialize = function(json = NULL) {
+    patch = NULL, tag = NULL, date = NULL, commit = NULL, initialize = function(json = NULL) {
         if (!is.null(json)) {
             self$initJson(json)
         } else {
@@ -21,6 +22,7 @@ Version <- R6::R6Class("Version", inherit = Base, public = list(major = NULL, mi
         self$patch = 0
         self$tag = ""
         self$date = ""
+        self$commit = ""
     }, initJson = function(json) {
         super$initJson(json)
         self$major = json$major
@@ -28,6 +30,7 @@ Version <- R6::R6Class("Version", inherit = Base, public = list(major = NULL, mi
         self$patch = json$patch
         self$tag = json$tag
         self$date = json$date
+        self$commit = json$commit
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("Version")
@@ -36,6 +39,7 @@ Version <- R6::R6Class("Version", inherit = Base, public = list(major = NULL, mi
         m$patch = rtson::tson.int(self$patch)
         m$tag = rtson::tson.scalar(self$tag)
         m$date = rtson::tson.scalar(self$date)
+        m$commit = rtson::tson.scalar(self$commit)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

@@ -1,7 +1,7 @@
 #' CubeQueryTask
 #'
 #' @export
-#' @format \code{\link{R6Class}} object, super class \code{\link{ProjectTask}}, sub classes \code{\link{ComputationTask}}.
+#' @format \code{\link{R6Class}} object, super class \code{\link{ProjectTask}}, sub classes \code{\link{ComputationTask}}, \code{\link{RunComputationTask}}, \code{\link{SaveComputationResultTask}}.
 #' @field projectId of type String inherited from super class \code{\link{ProjectTask}}.
 #' @field duration of type double inherited from super class \code{\link{Task}}.
 #' @field owner of type String inherited from super class \code{\link{Task}}.

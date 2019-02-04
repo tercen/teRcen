@@ -4,7 +4,7 @@
 \name{Task}
 \alias{Task}
 \title{Task}
-\format{\code{\link{R6Class}} object, super class \code{\link{PersistentObject}}, sub classes \code{\link{ComputationTask}}, \code{\link{ExportWorkflowTask}}, \code{\link{RunWebAppTask}}, \code{\link{CSVTask}}, \code{\link{CubeQueryTask}}, \code{\link{ExportTableTask}}, \code{\link{ImportWorkflowTask}}, \code{\link{ImportGitWorkflowTask}}, \code{\link{GlTask}}, \code{\link{ProjectTask}}, \code{\link{CreateGitOperatorTask}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{PersistentObject}}, sub classes \code{\link{ComputationTask}}, \code{\link{RunComputationTask}}, \code{\link{SaveComputationResultTask}}, \code{\link{ExportWorkflowTask}}, \code{\link{RunWebAppTask}}, \code{\link{CSVTask}}, \code{\link{CubeQueryTask}}, \code{\link{ExportTableTask}}, \code{\link{ImportWorkflowTask}}, \code{\link{ImportGitWorkflowTask}}, \code{\link{GlTask}}, \code{\link{ProjectTask}}, \code{\link{CreateGitOperatorTask}}.}
 \usage{
 Task
 }

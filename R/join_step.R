@@ -10,8 +10,9 @@
 #' @field rectangle object of class \code{\link{Rectangle}} inherited from super class \code{\link{Step}}.
 #' @field state object of class \code{\link{StepState}} inherited from super class \code{\link{Step}}.
 #' @field model object of class \code{\link{JoinStepModel}}.
+#' @field rightAttributes list of class \code{\link{Attribute}}.
 JoinStep <- R6::R6Class("JoinStep", inherit = NamespaceStep, public = list(model = NULL, 
-    initialize = function(json = NULL) {
+    rightAttributes = NULL, initialize = function(json = NULL) {
         if (!is.null(json)) {
             self$initJson(json)
         } else {
@@ -20,13 +21,16 @@ JoinStep <- R6::R6Class("JoinStep", inherit = NamespaceStep, public = list(model
     }, init = function() {
         super$init()
         self$model = JoinStepModel$new()
+        self$rightAttributes = list()
     }, initJson = function(json) {
         super$initJson(json)
         self$model = createObjectFromJson(json$model)
+        self$rightAttributes = lapply(json$rightAttributes, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("JoinStep")
         if (!is.null(self$model)) m$model = self$model$toTson()
+        m$rightAttributes = lapply(self$rightAttributes, function(each) each$toTson())
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

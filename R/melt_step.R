@@ -10,8 +10,9 @@
 #' @field rectangle object of class \code{\link{Rectangle}} inherited from super class \code{\link{Step}}.
 #' @field state object of class \code{\link{StepState}} inherited from super class \code{\link{Step}}.
 #' @field model object of class \code{\link{MeltStepModel}}.
+#' @field meltedAttributes list of class \code{\link{Attribute}}.
 MeltStep <- R6::R6Class("MeltStep", inherit = NamespaceStep, public = list(model = NULL, 
-    initialize = function(json = NULL) {
+    meltedAttributes = NULL, initialize = function(json = NULL) {
         if (!is.null(json)) {
             self$initJson(json)
         } else {
@@ -20,13 +21,16 @@ MeltStep <- R6::R6Class("MeltStep", inherit = NamespaceStep, public = list(model
     }, init = function() {
         super$init()
         self$model = MeltStepModel$new()
+        self$meltedAttributes = list()
     }, initJson = function(json) {
         super$initJson(json)
         self$model = createObjectFromJson(json$model)
+        self$meltedAttributes = lapply(json$meltedAttributes, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
         m$kind = rtson::tson.scalar("MeltStep")
         if (!is.null(self$model)) m$model = self$model$toTson()
+        m$meltedAttributes = lapply(self$meltedAttributes, function(each) each$toTson())
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

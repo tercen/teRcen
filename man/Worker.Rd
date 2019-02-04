@@ -23,6 +23,10 @@ Worker
 \item{\code{availableMemory}}{of type double.}
 
 \item{\code{maxMemory}}{of type double.}
+
+\item{\code{availableTaskTypes}}{list of type String.}
+
+\item{\code{priority}}{of type double.}
 }}
 
 \keyword{datasets}

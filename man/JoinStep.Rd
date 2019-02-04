@@ -29,6 +29,8 @@ JoinStep
 \item{\code{state}}{object of class \code{\link{StepState}} inherited from super class \code{\link{Step}}.}
 
 \item{\code{model}}{object of class \code{\link{JoinStepModel}}.}
+
+\item{\code{rightAttributes}}{list of class \code{\link{Attribute}}.}
 }}
 
 \keyword{datasets}

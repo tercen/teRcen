@@ -23,6 +23,8 @@ Version
 \item{\code{tag}}{of type String.}
 
 \item{\code{date}}{of type String.}
+
+\item{\code{commit}}{of type String.}
 }}
 
 \keyword{datasets}

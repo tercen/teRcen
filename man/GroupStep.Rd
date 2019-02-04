@@ -33,6 +33,8 @@ GroupStep
 \item{\code{rectangle}}{object of class \code{\link{Rectangle}} inherited from super class \code{\link{Step}}.}
 
 \item{\code{state}}{object of class \code{\link{StepState}} inherited from super class \code{\link{Step}}.}
+
+\item{\code{offset}}{object of class \code{\link{Point}}.}
 }}
 
 \keyword{datasets}
