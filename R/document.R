@@ -1,7 +1,7 @@
 #' Document
 #'
 #' @export
-#' @format \code{\link{R6Class}} object, super class \code{\link{PersistentObject}}, sub classes \code{\link{Team}}, \code{\link{ShinyOperator}}, \code{\link{ROperator}}, \code{\link{WebAppOperator}}, \code{\link{GitOperator}}, \code{\link{CubeQueryTableSchema}}, \code{\link{TableSchema}}, \code{\link{ComputedTableSchema}}, \code{\link{Schema}}, \code{\link{FileDocument}}, \code{\link{Workflow}}, \code{\link{User}}, \code{\link{Operator}}, \code{\link{ProjectDocument}}, \code{\link{Project}}.
+#' @format \code{\link{R6Class}} object, super class \code{\link{PersistentObject}}, sub classes \code{\link{Team}}, \code{\link{ShinyOperator}}, \code{\link{DockerOperator}}, \code{\link{ROperator}}, \code{\link{WebAppOperator}}, \code{\link{GitOperator}}, \code{\link{CubeQueryTableSchema}}, \code{\link{TableSchema}}, \code{\link{ComputedTableSchema}}, \code{\link{Schema}}, \code{\link{FileDocument}}, \code{\link{Workflow}}, \code{\link{User}}, \code{\link{WorkerMachine}}, \code{\link{Operator}}, \code{\link{ProjectDocument}}, \code{\link{Project}}.
 #' @field isDeleted of type bool inherited from super class \code{\link{PersistentObject}}.
 #' @field rev of type String inherited from super class \code{\link{PersistentObject}}.
 #' @field id of type String inherited from super class \code{\link{IdObject}}.

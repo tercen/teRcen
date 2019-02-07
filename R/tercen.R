@@ -280,11 +280,6 @@ parseCommandArgs <- function() {
             if (index > length(args)) 
                 showUsage()
             list[["taskId"]] = args[[index]]
-        } else if (argv == "--slaveUri") {
-            index = index + 1
-            if (index > length(args)) 
-                showUsage()
-            list[["slaveUri"]] = args[[index]]
         } else if (argv == "--serviceUri") {
             index = index + 1
             if (index > length(args)) 

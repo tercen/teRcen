@@ -131,6 +131,9 @@ createObjectFromJson = function(json) {
     if (kind == "Acl") {
         return(Acl$new(json = json))
     }
+    if (kind == "DockerOperator") {
+        return(DockerOperator$new(json = json))
+    }
     if (kind == "RelationStep") {
         return(RelationStep$new(json = json))
     }
@@ -176,8 +179,8 @@ createObjectFromJson = function(json) {
     if (kind == "StartProcess") {
         return(StartProcess$new(json = json))
     }
-    if (kind == "Token") {
-        return(Token$new(json = json))
+    if (kind == "WorkerMachine") {
+        return(WorkerMachine$new(json = json))
     }
     if (kind == "Properties") {
         return(Properties$new(json = json))
@@ -187,6 +190,9 @@ createObjectFromJson = function(json) {
     }
     if (kind == "PropertyValue") {
         return(PropertyValue$new(json = json))
+    }
+    if (kind == "Token") {
+        return(Token$new(json = json))
     }
     if (kind == "CSVFileMetadata") {
         return(CSVFileMetadata$new(json = json))

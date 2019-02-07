@@ -1,7 +1,7 @@
 #' Operator
 #'
 #' @export
-#' @format \code{\link{R6Class}} object, super class \code{\link{Document}}, sub classes \code{\link{ShinyOperator}}, \code{\link{ROperator}}, \code{\link{WebAppOperator}}, \code{\link{GitOperator}}.
+#' @format \code{\link{R6Class}} object, super class \code{\link{Document}}, sub classes \code{\link{ShinyOperator}}, \code{\link{DockerOperator}}, \code{\link{ROperator}}, \code{\link{WebAppOperator}}, \code{\link{GitOperator}}.
 #' @field description of type String inherited from super class \code{\link{Document}}.
 #' @field name of type String inherited from super class \code{\link{Document}}.
 #' @field createdBy of type String inherited from super class \code{\link{Document}}.

@@ -1,9 +1,11 @@
-ServiceFactory <- R6::R6Class("ServiceFactory", public = list(workerService = NULL, 
-    garbageCollectorService = NULL, fileService = NULL, lockService = NULL, persistentService = NULL, 
-    tableSchemaService = NULL, taskService = NULL, eventService = NULL, userSecretService = NULL, 
-    workflowService = NULL, userService = NULL, projectDocumentService = NULL, teamService = NULL, 
-    projectService = NULL, documentService = NULL, operatorService = NULL, initialize = function(baseRestUri) {
+ServiceFactory <- R6::R6Class("ServiceFactory", public = list(workerMachineService = NULL, 
+    workerService = NULL, garbageCollectorService = NULL, fileService = NULL, lockService = NULL, 
+    persistentService = NULL, tableSchemaService = NULL, taskService = NULL, eventService = NULL, 
+    userSecretService = NULL, workflowService = NULL, userService = NULL, projectDocumentService = NULL, 
+    teamService = NULL, projectService = NULL, documentService = NULL, operatorService = NULL, 
+    initialize = function(baseRestUri) {
         client = AuthHttpClient$new()
+        self$workerMachineService = WorkerMachineService$new(baseRestUri, client)
         self$workerService = WorkerService$new(baseRestUri, client)
         self$garbageCollectorService = GarbageCollectorService$new(baseRestUri, client)
         self$fileService = FileService$new(baseRestUri, client)

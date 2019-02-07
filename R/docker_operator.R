@@ -1,7 +1,8 @@
-#' GitOperator
+#' DockerOperator
 #'
 #' @export
-#' @format \code{\link{R6Class}} object, super class \code{\link{Operator}}, sub classes \code{\link{ShinyOperator}}, \code{\link{DockerOperator}}, \code{\link{ROperator}}, \code{\link{WebAppOperator}}.
+#' @format \code{\link{R6Class}} object, super class \code{\link{GitOperator}}.
+#' @field path of type String inherited from super class \code{\link{GitOperator}}.
 #' @field description of type String inherited from super class \code{\link{Document}}.
 #' @field name of type String inherited from super class \code{\link{Document}}.
 #' @field createdBy of type String inherited from super class \code{\link{Document}}.
@@ -11,7 +12,7 @@
 #' @field isDeleted of type bool inherited from super class \code{\link{PersistentObject}}.
 #' @field rev of type String inherited from super class \code{\link{PersistentObject}}.
 #' @field id of type String inherited from super class \code{\link{IdObject}}.
-#' @field path of type String.
+#' @field container of type String.
 #' @field properties list of class \code{\link{Property}} inherited from super class \code{\link{Operator}}.
 #' @field acl object of class \code{\link{Acl}} inherited from super class \code{\link{Document}}.
 #' @field createdDate object of class \code{\link{Date}} inherited from super class \code{\link{Document}}.
@@ -19,7 +20,7 @@
 #' @field urls list of class \code{\link{Url}} inherited from super class \code{\link{Document}}.
 #' @field meta list of class \code{\link{Pair}} inherited from super class \code{\link{Document}}.
 #' @field url object of class \code{\link{Url}} inherited from super class \code{\link{Document}}.
-GitOperator <- R6::R6Class("GitOperator", inherit = Operator, public = list(path = NULL, 
+DockerOperator <- R6::R6Class("DockerOperator", inherit = GitOperator, public = list(container = NULL, 
     initialize = function(json = NULL) {
         if (!is.null(json)) {
             self$initJson(json)
@@ -28,14 +29,14 @@ GitOperator <- R6::R6Class("GitOperator", inherit = Operator, public = list(path
         }
     }, init = function() {
         super$init()
-        self$path = ""
+        self$container = ""
     }, initJson = function(json) {
         super$initJson(json)
-        self$path = json$path
+        self$container = json$container
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("GitOperator")
-        m$path = rtson::tson.scalar(self$path)
+        m$kind = rtson::tson.scalar("DockerOperator")
+        m$container = rtson::tson.scalar(self$container)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))
