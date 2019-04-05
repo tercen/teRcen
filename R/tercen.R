@@ -10,15 +10,38 @@ library(tibble)
     # Unlock the class
     TableSchemaService$unlock()
     
-    TableSchemaService$set("public", "select", function(tableId, cnames, offset, 
-        limit) {
+    TableSchemaService$set("public", "select", function(tableId, cnames=list(), offset=0, 
+        limit=-1) {
         bytes = self$selectStream(tableId, cnames, offset, limit)
         table = createObjectFromJson(rtson::fromTSON(bytes))
         return(table)
     }, overwrite = TRUE)
     
+    TableSchemaService$set("public", "selectSchema", function(schema=NULL, names=list(), offset=0, nr=-1) {
+      cnames = as.list(names)
+      names(cnames) = NULL
+      
+      if (length(cnames) == 0){
+        where = sapply(schema$columns, function(c) (c$type != 'uint64' && c$type != 'int64') )
+        cnames = lapply(schema$columns[where], function(c) c$name)
+      }
+      
+      return(as_tibble(self$select(schema$id, cnames, offset, nr)))
+    }, overwrite = TRUE)
+     
     # Lock the class again
     TableSchemaService$lock()
+    
+    # Unlock the class
+    Table$unlock()
+    
+    Table$set("public", "print", function(...) {
+      print(as_tibble(self))
+      invisible(self)
+    }, overwrite = TRUE)
+    
+    # Lock the class again
+    Table$lock()
 }
 
 #' Tercen Client for R
@@ -34,7 +57,7 @@ NULL
 #' @export
 TercenClient <- R6Class("TercenClient", inherit = ServiceFactory, public = list(session = NULL, 
     initialize = function(username = getOption("tercen.username"), password = getOption("tercen.password"), 
-        authToken = NULL, serviceUri = getOption("tercen.serviceUri", default = "https://tercen.com/service")) {
+        authToken = NULL, serviceUri = getOption("tercen.serviceUri", default = "https://tercen.com/api/v1/")) {
         argsMap = parseCommandArgs()
         if (!is.null(argsMap$serviceUri)) {
             super$initialize(argsMap$serviceUri)
@@ -227,17 +250,17 @@ HttpClientService <- R6::R6Class("HttpClientService", public = list(client = NUL
         if (is.list(startKey)) {
             startKey = lapply(startKey, jsonlite::unbox)
         } else {
-            startKey = jsonlite::unbox(limit)
+            startKey = jsonlite::unbox(startKey)
         }
         
         if (is.list(endKey)) {
             endKey = lapply(endKey, jsonlite::unbox)
         } else {
-            endKey = jsonlite::unbox(limit)
+            endKey = jsonlite::unbox(endKey)
         }
         
-        body = list(startKey = startKey, endKey = endKey, limit = jsonlite::unbox(limit), 
-            skip = jsonlite::unbox(skip), descending = jsonlite::unbox(descending))
+        body = list(startKey = startKey, endKey = endKey, limit = rtson::tson.int(limit), 
+            skip = rtson::tson.int(skip), descending = jsonlite::unbox(descending))
         response = self$client$post(url, body = rtson::toTSON(body), encode = "raw", 
             query = list(useFactory = tolower(toString(useFactory))))
         if (status_code(response) != 200) {

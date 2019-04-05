@@ -26,7 +26,7 @@ Task
 
 \item{\code{taskHash}}{of type String.}
 
-\item{\code{runProfile}}{of type String.}
+\item{\code{environment}}{list of class \code{\link{Pair}}.}
 
 \item{\code{state}}{object of class \code{\link{State}}.}
 

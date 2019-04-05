@@ -1,6 +1,7 @@
 library(tercen)
 
 client = TercenClient$new()
+client
  
 workflowId = '449df8165dddb9276962e5729501f9cd'
 stepId = 'd82ce8cc-7494-4e80-b8b2-d460a10783ca'
@@ -10,7 +11,10 @@ client$workflowService$get(workflowId)
 teamId = client$session$user$teamAcl$aces[[1]]$principals[[1]]$principalId
 date = '2018'
 
-projects = client$documentService$findProjectByOwnersAndCreatedDate(startKey=list(teamId,date),endKey=list(teamId,''))
+projects = client$documentService$findProjectByOwnersAndCreatedDate(
+  startKey=list(teamId,date),
+  endKey=list(teamId,''))
+
 projects
 project = projects[[1]]
 
@@ -23,7 +27,11 @@ workflow
 client$workflowService$create(workflow)
 
 
-client$projectDocumentService$findWorkflowByLastModifiedDate(startKey=list(project$id, '2018'), endKey=list(project$id,''),limit=1,skip=1)
+client$projectDocumentService$findWorkflowByLastModifiedDate(
+  startKey=list(project$id, '2018'), 
+  endKey=list(project$id,''),
+  limit=1,
+  skip=1)
 
 fileDoc = FileDocument$new()
 fileDoc$name = 'iris from R'

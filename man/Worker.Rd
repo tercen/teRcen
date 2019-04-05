@@ -14,19 +14,29 @@ Worker
 \section{Fields}{
 
 \describe{
+\item{\code{status}}{of type String.}
+
 \item{\code{name}}{of type String.}
 
 \item{\code{uri}}{of type String.}
 
-\item{\code{threads}}{of type int.}
+\item{\code{priority}}{of type double.}
+
+\item{\code{nCPU}}{of type int.}
+
+\item{\code{nThread}}{of type int.}
+
+\item{\code{memory}}{of type double.}
+
+\item{\code{nAvailableThread}}{of type int.}
 
 \item{\code{availableMemory}}{of type double.}
 
-\item{\code{maxMemory}}{of type double.}
-
 \item{\code{availableTaskTypes}}{list of type String.}
 
-\item{\code{priority}}{of type double.}
+\item{\code{lastDateActivity}}{of type String.}
+
+\item{\code{heartBeat}}{of type int.}
 }}
 
 \keyword{datasets}

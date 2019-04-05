@@ -12,7 +12,6 @@ AbstractOperatorContext <- R6Class(
     .rschema = NULL
   ),
   public = list(
-    
     client = NULL, 
     task = NULL,
     op.value = function(name){
@@ -195,10 +194,8 @@ OperatorContextDev <- R6Class(
     .query = NULL
   ),
   public = list(
-    
     workflowId = NULL,
     stepId = NULL,
-    
     initialize = function( workflowId=getOption("tercen.workflowId"),
                            stepId=getOption("tercen.stepId"),
                            taskId=NULL,
@@ -264,7 +261,6 @@ OperatorContextDev <- R6Class(
     }
   ),
   active = list(
-    
     workflow = function(value){
       if (!missing(value)) stop('read only')
       return (self$client$workflowService$get(self$workflowId))
@@ -291,7 +287,6 @@ OperatorContext <- R6Class(
   ),
   public = list(
     client = NULL,
-    
     initialize = function(taskId = NULL,
                           authToken = NULL, 
                           username = getOption("tercen.username"),
@@ -349,7 +344,6 @@ OperatorContext <- R6Class(
     }
   ),
   active = list(
-    
     workflow = function(value){
       if (!missing(value)) stop('read only')
       stop('not inpl')

@@ -179,8 +179,8 @@ createObjectFromJson = function(json) {
     if (kind == "StartProcess") {
         return(StartProcess$new(json = json))
     }
-    if (kind == "WorkerMachine") {
-        return(WorkerMachine$new(json = json))
+    if (kind == "Token") {
+        return(Token$new(json = json))
     }
     if (kind == "Properties") {
         return(Properties$new(json = json))
@@ -190,9 +190,6 @@ createObjectFromJson = function(json) {
     }
     if (kind == "PropertyValue") {
         return(PropertyValue$new(json = json))
-    }
-    if (kind == "Token") {
-        return(Token$new(json = json))
     }
     if (kind == "CSVFileMetadata") {
         return(CSVFileMetadata$new(json = json))
@@ -268,6 +265,9 @@ createObjectFromJson = function(json) {
     }
     if (kind == "ProjectTask") {
         return(ProjectTask$new(json = json))
+    }
+    if (kind == "WorkerEndpoint") {
+        return(WorkerEndpoint$new(json = json))
     }
     if (kind == "ColumnSchemaMetaData") {
         return(ColumnSchemaMetaData$new(json = json))
@@ -361,6 +361,9 @@ createObjectFromJson = function(json) {
     }
     if (kind == "Document") {
         return(Document$new(json = json))
+    }
+    if (kind == "GenericEvent") {
+        return(GenericEvent$new(json = json))
     }
     if (kind == "TaskDataEvent") {
         return(TaskDataEvent$new(json = json))

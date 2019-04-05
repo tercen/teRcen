@@ -20,8 +20,6 @@ CreateGitOperatorTask
 
 \item{\code{taskHash}}{of type String inherited from super class \code{\link{Task}}.}
 
-\item{\code{runProfile}}{of type String inherited from super class \code{\link{Task}}.}
-
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 
 \item{\code{rev}}{of type String inherited from super class \code{\link{PersistentObject}}.}
@@ -31,6 +29,8 @@ CreateGitOperatorTask
 \item{\code{version}}{of type String.}
 
 \item{\code{operatorId}}{of type String.}
+
+\item{\code{environment}}{list of class \code{\link{Pair}} inherited from super class \code{\link{Task}}.}
 
 \item{\code{state}}{object of class \code{\link{State}} inherited from super class \code{\link{Task}}.}
 

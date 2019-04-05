@@ -17,6 +17,8 @@ OperatorSettings
 \item{\code{namespace}}{of type String.}
 
 \item{\code{operatorRef}}{object of class \code{\link{OperatorRef}}.}
+
+\item{\code{environment}}{list of class \code{\link{Pair}}.}
 }}
 
 \keyword{datasets}

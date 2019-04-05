@@ -4,7 +4,7 @@
 \name{GitOperator}
 \alias{GitOperator}
 \title{GitOperator}
-\format{\code{\link{R6Class}} object, super class \code{\link{Operator}}, sub classes \code{\link{ShinyOperator}}, \code{\link{ROperator}}, \code{\link{WebAppOperator}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{Operator}}, sub classes \code{\link{ShinyOperator}}, \code{\link{DockerOperator}}, \code{\link{ROperator}}, \code{\link{WebAppOperator}}.}
 \usage{
 GitOperator
 }

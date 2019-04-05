@@ -4,7 +4,7 @@
 \name{Operator}
 \alias{Operator}
 \title{Operator}
-\format{\code{\link{R6Class}} object, super class \code{\link{Document}}, sub classes \code{\link{ShinyOperator}}, \code{\link{ROperator}}, \code{\link{WebAppOperator}}, \code{\link{GitOperator}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{Document}}, sub classes \code{\link{ShinyOperator}}, \code{\link{DockerOperator}}, \code{\link{ROperator}}, \code{\link{WebAppOperator}}, \code{\link{GitOperator}}.}
 \usage{
 Operator
 }

@@ -6,5 +6,5 @@ First install [rtson](https://github.com/tercen/TSON/tree/master/rtson).
 
 ```R
 install.packages('devtools')
-devtools::install_github("tercen/teRcen", ref = "0.8.3", upgrade_dependencies = FALSE, args="--no-multiarch")
+devtools::install_github("tercen/teRcen", ref = "0.8.4", upgrade_dependencies = FALSE, args="--no-multiarch")
 ```
