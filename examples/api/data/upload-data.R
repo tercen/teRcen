@@ -11,6 +11,8 @@ projectName = 'project'
 client = TercenClient$new(serviceUri=serviceUri,
                           username=username,
                           password=password)
+
+client$session
   
 projects = client$documentService$findProjectByOwnersAndCreatedDate(
   startKey=list(teamName,'2020'),

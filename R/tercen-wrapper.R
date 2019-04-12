@@ -238,13 +238,24 @@ OperatorContextDev <- R6Class(
       # the task can be null if run from a R session
       if (is.null(self$task)){
         print('task is null, create a task')
-        task = RunComputationTask$new()
-        task$state = InitState$new()
-        task$owner = workflow$acl$owner
-        task$projectId = workflow$projectId
-        task$query = self$query
-        task$fileResultId = fileDoc$id
-        self$task = self$client$taskService$create(task)
+        if (is.null(client$session$serverVersion)){
+          task = ComputationTask$new()
+          task$state = InitState$new()
+          task$owner = workflow$acl$owner
+          task$projectId = workflow$projectId
+          task$query = self$query
+          task$fileResultId = fileDoc$id
+          self$task = self$client$taskService$create(task)
+        } else {
+          task = RunComputationTask$new()
+          task$state = InitState$new()
+          task$owner = workflow$acl$owner
+          task$projectId = workflow$projectId
+          task$query = self$query
+          task$fileResultId = fileDoc$id
+          self$task = self$client$taskService$create(task)
+        }
+        
       } else {
         self$task$fileResultId = fileDoc$id
         rev = self$client$taskService$update(self$task)

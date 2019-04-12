@@ -14,6 +14,8 @@ UserSession
 \section{Fields}{
 
 \describe{
+\item{\code{serverVersion}}{object of class \code{\link{Version}}.}
+
 \item{\code{user}}{object of class \code{\link{User}}.}
 
 \item{\code{token}}{object of class \code{\link{Token}}.}

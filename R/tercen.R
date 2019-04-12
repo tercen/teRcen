@@ -10,25 +10,27 @@ library(tibble)
     # Unlock the class
     TableSchemaService$unlock()
     
-    TableSchemaService$set("public", "select", function(tableId, cnames=list(), offset=0, 
-        limit=-1) {
+    TableSchemaService$set("public", "select", function(tableId, cnames = list(), 
+        offset = 0, limit = -1) {
         bytes = self$selectStream(tableId, cnames, offset, limit)
         table = createObjectFromJson(rtson::fromTSON(bytes))
         return(table)
     }, overwrite = TRUE)
     
-    TableSchemaService$set("public", "selectSchema", function(schema=NULL, names=list(), offset=0, nr=-1) {
-      cnames = as.list(names)
-      names(cnames) = NULL
-      
-      if (length(cnames) == 0){
-        where = sapply(schema$columns, function(c) (c$type != 'uint64' && c$type != 'int64') )
-        cnames = lapply(schema$columns[where], function(c) c$name)
-      }
-      
-      return(as_tibble(self$select(schema$id, cnames, offset, nr)))
+    TableSchemaService$set("public", "selectSchema", function(schema = NULL, names = list(), 
+        offset = 0, nr = -1) {
+        cnames = as.list(names)
+        names(cnames) = NULL
+        
+        if (length(cnames) == 0) {
+            where = sapply(schema$columns, function(c) (c$type != "uint64" && c$type != 
+                "int64"))
+            cnames = lapply(schema$columns[where], function(c) c$name)
+        }
+        
+        return(as_tibble(self$select(schema$id, cnames, offset, nr)))
     }, overwrite = TRUE)
-     
+    
     # Lock the class again
     TableSchemaService$lock()
     
@@ -36,8 +38,8 @@ library(tibble)
     Table$unlock()
     
     Table$set("public", "print", function(...) {
-      print(as_tibble(self))
-      invisible(self)
+        print(as_tibble(self))
+        invisible(self)
     }, overwrite = TRUE)
     
     # Lock the class again
