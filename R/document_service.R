@@ -22,11 +22,11 @@ DocumentService <- R6::R6Class("DocumentService", inherit = HttpClientService, p
     params[["offset"]] = unbox(as.integer(offset))
     params[["limit"]] = unbox(as.integer(limit))
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-    if (status_code(response) != 200) {
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
         self$onResponseError(response, "getTercenOperatorLibrary")
     } else {
-        answer = createObjectFromJson(rtson::fromTSON(content(response)))
+        answer = createObjectFromJson(response$content)
     }
     return(answer)
 }, getTercenWorkflowLibrary = function(offset, limit) {
@@ -37,11 +37,11 @@ DocumentService <- R6::R6Class("DocumentService", inherit = HttpClientService, p
     params[["offset"]] = unbox(as.integer(offset))
     params[["limit"]] = unbox(as.integer(limit))
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-    if (status_code(response) != 200) {
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
         self$onResponseError(response, "getTercenWorkflowLibrary")
     } else {
-        answer = createObjectFromJson(rtson::fromTSON(content(response)))
+        answer = createObjectFromJson(response$content)
     }
     return(answer)
 }, getTercenAppLibrary = function(offset, limit) {
@@ -52,11 +52,11 @@ DocumentService <- R6::R6Class("DocumentService", inherit = HttpClientService, p
     params[["offset"]] = unbox(as.integer(offset))
     params[["limit"]] = unbox(as.integer(limit))
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-    if (status_code(response) != 200) {
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
         self$onResponseError(response, "getTercenAppLibrary")
     } else {
-        answer = createObjectFromJson(rtson::fromTSON(content(response)))
+        answer = createObjectFromJson(response$content)
     }
     return(answer)
 }))

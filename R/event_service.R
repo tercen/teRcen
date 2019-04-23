@@ -10,8 +10,8 @@ EventService <- R6::R6Class("EventService", inherit = HttpClientService, public 
     params[["channel"]] = unbox(channel)
     params[["evt"]] = evt$toTson()
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-    if (status_code(response) != 200) {
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
         self$onResponseError(response, "sendChannel")
     } else {
         answer = NULL
@@ -24,11 +24,11 @@ EventService <- R6::R6Class("EventService", inherit = HttpClientService, public 
     params = list()
     params[["name"]] = unbox(name)
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-    if (status_code(response) != 200) {
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
         self$onResponseError(response, "channel")
     } else {
-        answer = content(response)
+        answer = response$content
     }
     return(answer)
 }, listenTask = function(taskId, start) {
@@ -39,11 +39,11 @@ EventService <- R6::R6Class("EventService", inherit = HttpClientService, public 
     params[["taskId"]] = unbox(taskId)
     params[["start"]] = unbox(start)
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-    if (status_code(response) != 200) {
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
         self$onResponseError(response, "listenTask")
     } else {
-        answer = content(response)
+        answer = response$content
     }
     return(answer)
 }, onTaskState = function(taskId) {
@@ -53,11 +53,11 @@ EventService <- R6::R6Class("EventService", inherit = HttpClientService, public 
     params = list()
     params[["taskId"]] = unbox(taskId)
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-    if (status_code(response) != 200) {
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
         self$onResponseError(response, "onTaskState")
     } else {
-        answer = content(response)
+        answer = response$content
     }
     return(answer)
 }, taskListenerCount = function(taskId) {
@@ -67,11 +67,11 @@ EventService <- R6::R6Class("EventService", inherit = HttpClientService, public 
     params = list()
     params[["taskId"]] = unbox(taskId)
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-    if (status_code(response) != 200) {
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
         self$onResponseError(response, "taskListenerCount")
     } else {
-        answer = rtson::fromTSON(content(response))[[1]]
+        answer = response$content[[1]]
     }
     return(answer)
 }))

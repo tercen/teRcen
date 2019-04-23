@@ -20,11 +20,11 @@ UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = 
     params[["usernameOrEmail"]] = unbox(usernameOrEmail)
     params[["password"]] = unbox(password)
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-    if (status_code(response) != 200) {
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
         self$onResponseError(response, "connect")
     } else {
-        answer = createObjectFromJson(rtson::fromTSON(content(response)))
+        answer = createObjectFromJson(response$content)
     }
     return(answer)
 }, createUser = function(user, password) {
@@ -35,11 +35,11 @@ UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = 
     params[["user"]] = user$toTson()
     params[["password"]] = unbox(password)
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-    if (status_code(response) != 200) {
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
         self$onResponseError(response, "createUser")
     } else {
-        answer = createObjectFromJson(rtson::fromTSON(content(response)))
+        answer = createObjectFromJson(response$content)
     }
     return(answer)
 }, updatePassword = function(userId, password) {
@@ -50,8 +50,8 @@ UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = 
     params[["userId"]] = unbox(userId)
     params[["password"]] = unbox(password)
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-    if (status_code(response) != 200) {
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
         self$onResponseError(response, "updatePassword")
     } else {
         answer = NULL
@@ -64,11 +64,11 @@ UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = 
     params = list()
     params[["userId"]] = unbox(userId)
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-    if (status_code(response) != 200) {
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
         self$onResponseError(response, "summary")
     } else {
-        answer = createObjectFromJson(rtson::fromTSON(content(response)))
+        answer = createObjectFromJson(response$content)
     }
     return(answer)
 }, resourceSummary = function(userId) {
@@ -78,11 +78,11 @@ UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = 
     params = list()
     params[["userId"]] = unbox(userId)
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-    if (status_code(response) != 200) {
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
         self$onResponseError(response, "resourceSummary")
     } else {
-        answer = createObjectFromJson(rtson::fromTSON(content(response)))
+        answer = createObjectFromJson(response$content)
     }
     return(answer)
 }, profiles = function(userId) {
@@ -92,11 +92,11 @@ UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = 
     params = list()
     params[["userId"]] = unbox(userId)
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-    if (status_code(response) != 200) {
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
         self$onResponseError(response, "profiles")
     } else {
-        answer = createObjectFromJson(rtson::fromTSON(content(response)))
+        answer = createObjectFromJson(response$content)
     }
     return(answer)
 }, createToken = function(userId, validityInSeconds) {
@@ -107,11 +107,11 @@ UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = 
     params[["userId"]] = unbox(userId)
     params[["validityInSeconds"]] = unbox(as.integer(validityInSeconds))
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-    if (status_code(response) != 200) {
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
         self$onResponseError(response, "createToken")
     } else {
-        answer = rtson::fromTSON(content(response))[[1]]
+        answer = response$content[[1]]
     }
     return(answer)
 }, isTokenValid = function(token) {
@@ -121,11 +121,11 @@ UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = 
     params = list()
     params[["token"]] = unbox(token)
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-    if (status_code(response) != 200) {
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
         self$onResponseError(response, "isTokenValid")
     } else {
-        answer = rtson::fromTSON(content(response))[[1]]
+        answer = response$content[[1]]
     }
     return(answer)
 }, setTeamPrivilege = function(username, principal, privilege) {
@@ -137,11 +137,11 @@ UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = 
     params[["principal"]] = principal$toTson()
     params[["privilege"]] = privilege$toTson()
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-    if (status_code(response) != 200) {
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
         self$onResponseError(response, "setTeamPrivilege")
     } else {
-        answer = rtson::fromTSON(content(response))[[1]]
+        answer = response$content[[1]]
     }
     return(answer)
 }, getServerVersion = function(module) {
@@ -151,11 +151,11 @@ UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = 
     params = list()
     params[["module"]] = unbox(module)
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-    if (status_code(response) != 200) {
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
         self$onResponseError(response, "getServerVersion")
     } else {
-        answer = createObjectFromJson(rtson::fromTSON(content(response)))
+        answer = createObjectFromJson(response$content)
     }
     return(answer)
 }))

@@ -9,8 +9,8 @@ WorkerService <- R6::R6Class("WorkerService", inherit = HttpClientService, publi
     params = list()
     params[["task"]] = task$toTson()
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-    if (status_code(response) != 200) {
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
         self$onResponseError(response, "exec")
     } else {
         answer = NULL
@@ -23,8 +23,8 @@ WorkerService <- R6::R6Class("WorkerService", inherit = HttpClientService, publi
     params = list()
     params[["priority"]] = unbox(priority)
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-    if (status_code(response) != 200) {
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
         self$onResponseError(response, "setPriority")
     } else {
         answer = NULL
@@ -37,8 +37,8 @@ WorkerService <- R6::R6Class("WorkerService", inherit = HttpClientService, publi
     params = list()
     params[["status"]] = unbox(status)
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-    if (status_code(response) != 200) {
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
         self$onResponseError(response, "setStatus")
     } else {
         answer = NULL
@@ -51,8 +51,8 @@ WorkerService <- R6::R6Class("WorkerService", inherit = HttpClientService, publi
     params = list()
     params[["heartBeat"]] = unbox(as.integer(heartBeat))
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-    if (status_code(response) != 200) {
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
         self$onResponseError(response, "setHeartBeat")
     } else {
         answer = NULL
@@ -65,11 +65,11 @@ WorkerService <- R6::R6Class("WorkerService", inherit = HttpClientService, publi
     params = list()
     params[["all"]] = unbox(all)
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-    if (status_code(response) != 200) {
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
         self$onResponseError(response, "getState")
     } else {
-        answer = createObjectFromJson(rtson::fromTSON(content(response)))
+        answer = createObjectFromJson(response$content)
     }
     return(answer)
 }))

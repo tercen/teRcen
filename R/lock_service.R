@@ -10,11 +10,11 @@ LockService <- R6::R6Class("LockService", inherit = HttpClientService, public = 
     params[["name"]] = unbox(name)
     params[["wait"]] = unbox(as.integer(wait))
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-    if (status_code(response) != 200) {
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
         self$onResponseError(response, "lock")
     } else {
-        answer = createObjectFromJson(rtson::fromTSON(content(response)))
+        answer = createObjectFromJson(response$content)
     }
     return(answer)
 }, releaseLock = function(lock) {
@@ -24,8 +24,8 @@ LockService <- R6::R6Class("LockService", inherit = HttpClientService, public = 
     params = list()
     params[["lock"]] = lock$toTson()
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-    if (status_code(response) != 200) {
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
         self$onResponseError(response, "releaseLock")
     } else {
         answer = NULL

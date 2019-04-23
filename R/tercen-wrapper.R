@@ -1,6 +1,5 @@
 library(R6)
-library(httr)
-library(jsonlite)
+library(reqwestr)
 library(rtson)
 library(dplyr)
 

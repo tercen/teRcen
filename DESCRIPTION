@@ -12,9 +12,8 @@ Suggests:
     testthat
 Imports:
     R6,
-    httr,
+    reqwestr,
     rtson,
-    jsonlite,
     dplyr,
     tibble,
     yaml

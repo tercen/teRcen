@@ -5,11 +5,12 @@ getOption("tercen.serviceUri")
 getOption("tercen.username")
 getOption("tercen.password")
  
-options("tercen.workflowId"= "9d5379a435c8457a347584e162003e09")
-options("tercen.stepId"= "12-9")
+# http://127.0.0.1:5400/core/#ds/3aa8703da6b7534488c2f9632a0c0b0d/3-2
+options("tercen.workflowId"= "3aa8703da6b7534488c2f9632a0c0b0d")
+options("tercen.stepId"= "3-2")
 getOption("tercen.workflowId")
 getOption("tercen.stepId")
-
+ 
 ctx = tercenCtx()
 ctx$names
  
@@ -78,4 +79,6 @@ ctx$rselect()
 ctx %>% select()
 ctx %>% cselect()
 ctx %>% rselect()
+
+ctx$select('.yggg', nr=3)
       

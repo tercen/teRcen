@@ -1,9 +1,12 @@
 library(R6)
-library(httr)
-library(jsonlite)
+library(reqwestr)
 library(rtson)
 library(dplyr)
 library(tibble)
+
+unbox <- function(object) {
+  return (rtson::tson.scalar(object))
+}
 
 .onLoad <- function(libname, pkgname) {
     
@@ -12,8 +15,8 @@ library(tibble)
     
     TableSchemaService$set("public", "select", function(tableId, cnames = list(), 
         offset = 0, limit = -1) {
-        bytes = self$selectStream(tableId, cnames, offset, limit)
-        table = createObjectFromJson(rtson::fromTSON(bytes))
+        object = self$selectStream(tableId, cnames, offset, limit)
+        table = createObjectFromJson(object)
         return(table)
     }, overwrite = TRUE)
     
@@ -53,7 +56,7 @@ library(tibble)
 #' @name tercen-package
 #' @aliases tercen
 #' @docType package
-#' @import R6 httr rtson jsonlite dplyr tibble
+#' @import R6 reqwestr rtson dplyr tibble
 NULL
 
 #' @export
@@ -92,82 +95,129 @@ Base <- R6::R6Class("Base", portable = TRUE, public = list(subKind = NULL, initi
     return(list())
 }))
 
-MultiPart <- R6::R6Class("MultiPart", public = list(headers = list(), string = NULL, 
-    bytes = NULL, initialize = function(headers, bytes = NULL, string = NULL) {
-        if (is.null(bytes) && is.null(string)) stop("MultiPart : bytes or string is required")
-        if (is.null(headers)) stop("MultiPart : headers is required")
-        self$headers = headers
-        self$bytes = bytes
-        self$string = string
-    }))
+MultiPart <- R6::R6Class("MultiPart", 
+                         public = list(headers = list(), 
+                                       content = NULL,
+                                       initialize = function(headers, content = NULL) {
+                                         if (is.null(content) && is.null(string)) stop("MultiPart : content is required")
+                                         if (is.null(headers)) stop("MultiPart : headers is required")
+                                         self$headers = headers
+                                         self$content = content
+                                       },
+                                       toTson = function(){
+                                         list(headers=self$headers, content=self$content)
+                                       }))
 
-MultiPartMixTransformer <- R6::R6Class("MultiPartMixTransformer", public = list(frontier = "", 
-    initialize = function(frontier) {
-        if (is.null(frontier)) stop("MultiPartMixTransformer : frontier is required")
-        self$frontier = frontier
-    }, encode = function(parts) {
-        con = rawConnection(raw(0), "r+")
-        
-        lapply(parts, function(part) {
-            writeChar("--", con, eos = NULL)
-            writeChar(self$frontier, con, eos = NULL)
-            writeBin(as.integer(13), con, size = 1, endian = "little")
-            writeBin(as.integer(10), con, size = 1, endian = "little")
-            
-            headers = part$headers
-            
-            lapply(names(headers), function(name) {
-                writeChar(name, con, eos = NULL)
-                writeChar(": ", con, eos = NULL)
-                writeChar(headers[[name]], con, eos = NULL)
-                writeBin(as.integer(13), con, size = 1, endian = "little")
-                writeBin(as.integer(10), con, size = 1, endian = "little")
-            })
-            
-            writeBin(as.integer(13), con, size = 1, endian = "little")
-            writeBin(as.integer(10), con, size = 1, endian = "little")
-            
-            if (!is.null(part$bytes)) {
-                writeBin(part$bytes, con, size = 1, endian = "little")
-            } else {
-                writeChar(part$string, con, eos = NULL)
-            }
-            
-            
-            writeBin(as.integer(13), con, size = 1, endian = "little")
-            writeBin(as.integer(10), con, size = 1, endian = "little")
-        })
-        
-        writeChar("--", con, eos = NULL)
-        writeChar(self$frontier, con, eos = NULL)
-        writeChar("--", con, eos = NULL)
-        writeBin(as.integer(13), con, size = 1, endian = "little")
-        writeBin(as.integer(10), con, size = 1, endian = "little")
-        
-        bytes = rawConnectionValue(con)
-        
-        close(con)
-        
-        return(bytes)
-    }))
+# MultiPartMixTransformer <- R6::R6Class("MultiPartMixTransformer", public = list( 
+#     initialize = function() {
+#         if (is.null(frontier)) stop("MultiPartMixTransformer : frontier is required")
+#         self$frontier = frontier
+#     }, encode = function(parts) {
+#         con = rawConnection(raw(0), "r+")
+#         
+#         lapply(parts, function(part) {
+#             writeChar("--", con, eos = NULL)
+#             writeChar(self$frontier, con, eos = NULL)
+#             writeBin(as.integer(13), con, size = 1, endian = "little")
+#             writeBin(as.integer(10), con, size = 1, endian = "little")
+#             
+#             headers = part$headers
+#             
+#             lapply(names(headers), function(name) {
+#                 writeChar(name, con, eos = NULL)
+#                 writeChar(": ", con, eos = NULL)
+#                 writeChar(headers[[name]], con, eos = NULL)
+#                 writeBin(as.integer(13), con, size = 1, endian = "little")
+#                 writeBin(as.integer(10), con, size = 1, endian = "little")
+#             })
+#             
+#             writeBin(as.integer(13), con, size = 1, endian = "little")
+#             writeBin(as.integer(10), con, size = 1, endian = "little")
+#             
+#             if (!is.null(part$bytes)) {
+#                 writeBin(part$bytes, con, size = 1, endian = "little")
+#             } else {
+#                 writeChar(part$string, con, eos = NULL)
+#             }
+#             
+#             
+#             writeBin(as.integer(13), con, size = 1, endian = "little")
+#             writeBin(as.integer(10), con, size = 1, endian = "little")
+#         })
+#         
+#         writeChar("--", con, eos = NULL)
+#         writeChar(self$frontier, con, eos = NULL)
+#         writeChar("--", con, eos = NULL)
+#         writeBin(as.integer(13), con, size = 1, endian = "little")
+#         writeBin(as.integer(10), con, size = 1, endian = "little")
+#         
+#         bytes = rawConnectionValue(con)
+#         
+#         close(con)
+#         
+#         return(bytes)
+#     }))
 
 HttpClient <- R6::R6Class("HttpClient", public = list(initialize = function() {
     
 }, getHeaders = function(headers) {
     headers[["Expect"]] = ""
     return(headers)
-}, get = function(url, headers = c(), query = list()) {
-    return(GET(url, add_headers(.headers = self$getHeaders(headers)), query = query))
-}, post = function(url, body = NULL, headers = c(), encode = "json", query = list()) {
-    return(POST(url, add_headers(.headers = self$getHeaders(headers)), body = body, 
-        encode = encode, query = query))
-}, put = function(url, body = NULL, headers = c(), encode = "json", query = list()) {
-    return(PUT(url, add_headers(.headers = self$getHeaders(headers)), body = body, 
-        encode = encode, query = query))
-}, delete = function(url, body = NULL, headers = c(), encode = "json", query = list()) {
-    return(DELETE(url, add_headers(.headers = self$getHeaders(headers)), body = body, 
-        encode = encode, query = query))
-}))
+}, get = function(url, 
+                  headers = structure(list(), names=character(0)),
+                  query = structure(list(), names=character(0))) {
+    return(GET(url, 
+               headers=self$getHeaders(headers),
+               query = query,
+               response_type="default"))
+}, post = function(url,
+                   headers = structure(list(), names=character(0)),
+                   query = structure(list(), names=character(0)),
+                   body = NULL,
+                   content_type="application/tson",
+                   response_type="default") {
+    return(POST(url, 
+                headers = self$getHeaders(headers),
+                query = query,
+                body = body, 
+                content_type = content_type,
+                response_type=response_type))
+},multipart = function(url,
+                  headers = structure(list(), names=character(0)),
+                  query = structure(list(), names=character(0)),
+                  body = NULL,
+                  response_type="default") {
+  return(MULTIPART(url, 
+              headers = self$getHeaders(headers),
+              query = query,
+              body = body, 
+              response_type=response_type))
+}, put = function(url,
+                   headers = structure(list(), names=character(0)),
+                   query = structure(list(), names=character(0)),
+                   body = NULL,
+                   content_type="application/tson",
+                   response_type="default") {
+  return(PUT(url, 
+              headers = self$getHeaders(headers),
+              query = query,
+              body = body, 
+              content_type = content_type,
+              response_type=response_type))
+}, delete = function(url,
+                  headers = structure(list(), names=character(0)),
+                  query = structure(list(), names=character(0)),
+                  body = NULL,
+                  content_type="application/tson",
+                  response_type="default") {
+  return(DELETE(url, 
+             headers = self$getHeaders(headers),
+             query = query,
+             body = body, 
+             content_type = content_type,
+             response_type=response_type))
+}
+))
 
 AuthHttpClient <- R6::R6Class("AuthHttpClient", inherit = HttpClient, public = list(token = NULL, 
     initialize = function(token = NULL) {
@@ -188,99 +238,91 @@ HttpClientService <- R6::R6Class("HttpClientService", public = list(client = NUL
         }
         self$client = client
     }, onResponseError = function(response, msg = "") {
-        body = rtson::fromTSON(content(response))
-        if (is.list(body)) {
-            stop(jsonlite::toJSON(body, auto_unbox = TRUE))
-        } else {
-            stop(paste0("Failed : ", msg, " : status=", status_code(response), " body=", 
-                toString(body)))
-        }
+        body = response$content
+        stop(paste0("Failed : ", msg, " : status=", response$status, " body=", 
+                    toString(body)))
         
     }, toTson = function(object) {
         return(object$toTson())
     }, fromTson = function(object) {
         return(createObjectFromJson(object))
     }, getServiceUri = function(uri, ...) {
-        return(httr::parse_url(paste0(self$baseRestUri, uri, ...)))
+        return(paste0(self$baseRestUri, uri, ...))
     }, create = function(object) {
         url = self$getServiceUri(self$uri)
         body = self$toTson(object)
-        response = self$client$put(url, body = rtson::toTSON(body), encode = "raw")
-        if (status_code(response) != 200) {
+        response = self$client$put(url, body = body)
+        if (response$status != 200) {
             self$onResponseError(response, "create")
         }
-        object = self$fromTson(rtson::fromTSON(content(response)))
-        return(object)
+        return(response$content)
     }, get = function(id, useFactory = TRUE) {
         url = self$getServiceUri(self$uri)
         response = self$client$get(url, query = list(id = id, useFactory = tolower(toString(useFactory))))
-        if (status_code(response) != 200) {
+        if (response$status != 200) {
             self$onResponseError(response, "get")
         }
-        
-        object = self$fromTson(rtson::fromTSON(content(response)))
-        return(object)
+        return(response$content)
     }, delete = function(id, rev) {
         url = self$getServiceUri(self$uri)
         response = self$client$delete(url, query = list(id = id, rev = rev))
-        if (status_code(response) != 200) {
+        if (response$status != 200) {
             self$onResponseError(response, "delete")
         }
     }, update = function(object) {
         url = self$getServiceUri(self$uri)
         body = self$toTson(object)
-        response = self$client$post(url, body = rtson::toTSON(body), encode = "raw")
-        if (status_code(response) != 200) {
+        response = self$client$post(url, body = body)
+        if (response$status != 200) {
             self$onResponseError(response, "update")
         }
-        object$rev = rtson::fromTSON(content(response))[[1]]
+        object$rev = response$content[[1]]
         return(object$rev)
     }, list = function(ids, useFactory = TRUE) {
         url = self$getServiceUri(self$uri, "/list")
-        body = body = lapply(ids, jsonlite::unbox)
-        response = self$client$post(url, body = rtson::toTSON(body), encode = "raw", 
+        body = body = lapply(ids, rtson::tson.scalar)
+        response = self$client$post(url, body = body, 
             query = list(useFactory = tolower(toString(useFactory))))
-        if (status_code(response) != 200) {
+        if (response$status != 200) {
             self$onResponseError(response, "list")
         }
-        list = rtson::fromTSON(content(response))
+        list = response$content
         objects = lapply(list, function(each) self$fromTson(each))
         return(objects)
     }, findStartKeys = function(viewName, startKey = NULL, endKey = NULL, limit = 20, 
         skip = 0, descending = TRUE, useFactory = FALSE) {
         url = self$getServiceUri(self$uri, "/", viewName)
         if (is.list(startKey)) {
-            startKey = lapply(startKey, jsonlite::unbox)
+            startKey = lapply(startKey, unbox)
         } else {
-            startKey = jsonlite::unbox(startKey)
+            startKey = unbox(startKey)
         }
         
         if (is.list(endKey)) {
-            endKey = lapply(endKey, jsonlite::unbox)
+            endKey = lapply(endKey, unbox)
         } else {
-            endKey = jsonlite::unbox(endKey)
+            endKey = unbox(endKey)
         }
         
         body = list(startKey = startKey, endKey = endKey, limit = rtson::tson.int(limit), 
-            skip = rtson::tson.int(skip), descending = jsonlite::unbox(descending))
-        response = self$client$post(url, body = rtson::toTSON(body), encode = "raw", 
+            skip = rtson::tson.int(skip), descending = unbox(descending))
+        response = self$client$post(url, body = body , 
             query = list(useFactory = tolower(toString(useFactory))))
-        if (status_code(response) != 200) {
+        if (response$status != 200) {
             self$onResponseError(response, "findStartKeys")
         }
-        list = rtson::fromTSON(content(response))
+        list = response$content
         objects = lapply(list, function(each) self$fromTson(each))
         return(objects)
     }, findKeys = function(viewName, keys = NULL, useFactory = FALSE) {
         url = self$getServiceUri(self$uri, "/", viewName)
-        body = lapply(keys, jsonlite::unbox)
-        # rtson::tson.scalar(keys)
-        response = self$client$post(url, body = rtson::toTSON(body), encode = "raw", 
+        body = lapply(keys, unbox)
+        response = self$client$post(url, body = body,  
             query = list(useFactory = tolower(toString(useFactory))))
-        if (status_code(response) != 200) {
+        if (response$status  != 200) {
             self$onResponseError(response, "findKeys")
         }
-        list = rtson::fromTSON(content(response))
+        list = response$content
         objects = lapply(list, function(each) self$fromTson(each))
         return(objects)
     }))

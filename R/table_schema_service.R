@@ -19,11 +19,11 @@ TableSchemaService <- R6::R6Class("TableSchemaService", inherit = HttpClientServ
         params[["offset"]] = unbox(as.integer(offset))
         params[["limit"]] = unbox(as.integer(limit))
         url = self$getServiceUri(uri)
-        response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-        if (status_code(response) != 200) {
+        response = self$client$post(url, body = params)
+        if (response$status != 200) {
             self$onResponseError(response, "select")
         } else {
-            answer = createObjectFromJson(rtson::fromTSON(content(response)))
+            answer = createObjectFromJson(response$content)
         }
         return(answer)
     }, selectPairwise = function(tableId, cnames, offset, limit) {
@@ -36,11 +36,11 @@ TableSchemaService <- R6::R6Class("TableSchemaService", inherit = HttpClientServ
         params[["offset"]] = unbox(as.integer(offset))
         params[["limit"]] = unbox(as.integer(limit))
         url = self$getServiceUri(uri)
-        response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-        if (status_code(response) != 200) {
+        response = self$client$post(url, body = params)
+        if (response$status != 200) {
             self$onResponseError(response, "selectPairwise")
         } else {
-            answer = createObjectFromJson(rtson::fromTSON(content(response)))
+            answer = createObjectFromJson(response$content)
         }
         return(answer)
     }, selectStream = function(tableId, cnames, offset, limit) {
@@ -53,11 +53,11 @@ TableSchemaService <- R6::R6Class("TableSchemaService", inherit = HttpClientServ
         params[["offset"]] = unbox(as.integer(offset))
         params[["limit"]] = unbox(as.integer(limit))
         url = self$getServiceUri(uri)
-        response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-        if (status_code(response) != 200) {
+        response = self$client$post(url, body = params)
+        if (response$status != 200) {
             self$onResponseError(response, "selectStream")
         } else {
-            answer = content(response)
+            answer = response$content
         }
         return(answer)
     }, selectCSV = function(tableId, cnames, offset, limit, separator, quote, encoding) {
@@ -73,12 +73,12 @@ TableSchemaService <- R6::R6Class("TableSchemaService", inherit = HttpClientServ
         params[["quote"]] = unbox(quote)
         params[["encoding"]] = unbox(encoding)
         url = self$getServiceUri(uri)
-        url$query = list(params = jsonlite::toJSON(params))
+        url$query = list(params = rtson::toJSON(params))
         response = self$client$get(url)
-        if (status_code(response) != 200) {
+        if (response$status != 200) {
             self$onResponseError(response, "selectCSV")
         } else {
-            answer = content(response)
+            answer = response$content
         }
         return(answer)
     }))

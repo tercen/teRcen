@@ -9,11 +9,11 @@ ProjectService <- R6::R6Class("ProjectService", inherit = HttpClientService, pub
     params = list()
     params[["projectId"]] = unbox(projectId)
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-    if (status_code(response) != 200) {
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
         self$onResponseError(response, "profiles")
     } else {
-        answer = createObjectFromJson(rtson::fromTSON(content(response)))
+        answer = createObjectFromJson(response$content)
     }
     return(answer)
 }, resourceSummary = function(projectId) {
@@ -23,11 +23,11 @@ ProjectService <- R6::R6Class("ProjectService", inherit = HttpClientService, pub
     params = list()
     params[["projectId"]] = unbox(projectId)
     url = self$getServiceUri(uri)
-    response = self$client$post(url, body = rtson::toTSON(params), encode = "raw")
-    if (status_code(response) != 200) {
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
         self$onResponseError(response, "resourceSummary")
     } else {
-        answer = createObjectFromJson(rtson::fromTSON(content(response)))
+        answer = createObjectFromJson(response$content)
     }
     return(answer)
 }))
