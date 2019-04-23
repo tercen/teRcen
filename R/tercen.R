@@ -1,5 +1,5 @@
 library(R6)
-library(reqwestr)
+library(teRcenHttp)
 library(rtson)
 library(dplyr)
 library(tibble)
@@ -56,7 +56,7 @@ unbox <- function(object) {
 #' @name tercen-package
 #' @aliases tercen
 #' @docType package
-#' @import R6 reqwestr rtson dplyr tibble
+#' @import R6 teRcenHttp rtson dplyr tibble
 NULL
 
 #' @export
@@ -169,13 +169,13 @@ HttpClient <- R6::R6Class("HttpClient", public = list(initialize = function() {
     return(GET(url, 
                headers=self$getHeaders(headers),
                query = query,
-               response_type="default"))
+               response_type="application/tson"))
 }, post = function(url,
                    headers = structure(list(), names=character(0)),
                    query = structure(list(), names=character(0)),
                    body = NULL,
                    content_type="application/tson",
-                   response_type="default") {
+                   response_type="application/tson") {
     return(POST(url, 
                 headers = self$getHeaders(headers),
                 query = query,
@@ -186,7 +186,7 @@ HttpClient <- R6::R6Class("HttpClient", public = list(initialize = function() {
                   headers = structure(list(), names=character(0)),
                   query = structure(list(), names=character(0)),
                   body = NULL,
-                  response_type="default") {
+                  response_type="application/tson") {
   return(MULTIPART(url, 
               headers = self$getHeaders(headers),
               query = query,
@@ -197,7 +197,7 @@ HttpClient <- R6::R6Class("HttpClient", public = list(initialize = function() {
                    query = structure(list(), names=character(0)),
                    body = NULL,
                    content_type="application/tson",
-                   response_type="default") {
+                   response_type="application/tson") {
   return(PUT(url, 
               headers = self$getHeaders(headers),
               query = query,
@@ -209,13 +209,13 @@ HttpClient <- R6::R6Class("HttpClient", public = list(initialize = function() {
                   query = structure(list(), names=character(0)),
                   body = NULL,
                   content_type="application/tson",
-                  response_type="default") {
+                  response_type="application/tson") {
   return(DELETE(url, 
              headers = self$getHeaders(headers),
              query = query,
              body = body, 
              content_type = content_type,
-             response_type=response_type))
+             response_type="application/tson"))
 }
 ))
 
