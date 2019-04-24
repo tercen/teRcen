@@ -25,7 +25,7 @@ InStep <- R6::R6Class("InStep", inherit = RelationStep, public = list(groupPortP
         self$groupPortPosition = createObjectFromJson(json$groupPortPosition)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("InStep")
+        m$kind = tson.scalar("InStep")
         if (!is.null(self$groupPortPosition)) m$groupPortPosition = self$groupPortPosition$toTson()
         return(m)
     }, print = function(...) {

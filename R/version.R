@@ -33,13 +33,13 @@ Version <- R6::R6Class("Version", inherit = Base, public = list(major = NULL, mi
         self$commit = json$commit
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("Version")
-        m$major = rtson::tson.int(self$major)
-        m$minor = rtson::tson.int(self$minor)
-        m$patch = rtson::tson.int(self$patch)
-        m$tag = rtson::tson.scalar(self$tag)
-        m$date = rtson::tson.scalar(self$date)
-        m$commit = rtson::tson.scalar(self$commit)
+        m$kind = tson.scalar("Version")
+        m$major = tson.int(self$major)
+        m$minor = tson.int(self$minor)
+        m$patch = tson.int(self$patch)
+        m$tag = tson.scalar(self$tag)
+        m$date = tson.scalar(self$date)
+        m$commit = tson.scalar(self$commit)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

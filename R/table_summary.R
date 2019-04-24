@@ -27,11 +27,11 @@ TableSummary <- R6::R6Class("TableSummary", inherit = Base, public = list(n = NU
         self$nc = json$nc
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("TableSummary")
-        m$n = rtson::tson.int(self$n)
-        m$size = rtson::tson.int(self$size)
-        m$nr = rtson::tson.int(self$nr)
-        m$nc = rtson::tson.int(self$nc)
+        m$kind = tson.scalar("TableSummary")
+        m$n = tson.int(self$n)
+        m$size = tson.int(self$size)
+        m$nr = tson.int(self$nr)
+        m$nc = tson.int(self$nc)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

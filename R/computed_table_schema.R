@@ -37,7 +37,7 @@ ComputedTableSchema <- R6::R6Class("ComputedTableSchema", inherit = Schema, publ
         self$query = createObjectFromJson(json$query)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("ComputedTableSchema")
+        m$kind = tson.scalar("ComputedTableSchema")
         if (!is.null(self$query)) m$query = self$query$toTson()
         return(m)
     }, print = function(...) {

@@ -21,8 +21,8 @@ Chart <- R6::R6Class("Chart", inherit = Base, public = list(name = NULL, propert
         self$properties = createObjectFromJson(json$properties)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("Chart")
-        m$name = rtson::tson.scalar(self$name)
+        m$kind = tson.scalar("Chart")
+        m$name = tson.scalar(self$name)
         if (!is.null(self$properties)) m$properties = self$properties$toTson()
         return(m)
     }, print = function(...) {

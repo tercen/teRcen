@@ -19,8 +19,8 @@ CpuTimeProfile <- R6::R6Class("CpuTimeProfile", inherit = Profile, public = list
         self$cpuTime = as.double(json$cpuTime)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("CpuTimeProfile")
-        m$cpuTime = rtson::tson.scalar(self$cpuTime)
+        m$kind = tson.scalar("CpuTimeProfile")
+        m$cpuTime = tson.scalar(self$cpuTime)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

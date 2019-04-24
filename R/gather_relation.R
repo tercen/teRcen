@@ -31,12 +31,12 @@ GatherRelation <- R6::R6Class("GatherRelation", inherit = Relation, public = lis
         self$relation = createObjectFromJson(json$relation)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("GatherRelation")
+        m$kind = tson.scalar("GatherRelation")
         if (!is.null(self$relation)) m$relation = self$relation$toTson()
-        m$names = lapply(self$names, function(each) rtson::tson.scalar(each))
-        m$valueName = rtson::tson.scalar(self$valueName)
-        m$variableName = rtson::tson.scalar(self$variableName)
-        m$valueType = rtson::tson.scalar(self$valueType)
+        m$names = lapply(self$names, function(each) tson.scalar(each))
+        m$valueName = tson.scalar(self$valueName)
+        m$variableName = tson.scalar(self$variableName)
+        m$valueType = tson.scalar(self$valueType)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

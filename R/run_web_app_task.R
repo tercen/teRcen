@@ -35,8 +35,8 @@ RunWebAppTask <- R6::R6Class("RunWebAppTask", inherit = ProjectTask, public = li
         self$url = createObjectFromJson(json$url)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("RunWebAppTask")
-        m$operatorId = rtson::tson.scalar(self$operatorId)
+        m$kind = tson.scalar("RunWebAppTask")
+        m$operatorId = tson.scalar(self$operatorId)
         if (!is.null(self$url)) m$url = self$url$toTson()
         return(m)
     }, print = function(...) {

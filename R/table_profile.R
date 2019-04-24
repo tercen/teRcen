@@ -22,9 +22,9 @@ TableProfile <- R6::R6Class("TableProfile", inherit = Profile, public = list(nRo
         self$nCols = json$nCols
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("TableProfile")
-        m$nRows = rtson::tson.int(self$nRows)
-        m$nCols = rtson::tson.int(self$nCols)
+        m$kind = tson.scalar("TableProfile")
+        m$nRows = tson.int(self$nRows)
+        m$nCols = tson.int(self$nCols)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

@@ -19,8 +19,8 @@ StringColorElement <- R6::R6Class("StringColorElement", inherit = ColorElement, 
         self$stringValue = json$stringValue
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("StringColorElement")
-        m$stringValue = rtson::tson.scalar(self$stringValue)
+        m$kind = tson.scalar("StringColorElement")
+        m$stringValue = tson.scalar(self$stringValue)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

@@ -31,11 +31,11 @@ OperatorRef <- R6::R6Class("OperatorRef", inherit = Base, public = list(name = N
         self$propertyValues = lapply(json$propertyValues, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("OperatorRef")
-        m$name = rtson::tson.scalar(self$name)
-        m$version = rtson::tson.scalar(self$version)
-        m$operatorId = rtson::tson.scalar(self$operatorId)
-        m$operatorKind = rtson::tson.scalar(self$operatorKind)
+        m$kind = tson.scalar("OperatorRef")
+        m$name = tson.scalar(self$name)
+        m$version = tson.scalar(self$version)
+        m$operatorId = tson.scalar(self$operatorId)
+        m$operatorKind = tson.scalar(self$operatorKind)
         m$propertyValues = lapply(self$propertyValues, function(each) each$toTson())
         return(m)
     }, print = function(...) {

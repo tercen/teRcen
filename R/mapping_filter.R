@@ -24,9 +24,9 @@ MappingFilter <- R6::R6Class("MappingFilter", inherit = Base, public = list(name
         self$namedFilter = createObjectFromJson(json$namedFilter)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("MappingFilter")
-        m$name = rtson::tson.scalar(self$name)
-        m$description = rtson::tson.scalar(self$description)
+        m$kind = tson.scalar("MappingFilter")
+        m$name = tson.scalar(self$name)
+        m$description = tson.scalar(self$description)
         if (!is.null(self$namedFilter)) m$namedFilter = self$namedFilter$toTson()
         return(m)
     }, print = function(...) {

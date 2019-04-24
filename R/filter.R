@@ -24,9 +24,9 @@ Filter <- R6::R6Class("Filter", inherit = FilterTopExpr, public = list(logical =
         self$filterExprs = lapply(json$filterExprs, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("Filter")
-        m$logical = rtson::tson.scalar(self$logical)
-        m$not = rtson::tson.scalar(self$not)
+        m$kind = tson.scalar("Filter")
+        m$logical = tson.scalar(self$logical)
+        m$not = tson.scalar(self$not)
         m$filterExprs = lapply(self$filterExprs, function(each) each$toTson())
         return(m)
     }, print = function(...) {

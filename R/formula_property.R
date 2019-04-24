@@ -17,7 +17,7 @@ FormulaProperty <- R6::R6Class("FormulaProperty", inherit = StringProperty, publ
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar("FormulaProperty")
+    m$kind = tson.scalar("FormulaProperty")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

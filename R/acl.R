@@ -21,8 +21,8 @@ Acl <- R6::R6Class("Acl", inherit = Base, public = list(owner = NULL, aces = NUL
         self$aces = lapply(json$aces, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("Acl")
-        m$owner = rtson::tson.scalar(self$owner)
+        m$kind = tson.scalar("Acl")
+        m$owner = tson.scalar(self$owner)
         m$aces = lapply(self$aces, function(each) each$toTson())
         return(m)
     }, print = function(...) {

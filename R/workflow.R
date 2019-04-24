@@ -40,7 +40,7 @@ Workflow <- R6::R6Class("Workflow", inherit = ProjectDocument, public = list(lin
         self$offset = createObjectFromJson(json$offset)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("Workflow")
+        m$kind = tson.scalar("Workflow")
         m$links = lapply(self$links, function(each) each$toTson())
         m$steps = lapply(self$steps, function(each) each$toTson())
         if (!is.null(self$offset)) m$offset = self$offset$toTson()

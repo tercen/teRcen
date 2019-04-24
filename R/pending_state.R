@@ -14,7 +14,7 @@ PendingState <- R6::R6Class("PendingState", inherit = State, public = list(initi
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar("PendingState")
+    m$kind = tson.scalar("PendingState")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

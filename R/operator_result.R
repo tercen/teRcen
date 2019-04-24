@@ -21,7 +21,7 @@ OperatorResult <- R6::R6Class("OperatorResult", inherit = Base, public = list(ta
         self$joinOperators = lapply(json$joinOperators, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("OperatorResult")
+        m$kind = tson.scalar("OperatorResult")
         m$tables = lapply(self$tables, function(each) each$toTson())
         m$joinOperators = lapply(self$joinOperators, function(each) each$toTson())
         return(m)

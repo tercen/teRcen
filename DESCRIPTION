@@ -1,7 +1,7 @@
 Package: tercen
 Type: Package
 Title: Tercen R client api
-Version: 0.8.7
+Version: 0.8.8
 Date: 2017-09-03
 Author: Alexandre Maurel
 Maintainer: Alexandre Maurel <alexandre.maurel@tercen.com>
@@ -10,11 +10,11 @@ Description: Access Tercen data, workflow and computation resources with R.
 License: Apache License Version 2.0
 Suggests:
     testthat
-Remotes: tercen/teRcenHttp@1.0.2, tercen/rtson@1.6.2
+Remotes: tercen/teRcenHttp@1.0.4, tercen/mtercen@1.0.3
 Imports:
     R6,
     teRcenHttp,
-    rtson,
+    mtercen,
     dplyr,
     tibble,
     yaml

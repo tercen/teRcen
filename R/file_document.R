@@ -40,10 +40,10 @@ FileDocument <- R6::R6Class("FileDocument", inherit = ProjectDocument, public = 
         self$metadata = createObjectFromJson(json$metadata)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("FileDocument")
-        m$dataUri = rtson::tson.scalar(self$dataUri)
+        m$kind = tson.scalar("FileDocument")
+        m$dataUri = tson.scalar(self$dataUri)
         if (!is.null(self$metadata)) m$metadata = self$metadata$toTson()
-        m$size = rtson::tson.int(self$size)
+        m$size = tson.int(self$size)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

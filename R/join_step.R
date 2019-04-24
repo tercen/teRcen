@@ -28,7 +28,7 @@ JoinStep <- R6::R6Class("JoinStep", inherit = NamespaceStep, public = list(model
         self$rightAttributes = lapply(json$rightAttributes, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("JoinStep")
+        m$kind = tson.scalar("JoinStep")
         if (!is.null(self$model)) m$model = self$model$toTson()
         m$rightAttributes = lapply(self$rightAttributes, function(each) each$toTson())
         return(m)

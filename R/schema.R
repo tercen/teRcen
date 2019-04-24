@@ -40,10 +40,10 @@ Schema <- R6::R6Class("Schema", inherit = ProjectDocument, public = list(nRows =
         self$columns = lapply(json$columns, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("Schema")
-        m$nRows = rtson::tson.int(self$nRows)
+        m$kind = tson.scalar("Schema")
+        m$nRows = tson.int(self$nRows)
         m$columns = lapply(self$columns, function(each) each$toTson())
-        m$dataDirectory = rtson::tson.scalar(self$dataDirectory)
+        m$dataDirectory = tson.scalar(self$dataDirectory)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

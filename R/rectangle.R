@@ -21,7 +21,7 @@ Rectangle <- R6::R6Class("Rectangle", inherit = Base, public = list(extent = NUL
         self$topLeft = createObjectFromJson(json$topLeft)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("Rectangle")
+        m$kind = tson.scalar("Rectangle")
         if (!is.null(self$extent)) m$extent = self$extent$toTson()
         if (!is.null(self$topLeft)) m$topLeft = self$topLeft$toTson()
         return(m)

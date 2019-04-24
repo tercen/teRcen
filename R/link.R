@@ -22,9 +22,9 @@ Link <- R6::R6Class("Link", inherit = IdObject, public = list(inputId = NULL, ou
         self$outputId = json$outputId
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("Link")
-        m$inputId = rtson::tson.scalar(self$inputId)
-        m$outputId = rtson::tson.scalar(self$outputId)
+        m$kind = tson.scalar("Link")
+        m$inputId = tson.scalar(self$inputId)
+        m$outputId = tson.scalar(self$outputId)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

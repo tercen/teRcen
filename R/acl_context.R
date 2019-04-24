@@ -18,8 +18,8 @@ AclContext <- R6::R6Class("AclContext", inherit = Base, public = list(username =
         self$username = json$username
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("AclContext")
-        m$username = rtson::tson.scalar(self$username)
+        m$kind = tson.scalar("AclContext")
+        m$username = tson.scalar(self$username)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

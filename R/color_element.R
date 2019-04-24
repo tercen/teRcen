@@ -18,8 +18,8 @@ ColorElement <- R6::R6Class("ColorElement", inherit = Base, public = list(color 
         self$color = json$color
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("ColorElement")
-        m$color = rtson::tson.int(self$color)
+        m$kind = tson.scalar("ColorElement")
+        m$color = tson.int(self$color)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

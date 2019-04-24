@@ -18,8 +18,8 @@ Principal <- R6::R6Class("Principal", inherit = Base, public = list(principalId 
         self$principalId = json$principalId
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("Principal")
-        m$principalId = rtson::tson.scalar(self$principalId)
+        m$kind = tson.scalar("Principal")
+        m$principalId = tson.scalar(self$principalId)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

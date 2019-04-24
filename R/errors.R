@@ -17,7 +17,7 @@ Errors <- R6::R6Class("Errors", inherit = Base, public = list(factors = NULL, in
     self$factors = lapply(json$factors, createObjectFromJson)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar("Errors")
+    m$kind = tson.scalar("Errors")
     m$factors = lapply(self$factors, function(each) each$toTson())
     return(m)
 }, print = function(...) {

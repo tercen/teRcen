@@ -21,7 +21,7 @@ Event <- R6::R6Class("Event", inherit = PersistentObject, public = list(date = N
         self$date = createObjectFromJson(json$date)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("Event")
+        m$kind = tson.scalar("Event")
         if (!is.null(self$date)) m$date = self$date$toTson()
         return(m)
     }, print = function(...) {

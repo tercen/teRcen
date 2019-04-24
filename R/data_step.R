@@ -26,7 +26,7 @@ DataStep <- R6::R6Class("DataStep", inherit = CrossTabStep, public = list(comput
         self$computedRelation = createObjectFromJson(json$computedRelation)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("DataStep")
+        m$kind = tson.scalar("DataStep")
         if (!is.null(self$computedRelation)) m$computedRelation = self$computedRelation$toTson()
         return(m)
     }, print = function(...) {

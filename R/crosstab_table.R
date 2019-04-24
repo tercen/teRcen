@@ -27,9 +27,9 @@ CrosstabTable <- R6::R6Class("CrosstabTable", inherit = Base, public = list(cell
         self$rectangleSelections = lapply(json$rectangleSelections, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("CrosstabTable")
-        m$cellSize = rtson::tson.scalar(self$cellSize)
-        m$offset = rtson::tson.int(self$offset)
+        m$kind = tson.scalar("CrosstabTable")
+        m$cellSize = tson.scalar(self$cellSize)
+        m$offset = tson.int(self$offset)
         m$graphicalFactors = lapply(self$graphicalFactors, function(each) each$toTson())
         m$rectangleSelections = lapply(self$rectangleSelections, function(each) each$toTson())
         return(m)

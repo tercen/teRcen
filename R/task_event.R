@@ -22,8 +22,8 @@ TaskEvent <- R6::R6Class("TaskEvent", inherit = Event, public = list(taskId = NU
         self$taskId = json$taskId
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("TaskEvent")
-        m$taskId = rtson::tson.scalar(self$taskId)
+        m$kind = tson.scalar("TaskEvent")
+        m$taskId = tson.scalar(self$taskId)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

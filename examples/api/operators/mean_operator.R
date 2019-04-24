@@ -31,7 +31,7 @@ computed.df = rename_(computed.df,
 result = OperatorResult$new()
 result$tables = list(tercen::dataframe.as.table(computed.df))
   
-bytes = rtson::toTSON(result$toTson())
+bytes = toTSON(result$toTson())
  
 fileDoc = client$fileService$get(task$fileResultId)
 client$fileService$upload(fileDoc, bytes)

@@ -19,7 +19,7 @@ UnionRelation <- R6::R6Class("UnionRelation", inherit = Relation, public = list(
         self$relations = lapply(json$relations, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("UnionRelation")
+        m$kind = tson.scalar("UnionRelation")
         m$relations = lapply(self$relations, function(each) each$toTson())
         return(m)
     }, print = function(...) {

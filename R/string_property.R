@@ -20,8 +20,8 @@ StringProperty <- R6::R6Class("StringProperty", inherit = Property, public = lis
         self$defaultValue = json$defaultValue
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("StringProperty")
-        m$defaultValue = rtson::tson.scalar(self$defaultValue)
+        m$kind = tson.scalar("StringProperty")
+        m$defaultValue = tson.scalar(self$defaultValue)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

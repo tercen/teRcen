@@ -37,10 +37,10 @@ CreateGitOperatorTask <- R6::R6Class("CreateGitOperatorTask", inherit = Task, pu
         self$url = createObjectFromJson(json$url)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("CreateGitOperatorTask")
+        m$kind = tson.scalar("CreateGitOperatorTask")
         if (!is.null(self$url)) m$url = self$url$toTson()
-        m$version = rtson::tson.scalar(self$version)
-        m$operatorId = rtson::tson.scalar(self$operatorId)
+        m$version = tson.scalar(self$version)
+        m$operatorId = tson.scalar(self$operatorId)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

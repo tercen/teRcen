@@ -24,7 +24,7 @@ Column <- R6::R6Class("Column", inherit = ColumnSchema, public = list(values = N
         self$values = json$values
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("Column")
+        m$kind = tson.scalar("Column")
         m$values = self$values
         return(m)
     }, print = function(...) {

@@ -35,9 +35,9 @@ ImportWorkflowTask <- R6::R6Class("ImportWorkflowTask", inherit = ProjectTask, p
         self$workflowId = json$workflowId
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("ImportWorkflowTask")
-        m$fileId = rtson::tson.scalar(self$fileId)
-        m$workflowId = rtson::tson.scalar(self$workflowId)
+        m$kind = tson.scalar("ImportWorkflowTask")
+        m$fileId = tson.scalar(self$fileId)
+        m$workflowId = tson.scalar(self$workflowId)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

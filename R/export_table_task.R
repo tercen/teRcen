@@ -51,14 +51,14 @@ ExportTableTask <- R6::R6Class("ExportTableTask", inherit = ProjectTask, public 
         self$exportedSchemaIds = json$exportedSchemaIds
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("ExportTableTask")
-        m$exportName = rtson::tson.scalar(self$exportName)
-        m$schemaIds = lapply(self$schemaIds, function(each) rtson::tson.scalar(each))
-        m$channelType = rtson::tson.scalar(self$channelType)
-        m$channelId = rtson::tson.scalar(self$channelId)
-        m$exportId = rtson::tson.scalar(self$exportId)
-        m$namespaces = lapply(self$namespaces, function(each) rtson::tson.scalar(each))
-        m$exportedSchemaIds = lapply(self$exportedSchemaIds, function(each) rtson::tson.scalar(each))
+        m$kind = tson.scalar("ExportTableTask")
+        m$exportName = tson.scalar(self$exportName)
+        m$schemaIds = lapply(self$schemaIds, function(each) tson.scalar(each))
+        m$channelType = tson.scalar(self$channelType)
+        m$channelId = tson.scalar(self$channelId)
+        m$exportId = tson.scalar(self$exportId)
+        m$namespaces = lapply(self$namespaces, function(each) tson.scalar(each))
+        m$exportedSchemaIds = lapply(self$exportedSchemaIds, function(each) tson.scalar(each))
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

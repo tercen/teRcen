@@ -36,14 +36,14 @@ XYAxis <- R6::R6Class("XYAxis", inherit = Base, public = list(chart = NULL, colo
         self$yAxis = createObjectFromJson(json$yAxis)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("XYAxis")
+        m$kind = tson.scalar("XYAxis")
         if (!is.null(self$chart)) m$chart = self$chart$toTson()
         if (!is.null(self$colors)) m$colors = self$colors$toTson()
         if (!is.null(self$errors)) m$errors = self$errors$toTson()
         if (!is.null(self$labels)) m$labels = self$labels$toTson()
         if (!is.null(self$xAxis)) m$xAxis = self$xAxis$toTson()
         if (!is.null(self$yAxis)) m$yAxis = self$yAxis$toTson()
-        m$taskId = rtson::tson.scalar(self$taskId)
+        m$taskId = tson.scalar(self$taskId)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

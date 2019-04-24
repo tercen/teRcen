@@ -23,8 +23,8 @@ TaskLogEvent <- R6::R6Class("TaskLogEvent", inherit = TaskEvent, public = list(m
         self$message = json$message
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("TaskLogEvent")
-        m$message = rtson::tson.scalar(self$message)
+        m$kind = tson.scalar("TaskLogEvent")
+        m$message = tson.scalar(self$message)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

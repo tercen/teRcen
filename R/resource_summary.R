@@ -27,11 +27,11 @@ ResourceSummary <- R6::R6Class("ResourceSummary", inherit = Base, public = list(
         self$usedCpuTime = as.double(json$usedCpuTime)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("ResourceSummary")
-        m$storage = rtson::tson.scalar(self$storage)
-        m$usedStorage = rtson::tson.scalar(self$usedStorage)
-        m$cpuTime = rtson::tson.scalar(self$cpuTime)
-        m$usedCpuTime = rtson::tson.scalar(self$usedCpuTime)
+        m$kind = tson.scalar("ResourceSummary")
+        m$storage = tson.scalar(self$storage)
+        m$usedStorage = tson.scalar(self$usedStorage)
+        m$cpuTime = tson.scalar(self$cpuTime)
+        m$usedCpuTime = tson.scalar(self$usedCpuTime)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

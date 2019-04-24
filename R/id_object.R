@@ -17,8 +17,8 @@ IdObject <- R6::R6Class("IdObject", inherit = Base, public = list(id = NULL, ini
     self$id = json$id
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar("IdObject")
-    m$id = rtson::tson.scalar(self$id)
+    m$kind = tson.scalar("IdObject")
+    m$id = tson.scalar(self$id)
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

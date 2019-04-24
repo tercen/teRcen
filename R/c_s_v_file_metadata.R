@@ -26,9 +26,9 @@ CSVFileMetadata <- R6::R6Class("CSVFileMetadata", inherit = FileMetadata, public
         self$quote = json$quote
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("CSVFileMetadata")
-        m$separator = rtson::tson.scalar(self$separator)
-        m$quote = rtson::tson.scalar(self$quote)
+        m$kind = tson.scalar("CSVFileMetadata")
+        m$separator = tson.scalar(self$separator)
+        m$quote = tson.scalar(self$quote)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

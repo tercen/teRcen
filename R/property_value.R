@@ -21,9 +21,9 @@ PropertyValue <- R6::R6Class("PropertyValue", inherit = Base, public = list(name
         self$value = json$value
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("PropertyValue")
-        m$name = rtson::tson.scalar(self$name)
-        m$value = rtson::tson.scalar(self$value)
+        m$kind = tson.scalar("PropertyValue")
+        m$name = tson.scalar(self$name)
+        m$value = tson.scalar(self$value)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

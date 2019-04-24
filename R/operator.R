@@ -33,7 +33,7 @@ Operator <- R6::R6Class("Operator", inherit = Document, public = list(properties
         self$properties = lapply(json$properties, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("Operator")
+        m$kind = tson.scalar("Operator")
         m$properties = lapply(self$properties, function(each) each$toTson())
         return(m)
     }, print = function(...) {

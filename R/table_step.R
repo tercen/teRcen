@@ -25,7 +25,7 @@ TableStep <- R6::R6Class("TableStep", inherit = RelationStep, public = list(mode
         self$model = createObjectFromJson(json$model)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("TableStep")
+        m$kind = tson.scalar("TableStep")
         if (!is.null(self$model)) m$model = self$model$toTson()
         return(m)
     }, print = function(...) {

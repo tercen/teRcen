@@ -14,7 +14,7 @@ FilterTopExpr <- R6::R6Class("FilterTopExpr", inherit = Base, public = list(init
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar("FilterTopExpr")
+    m$kind = tson.scalar("FilterTopExpr")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

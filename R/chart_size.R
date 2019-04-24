@@ -20,8 +20,8 @@ ChartSize <- R6::R6Class("ChartSize", inherit = Chart, public = list(pointSize =
         self$pointSize = json$pointSize
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("ChartSize")
-        m$pointSize = rtson::tson.int(self$pointSize)
+        m$kind = tson.scalar("ChartSize")
+        m$pointSize = tson.int(self$pointSize)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

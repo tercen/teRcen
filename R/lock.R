@@ -21,8 +21,8 @@ Lock <- R6::R6Class("Lock", inherit = PersistentObject, public = list(name = NUL
         self$name = json$name
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("Lock")
-        m$name = rtson::tson.scalar(self$name)
+        m$kind = tson.scalar("Lock")
+        m$name = tson.scalar(self$name)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

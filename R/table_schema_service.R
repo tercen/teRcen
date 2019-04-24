@@ -73,7 +73,7 @@ TableSchemaService <- R6::R6Class("TableSchemaService", inherit = HttpClientServ
         params[["quote"]] = unbox(quote)
         params[["encoding"]] = unbox(encoding)
         url = self$getServiceUri(uri)
-        url$query = list(params = rtson::toJSON(params))
+        url$query = list(params = toJSON(params))
         response = self$client$get(url)
         if (response$status != 200) {
             self$onResponseError(response, "selectCSV")

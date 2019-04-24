@@ -21,9 +21,9 @@ TaskSummary <- R6::R6Class("TaskSummary", inherit = Base, public = list(n = NULL
         self$duration = as.double(json$duration)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("TaskSummary")
-        m$n = rtson::tson.int(self$n)
-        m$duration = rtson::tson.scalar(self$duration)
+        m$kind = tson.scalar("TaskSummary")
+        m$n = tson.int(self$n)
+        m$duration = tson.scalar(self$duration)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

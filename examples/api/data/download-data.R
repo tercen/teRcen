@@ -40,7 +40,7 @@ all.tbl = dplyr::bind_rows(lapply(tbl.schemas,
                     .id = NULL)
 
   
-bytes = memCompress(rtson::toTSON(tercen::dataframe.as.table(all.tbl)$toTson()),
+bytes = memCompress( toTSON(tercen::dataframe.as.table(all.tbl)$toTson()),
                     type = 'gzip')
 
 local.client = TercenClient$new(serviceUri="http://51.83.110.171/api/v1/",

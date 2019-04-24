@@ -20,8 +20,8 @@ Attribute <- R6::R6Class("Attribute", inherit = Factor, public = list(relationId
         self$relationId = json$relationId
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("Attribute")
-        m$relationId = rtson::tson.scalar(self$relationId)
+        m$kind = tson.scalar("Attribute")
+        m$relationId = tson.scalar(self$relationId)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

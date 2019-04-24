@@ -29,10 +29,10 @@ MappingFactor <- R6::R6Class("MappingFactor", inherit = Factor, public = list(is
         self$factors = lapply(json$factors, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("MappingFactor")
-        m$isSingle = rtson::tson.scalar(self$isSingle)
-        m$description = rtson::tson.scalar(self$description)
-        m$factorName = rtson::tson.scalar(self$factorName)
+        m$kind = tson.scalar("MappingFactor")
+        m$isSingle = tson.scalar(self$isSingle)
+        m$description = tson.scalar(self$description)
+        m$factorName = tson.scalar(self$factorName)
         m$factors = lapply(self$factors, function(each) each$toTson())
         return(m)
     }, print = function(...) {

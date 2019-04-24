@@ -40,8 +40,8 @@ CubeQueryTableSchema <- R6::R6Class("CubeQueryTableSchema", inherit = Schema, pu
         self$query = createObjectFromJson(json$query)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("CubeQueryTableSchema")
-        m$queryHash = rtson::tson.scalar(self$queryHash)
+        m$kind = tson.scalar("CubeQueryTableSchema")
+        m$queryHash = tson.scalar(self$queryHash)
         if (!is.null(self$query)) m$query = self$query$toTson()
         return(m)
     }, print = function(...) {

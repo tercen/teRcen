@@ -25,10 +25,10 @@ RenameRelation <- R6::R6Class("RenameRelation", inherit = Relation, public = lis
         self$relation = createObjectFromJson(json$relation)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("RenameRelation")
+        m$kind = tson.scalar("RenameRelation")
         if (!is.null(self$relation)) m$relation = self$relation$toTson()
-        m$inNames = lapply(self$inNames, function(each) rtson::tson.scalar(each))
-        m$outNames = lapply(self$outNames, function(each) rtson::tson.scalar(each))
+        m$inNames = lapply(self$inNames, function(each) tson.scalar(each))
+        m$outNames = lapply(self$outNames, function(each) tson.scalar(each))
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

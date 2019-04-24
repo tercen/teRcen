@@ -27,10 +27,10 @@ GarbageTasks <- R6::R6Class("GarbageTasks", inherit = GarbageObject, public = li
         self$addedTaskIds = json$addedTaskIds
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("GarbageTasks")
-        m$workflowId = rtson::tson.scalar(self$workflowId)
-        m$deletedTaskIds = lapply(self$deletedTaskIds, function(each) rtson::tson.scalar(each))
-        m$addedTaskIds = lapply(self$addedTaskIds, function(each) rtson::tson.scalar(each))
+        m$kind = tson.scalar("GarbageTasks")
+        m$workflowId = tson.scalar(self$workflowId)
+        m$deletedTaskIds = lapply(self$deletedTaskIds, function(each) tson.scalar(each))
+        m$addedTaskIds = lapply(self$addedTaskIds, function(each) tson.scalar(each))
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

@@ -35,9 +35,9 @@ ExportWorkflowTask <- R6::R6Class("ExportWorkflowTask", inherit = ProjectTask, p
         self$fileId = json$fileId
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("ExportWorkflowTask")
-        m$workflowId = rtson::tson.scalar(self$workflowId)
-        m$fileId = rtson::tson.scalar(self$fileId)
+        m$kind = tson.scalar("ExportWorkflowTask")
+        m$workflowId = tson.scalar(self$workflowId)
+        m$fileId = tson.scalar(self$fileId)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

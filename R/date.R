@@ -17,8 +17,8 @@ Date <- R6::R6Class("Date", inherit = Base, public = list(value = NULL, initiali
     self$value = json$value
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar("Date")
-    m$value = rtson::tson.scalar(self$value)
+    m$kind = tson.scalar("Date")
+    m$value = tson.scalar(self$value)
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

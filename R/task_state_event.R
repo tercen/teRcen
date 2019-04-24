@@ -26,7 +26,7 @@ TaskStateEvent <- R6::R6Class("TaskStateEvent", inherit = TaskEvent, public = li
         self$state = createObjectFromJson(json$state)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("TaskStateEvent")
+        m$kind = tson.scalar("TaskStateEvent")
         if (!is.null(self$state)) m$state = self$state$toTson()
         return(m)
     }, print = function(...) {

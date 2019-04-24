@@ -1,6 +1,6 @@
 library(R6)
 library(teRcenHttp)
-library(rtson)
+library(mtercen)
 library(dplyr)
 
 AbstractOperatorContext <- R6Class(
@@ -18,6 +18,16 @@ AbstractOperatorContext <- R6Class(
                       self$query$operatorSettings$operatorRef$propertyValues)
       if (is.null(property)) return(NULL)
       return(property$value)
+    },
+    as.matrix = function(fill=0.0) {
+      data = self$select(names=c(".ri", ".ci", ".y"))
+      matrix(acast(data$.ri,
+                            data$.ci, 
+                            data$.y,
+                   self$rschema$nRows,
+                   self$cschema$nRows, fill), 
+             nrow = self$rschema$nRows,
+             ncol=self$cschema$nRows)
     },
     select = function(names=list(), offset=0, nr=-1) {
       if (self$isPairwise){
@@ -222,7 +232,7 @@ OperatorContextDev <- R6Class(
         result$tables = list(tercen::dataframe.as.table(computed.df))
       }
       
-      bytes = rtson::toTSON(result$toTson())
+      bytes = toTSON(result$toTson())
       
       workflow = self$workflow
       
@@ -323,7 +333,7 @@ OperatorContext <- R6Class(
         result$tables = list(tercen::dataframe.as.table(computed.df))
       }
       
-      bytes = rtson::toTSON(result$toTson())
+      bytes = toTSON(result$toTson())
       
       if (nchar(self$task$fileResultId) == 0){
         # webapp scenario
@@ -407,6 +417,11 @@ rselect <- function(ctx, ...){
 #' @export
 select.AbstractOperatorContext <- function(ctx, ...){
   return (ctx$select(argNames(...)))
+}
+
+#' @export
+as.matrix.AbstractOperatorContext <- function(ctx, ...){
+  return (ctx$as.matrix(...))
 }
 
 argNames = function(...){

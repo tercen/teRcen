@@ -31,11 +31,11 @@ ColumnSchema <- R6::R6Class("ColumnSchema", inherit = IdObject, public = list(na
         self$metaData = createObjectFromJson(json$metaData)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("ColumnSchema")
-        m$name = rtson::tson.scalar(self$name)
-        m$type = rtson::tson.scalar(self$type)
-        m$nRows = rtson::tson.int(self$nRows)
-        m$size = rtson::tson.int(self$size)
+        m$kind = tson.scalar("ColumnSchema")
+        m$name = tson.scalar(self$name)
+        m$type = tson.scalar(self$type)
+        m$nRows = tson.int(self$nRows)
+        m$size = tson.int(self$size)
         if (!is.null(self$metaData)) m$metaData = self$metaData$toTson()
         return(m)
     }, print = function(...) {

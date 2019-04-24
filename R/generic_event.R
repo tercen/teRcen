@@ -25,9 +25,9 @@ GenericEvent <- R6::R6Class("GenericEvent", inherit = Event, public = list(type 
         self$content = json$content
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("GenericEvent")
-        m$type = rtson::tson.scalar(self$type)
-        m$content = rtson::tson.scalar(self$content)
+        m$kind = tson.scalar("GenericEvent")
+        m$type = tson.scalar(self$type)
+        m$content = tson.scalar(self$content)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

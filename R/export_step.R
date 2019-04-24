@@ -25,7 +25,7 @@ ExportStep <- R6::R6Class("ExportStep", inherit = ModelStep, public = list(model
         self$model = createObjectFromJson(json$model)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("ExportStep")
+        m$kind = tson.scalar("ExportStep")
         if (!is.null(self$model)) m$model = self$model$toTson()
         return(m)
     }, print = function(...) {

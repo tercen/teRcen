@@ -17,8 +17,8 @@ Profile <- R6::R6Class("Profile", inherit = Base, public = list(name = NULL, ini
     self$name = json$name
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar("Profile")
-    m$name = rtson::tson.scalar(self$name)
+    m$kind = tson.scalar("Profile")
+    m$name = tson.scalar(self$name)
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

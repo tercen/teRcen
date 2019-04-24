@@ -38,10 +38,10 @@ ImportGitWorkflowTask <- R6::R6Class("ImportGitWorkflowTask", inherit = ProjectT
         self$url = createObjectFromJson(json$url)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("ImportGitWorkflowTask")
+        m$kind = tson.scalar("ImportGitWorkflowTask")
         if (!is.null(self$url)) m$url = self$url$toTson()
-        m$version = rtson::tson.scalar(self$version)
-        m$workflowId = rtson::tson.scalar(self$workflowId)
+        m$version = tson.scalar(self$version)
+        m$workflowId = tson.scalar(self$workflowId)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

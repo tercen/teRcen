@@ -34,13 +34,13 @@ Crosstab <- R6::R6Class("Crosstab", inherit = StepModel, public = list(axis = NU
         self$rowTable = createObjectFromJson(json$rowTable)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("Crosstab")
+        m$kind = tson.scalar("Crosstab")
         if (!is.null(self$axis)) m$axis = self$axis$toTson()
         if (!is.null(self$columnTable)) m$columnTable = self$columnTable$toTson()
         if (!is.null(self$filters)) m$filters = self$filters$toTson()
         if (!is.null(self$operatorSettings)) m$operatorSettings = self$operatorSettings$toTson()
         if (!is.null(self$rowTable)) m$rowTable = self$rowTable$toTson()
-        m$taskId = rtson::tson.scalar(self$taskId)
+        m$taskId = tson.scalar(self$taskId)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

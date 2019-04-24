@@ -20,8 +20,8 @@ BooleanProperty <- R6::R6Class("BooleanProperty", inherit = Property, public = l
         self$defaultValue = json$defaultValue
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("BooleanProperty")
-        m$defaultValue = rtson::tson.scalar(self$defaultValue)
+        m$kind = tson.scalar("BooleanProperty")
+        m$defaultValue = tson.scalar(self$defaultValue)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

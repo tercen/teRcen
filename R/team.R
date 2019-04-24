@@ -36,7 +36,7 @@ Team <- R6::R6Class("Team", inherit = User, public = list(initialize = function(
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar("Team")
+    m$kind = tson.scalar("Team")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

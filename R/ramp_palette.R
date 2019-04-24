@@ -23,8 +23,8 @@ RampPalette <- R6::R6Class("RampPalette", inherit = Palette, public = list(isUse
         self$doubleColorElements = lapply(json$doubleColorElements, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("RampPalette")
-        m$isUserDefined = rtson::tson.scalar(self$isUserDefined)
+        m$kind = tson.scalar("RampPalette")
+        m$isUserDefined = tson.scalar(self$isUserDefined)
         m$doubleColorElements = lapply(self$doubleColorElements, function(each) each$toTson())
         return(m)
     }, print = function(...) {

@@ -34,10 +34,10 @@ GroupStep <- R6::R6Class("GroupStep", inherit = RelationStep, public = list(appI
         self$offset = createObjectFromJson(json$offset)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("GroupStep")
-        m$appId = rtson::tson.scalar(self$appId)
-        m$appName = rtson::tson.scalar(self$appName)
-        m$version = rtson::tson.scalar(self$version)
+        m$kind = tson.scalar("GroupStep")
+        m$appId = tson.scalar(self$appId)
+        m$appName = tson.scalar(self$appName)
+        m$version = tson.scalar(self$version)
         if (!is.null(self$offset)) m$offset = self$offset$toTson()
         return(m)
     }, print = function(...) {

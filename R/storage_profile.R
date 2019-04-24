@@ -19,8 +19,8 @@ StorageProfile <- R6::R6Class("StorageProfile", inherit = Profile, public = list
         self$size = json$size
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("StorageProfile")
-        m$size = rtson::tson.int(self$size)
+        m$kind = tson.scalar("StorageProfile")
+        m$size = tson.int(self$size)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

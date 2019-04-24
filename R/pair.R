@@ -21,9 +21,9 @@ Pair <- R6::R6Class("Pair", inherit = Base, public = list(key = NULL, value = NU
         self$value = json$value
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("Pair")
-        m$key = rtson::tson.scalar(self$key)
-        m$value = rtson::tson.scalar(self$value)
+        m$kind = tson.scalar("Pair")
+        m$key = tson.scalar(self$key)
+        m$value = tson.scalar(self$value)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

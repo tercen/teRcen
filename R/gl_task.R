@@ -30,8 +30,8 @@ GlTask <- R6::R6Class("GlTask", inherit = Task, public = list(glQuery = NULL, in
     self$glQuery = json$glQuery
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar("GlTask")
-    m$glQuery = rtson::tson.scalar(self$glQuery)
+    m$kind = tson.scalar("GlTask")
+    m$glQuery = tson.scalar(self$glQuery)
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

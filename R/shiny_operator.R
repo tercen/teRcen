@@ -31,7 +31,7 @@ ShinyOperator <- R6::R6Class("ShinyOperator", inherit = WebAppOperator, public =
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar("ShinyOperator")
+    m$kind = tson.scalar("ShinyOperator")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

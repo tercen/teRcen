@@ -21,9 +21,9 @@ Factor <- R6::R6Class("Factor", inherit = Base, public = list(name = NULL, type 
         self$type = json$type
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("Factor")
-        m$name = rtson::tson.scalar(self$name)
-        m$type = rtson::tson.scalar(self$type)
+        m$kind = tson.scalar("Factor")
+        m$name = tson.scalar(self$name)
+        m$type = tson.scalar(self$type)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

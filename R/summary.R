@@ -27,7 +27,7 @@ Summary <- R6::R6Class("Summary", inherit = Base, public = list(tableSummary = N
         self$taskSummary = createObjectFromJson(json$taskSummary)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("Summary")
+        m$kind = tson.scalar("Summary")
         if (!is.null(self$tableSummary)) m$tableSummary = self$tableSummary$toTson()
         if (!is.null(self$computedTableSummary)) m$computedTableSummary = self$computedTableSummary$toTson()
         if (!is.null(self$queryTableSummary)) m$queryTableSummary = self$queryTableSummary$toTson()

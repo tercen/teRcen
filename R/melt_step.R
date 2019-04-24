@@ -28,7 +28,7 @@ MeltStep <- R6::R6Class("MeltStep", inherit = NamespaceStep, public = list(model
         self$meltedAttributes = lapply(json$meltedAttributes, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("MeltStep")
+        m$kind = tson.scalar("MeltStep")
         if (!is.null(self$model)) m$model = self$model$toTson()
         m$meltedAttributes = lapply(self$meltedAttributes, function(each) each$toTson())
         return(m)

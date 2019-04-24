@@ -20,8 +20,8 @@ DoubleProperty <- R6::R6Class("DoubleProperty", inherit = Property, public = lis
         self$defaultValue = as.double(json$defaultValue)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("DoubleProperty")
-        m$defaultValue = rtson::tson.scalar(self$defaultValue)
+        m$kind = tson.scalar("DoubleProperty")
+        m$defaultValue = tson.scalar(self$defaultValue)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

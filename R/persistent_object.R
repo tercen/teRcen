@@ -22,9 +22,9 @@ PersistentObject <- R6::R6Class("PersistentObject", inherit = IdObject, public =
         self$rev = json$rev
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("PersistentObject")
-        m$isDeleted = rtson::tson.scalar(self$isDeleted)
-        m$rev = rtson::tson.scalar(self$rev)
+        m$kind = tson.scalar("PersistentObject")
+        m$isDeleted = tson.scalar(self$isDeleted)
+        m$rev = tson.scalar(self$rev)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

@@ -16,7 +16,7 @@ ChartHeatmap <- R6::R6Class("ChartHeatmap", inherit = Chart, public = list(initi
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar("ChartHeatmap")
+    m$kind = tson.scalar("ChartHeatmap")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

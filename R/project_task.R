@@ -31,8 +31,8 @@ ProjectTask <- R6::R6Class("ProjectTask", inherit = Task, public = list(projectI
         self$projectId = json$projectId
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("ProjectTask")
-        m$projectId = rtson::tson.scalar(self$projectId)
+        m$kind = tson.scalar("ProjectTask")
+        m$projectId = tson.scalar(self$projectId)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

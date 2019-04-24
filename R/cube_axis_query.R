@@ -43,9 +43,9 @@ CubeAxisQuery <- R6::R6Class("CubeAxisQuery", inherit = Base, public = list(poin
         self$colors = lapply(json$colors, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("CubeAxisQuery")
-        m$pointSize = rtson::tson.int(self$pointSize)
-        m$chartType = rtson::tson.scalar(self$chartType)
+        m$kind = tson.scalar("CubeAxisQuery")
+        m$pointSize = tson.int(self$pointSize)
+        m$chartType = tson.scalar(self$chartType)
         if (!is.null(self$yAxis)) m$yAxis = self$yAxis$toTson()
         if (!is.null(self$yAxisSettings)) m$yAxisSettings = self$yAxisSettings$toTson()
         if (!is.null(self$xAxis)) m$xAxis = self$xAxis$toTson()

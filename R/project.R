@@ -29,7 +29,7 @@ Project <- R6::R6Class("Project", inherit = Document, public = list(initialize =
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar("Project")
+    m$kind = tson.scalar("Project")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

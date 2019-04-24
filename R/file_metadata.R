@@ -31,12 +31,12 @@ FileMetadata <- R6::R6Class("FileMetadata", inherit = Base, public = list(conten
         self$md5Hash = json$md5Hash
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("FileMetadata")
-        m$contentType = rtson::tson.scalar(self$contentType)
-        m$cacheControl = rtson::tson.scalar(self$cacheControl)
-        m$contentEncoding = rtson::tson.scalar(self$contentEncoding)
-        m$contentLanguage = rtson::tson.scalar(self$contentLanguage)
-        m$md5Hash = rtson::tson.scalar(self$md5Hash)
+        m$kind = tson.scalar("FileMetadata")
+        m$contentType = tson.scalar(self$contentType)
+        m$cacheControl = tson.scalar(self$cacheControl)
+        m$contentEncoding = tson.scalar(self$contentEncoding)
+        m$contentLanguage = tson.scalar(self$contentLanguage)
+        m$md5Hash = tson.scalar(self$md5Hash)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

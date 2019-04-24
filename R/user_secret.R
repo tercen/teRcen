@@ -27,10 +27,10 @@ UserSecret <- R6::R6Class("UserSecret", inherit = PersistentObject, public = lis
         self$hashPassword = json$hashPassword
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("UserSecret")
-        m$userId = rtson::tson.scalar(self$userId)
-        m$salt = rtson::tson.scalar(self$salt)
-        m$hashPassword = rtson::tson.scalar(self$hashPassword)
+        m$kind = tson.scalar("UserSecret")
+        m$userId = tson.scalar(self$userId)
+        m$salt = tson.scalar(self$salt)
+        m$hashPassword = tson.scalar(self$hashPassword)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

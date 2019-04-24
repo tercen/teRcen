@@ -24,8 +24,8 @@ OperatorSettings <- R6::R6Class("OperatorSettings", inherit = Base, public = lis
         self$environment = lapply(json$environment, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("OperatorSettings")
-        m$namespace = rtson::tson.scalar(self$namespace)
+        m$kind = tson.scalar("OperatorSettings")
+        m$namespace = tson.scalar(self$namespace)
         if (!is.null(self$operatorRef)) m$operatorRef = self$operatorRef$toTson()
         m$environment = lapply(self$environment, function(each) each$toTson())
         return(m)

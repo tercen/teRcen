@@ -31,7 +31,7 @@ ROperator <- R6::R6Class("ROperator", inherit = GitOperator, public = list(initi
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar("ROperator")
+    m$kind = tson.scalar("ROperator")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

@@ -21,8 +21,8 @@ EnumeratedProperty <- R6::R6Class("EnumeratedProperty", inherit = StringProperty
         self$values = json$values
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("EnumeratedProperty")
-        m$values = lapply(self$values, function(each) rtson::tson.scalar(each))
+        m$kind = tson.scalar("EnumeratedProperty")
+        m$values = lapply(self$values, function(each) tson.scalar(each))
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

@@ -29,10 +29,10 @@ TaskProgressEvent <- R6::R6Class("TaskProgressEvent", inherit = TaskEvent, publi
         self$actual = json$actual
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("TaskProgressEvent")
-        m$message = rtson::tson.scalar(self$message)
-        m$total = rtson::tson.int(self$total)
-        m$actual = rtson::tson.int(self$actual)
+        m$kind = tson.scalar("TaskProgressEvent")
+        m$message = tson.scalar(self$message)
+        m$total = tson.int(self$total)
+        m$actual = tson.int(self$actual)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

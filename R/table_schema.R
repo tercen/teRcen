@@ -33,7 +33,7 @@ TableSchema <- R6::R6Class("TableSchema", inherit = Schema, public = list(initia
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar("TableSchema")
+    m$kind = tson.scalar("TableSchema")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

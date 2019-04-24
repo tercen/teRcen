@@ -25,7 +25,7 @@ WizardStep <- R6::R6Class("WizardStep", inherit = NamespaceStep, public = list(m
         self$model = createObjectFromJson(json$model)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("WizardStep")
+        m$kind = tson.scalar("WizardStep")
         if (!is.null(self$model)) m$model = self$model$toTson()
         return(m)
     }, print = function(...) {

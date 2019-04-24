@@ -22,9 +22,9 @@ DistinctRelation <- R6::R6Class("DistinctRelation", inherit = Relation, public =
         self$relation = createObjectFromJson(json$relation)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("DistinctRelation")
+        m$kind = tson.scalar("DistinctRelation")
         if (!is.null(self$relation)) m$relation = self$relation$toTson()
-        m$group = lapply(self$group, function(each) rtson::tson.scalar(each))
+        m$group = lapply(self$group, function(each) tson.scalar(each))
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

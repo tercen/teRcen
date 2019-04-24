@@ -14,7 +14,7 @@ RunningState <- R6::R6Class("RunningState", inherit = State, public = list(initi
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar("RunningState")
+    m$kind = tson.scalar("RunningState")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

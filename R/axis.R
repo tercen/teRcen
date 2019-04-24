@@ -24,7 +24,7 @@ Axis <- R6::R6Class("Axis", inherit = Base, public = list(axisExtent = NULL, axi
         self$graphicalFactor = createObjectFromJson(json$graphicalFactor)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("Axis")
+        m$kind = tson.scalar("Axis")
         if (!is.null(self$axisExtent)) m$axisExtent = self$axisExtent$toTson()
         if (!is.null(self$axisSettings)) m$axisSettings = self$axisSettings$toTson()
         if (!is.null(self$graphicalFactor)) m$graphicalFactor = self$graphicalFactor$toTson()

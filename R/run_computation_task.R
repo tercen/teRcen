@@ -38,8 +38,8 @@ RunComputationTask <- R6::R6Class("RunComputationTask", inherit = CubeQueryTask,
         self$computedRelation = createObjectFromJson(json$computedRelation)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("RunComputationTask")
-        m$fileResultId = rtson::tson.scalar(self$fileResultId)
+        m$kind = tson.scalar("RunComputationTask")
+        m$fileResultId = tson.scalar(self$fileResultId)
         if (!is.null(self$computedRelation)) m$computedRelation = self$computedRelation$toTson()
         return(m)
     }, print = function(...) {

@@ -21,7 +21,7 @@ AxisSettings <- R6::R6Class("AxisSettings", inherit = Base, public = list(proper
         self$propertyValues = lapply(json$propertyValues, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("AxisSettings")
+        m$kind = tson.scalar("AxisSettings")
         m$properties = lapply(self$properties, function(each) each$toTson())
         m$propertyValues = lapply(self$propertyValues, function(each) each$toTson())
         return(m)

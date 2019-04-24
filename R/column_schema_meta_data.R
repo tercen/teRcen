@@ -24,10 +24,10 @@ ColumnSchemaMetaData <- R6::R6Class("ColumnSchemaMetaData", inherit = Base, publ
         self$quartiles = json$quartiles
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("ColumnSchemaMetaData")
-        m$sort = lapply(self$sort, function(each) rtson::tson.scalar(each))
-        m$ascending = rtson::tson.scalar(self$ascending)
-        m$quartiles = lapply(self$quartiles, function(each) rtson::tson.scalar(each))
+        m$kind = tson.scalar("ColumnSchemaMetaData")
+        m$sort = lapply(self$sort, function(each) tson.scalar(each))
+        m$ascending = tson.scalar(self$ascending)
+        m$quartiles = lapply(self$quartiles, function(each) tson.scalar(each))
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

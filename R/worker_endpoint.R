@@ -33,8 +33,8 @@ WorkerEndpoint <- R6::R6Class("WorkerEndpoint", inherit = Document, public = lis
         self$uri = json$uri
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("WorkerEndpoint")
-        m$uri = rtson::tson.scalar(self$uri)
+        m$kind = tson.scalar("WorkerEndpoint")
+        m$uri = tson.scalar(self$uri)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

@@ -34,8 +34,8 @@ GitOperator <- R6::R6Class("GitOperator", inherit = Operator, public = list(path
         self$path = json$path
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("GitOperator")
-        m$path = rtson::tson.scalar(self$path)
+        m$kind = tson.scalar("GitOperator")
+        m$path = tson.scalar(self$path)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

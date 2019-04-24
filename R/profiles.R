@@ -31,7 +31,7 @@ Profiles <- R6::R6Class("Profiles", inherit = Base, public = list(apiProfile = N
         self$runProfile = createObjectFromJson(json$runProfile)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("Profiles")
+        m$kind = tson.scalar("Profiles")
         if (!is.null(self$apiProfile)) m$apiProfile = self$apiProfile$toTson()
         if (!is.null(self$tableProfile)) m$tableProfile = self$tableProfile$toTson()
         if (!is.null(self$cpuTimeProfile)) m$cpuTimeProfile = self$cpuTimeProfile$toTson()

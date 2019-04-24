@@ -21,7 +21,7 @@ Properties <- R6::R6Class("Properties", inherit = Base, public = list(properties
         self$propertyValues = lapply(json$propertyValues, createObjectFromJson)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("Properties")
+        m$kind = tson.scalar("Properties")
         m$properties = lapply(self$properties, function(each) each$toTson())
         m$propertyValues = lapply(self$propertyValues, function(each) each$toTson())
         return(m)

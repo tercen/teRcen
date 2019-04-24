@@ -19,8 +19,8 @@ ApiCallProfile <- R6::R6Class("ApiCallProfile", inherit = Profile, public = list
         self$nCalls = json$nCalls
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("ApiCallProfile")
-        m$nCalls = rtson::tson.int(self$nCalls)
+        m$kind = tson.scalar("ApiCallProfile")
+        m$nCalls = tson.int(self$nCalls)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

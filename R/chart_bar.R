@@ -16,7 +16,7 @@ ChartBar <- R6::R6Class("ChartBar", inherit = Chart, public = list(initialize = 
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar("ChartBar")
+    m$kind = tson.scalar("ChartBar")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

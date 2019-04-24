@@ -13,6 +13,8 @@ getOption("tercen.stepId")
  
 ctx = tercenCtx()
 ctx$names
+
+ctx %>% as.matrix()
  
 
 (ctx = tercenCtx()) %>% select()
@@ -23,13 +25,19 @@ tercenCtx()$cschema
 tercenCtx()$workflow
 tercenCtx()$workflow
 
-rbenchmark::benchmark("workflow"= {
-  tercenCtx()$workflow
+ctx = tercenCtx()
+
+rbenchmark::benchmark(
+"workflow"= {
+  ctx$workflow
 }, 
 "select"= {
-  tercenCtx()$select()
+  ctx$select(c(".y", ".ri", ".ci"))
 }, 
-replications = 1,
+"as.matrix"= {
+  ctx$as.matrix()
+}, 
+replications = 10,
 columns = c("test", "replications", "elapsed",
             "relative", "user.self", "sys.self"))
 

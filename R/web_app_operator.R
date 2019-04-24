@@ -31,7 +31,7 @@ WebAppOperator <- R6::R6Class("WebAppOperator", inherit = GitOperator, public = 
     super$initJson(json)
 }, toTson = function() {
     m = super$toTson()
-    m$kind = rtson::tson.scalar("WebAppOperator")
+    m$kind = tson.scalar("WebAppOperator")
     return(m)
 }, print = function(...) {
     cat(yaml::as.yaml(self$toTson()))

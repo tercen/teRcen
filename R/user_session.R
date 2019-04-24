@@ -24,7 +24,7 @@ UserSession <- R6::R6Class("UserSession", inherit = Base, public = list(serverVe
         self$token = createObjectFromJson(json$token)
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("UserSession")
+        m$kind = tson.scalar("UserSession")
         if (!is.null(self$serverVersion)) m$serverVersion = self$serverVersion$toTson()
         if (!is.null(self$user)) m$user = self$user$toTson()
         if (!is.null(self$token)) m$token = self$token$toTson()

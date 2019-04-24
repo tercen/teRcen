@@ -19,8 +19,8 @@ SimpleRelation <- R6::R6Class("SimpleRelation", inherit = Relation, public = lis
         self$index = json$index
     }, toTson = function() {
         m = super$toTson()
-        m$kind = rtson::tson.scalar("SimpleRelation")
-        m$index = rtson::tson.int(self$index)
+        m$kind = tson.scalar("SimpleRelation")
+        m$index = tson.int(self$index)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))
