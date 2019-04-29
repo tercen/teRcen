@@ -324,8 +324,9 @@ OperatorContext <- R6Class(
     },
     
     save = function(computed.df){
-      
+      print("save")
       result = OperatorResult$new()
+      print("OperatorResult")
       
       if (inherits(computed.df, 'list')){
         result$tables = lapply(computed.df, tercen::dataframe.as.table)
@@ -333,7 +334,11 @@ OperatorContext <- R6Class(
         result$tables = list(tercen::dataframe.as.table(computed.df))
       }
       
+      print("result")
+      
       bytes = toTSON(result$toTson())
+      
+      print("bytes")
       
       if (nchar(self$task$fileResultId) == 0){
         # webapp scenario
@@ -358,8 +363,12 @@ OperatorContext <- R6Class(
         }
         
       } else {
+        print("fileDoc")
         fileDoc = self$client$fileService$get(self$task$fileResultId)
+        print("fileService$get")
+        
         self$client$fileService$upload(fileDoc, bytes)
+        print("fileService$upload")
       }
     }
   ),

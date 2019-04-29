@@ -49,37 +49,6 @@ unbox <- function(object) {
     
     # Lock the class again
     Table$lock()
-    
-    
-    
-    # Unlock the class
-    FileService$unlock()
-    
-    FileService$set("public", "upload", function(file, object) {
-      answer = NULL
-      response = NULL
-      uri = paste0("api/v1/file", "/", "upload")
-      parts = list()
-      parts[[1]] = MultiPart$new(list(`content-type` = unbox("application/json")), content = list(file$toTson()))
-      if (is.raw(object)){
-        parts[[2]] = MultiPart$new(list(`content-type` = unbox("application/octet-stream")), content = object)
-      } else {
-        parts[[2]] = MultiPart$new(list(`content-type` = unbox("application/tson")), content = object)
-      }
-       
-      response = self$client$multipart(self$getServiceUri(uri), 
-                                       body = lapply(parts, function(part) part$toTson()))
-      
-      if (response$status != 200) {
-        self$onResponseError(response, "upload")
-      } else {
-        answer = createObjectFromJson(response$content)
-      }
-      return(answer)
-    }, overwrite = TRUE)
-    
-    # Lock the class again
-    FileService$lock()
 }
 
 #' Tercen Client for R
@@ -128,9 +97,8 @@ Base <- R6::R6Class("Base", portable = TRUE, public = list(subKind = NULL, initi
     return(list())
 }))
 
-MultiPart <- R6::R6Class("MultiPart", public = list(headers = structure(list(), names = character(0)),
-                                                    content = NULL, 
-    initialize = function(headers, content = NULL) {
+MultiPart <- R6::R6Class("MultiPart", public = list(headers = structure(list(), names = character(0)), 
+    content = NULL, initialize = function(headers, content = NULL) {
         if (is.null(content)) stop("MultiPart : content is required")
         if (is.null(headers)) stop("MultiPart : headers is required")
         self$headers = headers
@@ -138,27 +106,6 @@ MultiPart <- R6::R6Class("MultiPart", public = list(headers = structure(list(), 
     }, toTson = function() {
         list(headers = self$headers, content = self$content)
     }))
-
-# MultiPartMixTransformer <- R6::R6Class('MultiPartMixTransformer', public =
-# list( initialize = function() { if (is.null(frontier))
-# stop('MultiPartMixTransformer : frontier is required') self$frontier = frontier
-# }, encode = function(parts) { con = rawConnection(raw(0), 'r+') lapply(parts,
-# function(part) { writeChar('--', con, eos = NULL) writeChar(self$frontier, con,
-# eos = NULL) writeBin(as.integer(13), con, size = 1, endian = 'little')
-# writeBin(as.integer(10), con, size = 1, endian = 'little') headers =
-# part$headers lapply(names(headers), function(name) { writeChar(name, con, eos =
-# NULL) writeChar(': ', con, eos = NULL) writeChar(headers[[name]], con, eos =
-# NULL) writeBin(as.integer(13), con, size = 1, endian = 'little')
-# writeBin(as.integer(10), con, size = 1, endian = 'little') })
-# writeBin(as.integer(13), con, size = 1, endian = 'little')
-# writeBin(as.integer(10), con, size = 1, endian = 'little') if
-# (!is.null(part$bytes)) { writeBin(part$bytes, con, size = 1, endian = 'little')
-# } else { writeChar(part$string, con, eos = NULL) } writeBin(as.integer(13),
-# con, size = 1, endian = 'little') writeBin(as.integer(10), con, size = 1,
-# endian = 'little') }) writeChar('--', con, eos = NULL) writeChar(self$frontier,
-# con, eos = NULL) writeChar('--', con, eos = NULL) writeBin(as.integer(13), con,
-# size = 1, endian = 'little') writeBin(as.integer(10), con, size = 1, endian =
-# 'little') bytes = rawConnectionValue(con) close(con) return(bytes) }))
 
 HttpClient <- R6::R6Class("HttpClient", public = list(initialize = function() {
     
@@ -221,14 +168,14 @@ HttpClientService <- R6::R6Class("HttpClientService", public = list(client = NUL
         if (response$status != 200) {
             self$onResponseError(response, "create")
         }
-        return(response$content)
+        self$fromTson(response$content)
     }, get = function(id, useFactory = TRUE) {
         url = self$getServiceUri(self$uri)
         response = self$client$get(url, query = list(id = id, useFactory = tolower(toString(useFactory))))
         if (response$status != 200) {
             self$onResponseError(response, "get")
         }
-        return(response$content)
+        self$fromTson(response$content)
     }, delete = function(id, rev) {
         url = self$getServiceUri(self$uri)
         response = self$client$delete(url, query = list(id = id, rev = rev))
@@ -252,8 +199,7 @@ HttpClientService <- R6::R6Class("HttpClientService", public = list(client = NUL
             self$onResponseError(response, "list")
         }
         list = response$content
-        objects = lapply(list, function(each) self$fromTson(each))
-        return(objects)
+        lapply(list, function(each) self$fromTson(each))
     }, findStartKeys = function(viewName, startKey = NULL, endKey = NULL, limit = 20, 
         skip = 0, descending = TRUE, useFactory = FALSE) {
         url = self$getServiceUri(self$uri, "/", viewName)
@@ -276,8 +222,7 @@ HttpClientService <- R6::R6Class("HttpClientService", public = list(client = NUL
             self$onResponseError(response, "findStartKeys")
         }
         list = response$content
-        objects = lapply(list, function(each) self$fromTson(each))
-        return(objects)
+        lapply(list, function(each) self$fromTson(each))
     }, findKeys = function(viewName, keys = NULL, useFactory = FALSE) {
         url = self$getServiceUri(self$uri, "/", viewName)
         body = lapply(keys, unbox)
@@ -286,8 +231,7 @@ HttpClientService <- R6::R6Class("HttpClientService", public = list(client = NUL
             self$onResponseError(response, "findKeys")
         }
         list = response$content
-        objects = lapply(list, function(each) self$fromTson(each))
-        return(objects)
+        lapply(list, function(each) self$fromTson(each))
     }))
 
 

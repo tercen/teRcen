@@ -39,6 +39,9 @@ fileDoc$metadata$contentEncoding = 'gzip,iso-8859-1'
 fileDoc
       
 fileDoc = client$fileService$upload(fileDoc, bytes)
+fileDoc
+ff = client$fileService$get(fileDoc$id)
+class(ff)
 
 task = CSVTask$new()
 task$state = InitState$new()

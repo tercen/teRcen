@@ -7,14 +7,17 @@ FileService <- R6::R6Class("FileService", inherit = HttpClientService, public = 
     response = NULL
     uri = paste0("api/v1/file", "/", "upload")
     parts = list()
-    parts[[1]] = MultiPart$new(list(`Content-Type` = "application/json"), string = jsonlite::toJSON(list(file$toTson())))
-    parts[[2]] = MultiPart$new(list(`Content-Type` = "application/octet-stream"), 
-        bytes = bytes)
-    frontier = "ab63a1363ab349aa8627be56b0479de2"
-    bodyBytes = MultiPartMixTransformer$new(frontier)$encode(parts)
-    headers = c(`Content-Type` = paste0("multipart/mixed; boundary=", frontier))
-    response = self$client$post(self$getServiceUri(uri), headers = headers, body = bodyBytes, 
-        encode = "raw")
+    parts[[1]] = MultiPart$new(list(`content-type` = tson.scalar("application/json")), 
+        content = list(file$toTson()))
+    if (is.raw(bytes)) {
+        parts[[2]] = MultiPart$new(list(`content-type` = tson.scalar("application/octet-stream")), 
+            content = bytes)
+    } else {
+        parts[[2]] = MultiPart$new(list(`content-type` = tson.scalar("application/tson")), 
+            content = bytes)
+    }
+    response = self$client$multipart(self$getServiceUri(uri), body = lapply(parts, 
+        function(part) part$toTson()))
     if (response$status != 200) {
         self$onResponseError(response, "upload")
     } else {
