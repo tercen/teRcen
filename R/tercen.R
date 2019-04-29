@@ -34,6 +34,8 @@ unbox <- function(object) {
         return(as_tibble(self$select(schema$id, cnames, offset, nr)))
     }, overwrite = TRUE)
     
+    
+    
     # Lock the class again
     TableSchemaService$lock()
     
@@ -47,6 +49,37 @@ unbox <- function(object) {
     
     # Lock the class again
     Table$lock()
+    
+    
+    
+    # Unlock the class
+    FileService$unlock()
+    
+    FileService$set("public", "upload", function(file, object) {
+      answer = NULL
+      response = NULL
+      uri = paste0("api/v1/file", "/", "upload")
+      parts = list()
+      parts[[1]] = MultiPart$new(list(`content-type` = unbox("application/json")), content = list(file$toTson()))
+      if (is.raw(object)){
+        parts[[2]] = MultiPart$new(list(`content-type` = unbox("application/octet-stream")), content = object)
+      } else {
+        parts[[2]] = MultiPart$new(list(`content-type` = unbox("application/tson")), content = object)
+      }
+       
+      response = self$client$multipart(self$getServiceUri(uri), 
+                                       body = lapply(parts, function(part) part$toTson()))
+      
+      if (response$status != 200) {
+        self$onResponseError(response, "upload")
+      } else {
+        answer = createObjectFromJson(response$content)
+      }
+      return(answer)
+    }, overwrite = TRUE)
+    
+    # Lock the class again
+    FileService$lock()
 }
 
 #' Tercen Client for R
@@ -95,9 +128,10 @@ Base <- R6::R6Class("Base", portable = TRUE, public = list(subKind = NULL, initi
     return(list())
 }))
 
-MultiPart <- R6::R6Class("MultiPart", public = list(headers = list(), content = NULL, 
+MultiPart <- R6::R6Class("MultiPart", public = list(headers = structure(list(), names = character(0)),
+                                                    content = NULL, 
     initialize = function(headers, content = NULL) {
-        if (is.null(content) && is.null(string)) stop("MultiPart : content is required")
+        if (is.null(content)) stop("MultiPart : content is required")
         if (is.null(headers)) stop("MultiPart : headers is required")
         self$headers = headers
         self$content = content
