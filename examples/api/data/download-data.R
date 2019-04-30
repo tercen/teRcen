@@ -1,76 +1,75 @@
 library(tercen)
-
-serviceUri="http://127.0.0.1:5400/api/v1/"
-username="admin"
-password="admin"
  
-teamName = 'test-team'
-projectName = 'project'
+settings1 = list(serviceUri="https://dev.tercen.com/api/v1/",
+                          username=getOption("dev.tercen.username"),
+                          password=getOption("dev.tercen.password"),
+                          teamName = 'ENP TercenWorkshop',
+                          projectName = 'SCN2A-2'
+                          )
 ############################################
-serviceUri="https://dev.tercen.com/api/v1/"
-username="admin"
-
-teamName = 'ENP TercenWorkshop'
-projectName = 'SCN2A-2'
+settings2 = list(serviceUri="http://51.83.108.195/api/v1/",
+                          username="admin",
+                          password="admin",
+                          teamName = 'test-team',
+                          projectName = 'SCN2A-2'
+)
+ 
 ############################################
+client1 = TercenClient$new(serviceUri=settings1$serviceUri,
+                          username=settings1$username,
+                          password=settings1$password)
 
-client = TercenClient$new(serviceUri=serviceUri,
-                          username=username,
-                          password=password)
+client1$session$serverVersion
 
-client$session$serverVersion
+projects = client1$documentService$findProjectByOwnersAndCreatedDate(
+  startKey=list(settings1$teamName,'2020'),
+  endKey=list(settings1$teamName,''))
 
-projects = client$documentService$findProjectByOwnersAndCreatedDate(
-  startKey=list(teamName,'2020'),
-  endKey=list(teamName,''))
-
-project = Find(function(p) identical(p$name,projectName), projects)
+project = Find(function(p) identical(p$name,settings1$projectName), projects)
 project
 
-tbl.schemas = client$projectDocumentService$findSchemaByLastModifiedDate(
+tbl.schemas = client1$projectDocumentService$findSchemaByLastModifiedDate(
   startKey=list(project$id,'2020'),
   endKey=list(project$id,''),
-  useFactory=TRUE)
- 
-# all.tbl = client$tableSchemaService$selectSchema(tbl.schemas[[1]])
-# all.tbl
+  useFactory=TRUE, limit = 1000)
+
+tbl.schemas = Filter(function(schema) {startsWith(schema$name, "d-1902241832")}, tbl.schemas)
+
+# tbl.names = Map(function(schema) schema$name, tbl.schemas)
+# tbl.names
 
 all.tbl = dplyr::bind_rows(lapply(tbl.schemas,
-                                  client$tableSchemaService$selectSchema),
+                                  client1$tableSchemaService$selectSchema),
                     .id = NULL)
 
-  
-bytes = memCompress( toTSON(tercen::dataframe.as.table(all.tbl)$toTson()),
+bytes = memCompress( teRcenHttp::toTSON(tercen::dataframe.as.table(all.tbl)$toTson()),
                     type = 'gzip')
+# relase memory
+all.tbl = NULL
 
-local.client = TercenClient$new(serviceUri="http://51.83.110.171/api/v1/",
-                               username="admin",
-                               password="admin")
-
-# local.teamName = 'test-team'
-# local.projectName = 'project'
-
-local.teamName = teamName
-local.projectName = projectName
+client2 = TercenClient$new(serviceUri=settings2$serviceUri,
+                           username=settings2$username,
+                           password=settings2$password)
+ 
   
-local.projects = local.client$documentService$findProjectByOwnersAndCreatedDate(
-  startKey=list(local.teamName,'2020'),
-  endKey=list(local.teamName,''))
+projects2 = client2$documentService$findProjectByOwnersAndCreatedDate(
+  startKey=list(settings2$teamName,'2020'),
+  endKey=list(settings2$teamName,''))
 
-local.project = Find(function(p) identical(p$name,local.projectName), local.projects)
+project2 = Find(function(p) identical(p$name,settings2$projectName), projects2)
  
 
 fileDoc = FileDocument$new()
 fileDoc$name = 'SCN2A-2'
-fileDoc$projectId = local.project$id
-fileDoc$acl$owner = local.project$acl$owner
+fileDoc$projectId = project2$id
+fileDoc$acl$owner = project2$acl$owner
 fileDoc$metadata = FileMetadata$new()
 fileDoc$metadata$md5Hash = toString(openssl::md5(bytes))
 fileDoc$metadata$contentType = 'application/octet-stream'
 fileDoc$metadata$contentEncoding = 'gzip'
 fileDoc
  
-fileDoc = local.client$fileService$upload(fileDoc, bytes)
+fileDoc = client2$fileService$upload(fileDoc, bytes)
  
 task = CSVTask$new()
 task$state = InitState$new()
@@ -80,17 +79,15 @@ cpu$key='cpu'
 cpu$value='16'
 task$environment = list(cpu)
 task$fileDocumentId = fileDoc$id
-task$owner = local.project$acl$owner
-task$projectId = local.project$id
+task$owner = project2$acl$owner
+task$projectId = project2$id
 
-task = local.client$taskService$create(task)
-local.client$taskService$runTask(task$id)
-task = local.client$taskService$waitDone(task$id)
+task = client2$taskService$create(task)
+client2$taskService$runTask(task$id)
+task = client2$taskService$waitDone(task$id)
 task
 if (inherits(task$state, 'FailedState')){
   stop(task$state$reason)
 }
-local.client$taskService$get(task$id)
-
-
-local.client$taskService$delete(task$id, task$rev)
+# client2$taskService$get(task$id)
+# client2$taskService$delete(task$id, task$rev)

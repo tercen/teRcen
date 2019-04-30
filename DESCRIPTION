@@ -18,6 +18,6 @@ Imports:
     dplyr,
     tibble,
     yaml
-URL: https://tercen.com
+URL: https://github.com/tercen/teRcen 
 BugReports: https://github.com/tercen/teRcen/issues
 RoxygenNote: 6.1.1

@@ -12,7 +12,7 @@ getOption("tercen.workflowId")
 getOption("tercen.stepId")
  
 ctx = tercenCtx()
-ctx$names
+ctx$names 
 
 ctx %>% as.matrix()
  
