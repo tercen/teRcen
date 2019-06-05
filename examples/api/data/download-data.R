@@ -7,19 +7,19 @@ settings1 = list(serviceUri="https://dev.tercen.com/api/v1/",
                           projectName = 'SCN2A-2'
                           )
 ############################################
-settings2 = list(serviceUri="http://51.77.229.220/api/v1/",
+settings2 = list(serviceUri="http://51.68.78.49/api/v1/",
                           username="admin",
                           password="admin",
                           teamName = 'test-team',
                           projectName = 'SCN2A-2'
 )
  
-settings2 = list(serviceUri="http://127.0.0.1:5400/api/v1/",
-                 username="admin",
-                 password="admin",
-                 teamName = 'test-team',
-                 projectName = 'SCN2A-2'
-)
+# settings2 = list(serviceUri="http://127.0.0.1:5400/api/v1/",
+#                  username="admin",
+#                  password="admin",
+#                  teamName = 'test-team',
+#                  projectName = 'SCN2A-2'
+# )
 ############################################
 client1 = TercenClient$new(serviceUri=settings1$serviceUri,
                           username=settings1$username,
@@ -50,12 +50,12 @@ all.tbl = dplyr::bind_rows(lapply(tbl.schemas,
                                   client1$tableSchemaService$selectSchema),
                     .id = NULL)
 
-all.tbl = dplyr::bind_rows(lapply(tbl.schemas,
-                                  function(s) {
-                                    print(s$name)
-                                    client1$tableSchemaService$selectSchema(s)
-                                  }),
-                           .id = NULL)
+# all.tbl = dplyr::bind_rows(lapply(tbl.schemas,
+#                                   function(s) {
+#                                     print(s$name)
+#                                     client1$tableSchemaService$selectSchema(s)
+#                                   }),
+#                            .id = NULL)
 
 bytes = memCompress( teRcenHttp::toTSON(tercen::dataframe.as.table(all.tbl)$toTson()),
                     type = 'gzip')
