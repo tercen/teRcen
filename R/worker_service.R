@@ -1,3 +1,16 @@
+#' WorkerService
+#'
+#' @export
+#' @format \code{\link{R6Class}} object.
+#' @section Methods:
+#' \describe{
+#'    \item{\code{exec(task)}}{method}
+#'    \item{\code{setPriority(priority)}}{method}
+#'    \item{\code{setStatus(status)}}{method}
+#'    \item{\code{setHeartBeat(heartBeat)}}{method}
+#'    \item{\code{getState(all)}}{method}
+#' }
+#' 
 WorkerService <- R6::R6Class("WorkerService", inherit = HttpClientService, public = list(initialize = function(baseRestUri, 
     client) {
     super$initialize(baseRestUri, client)

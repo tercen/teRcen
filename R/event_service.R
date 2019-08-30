@@ -1,3 +1,16 @@
+#' EventService
+#'
+#' @export
+#' @format \code{\link{R6Class}} object.
+#' @section Methods:
+#' \describe{
+#'    \item{\code{sendChannel(channel,evt)}}{method}
+#'    \item{\code{channel(name)}}{method}
+#'    \item{\code{listenTaskChannel(taskId,start)}}{method}
+#'    \item{\code{onTaskState(taskId)}}{method}
+#'    \item{\code{taskListenerCount(taskId)}}{method}
+#' }
+#' 
 EventService <- R6::R6Class("EventService", inherit = HttpClientService, public = list(initialize = function(baseRestUri, 
     client) {
     super$initialize(baseRestUri, client)
@@ -31,17 +44,17 @@ EventService <- R6::R6Class("EventService", inherit = HttpClientService, public 
         answer = response$content
     }
     return(answer)
-}, listenTask = function(taskId, start) {
+}, listenTaskChannel = function(taskId, start) {
     answer = NULL
     response = NULL
-    uri = paste0("api/v1/evt", "/", "listenTask")
+    uri = paste0("api/v1/evt", "/", "listenTaskChannel")
     params = list()
     params[["taskId"]] = unbox(taskId)
     params[["start"]] = unbox(start)
     url = self$getServiceUri(uri)
     response = self$client$post(url, body = params)
     if (response$status != 200) {
-        self$onResponseError(response, "listenTask")
+        self$onResponseError(response, "listenTaskChannel")
     } else {
         answer = response$content
     }

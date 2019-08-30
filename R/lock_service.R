@@ -1,3 +1,13 @@
+#' LockService
+#'
+#' @export
+#' @format \code{\link{R6Class}} object.
+#' @section Methods:
+#' \describe{
+#'    \item{\code{lock(name,wait)}}{method}
+#'    \item{\code{releaseLock(lock)}}{method}
+#' }
+#' 
 LockService <- R6::R6Class("LockService", inherit = HttpClientService, public = list(initialize = function(baseRestUri, 
     client) {
     super$initialize(baseRestUri, client)

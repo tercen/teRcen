@@ -1,3 +1,11 @@
+#' WorkerEndpointService
+#'
+#' @export
+#' @format \code{\link{R6Class}} object.
+#' @section Methods:
+#' \describe{
+#' }
+#' 
 WorkerEndpointService <- R6::R6Class("WorkerEndpointService", inherit = HttpClientService, 
     public = list(initialize = function(baseRestUri, client) {
         super$initialize(baseRestUri, client)

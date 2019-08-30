@@ -1,3 +1,22 @@
+#' UserService
+#'
+#' @export
+#' @format \code{\link{R6Class}} object.
+#' @section Methods:
+#' \describe{
+#'    \item{\code{connect(usernameOrEmail,password)}}{method}
+#'    \item{\code{createUser(user,password)}}{method}
+#'    \item{\code{hasUserName(username)}}{method}
+#'    \item{\code{updatePassword(userId,password)}}{method}
+#'    \item{\code{summary(userId)}}{method}
+#'    \item{\code{resourceSummary(userId)}}{method}
+#'    \item{\code{profiles(userId)}}{method}
+#'    \item{\code{createToken(userId,validityInSeconds)}}{method}
+#'    \item{\code{isTokenValid(token)}}{method}
+#'    \item{\code{setTeamPrivilege(username,principal,privilege)}}{method}
+#'    \item{\code{getServerVersion(module)}}{method}
+#' }
+#' 
 UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = list(initialize = function(baseRestUri, 
     client) {
     super$initialize(baseRestUri, client)
@@ -40,6 +59,20 @@ UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = 
         self$onResponseError(response, "createUser")
     } else {
         answer = createObjectFromJson(response$content)
+    }
+    return(answer)
+}, hasUserName = function(username) {
+    answer = NULL
+    response = NULL
+    uri = paste0("api/v1/user", "/", "hasUserName")
+    params = list()
+    params[["username"]] = unbox(username)
+    url = self$getServiceUri(uri)
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
+        self$onResponseError(response, "hasUserName")
+    } else {
+        answer = response$content[[1]]
     }
     return(answer)
 }, updatePassword = function(userId, password) {

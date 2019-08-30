@@ -1,3 +1,13 @@
+#' TeamService
+#'
+#' @export
+#' @format \code{\link{R6Class}} object.
+#' @section Methods:
+#' \describe{
+#'    \item{\code{profiles(teamId)}}{method}
+#'    \item{\code{resourceSummary(teamId)}}{method}
+#' }
+#' 
 TeamService <- R6::R6Class("TeamService", inherit = HttpClientService, public = list(initialize = function(baseRestUri, 
     client) {
     super$initialize(baseRestUri, client)

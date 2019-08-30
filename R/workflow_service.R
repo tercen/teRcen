@@ -1,3 +1,13 @@
+#' WorkflowService
+#'
+#' @export
+#' @format \code{\link{R6Class}} object.
+#' @section Methods:
+#' \describe{
+#'    \item{\code{getCubeQuery(workflowId,stepId)}}{method}
+#'    \item{\code{copy(workflowId)}}{method}
+#' }
+#' 
 WorkflowService <- R6::R6Class("WorkflowService", inherit = HttpClientService, public = list(initialize = function(baseRestUri, 
     client) {
     super$initialize(baseRestUri, client)

@@ -1,3 +1,11 @@
+#' ProjectDocumentService
+#'
+#' @export
+#' @format \code{\link{R6Class}} object.
+#' @section Methods:
+#' \describe{
+#' }
+#' 
 ProjectDocumentService <- R6::R6Class("ProjectDocumentService", inherit = HttpClientService, 
     public = list(initialize = function(baseRestUri, client) {
         super$initialize(baseRestUri, client)

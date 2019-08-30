@@ -1,3 +1,11 @@
+#' UserSecretService
+#'
+#' @export
+#' @format \code{\link{R6Class}} object.
+#' @section Methods:
+#' \describe{
+#' }
+#' 
 UserSecretService <- R6::R6Class("UserSecretService", inherit = HttpClientService, 
     public = list(initialize = function(baseRestUri, client) {
         super$initialize(baseRestUri, client)

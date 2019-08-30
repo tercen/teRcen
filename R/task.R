@@ -8,6 +8,7 @@
 #' @field duration of type double.
 #' @field owner of type String.
 #' @field taskHash of type String.
+#' @field channelId of type String.
 #' @field environment list of class \code{\link{Pair}}.
 #' @field state object of class \code{\link{State}}.
 #' @field createdDate object of class \code{\link{Date}}.
@@ -17,7 +18,8 @@
 #' @field aclContext object of class \code{\link{AclContext}}.
 Task <- R6::R6Class("Task", inherit = PersistentObject, public = list(environment = NULL, 
     state = NULL, createdDate = NULL, lastModifiedDate = NULL, runDate = NULL, completedDate = NULL, 
-    duration = NULL, aclContext = NULL, owner = NULL, taskHash = NULL, initialize = function(json = NULL) {
+    duration = NULL, aclContext = NULL, owner = NULL, taskHash = NULL, channelId = NULL, 
+    initialize = function(json = NULL) {
         if (!is.null(json)) {
             self$initJson(json)
         } else {
@@ -28,6 +30,7 @@ Task <- R6::R6Class("Task", inherit = PersistentObject, public = list(environmen
         self$duration = 0
         self$owner = ""
         self$taskHash = ""
+        self$channelId = ""
         self$environment = list()
         self$state = State$new()
         self$createdDate = Date$new()
@@ -40,6 +43,7 @@ Task <- R6::R6Class("Task", inherit = PersistentObject, public = list(environmen
         self$duration = as.double(json$duration)
         self$owner = json$owner
         self$taskHash = json$taskHash
+        self$channelId = json$channelId
         self$environment = lapply(json$environment, createObjectFromJson)
         self$state = createObjectFromJson(json$state)
         self$createdDate = createObjectFromJson(json$createdDate)
@@ -60,6 +64,7 @@ Task <- R6::R6Class("Task", inherit = PersistentObject, public = list(environmen
         if (!is.null(self$aclContext)) m$aclContext = self$aclContext$toTson()
         m$owner = tson.scalar(self$owner)
         m$taskHash = tson.scalar(self$taskHash)
+        m$channelId = tson.scalar(self$channelId)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

@@ -14,6 +14,8 @@ ShinyOperator
 \section{Fields}{
 
 \describe{
+\item{\code{isViewOnly}}{of type bool inherited from super class \code{\link{WebAppOperator}}.}
+
 \item{\code{path}}{of type String inherited from super class \code{\link{GitOperator}}.}
 
 \item{\code{description}}{of type String inherited from super class \code{\link{Document}}.}

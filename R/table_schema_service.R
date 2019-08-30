@@ -1,3 +1,15 @@
+#' TableSchemaService
+#'
+#' @export
+#' @format \code{\link{R6Class}} object.
+#' @section Methods:
+#' \describe{
+#'    \item{\code{select(tableId,cnames,offset,limit)}}{method}
+#'    \item{\code{selectPairwise(tableId,cnames,offset,limit)}}{method}
+#'    \item{\code{selectStream(tableId,cnames,offset,limit)}}{method}
+#'    \item{\code{selectCSV(tableId,cnames,offset,limit,separator,quote,encoding)}}{method}
+#' }
+#' 
 TableSchemaService <- R6::R6Class("TableSchemaService", inherit = HttpClientService, 
     public = list(initialize = function(baseRestUri, client) {
         super$initialize(baseRestUri, client)

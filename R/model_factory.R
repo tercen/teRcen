@@ -278,11 +278,11 @@ createObjectFromJson = function(json) {
     if (kind == "Privilege") {
         return(Privilege$new(json = json))
     }
-    if (kind == "OperatorRef") {
-        return(OperatorRef$new(json = json))
-    }
     if (kind == "Port") {
         return(Port$new(json = json))
+    }
+    if (kind == "OperatorRef") {
+        return(OperatorRef$new(json = json))
     }
     if (kind == "JoinStep") {
         return(JoinStep$new(json = json))

@@ -1,3 +1,16 @@
+#' TaskService
+#'
+#' @export
+#' @format \code{\link{R6Class}} object.
+#' @section Methods:
+#' \describe{
+#'    \item{\code{runTask(taskId)}}{method}
+#'    \item{\code{cancelTask(taskId)}}{method}
+#'    \item{\code{waitDone(taskId)}}{method}
+#'    \item{\code{updateWorker(worker)}}{method}
+#'    \item{\code{taskDurationByTeam(teamId,year,month)}}{method}
+#' }
+#' 
 TaskService <- R6::R6Class("TaskService", inherit = HttpClientService, public = list(initialize = function(baseRestUri, 
     client) {
     super$initialize(baseRestUri, client)

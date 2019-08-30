@@ -1,3 +1,14 @@
+#' DocumentService
+#'
+#' @export
+#' @format \code{\link{R6Class}} object.
+#' @section Methods:
+#' \describe{
+#'    \item{\code{getTercenOperatorLibrary(offset,limit)}}{method}
+#'    \item{\code{getTercenWorkflowLibrary(offset,limit)}}{method}
+#'    \item{\code{getTercenAppLibrary(offset,limit)}}{method}
+#' }
+#' 
 DocumentService <- R6::R6Class("DocumentService", inherit = HttpClientService, public = list(initialize = function(baseRestUri, 
     client) {
     super$initialize(baseRestUri, client)

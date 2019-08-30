@@ -1,3 +1,12 @@
+#' PersistentService
+#'
+#' @export
+#' @format \code{\link{R6Class}} object.
+#' @section Methods:
+#' \describe{
+#'    \item{\code{summary(teamOrProjectId)}}{method}
+#' }
+#' 
 PersistentService <- R6::R6Class("PersistentService", inherit = HttpClientService, 
     public = list(initialize = function(baseRestUri, client) {
         super$initialize(baseRestUri, client)

@@ -1,3 +1,13 @@
+#' ProjectService
+#'
+#' @export
+#' @format \code{\link{R6Class}} object.
+#' @section Methods:
+#' \describe{
+#'    \item{\code{profiles(projectId)}}{method}
+#'    \item{\code{resourceSummary(projectId)}}{method}
+#' }
+#' 
 ProjectService <- R6::R6Class("ProjectService", inherit = HttpClientService, public = list(initialize = function(baseRestUri, 
     client) {
     super$initialize(baseRestUri, client)

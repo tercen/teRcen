@@ -1,7 +1,21 @@
+#' FileService
+#'
+#' @export
+#' @format \code{\link{R6Class}} object.
+#' @section Methods:
+#' \describe{
+#'    \item{\code{upload(file,bytes)}}{method}
+#'    \item{\code{download(fileDocumentId)}}{method}
+#' }
+#' 
 FileService <- R6::R6Class("FileService", inherit = HttpClientService, public = list(initialize = function(baseRestUri, 
     client) {
     super$initialize(baseRestUri, client)
     self$uri = "api/v1/file"
+}, findFileByWorkflowIdAndStepId = function(startKey = NULL, endKey = NULL, limit = 20, 
+    skip = 0, descending = TRUE, useFactory = FALSE) {
+    return(self$findStartKeys("findFileByWorkflowIdAndStepId", startKey = startKey, 
+        endKey = endKey, limit = limit, skip = skip, descending = descending, useFactory = useFactory))
 }, upload = function(file, bytes) {
     answer = NULL
     response = NULL
