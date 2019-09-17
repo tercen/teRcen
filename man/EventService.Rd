@@ -16,7 +16,7 @@ EventService
 \describe{
    \item{\code{sendChannel(channel,evt)}}{method}
    \item{\code{channel(name)}}{method}
-   \item{\code{listenTask(taskId,start)}}{method}
+   \item{\code{listenTaskChannel(taskId,start)}}{method}
    \item{\code{onTaskState(taskId)}}{method}
    \item{\code{taskListenerCount(taskId)}}{method}
 }

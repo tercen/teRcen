@@ -16,6 +16,7 @@ UserService
 \describe{
    \item{\code{connect(usernameOrEmail,password)}}{method}
    \item{\code{createUser(user,password)}}{method}
+   \item{\code{hasUserName(username)}}{method}
    \item{\code{updatePassword(userId,password)}}{method}
    \item{\code{summary(userId)}}{method}
    \item{\code{resourceSummary(userId)}}{method}

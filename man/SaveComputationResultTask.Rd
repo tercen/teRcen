@@ -26,6 +26,8 @@ SaveComputationResultTask
 
 \item{\code{taskHash}}{of type String inherited from super class \code{\link{Task}}.}
 
+\item{\code{channelId}}{of type String inherited from super class \code{\link{Task}}.}
+
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 
 \item{\code{rev}}{of type String inherited from super class \code{\link{PersistentObject}}.}

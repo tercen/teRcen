@@ -15,6 +15,11 @@ ProjectDocumentService <- R6::R6Class("ProjectDocumentService", inherit = HttpCl
         return(self$findStartKeys("findProjectObjectsByLastModifiedDate", startKey = startKey, 
             endKey = endKey, limit = limit, skip = skip, descending = descending, 
             useFactory = useFactory))
+    }, findFileByLastModifiedDate = function(startKey = NULL, endKey = NULL, limit = 20, 
+        skip = 0, descending = TRUE, useFactory = FALSE) {
+        return(self$findStartKeys("findFileByLastModifiedDate", startKey = startKey, 
+            endKey = endKey, limit = limit, skip = skip, descending = descending, 
+            useFactory = useFactory))
     }, findWorkflowByLastModifiedDate = function(startKey = NULL, endKey = NULL, 
         limit = 20, skip = 0, descending = TRUE, useFactory = FALSE) {
         return(self$findStartKeys("findWorkflowByLastModifiedDate", startKey = startKey, 

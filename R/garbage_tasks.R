@@ -8,8 +8,9 @@
 #' @field workflowId of type String.
 #' @field deletedTaskIds list of type String.
 #' @field addedTaskIds list of type String.
+#' @field deletedStepIds list of type String.
 GarbageTasks <- R6::R6Class("GarbageTasks", inherit = GarbageObject, public = list(workflowId = NULL, 
-    deletedTaskIds = NULL, addedTaskIds = NULL, initialize = function(json = NULL) {
+    deletedTaskIds = NULL, addedTaskIds = NULL, deletedStepIds = NULL, initialize = function(json = NULL) {
         if (!is.null(json)) {
             self$initJson(json)
         } else {
@@ -20,17 +21,20 @@ GarbageTasks <- R6::R6Class("GarbageTasks", inherit = GarbageObject, public = li
         self$workflowId = ""
         self$deletedTaskIds = list()
         self$addedTaskIds = list()
+        self$deletedStepIds = list()
     }, initJson = function(json) {
         super$initJson(json)
         self$workflowId = json$workflowId
         self$deletedTaskIds = json$deletedTaskIds
         self$addedTaskIds = json$addedTaskIds
+        self$deletedStepIds = json$deletedStepIds
     }, toTson = function() {
         m = super$toTson()
         m$kind = tson.scalar("GarbageTasks")
         m$workflowId = tson.scalar(self$workflowId)
         m$deletedTaskIds = lapply(self$deletedTaskIds, function(each) tson.scalar(each))
         m$addedTaskIds = lapply(self$addedTaskIds, function(each) tson.scalar(each))
+        m$deletedStepIds = lapply(self$deletedStepIds, function(each) tson.scalar(each))
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

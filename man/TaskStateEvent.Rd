@@ -22,8 +22,6 @@ TaskStateEvent
 
 \item{\code{id}}{of type String inherited from super class \code{\link{IdObject}}.}
 
-\item{\code{taskId}}{of type String.}
-
 \item{\code{date}}{object of class \code{\link{Date}} inherited from super class \code{\link{Event}}.}
 
 \item{\code{state}}{object of class \code{\link{State}}.}
