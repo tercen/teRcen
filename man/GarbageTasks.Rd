@@ -25,6 +25,8 @@ GarbageTasks
 \item{\code{deletedTaskIds}}{list of type String.}
 
 \item{\code{addedTaskIds}}{list of type String.}
+
+\item{\code{deletedStepIds}}{list of type String.}
 }}
 
 \keyword{datasets}
