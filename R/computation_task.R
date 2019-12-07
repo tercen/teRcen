@@ -1,7 +1,7 @@
 #' ComputationTask
 #'
 #' @export
-#' @format \code{\link{R6Class}} object, super class \code{\link{CubeQueryTask}}.
+#' @format \code{\link{R6Class}} object, super class \code{\link{CubeQueryTask}}, sub classes \code{\link{RunComputationTask}}, \code{\link{SaveComputationResultTask}}.
 #' @field removeOnGC of type bool inherited from super class \code{\link{CubeQueryTask}}.
 #' @field schemaIds list of type String inherited from super class \code{\link{CubeQueryTask}}.
 #' @field projectId of type String inherited from super class \code{\link{ProjectTask}}.

@@ -209,23 +209,23 @@ createObjectFromJson = function(json) {
     if (kind == "CrosstabTable") {
         return(CrosstabTable$new(json = json))
     }
+    if (kind == "OperatorUnitTest") {
+        return(OperatorUnitTest$new(json = json))
+    }
     if (kind == "StepModel") {
         return(StepModel$new(json = json))
-    }
-    if (kind == "TableStep") {
-        return(TableStep$new(json = json))
     }
     if (kind == "FilterTopExpr") {
         return(FilterTopExpr$new(json = json))
     }
-    if (kind == "MeltStep") {
-        return(MeltStep$new(json = json))
+    if (kind == "TableStep") {
+        return(TableStep$new(json = json))
     }
     if (kind == "UnionRelation") {
         return(UnionRelation$new(json = json))
     }
-    if (kind == "RunWebAppTask") {
-        return(RunWebAppTask$new(json = json))
+    if (kind == "MeltStep") {
+        return(MeltStep$new(json = json))
     }
     if (kind == "DoubleColorElement") {
         return(DoubleColorElement$new(json = json))
@@ -239,8 +239,8 @@ createObjectFromJson = function(json) {
     if (kind == "GarbageObject") {
         return(GarbageObject$new(json = json))
     }
-    if (kind == "XYAxisList") {
-        return(XYAxisList$new(json = json))
+    if (kind == "RunWebAppTask") {
+        return(RunWebAppTask$new(json = json))
     }
     if (kind == "FactorsProperty") {
         return(FactorsProperty$new(json = json))
@@ -254,14 +254,17 @@ createObjectFromJson = function(json) {
     if (kind == "Task") {
         return(Task$new(json = json))
     }
-    if (kind == "Profiles") {
-        return(Profiles$new(json = json))
+    if (kind == "XYAxisList") {
+        return(XYAxisList$new(json = json))
     }
     if (kind == "Operator") {
         return(Operator$new(json = json))
     }
     if (kind == "RunComputationTask") {
         return(RunComputationTask$new(json = json))
+    }
+    if (kind == "Profiles") {
+        return(Profiles$new(json = json))
     }
     if (kind == "ProjectTask") {
         return(ProjectTask$new(json = json))
@@ -344,6 +347,9 @@ createObjectFromJson = function(json) {
     if (kind == "StepState") {
         return(StepState$new(json = json))
     }
+    if (kind == "Plan") {
+        return(Plan$new(json = json))
+    }
     if (kind == "ProjectDocument") {
         return(ProjectDocument$new(json = json))
     }
@@ -415,6 +421,9 @@ createObjectFromJson = function(json) {
     }
     if (kind == "EnumeratedProperty") {
         return(EnumeratedProperty$new(json = json))
+    }
+    if (kind == "TestOperatorTask") {
+        return(TestOperatorTask$new(json = json))
     }
     if (kind == "ImportGitWorkflowTask") {
         return(ImportGitWorkflowTask$new(json = json))
@@ -502,6 +511,9 @@ createObjectFromJson = function(json) {
     }
     if (kind == "GitOperator") {
         return(GitOperator$new(json = json))
+    }
+    if (kind == "SubscriptionPlan") {
+        return(SubscriptionPlan$new(json = json))
     }
     if (kind == "FormulaProperty") {
         return(FormulaProperty$new(json = json))

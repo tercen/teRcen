@@ -1,7 +1,7 @@
 #' ProjectTask
 #'
 #' @export
-#' @format \code{\link{R6Class}} object, super class \code{\link{Task}}, sub classes \code{\link{ComputationTask}}, \code{\link{RunComputationTask}}, \code{\link{SaveComputationResultTask}}, \code{\link{ExportWorkflowTask}}, \code{\link{RunWebAppTask}}, \code{\link{CSVTask}}, \code{\link{CubeQueryTask}}, \code{\link{ExportTableTask}}, \code{\link{ImportWorkflowTask}}, \code{\link{ImportGitWorkflowTask}}.
+#' @format \code{\link{R6Class}} object, super class \code{\link{Task}}, sub classes \code{\link{RunComputationTask}}, \code{\link{SaveComputationResultTask}}, \code{\link{ComputationTask}}, \code{\link{ExportWorkflowTask}}, \code{\link{RunWebAppTask}}, \code{\link{CSVTask}}, \code{\link{CubeQueryTask}}, \code{\link{ExportTableTask}}, \code{\link{ImportWorkflowTask}}, \code{\link{TestOperatorTask}}, \code{\link{ImportGitWorkflowTask}}.
 #' @field duration of type double inherited from super class \code{\link{Task}}.
 #' @field owner of type String inherited from super class \code{\link{Task}}.
 #' @field taskHash of type String inherited from super class \code{\link{Task}}.

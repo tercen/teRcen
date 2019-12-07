@@ -15,6 +15,7 @@
 #'    \item{\code{isTokenValid(token)}}{method}
 #'    \item{\code{setTeamPrivilege(username,principal,privilege)}}{method}
 #'    \item{\code{getServerVersion(module)}}{method}
+#'    \item{\code{getInvited(email)}}{method}
 #' }
 #' 
 UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = list(initialize = function(baseRestUri, 
@@ -189,6 +190,20 @@ UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = 
         self$onResponseError(response, "getServerVersion")
     } else {
         answer = createObjectFromJson(response$content)
+    }
+    return(answer)
+}, getInvited = function(email) {
+    answer = NULL
+    response = NULL
+    uri = paste0("api/v1/user", "/", "getInvited")
+    params = list()
+    params[["email"]] = unbox(email)
+    url = self$getServiceUri(uri)
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
+        self$onResponseError(response, "getInvited")
+    } else {
+        answer = NULL
     }
     return(answer)
 }))
