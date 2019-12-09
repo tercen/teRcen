@@ -3,6 +3,6 @@
 ## Install teRcen package
  
 ```R
-install.packages('devtools')
-devtools::install_github("tercen/teRcen", ref = "0.8.15", args="--no-multiarch")
+install.packages('remotes')
+remotes::install_github("tercen/teRcen", ref = "0.9.3", args="--no-multiarch")
 ```
