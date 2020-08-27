@@ -6,7 +6,7 @@
 #' \describe{
 #'    \item{\code{getCubeQuery(workflowId,stepId)}}{method}
 #'    \item{\code{copy(workflowId)}}{method}
-#'    \item{\code{clone(workflowId,teamId,projectId)}}{method}
+#'    \item{\code{cloneWorkflow(workflowId,teamId,projectId)}}{method}
 #' }
 #' 
 WorkflowService <- R6::R6Class("WorkflowService", inherit = HttpClientService, public = list(initialize = function(baseRestUri, 
@@ -42,10 +42,10 @@ WorkflowService <- R6::R6Class("WorkflowService", inherit = HttpClientService, p
         answer = createObjectFromJson(response$content)
     }
     return(answer)
-}, clone = function(workflowId, teamId, projectId) {
+}, cloneWorkflow = function(workflowId, teamId, projectId) {
     answer = NULL
     response = NULL
-    uri = paste0("api/v1/workflow", "/", "clone")
+    uri = paste0("api/v1/workflow", "/", "cloneWorkflow")
     params = list()
     params[["workflowId"]] = unbox(workflowId)
     params[["teamId"]] = unbox(teamId)
@@ -53,7 +53,7 @@ WorkflowService <- R6::R6Class("WorkflowService", inherit = HttpClientService, p
     url = self$getServiceUri(uri)
     response = self$client$post(url, body = params)
     if (response$status != 200) {
-        self$onResponseError(response, "clone")
+        self$onResponseError(response, "cloneWorkflow")
     } else {
         answer = createObjectFromJson(response$content)
     }

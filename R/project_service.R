@@ -8,7 +8,7 @@
 #'    \item{\code{resourceSummary(projectId)}}{method}
 #'    \item{\code{explore(category,start,limit)}}{method}
 #'    \item{\code{recentProjects(userId)}}{method}
-#'    \item{\code{clone(projectId,project)}}{method}
+#'    \item{\code{cloneProject(projectId,project)}}{method}
 #' }
 #' 
 ProjectService <- R6::R6Class("ProjectService", inherit = HttpClientService, public = list(initialize = function(baseRestUri, 
@@ -81,17 +81,17 @@ ProjectService <- R6::R6Class("ProjectService", inherit = HttpClientService, pub
         answer = createObjectFromJson(response$content)
     }
     return(answer)
-}, clone = function(projectId, project) {
+}, cloneProject = function(projectId, project) {
     answer = NULL
     response = NULL
-    uri = paste0("api/v1/project", "/", "clone")
+    uri = paste0("api/v1/project", "/", "cloneProject")
     params = list()
     params[["projectId"]] = unbox(projectId)
     params[["project"]] = project$toTson()
     url = self$getServiceUri(uri)
     response = self$client$post(url, body = params)
     if (response$status != 200) {
-        self$onResponseError(response, "clone")
+        self$onResponseError(response, "cloneProject")
     } else {
         answer = createObjectFromJson(response$content)
     }
