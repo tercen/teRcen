@@ -22,8 +22,8 @@ AbstractOperatorContext <- R6Class(
     as.matrix = function(fill=0.0) {
       data = self$select(names=c(".ri", ".ci", ".y"))
       matrix(acast(data$.ri,
-                            data$.ci, 
-                            data$.y,
+                   data$.ci, 
+                   data$.y,
                    self$rschema$nRows,
                    self$cschema$nRows, fill), 
              nrow = self$rschema$nRows,
@@ -224,12 +224,15 @@ OperatorContextDev <- R6Class(
     },
     save = function(computed.df){
       
-      result = OperatorResult$new()
-      
-      if (inherits(computed.df, 'list')){
-        result$tables = lapply(computed.df, tercen::dataframe.as.table)
+      if (inherits(computed.df, 'OperatorResult')){
+        result = computed.df
       } else {
-        result$tables = list(tercen::dataframe.as.table(computed.df))
+        result = OperatorResult$new()
+        if (inherits(computed.df, 'list')){
+          result$tables = lapply(computed.df, tercen::dataframe.as.table)
+        } else {
+          result$tables = list(tercen::dataframe.as.table(computed.df))
+        }
       }
       
       bytes = toTSON(result$toTson())
@@ -312,7 +315,7 @@ OperatorContext <- R6Class(
                           username = getOption("tercen.username"),
                           password = getOption("tercen.password"),
                           serviceUri = getOption("tercen.serviceUri",
-                          default = "https://tercen.com/service")) { 
+                                                 default = "https://tercen.com/service")) { 
       
       self$client = TercenClient$new(authToken=authToken, username=username, password=password, serviceUri=serviceUri)
       
@@ -325,12 +328,15 @@ OperatorContext <- R6Class(
     
     save = function(computed.df){
       
-      result = OperatorResult$new()
-      
-      if (inherits(computed.df, 'list')){
-        result$tables = lapply(computed.df, tercen::dataframe.as.table)
+      if (inherits(computed.df, 'OperatorResult')){
+        result = computed.df
       } else {
-        result$tables = list(tercen::dataframe.as.table(computed.df))
+        result = OperatorResult$new()
+        if (inherits(computed.df, 'list')){
+          result$tables = lapply(computed.df, tercen::dataframe.as.table)
+        } else {
+          result$tables = list(tercen::dataframe.as.table(computed.df))
+        }
       }
       
       bytes = toTSON(result$toTson())

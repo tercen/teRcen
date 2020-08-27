@@ -1,7 +1,7 @@
 #' Palette
 #'
 #' @export
-#' @format \code{\link{R6Class}} object, sub classes \code{\link{JetPalette}}, \code{\link{CategoryPalette}}, \code{\link{RampPalette}}.
+#' @format \code{\link{R6Class}} object, sub classes \code{\link{JetPalette}}, \code{\link{RampPalette}}, \code{\link{CategoryPalette}}.
 #' @field backcolor of type int.
 #' @field properties list of class \code{\link{PropertyValue}}.
 Palette <- R6::R6Class("Palette", inherit = Base, public = list(backcolor = NULL, 

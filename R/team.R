@@ -4,6 +4,7 @@
 #' @format \code{\link{R6Class}} object, super class \code{\link{User}}.
 #' @field email of type String inherited from super class \code{\link{User}}.
 #' @field isValidated of type bool inherited from super class \code{\link{User}}.
+#' @field domain of type String inherited from super class \code{\link{User}}.
 #' @field roles list of type String inherited from super class \code{\link{User}}.
 #' @field invitedByUsername of type String inherited from super class \code{\link{User}}.
 #' @field invitationCounts of type int inherited from super class \code{\link{User}}.
@@ -14,10 +15,12 @@
 #' @field tags list of type String inherited from super class \code{\link{Document}}.
 #' @field version of type String inherited from super class \code{\link{Document}}.
 #' @field authors list of type String inherited from super class \code{\link{Document}}.
+#' @field isPublic of type bool inherited from super class \code{\link{Document}}.
 #' @field isDeleted of type bool inherited from super class \code{\link{PersistentObject}}.
 #' @field rev of type String inherited from super class \code{\link{PersistentObject}}.
 #' @field id of type String inherited from super class \code{\link{IdObject}}.
 #' @field teamAcl object of class \code{\link{Acl}} inherited from super class \code{\link{User}}.
+#' @field billingInfo object of class \code{\link{BillingInfo}} inherited from super class \code{\link{User}}.
 #' @field acl object of class \code{\link{Acl}} inherited from super class \code{\link{Document}}.
 #' @field createdDate object of class \code{\link{Date}} inherited from super class \code{\link{Document}}.
 #' @field lastModifiedDate object of class \code{\link{Date}} inherited from super class \code{\link{Document}}.

@@ -9,8 +9,9 @@
 #' @field md5Hash of type String inherited from super class \code{\link{FileMetadata}}.
 #' @field separator of type String.
 #' @field quote of type String.
+#' @field headers of type bool.
 CSVFileMetadata <- R6::R6Class("CSVFileMetadata", inherit = FileMetadata, public = list(separator = NULL, 
-    quote = NULL, initialize = function(json = NULL) {
+    quote = NULL, headers = NULL, initialize = function(json = NULL) {
         if (!is.null(json)) {
             self$initJson(json)
         } else {
@@ -20,15 +21,18 @@ CSVFileMetadata <- R6::R6Class("CSVFileMetadata", inherit = FileMetadata, public
         super$init()
         self$separator = ""
         self$quote = ""
+        self$headers = TRUE
     }, initJson = function(json) {
         super$initJson(json)
         self$separator = json$separator
         self$quote = json$quote
+        self$headers = json$headers
     }, toTson = function() {
         m = super$toTson()
         m$kind = tson.scalar("CSVFileMetadata")
         m$separator = tson.scalar(self$separator)
         m$quote = tson.scalar(self$quote)
+        m$headers = tson.scalar(self$headers)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

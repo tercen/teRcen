@@ -1,14 +1,16 @@
 #' WebAppOperator
 #'
 #' @export
-#' @format \code{\link{R6Class}} object, super class \code{\link{GitOperator}}, sub classes \code{\link{ShinyOperator}}.
+#' @format \code{\link{R6Class}} object, super class \code{\link{GitOperator}}, sub classes \code{\link{ShinyOperator}}, \code{\link{DockerWebAppOperator}}.
 #' @field path of type String inherited from super class \code{\link{GitOperator}}.
+#' @field longDescription of type String inherited from super class \code{\link{Operator}}.
 #' @field description of type String inherited from super class \code{\link{Document}}.
 #' @field name of type String inherited from super class \code{\link{Document}}.
 #' @field createdBy of type String inherited from super class \code{\link{Document}}.
 #' @field tags list of type String inherited from super class \code{\link{Document}}.
 #' @field version of type String inherited from super class \code{\link{Document}}.
 #' @field authors list of type String inherited from super class \code{\link{Document}}.
+#' @field isPublic of type bool inherited from super class \code{\link{Document}}.
 #' @field isDeleted of type bool inherited from super class \code{\link{PersistentObject}}.
 #' @field rev of type String inherited from super class \code{\link{PersistentObject}}.
 #' @field id of type String inherited from super class \code{\link{IdObject}}.

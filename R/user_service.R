@@ -5,9 +5,12 @@
 #' @section Methods:
 #' \describe{
 #'    \item{\code{connect(usernameOrEmail,password)}}{method}
+#'    \item{\code{connect2(domain,usernameOrEmail,password)}}{method}
 #'    \item{\code{createUser(user,password)}}{method}
 #'    \item{\code{hasUserName(username)}}{method}
 #'    \item{\code{updatePassword(userId,password)}}{method}
+#'    \item{\code{updateBillingInfo(userId,billingInfo)}}{method}
+#'    \item{\code{viesInfo(country_code,vatNumber)}}{method}
 #'    \item{\code{summary(userId)}}{method}
 #'    \item{\code{resourceSummary(userId)}}{method}
 #'    \item{\code{profiles(userId)}}{method}
@@ -16,6 +19,11 @@
 #'    \item{\code{setTeamPrivilege(username,principal,privilege)}}{method}
 #'    \item{\code{getServerVersion(module)}}{method}
 #'    \item{\code{getInvited(email)}}{method}
+#'    \item{\code{sendValidationMail(email)}}{method}
+#'    \item{\code{sendResetPasswordEmail(email)}}{method}
+#'    \item{\code{changeUserPassword(token,password)}}{method}
+#'    \item{\code{validateUser(token)}}{method}
+#'    \item{\code{canCreatePrivateProject(teamOrUserId)}}{method}
 #' }
 #' 
 UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = list(initialize = function(baseRestUri, 
@@ -43,6 +51,22 @@ UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = 
     response = self$client$post(url, body = params)
     if (response$status != 200) {
         self$onResponseError(response, "connect")
+    } else {
+        answer = createObjectFromJson(response$content)
+    }
+    return(answer)
+}, connect2 = function(domain, usernameOrEmail, password) {
+    answer = NULL
+    response = NULL
+    uri = paste0("api/v1/user", "/", "connect2")
+    params = list()
+    params[["domain"]] = unbox(domain)
+    params[["usernameOrEmail"]] = unbox(usernameOrEmail)
+    params[["password"]] = unbox(password)
+    url = self$getServiceUri(uri)
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
+        self$onResponseError(response, "connect2")
     } else {
         answer = createObjectFromJson(response$content)
     }
@@ -89,6 +113,36 @@ UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = 
         self$onResponseError(response, "updatePassword")
     } else {
         answer = NULL
+    }
+    return(answer)
+}, updateBillingInfo = function(userId, billingInfo) {
+    answer = NULL
+    response = NULL
+    uri = paste0("api/v1/user", "/", "updateBillingInfo")
+    params = list()
+    params[["userId"]] = unbox(userId)
+    params[["billingInfo"]] = billingInfo$toTson()
+    url = self$getServiceUri(uri)
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
+        self$onResponseError(response, "updateBillingInfo")
+    } else {
+        answer = createObjectFromJson(response$content)
+    }
+    return(answer)
+}, viesInfo = function(country_code, vatNumber) {
+    answer = NULL
+    response = NULL
+    uri = paste0("api/v1/user", "/", "viesInfo")
+    params = list()
+    params[["country_code"]] = unbox(country_code)
+    params[["vatNumber"]] = unbox(vatNumber)
+    url = self$getServiceUri(uri)
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
+        self$onResponseError(response, "viesInfo")
+    } else {
+        answer = createObjectFromJson(response$content)
     }
     return(answer)
 }, summary = function(userId) {
@@ -204,6 +258,77 @@ UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = 
         self$onResponseError(response, "getInvited")
     } else {
         answer = NULL
+    }
+    return(answer)
+}, sendValidationMail = function(email) {
+    answer = NULL
+    response = NULL
+    uri = paste0("api/v1/user", "/", "sendValidationMail")
+    params = list()
+    params[["email"]] = unbox(email)
+    url = self$getServiceUri(uri)
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
+        self$onResponseError(response, "sendValidationMail")
+    } else {
+        answer = NULL
+    }
+    return(answer)
+}, sendResetPasswordEmail = function(email) {
+    answer = NULL
+    response = NULL
+    uri = paste0("api/v1/user", "/", "sendResetPasswordEmail")
+    params = list()
+    params[["email"]] = unbox(email)
+    url = self$getServiceUri(uri)
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
+        self$onResponseError(response, "sendResetPasswordEmail")
+    } else {
+        answer = NULL
+    }
+    return(answer)
+}, changeUserPassword = function(token, password) {
+    answer = NULL
+    response = NULL
+    uri = paste0("api/v1/user", "/", "changeUserPassword")
+    params = list()
+    params[["token"]] = unbox(token)
+    params[["password"]] = unbox(password)
+    url = self$getServiceUri(uri)
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
+        self$onResponseError(response, "changeUserPassword")
+    } else {
+        answer = NULL
+    }
+    return(answer)
+}, validateUser = function(token) {
+    answer = NULL
+    response = NULL
+    uri = paste0("api/v1/user", "/", "validateUser")
+    params = list()
+    params[["token"]] = unbox(token)
+    url = self$getServiceUri(uri)
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
+        self$onResponseError(response, "validateUser")
+    } else {
+        answer = NULL
+    }
+    return(answer)
+}, canCreatePrivateProject = function(teamOrUserId) {
+    answer = NULL
+    response = NULL
+    uri = paste0("api/v1/user", "/", "canCreatePrivateProject")
+    params = list()
+    params[["teamOrUserId"]] = unbox(teamOrUserId)
+    url = self$getServiceUri(uri)
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
+        self$onResponseError(response, "canCreatePrivateProject")
+    } else {
+        answer = response$content[[1]]
     }
     return(answer)
 }))

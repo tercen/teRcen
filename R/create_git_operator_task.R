@@ -11,6 +11,7 @@
 #' @field id of type String inherited from super class \code{\link{IdObject}}.
 #' @field version of type String.
 #' @field operatorId of type String.
+#' @field gitToken of type String.
 #' @field environment list of class \code{\link{Pair}} inherited from super class \code{\link{Task}}.
 #' @field state object of class \code{\link{State}} inherited from super class \code{\link{Task}}.
 #' @field createdDate object of class \code{\link{Date}} inherited from super class \code{\link{Task}}.
@@ -20,7 +21,7 @@
 #' @field aclContext object of class \code{\link{AclContext}} inherited from super class \code{\link{Task}}.
 #' @field url object of class \code{\link{Url}}.
 CreateGitOperatorTask <- R6::R6Class("CreateGitOperatorTask", inherit = Task, public = list(url = NULL, 
-    version = NULL, operatorId = NULL, initialize = function(json = NULL) {
+    version = NULL, operatorId = NULL, gitToken = NULL, initialize = function(json = NULL) {
         if (!is.null(json)) {
             self$initJson(json)
         } else {
@@ -30,11 +31,13 @@ CreateGitOperatorTask <- R6::R6Class("CreateGitOperatorTask", inherit = Task, pu
         super$init()
         self$version = ""
         self$operatorId = ""
+        self$gitToken = ""
         self$url = Url$new()
     }, initJson = function(json) {
         super$initJson(json)
         self$version = json$version
         self$operatorId = json$operatorId
+        self$gitToken = json$gitToken
         self$url = createObjectFromJson(json$url)
     }, toTson = function() {
         m = super$toTson()
@@ -42,6 +45,7 @@ CreateGitOperatorTask <- R6::R6Class("CreateGitOperatorTask", inherit = Task, pu
         if (!is.null(self$url)) m$url = self$url$toTson()
         m$version = tson.scalar(self$version)
         m$operatorId = tson.scalar(self$operatorId)
+        m$gitToken = tson.scalar(self$gitToken)
         return(m)
     }, print = function(...) {
         cat(yaml::as.yaml(self$toTson()))

@@ -1,7 +1,7 @@
 #' Chart
 #'
 #' @export
-#' @format \code{\link{R6Class}} object, sub classes \code{\link{ChartLine}}, \code{\link{ChartPoint}}, \code{\link{ChartHeatmap}}, \code{\link{ChartSize}}, \code{\link{ChartBar}}.
+#' @format \code{\link{R6Class}} object, sub classes \code{\link{ChartLine}}, \code{\link{ChartPoint}}, \code{\link{ChartHeatmap}}, \code{\link{ChartBar}}, \code{\link{ChartSize}}.
 #' @field name of type String.
 #' @field properties object of class \code{\link{Properties}}.
 Chart <- R6::R6Class("Chart", inherit = Base, public = list(name = NULL, properties = NULL, 

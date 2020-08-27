@@ -1,7 +1,7 @@
 #' Profile
 #'
 #' @export
-#' @format \code{\link{R6Class}} object, sub classes \code{\link{StorageProfile}}, \code{\link{TableProfile}}, \code{\link{ApiCallProfile}}, \code{\link{RunProfile}}, \code{\link{CpuTimeProfile}}.
+#' @format \code{\link{R6Class}} object, sub classes \code{\link{StorageProfile}}, \code{\link{RunProfile}}, \code{\link{CpuTimeProfile}}, \code{\link{TableProfile}}, \code{\link{ApiCallProfile}}.
 #' @field name of type String.
 Profile <- R6::R6Class("Profile", inherit = Base, public = list(name = NULL, initialize = function(json = NULL) {
     if (!is.null(json)) {

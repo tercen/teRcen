@@ -1,7 +1,7 @@
 #' SimpleRelation
 #'
 #' @export
-#' @format \code{\link{R6Class}} object, super class \code{\link{Relation}}.
+#' @format \code{\link{R6Class}} object, super class \code{\link{Relation}}, sub classes \code{\link{ReferenceRelation}}.
 #' @field id of type String inherited from super class \code{\link{IdObject}}.
 #' @field index of type int.
 SimpleRelation <- R6::R6Class("SimpleRelation", inherit = Relation, public = list(index = NULL, 
