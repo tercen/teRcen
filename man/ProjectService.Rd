@@ -14,6 +14,9 @@ ProjectService
 \describe{
    \item{\code{profiles(projectId)}}{method}
    \item{\code{resourceSummary(projectId)}}{method}
+   \item{\code{explore(category,start,limit)}}{method}
+   \item{\code{recentProjects(userId)}}{method}
+   \item{\code{cloneProject(projectId,project)}}{method}
 }
 }
 
@@ -24,8 +27,13 @@ ProjectService
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-new}{\code{ProjectService$new()}}
+\item \href{#method-findByIsPublicAndLastModifiedDate}{\code{ProjectService$findByIsPublicAndLastModifiedDate()}}
+\item \href{#method-findByTeamAndIsPublicAndLastModifiedDate}{\code{ProjectService$findByTeamAndIsPublicAndLastModifiedDate()}}
 \item \href{#method-profiles}{\code{ProjectService$profiles()}}
 \item \href{#method-resourceSummary}{\code{ProjectService$resourceSummary()}}
+\item \href{#method-explore}{\code{ProjectService$explore()}}
+\item \href{#method-recentProjects}{\code{ProjectService$recentProjects()}}
+\item \href{#method-cloneProject}{\code{ProjectService$cloneProject()}}
 \item \href{#method-clone}{\code{ProjectService$clone()}}
 }
 }
@@ -55,6 +63,36 @@ ProjectService
 
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-findByIsPublicAndLastModifiedDate"></a>}}
+\subsection{Method \code{findByIsPublicAndLastModifiedDate()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{ProjectService$findByIsPublicAndLastModifiedDate(
+  startKey = NULL,
+  endKey = NULL,
+  limit = 20,
+  skip = 0,
+  descending = TRUE,
+  useFactory = FALSE
+)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-findByTeamAndIsPublicAndLastModifiedDate"></a>}}
+\subsection{Method \code{findByTeamAndIsPublicAndLastModifiedDate()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{ProjectService$findByTeamAndIsPublicAndLastModifiedDate(
+  startKey = NULL,
+  endKey = NULL,
+  limit = 20,
+  skip = 0,
+  descending = TRUE,
+  useFactory = FALSE
+)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-profiles"></a>}}
 \subsection{Method \code{profiles()}}{
 \subsection{Usage}{
@@ -67,6 +105,30 @@ ProjectService
 \subsection{Method \code{resourceSummary()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ProjectService$resourceSummary(projectId)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-explore"></a>}}
+\subsection{Method \code{explore()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{ProjectService$explore(category, start, limit)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-recentProjects"></a>}}
+\subsection{Method \code{recentProjects()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{ProjectService$recentProjects(userId)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-cloneProject"></a>}}
+\subsection{Method \code{cloneProject()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{ProjectService$cloneProject(projectId, project)}\if{html}{\out{</div>}}
 }
 
 }

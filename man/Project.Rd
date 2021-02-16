@@ -27,6 +27,8 @@ Project
 
 \item{\code{authors}}{list of type String inherited from super class \code{\link{Document}}.}
 
+\item{\code{isPublic}}{of type bool inherited from super class \code{\link{Document}}.}
+
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 
 \item{\code{rev}}{of type String inherited from super class \code{\link{PersistentObject}}.}
@@ -61,6 +63,8 @@ Project
 \item{\code{version}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{authors}}{list of type String inherited from super class \code{\link{Document}}.}
+
+\item{\code{isPublic}}{of type bool inherited from super class \code{\link{Document}}.}
 
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 

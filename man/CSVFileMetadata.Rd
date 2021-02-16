@@ -28,6 +28,8 @@ CSVFileMetadata
 \item{\code{separator}}{of type String.}
 
 \item{\code{quote}}{of type String.}
+
+\item{\code{headers}}{of type bool.}
 }
 \if{html}{\out{</div>}}
 }

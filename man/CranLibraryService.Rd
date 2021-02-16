@@ -15,6 +15,7 @@ CranLibraryService
    \item{\code{packagesGz(repoName)}}{method}
    \item{\code{packagesRds(repoName)}}{method}
    \item{\code{packages(repoName)}}{method}
+   \item{\code{archive(repoName,package,filename)}}{method}
    \item{\code{package(repoName,package)}}{method}
 }
 }
@@ -32,6 +33,7 @@ CranLibraryService
 \item \href{#method-packagesGz}{\code{CranLibraryService$packagesGz()}}
 \item \href{#method-packagesRds}{\code{CranLibraryService$packagesRds()}}
 \item \href{#method-packages}{\code{CranLibraryService$packages()}}
+\item \href{#method-archive}{\code{CranLibraryService$archive()}}
 \item \href{#method-package}{\code{CranLibraryService$package()}}
 \item \href{#method-clone}{\code{CranLibraryService$clone()}}
 }
@@ -113,6 +115,14 @@ CranLibraryService
 \subsection{Method \code{packages()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CranLibraryService$packages(repoName)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-archive"></a>}}
+\subsection{Method \code{archive()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CranLibraryService$archive(repoName, package, filename)}\if{html}{\out{</div>}}
 }
 
 }

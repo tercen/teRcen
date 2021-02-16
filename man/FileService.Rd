@@ -25,6 +25,7 @@ FileService
 \itemize{
 \item \href{#method-new}{\code{FileService$new()}}
 \item \href{#method-findFileByWorkflowIdAndStepId}{\code{FileService$findFileByWorkflowIdAndStepId()}}
+\item \href{#method-findByDataUri}{\code{FileService$findByDataUri()}}
 \item \href{#method-upload}{\code{FileService$upload()}}
 \item \href{#method-download}{\code{FileService$download()}}
 \item \href{#method-clone}{\code{FileService$clone()}}
@@ -60,6 +61,21 @@ FileService
 \subsection{Method \code{findFileByWorkflowIdAndStepId()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{FileService$findFileByWorkflowIdAndStepId(
+  startKey = NULL,
+  endKey = NULL,
+  limit = 20,
+  skip = 0,
+  descending = TRUE,
+  useFactory = FALSE
+)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-findByDataUri"></a>}}
+\subsection{Method \code{findByDataUri()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{FileService$findByDataUri(
   startKey = NULL,
   endKey = NULL,
   limit = 20,

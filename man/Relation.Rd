@@ -3,7 +3,7 @@
 \name{Relation}
 \alias{Relation}
 \title{Relation}
-\format{\code{\link{R6Class}} object, super class \code{\link{IdObject}}, sub classes \code{\link{WhereRelation}}, \code{\link{RenameRelation}}, \code{\link{DistinctRelation}}, \code{\link{UnionRelation}}, \code{\link{SimpleRelation}}, \code{\link{InMemoryRelation}}, \code{\link{GatherRelation}}, \code{\link{CompositeRelation}}, \code{\link{GroupByRelation}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{IdObject}}, sub classes \code{\link{ReferenceRelation}}, \code{\link{WhereRelation}}, \code{\link{DistinctRelation}}, \code{\link{InMemoryRelation}}, \code{\link{RenameRelation}}, \code{\link{UnionRelation}}, \code{\link{SimpleRelation}}, \code{\link{GatherRelation}}, \code{\link{CompositeRelation}}, \code{\link{GroupByRelation}}.}
 \description{
 Relation
 

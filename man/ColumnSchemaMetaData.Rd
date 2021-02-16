@@ -20,6 +20,8 @@ ColumnSchemaMetaData
 \item{\code{ascending}}{of type bool.}
 
 \item{\code{quartiles}}{list of type String.}
+
+\item{\code{properties}}{list of class \code{\link{Pair}}.}
 }
 \if{html}{\out{</div>}}
 }

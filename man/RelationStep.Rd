@@ -3,7 +3,7 @@
 \name{RelationStep}
 \alias{RelationStep}
 \title{RelationStep}
-\format{\code{\link{R6Class}} object, super class \code{\link{ModelStep}}, sub classes \code{\link{DataStep}}, \code{\link{MeltStep}}, \code{\link{JoinStep}}, \code{\link{WizardStep}}, \code{\link{CrossTabStep}}, \code{\link{InStep}}, \code{\link{GroupStep}}, \code{\link{OutStep}}, \code{\link{TableStep}}, \code{\link{NamespaceStep}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{ModelStep}}, sub classes \code{\link{DataStep}}, \code{\link{MeltStep}}, \code{\link{JoinStep}}, \code{\link{WizardStep}}, \code{\link{CrossTabStep}}, \code{\link{GroupStep}}, \code{\link{InStep}}, \code{\link{OutStep}}, \code{\link{TableStep}}, \code{\link{NamespaceStep}}.}
 \description{
 RelationStep
 

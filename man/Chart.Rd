@@ -3,7 +3,7 @@
 \name{Chart}
 \alias{Chart}
 \title{Chart}
-\format{\code{\link{R6Class}} object, sub classes \code{\link{ChartLine}}, \code{\link{ChartPoint}}, \code{\link{ChartHeatmap}}, \code{\link{ChartSize}}, \code{\link{ChartBar}}.}
+\format{\code{\link{R6Class}} object, sub classes \code{\link{ChartLine}}, \code{\link{ChartPoint}}, \code{\link{ChartHeatmap}}, \code{\link{ChartBar}}, \code{\link{ChartSize}}.}
 \description{
 Chart
 

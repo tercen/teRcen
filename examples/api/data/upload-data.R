@@ -1,4 +1,5 @@
 library(tercen)
+library(openssl)
 
 serviceUri="http://127.0.0.1:5400/api/v1/"
 username="admin"

@@ -3,7 +3,7 @@
 \name{ProjectDocument}
 \alias{ProjectDocument}
 \title{ProjectDocument}
-\format{\code{\link{R6Class}} object, super class \code{\link{Document}}, sub classes \code{\link{CubeQueryTableSchema}}, \code{\link{TableSchema}}, \code{\link{ComputedTableSchema}}, \code{\link{Schema}}, \code{\link{FileDocument}}, \code{\link{Workflow}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{Document}}, sub classes \code{\link{CubeQueryTableSchema}}, \code{\link{TableSchema}}, \code{\link{ComputedTableSchema}}, \code{\link{Issue}}, \code{\link{FileDocument}}, \code{\link{FolderDocument}}, \code{\link{Schema}}, \code{\link{IssueMessage}}, \code{\link{Workflow}}.}
 \description{
 ProjectDocument
 
@@ -27,6 +27,8 @@ ProjectDocument
 
 \item{\code{authors}}{list of type String inherited from super class \code{\link{Document}}.}
 
+\item{\code{isPublic}}{of type bool inherited from super class \code{\link{Document}}.}
+
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 
 \item{\code{rev}}{of type String inherited from super class \code{\link{PersistentObject}}.}
@@ -34,6 +36,8 @@ ProjectDocument
 \item{\code{id}}{of type String inherited from super class \code{\link{IdObject}}.}
 
 \item{\code{projectId}}{of type String.}
+
+\item{\code{folderId}}{of type String.}
 
 \item{\code{acl}}{object of class \code{\link{Acl}} inherited from super class \code{\link{Document}}.}
 
@@ -63,6 +67,8 @@ ProjectDocument
 \item{\code{version}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{authors}}{list of type String inherited from super class \code{\link{Document}}.}
+
+\item{\code{isPublic}}{of type bool inherited from super class \code{\link{Document}}.}
 
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 

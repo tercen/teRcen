@@ -3,7 +3,7 @@
 \name{Operator}
 \alias{Operator}
 \title{Operator}
-\format{\code{\link{R6Class}} object, super class \code{\link{Document}}, sub classes \code{\link{ShinyOperator}}, \code{\link{DockerOperator}}, \code{\link{ROperator}}, \code{\link{WebAppOperator}}, \code{\link{GitOperator}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{Document}}, sub classes \code{\link{ShinyOperator}}, \code{\link{DockerWebAppOperator}}, \code{\link{DockerOperator}}, \code{\link{ROperator}}, \code{\link{WebAppOperator}}, \code{\link{GitOperator}}.}
 \description{
 Operator
 
@@ -27,11 +27,15 @@ Operator
 
 \item{\code{authors}}{list of type String inherited from super class \code{\link{Document}}.}
 
+\item{\code{isPublic}}{of type bool inherited from super class \code{\link{Document}}.}
+
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 
 \item{\code{rev}}{of type String inherited from super class \code{\link{PersistentObject}}.}
 
 \item{\code{id}}{of type String inherited from super class \code{\link{IdObject}}.}
+
+\item{\code{longDescription}}{of type String.}
 
 \item{\code{acl}}{object of class \code{\link{Acl}} inherited from super class \code{\link{Document}}.}
 
@@ -63,6 +67,8 @@ Operator
 \item{\code{version}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{authors}}{list of type String inherited from super class \code{\link{Document}}.}
+
+\item{\code{isPublic}}{of type bool inherited from super class \code{\link{Document}}.}
 
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 

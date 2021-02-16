@@ -3,7 +3,7 @@
 \name{RLibrary}
 \alias{RLibrary}
 \title{RLibrary}
-\format{\code{\link{R6Class}} object, super class \code{\link{Document}}, sub classes \code{\link{RenvInstalledLibrary}}, \code{\link{RSourceLibrary}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{Document}}, sub classes \code{\link{RSourceLibrary}}, \code{\link{RenvInstalledLibrary}}.}
 \description{
 RLibrary
 
@@ -26,6 +26,8 @@ RLibrary
 \item{\code{version}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{authors}}{list of type String inherited from super class \code{\link{Document}}.}
+
+\item{\code{isPublic}}{of type bool inherited from super class \code{\link{Document}}.}
 
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 
@@ -63,6 +65,8 @@ RLibrary
 \item{\code{version}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{authors}}{list of type String inherited from super class \code{\link{Document}}.}
+
+\item{\code{isPublic}}{of type bool inherited from super class \code{\link{Document}}.}
 
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 

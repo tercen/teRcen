@@ -27,6 +27,8 @@ User
 
 \item{\code{authors}}{list of type String inherited from super class \code{\link{Document}}.}
 
+\item{\code{isPublic}}{of type bool inherited from super class \code{\link{Document}}.}
+
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 
 \item{\code{rev}}{of type String inherited from super class \code{\link{PersistentObject}}.}
@@ -36,6 +38,8 @@ User
 \item{\code{email}}{of type String.}
 
 \item{\code{isValidated}}{of type bool.}
+
+\item{\code{domain}}{of type String.}
 
 \item{\code{roles}}{list of type String.}
 
@@ -58,6 +62,8 @@ User
 \item{\code{url}}{object of class \code{\link{Url}} inherited from super class \code{\link{Document}}.}
 
 \item{\code{teamAcl}}{object of class \code{\link{Acl}}.}
+
+\item{\code{billingInfo}}{object of class \code{\link{BillingInfo}}.}
 }
 \if{html}{\out{</div>}}
 }
@@ -75,6 +81,8 @@ User
 \item{\code{version}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{authors}}{list of type String inherited from super class \code{\link{Document}}.}
+
+\item{\code{isPublic}}{of type bool inherited from super class \code{\link{Document}}.}
 
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 

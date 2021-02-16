@@ -237,6 +237,7 @@ OperatorContextDev <- R6Class(
       
       bytes = toTSON(result$toTson())
       
+      
       workflow = self$workflow
       
       fileDoc = FileDocument$new()
@@ -244,6 +245,7 @@ OperatorContextDev <- R6Class(
       fileDoc$projectId = workflow$projectId
       fileDoc$acl$owner = workflow$acl$owner
       fileDoc$metadata$contentType = 'application/octet-stream'
+      fileDoc$metadata$md5Hash = toString(openssl::md5(bytes))
       
       fileDoc = self$client$fileService$upload(fileDoc, bytes)
       

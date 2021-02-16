@@ -4,6 +4,7 @@
 #' @format \code{\link{R6Class}} object.
 #' @section Methods:
 #' \describe{
+#'    \item{\code{cookieConsent(dummy)}}{method}
 #'    \item{\code{connect(usernameOrEmail,password)}}{method}
 #'    \item{\code{connect2(domain,usernameOrEmail,password)}}{method}
 #'    \item{\code{createUser(user,password)}}{method}
@@ -40,6 +41,20 @@ UserService <- R6::R6Class("UserService", inherit = HttpClientService, public = 
     return(self$findKeys("userByEmail", keys = keys, useFactory = useFactory))
 }, findTeamMembers = function(keys = NULL, useFactory = FALSE) {
     return(self$findKeys("teamMembers", keys = keys, useFactory = useFactory))
+}, cookieConsent = function(dummy) {
+    answer = NULL
+    response = NULL
+    uri = paste0("api/v1/user", "/", "cookieConsent")
+    params = list()
+    params[["dummy"]] = unbox(dummy)
+    url = self$getServiceUri(uri)
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
+        self$onResponseError(response, "cookieConsent")
+    } else {
+        answer = NULL
+    }
+    return(answer)
 }, connect = function(usernameOrEmail, password) {
     answer = NULL
     response = NULL

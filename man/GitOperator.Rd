@@ -3,7 +3,7 @@
 \name{GitOperator}
 \alias{GitOperator}
 \title{GitOperator}
-\format{\code{\link{R6Class}} object, super class \code{\link{Operator}}, sub classes \code{\link{ShinyOperator}}, \code{\link{DockerOperator}}, \code{\link{ROperator}}, \code{\link{WebAppOperator}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{Operator}}, sub classes \code{\link{ShinyOperator}}, \code{\link{DockerWebAppOperator}}, \code{\link{DockerOperator}}, \code{\link{ROperator}}, \code{\link{WebAppOperator}}.}
 \description{
 GitOperator
 
@@ -15,6 +15,8 @@ GitOperator
 \section{Public fields}{
 \if{html}{\out{<div class="r6-fields">}}
 \describe{
+\item{\code{longDescription}}{of type String inherited from super class \code{\link{Operator}}.}
+
 \item{\code{description}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{name}}{of type String inherited from super class \code{\link{Document}}.}
@@ -26,6 +28,8 @@ GitOperator
 \item{\code{version}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{authors}}{list of type String inherited from super class \code{\link{Document}}.}
+
+\item{\code{isPublic}}{of type bool inherited from super class \code{\link{Document}}.}
 
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 
@@ -54,6 +58,8 @@ GitOperator
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
 \describe{
+\item{\code{longDescription}}{of type String inherited from super class \code{\link{Operator}}.}
+
 \item{\code{description}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{name}}{of type String inherited from super class \code{\link{Document}}.}
@@ -65,6 +71,8 @@ GitOperator
 \item{\code{version}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{authors}}{list of type String inherited from super class \code{\link{Document}}.}
+
+\item{\code{isPublic}}{of type bool inherited from super class \code{\link{Document}}.}
 
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 

@@ -3,7 +3,7 @@
 \name{TaskEvent}
 \alias{TaskEvent}
 \title{TaskEvent}
-\format{\code{\link{R6Class}} object, super class \code{\link{Event}}, sub classes \code{\link{TaskStateEvent}}, \code{\link{TaskLogEvent}}, \code{\link{TaskProgressEvent}}, \code{\link{TaskDataEvent}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{Event}}, sub classes \code{\link{TaskLogEvent}}, \code{\link{TaskProgressEvent}}, \code{\link{TaskDataEvent}}, \code{\link{TaskStateEvent}}.}
 \description{
 TaskEvent
 

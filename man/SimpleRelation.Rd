@@ -3,7 +3,7 @@
 \name{SimpleRelation}
 \alias{SimpleRelation}
 \title{SimpleRelation}
-\format{\code{\link{R6Class}} object, super class \code{\link{Relation}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{Relation}}, sub classes \code{\link{ReferenceRelation}}.}
 \description{
 SimpleRelation
 

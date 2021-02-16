@@ -3,6 +3,7 @@ library(teRcenHttp)
 library(mtercen)
 library(dplyr)
 library(tibble)
+library(openssl)
 
 unbox <- function(object) {
     return(tson.scalar(object))
@@ -58,7 +59,7 @@ unbox <- function(object) {
 #' @name tercen-package
 #' @aliases tercen
 #' @docType package
-#' @import R6 teRcenHttp mtercen dplyr tibble
+#' @import R6 teRcenHttp mtercen dplyr tibble openssl
 NULL
 
 #' @export
@@ -297,6 +298,17 @@ dataframe.as.table = function(df) {
         values = df[[cname]]
         if (is.factor(values)) 
             values = as.character(values)
+        
+        if (is.character(values)) {
+            column$type = "string"
+        } else if (is.double(values)) {
+            column$type = "double"
+        } else if (is.integer(values)) {
+            column$type = "int32"
+        } else {
+            stop("bad column type")
+        }
+        
         column$values = values
         return(column)
     })

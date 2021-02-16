@@ -3,7 +3,7 @@
 \name{Palette}
 \alias{Palette}
 \title{Palette}
-\format{\code{\link{R6Class}} object, sub classes \code{\link{JetPalette}}, \code{\link{CategoryPalette}}, \code{\link{RampPalette}}.}
+\format{\code{\link{R6Class}} object, sub classes \code{\link{JetPalette}}, \code{\link{RampPalette}}, \code{\link{CategoryPalette}}.}
 \description{
 Palette
 

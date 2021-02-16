@@ -25,6 +25,7 @@ DocumentService
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-new}{\code{DocumentService$new()}}
+\item \href{#method-findProjectByOwnersAndName}{\code{DocumentService$findProjectByOwnersAndName()}}
 \item \href{#method-findProjectByOwnersAndCreatedDate}{\code{DocumentService$findProjectByOwnersAndCreatedDate()}}
 \item \href{#method-findWorkflowByTagOwnerCreatedDate}{\code{DocumentService$findWorkflowByTagOwnerCreatedDate()}}
 \item \href{#method-findOperatorByOwnerLastModifiedDate}{\code{DocumentService$findOperatorByOwnerLastModifiedDate()}}
@@ -57,6 +58,21 @@ DocumentService
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{DocumentService$new(baseRestUri, client)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-findProjectByOwnersAndName"></a>}}
+\subsection{Method \code{findProjectByOwnersAndName()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{DocumentService$findProjectByOwnersAndName(
+  startKey = NULL,
+  endKey = NULL,
+  limit = 20,
+  skip = 0,
+  descending = TRUE,
+  useFactory = FALSE
+)}\if{html}{\out{</div>}}
 }
 
 }

@@ -3,7 +3,7 @@
 \name{Profile}
 \alias{Profile}
 \title{Profile}
-\format{\code{\link{R6Class}} object, sub classes \code{\link{StorageProfile}}, \code{\link{TableProfile}}, \code{\link{ApiCallProfile}}, \code{\link{RunProfile}}, \code{\link{CpuTimeProfile}}.}
+\format{\code{\link{R6Class}} object, sub classes \code{\link{StorageProfile}}, \code{\link{RunProfile}}, \code{\link{CpuTimeProfile}}, \code{\link{TableProfile}}, \code{\link{ApiCallProfile}}.}
 \description{
 Profile
 

@@ -12,6 +12,7 @@ ProjectDocumentService
 \section{Methods}{
 
 \describe{
+   \item{\code{getParentFolders(documentId)}}{method}
 }
 }
 
@@ -23,15 +24,16 @@ ProjectDocumentService
 \itemize{
 \item \href{#method-new}{\code{ProjectDocumentService$new()}}
 \item \href{#method-findProjectObjectsByLastModifiedDate}{\code{ProjectDocumentService$findProjectObjectsByLastModifiedDate()}}
+\item \href{#method-findProjectObjectsByFolderAndName}{\code{ProjectDocumentService$findProjectObjectsByFolderAndName()}}
 \item \href{#method-findFileByLastModifiedDate}{\code{ProjectDocumentService$findFileByLastModifiedDate()}}
-\item \href{#method-findWorkflowByLastModifiedDate}{\code{ProjectDocumentService$findWorkflowByLastModifiedDate()}}
 \item \href{#method-findSchemaByLastModifiedDate}{\code{ProjectDocumentService$findSchemaByLastModifiedDate()}}
-\item \href{#method-findWorkflowByOwnerAndLastModifiedDate}{\code{ProjectDocumentService$findWorkflowByOwnerAndLastModifiedDate()}}
 \item \href{#method-findSchemaByOwnerAndLastModifiedDate}{\code{ProjectDocumentService$findSchemaByOwnerAndLastModifiedDate()}}
+\item \href{#method-findFileByOwnerAndLastModifiedDate}{\code{ProjectDocumentService$findFileByOwnerAndLastModifiedDate()}}
 \item \href{#method-findWorkflowBySchema}{\code{ProjectDocumentService$findWorkflowBySchema()}}
 \item \href{#method-findWorkflowByOperator}{\code{ProjectDocumentService$findWorkflowByOperator()}}
 \item \href{#method-findWorkflowTemplateByOwnerCreatedDate}{\code{ProjectDocumentService$findWorkflowTemplateByOwnerCreatedDate()}}
 \item \href{#method-findWorkflowAppByOwnerCreatedDate}{\code{ProjectDocumentService$findWorkflowAppByOwnerCreatedDate()}}
+\item \href{#method-getParentFolders}{\code{ProjectDocumentService$getParentFolders()}}
 \item \href{#method-clone}{\code{ProjectDocumentService$clone()}}
 }
 }
@@ -76,10 +78,10 @@ ProjectDocumentService
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-findFileByLastModifiedDate"></a>}}
-\subsection{Method \code{findFileByLastModifiedDate()}}{
+\if{html}{\out{<a id="method-findProjectObjectsByFolderAndName"></a>}}
+\subsection{Method \code{findProjectObjectsByFolderAndName()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ProjectDocumentService$findFileByLastModifiedDate(
+\if{html}{\out{<div class="r">}}\preformatted{ProjectDocumentService$findProjectObjectsByFolderAndName(
   startKey = NULL,
   endKey = NULL,
   limit = 20,
@@ -91,10 +93,10 @@ ProjectDocumentService
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-findWorkflowByLastModifiedDate"></a>}}
-\subsection{Method \code{findWorkflowByLastModifiedDate()}}{
+\if{html}{\out{<a id="method-findFileByLastModifiedDate"></a>}}
+\subsection{Method \code{findFileByLastModifiedDate()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ProjectDocumentService$findWorkflowByLastModifiedDate(
+\if{html}{\out{<div class="r">}}\preformatted{ProjectDocumentService$findFileByLastModifiedDate(
   startKey = NULL,
   endKey = NULL,
   limit = 20,
@@ -121,10 +123,10 @@ ProjectDocumentService
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-findWorkflowByOwnerAndLastModifiedDate"></a>}}
-\subsection{Method \code{findWorkflowByOwnerAndLastModifiedDate()}}{
+\if{html}{\out{<a id="method-findSchemaByOwnerAndLastModifiedDate"></a>}}
+\subsection{Method \code{findSchemaByOwnerAndLastModifiedDate()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ProjectDocumentService$findWorkflowByOwnerAndLastModifiedDate(
+\if{html}{\out{<div class="r">}}\preformatted{ProjectDocumentService$findSchemaByOwnerAndLastModifiedDate(
   startKey = NULL,
   endKey = NULL,
   limit = 20,
@@ -136,10 +138,10 @@ ProjectDocumentService
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-findSchemaByOwnerAndLastModifiedDate"></a>}}
-\subsection{Method \code{findSchemaByOwnerAndLastModifiedDate()}}{
+\if{html}{\out{<a id="method-findFileByOwnerAndLastModifiedDate"></a>}}
+\subsection{Method \code{findFileByOwnerAndLastModifiedDate()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ProjectDocumentService$findSchemaByOwnerAndLastModifiedDate(
+\if{html}{\out{<div class="r">}}\preformatted{ProjectDocumentService$findFileByOwnerAndLastModifiedDate(
   startKey = NULL,
   endKey = NULL,
   limit = 20,
@@ -193,6 +195,14 @@ ProjectDocumentService
   descending = TRUE,
   useFactory = FALSE
 )}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-getParentFolders"></a>}}
+\subsection{Method \code{getParentFolders()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{ProjectDocumentService$getParentFolders(documentId)}\if{html}{\out{</div>}}
 }
 
 }

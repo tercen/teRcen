@@ -24,6 +24,8 @@ OperatorRef
 \item{\code{operatorKind}}{of type String.}
 
 \item{\code{propertyValues}}{list of class \code{\link{PropertyValue}}.}
+
+\item{\code{url}}{object of class \code{\link{Url}}.}
 }
 \if{html}{\out{</div>}}
 }

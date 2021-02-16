@@ -13,9 +13,12 @@ UserService
 
 \describe{
    \item{\code{connect(usernameOrEmail,password)}}{method}
+   \item{\code{connect2(domain,usernameOrEmail,password)}}{method}
    \item{\code{createUser(user,password)}}{method}
    \item{\code{hasUserName(username)}}{method}
    \item{\code{updatePassword(userId,password)}}{method}
+   \item{\code{updateBillingInfo(userId,billingInfo)}}{method}
+   \item{\code{viesInfo(country_code,vatNumber)}}{method}
    \item{\code{summary(userId)}}{method}
    \item{\code{resourceSummary(userId)}}{method}
    \item{\code{profiles(userId)}}{method}
@@ -24,6 +27,11 @@ UserService
    \item{\code{setTeamPrivilege(username,principal,privilege)}}{method}
    \item{\code{getServerVersion(module)}}{method}
    \item{\code{getInvited(email)}}{method}
+   \item{\code{sendValidationMail(email)}}{method}
+   \item{\code{sendResetPasswordEmail(email)}}{method}
+   \item{\code{changeUserPassword(token,password)}}{method}
+   \item{\code{validateUser(token)}}{method}
+   \item{\code{canCreatePrivateProject(teamOrUserId)}}{method}
 }
 }
 
@@ -39,9 +47,12 @@ UserService
 \item \href{#method-findUserByEmail}{\code{UserService$findUserByEmail()}}
 \item \href{#method-findTeamMembers}{\code{UserService$findTeamMembers()}}
 \item \href{#method-connect}{\code{UserService$connect()}}
+\item \href{#method-connect2}{\code{UserService$connect2()}}
 \item \href{#method-createUser}{\code{UserService$createUser()}}
 \item \href{#method-hasUserName}{\code{UserService$hasUserName()}}
 \item \href{#method-updatePassword}{\code{UserService$updatePassword()}}
+\item \href{#method-updateBillingInfo}{\code{UserService$updateBillingInfo()}}
+\item \href{#method-viesInfo}{\code{UserService$viesInfo()}}
 \item \href{#method-summary}{\code{UserService$summary()}}
 \item \href{#method-resourceSummary}{\code{UserService$resourceSummary()}}
 \item \href{#method-profiles}{\code{UserService$profiles()}}
@@ -50,6 +61,11 @@ UserService
 \item \href{#method-setTeamPrivilege}{\code{UserService$setTeamPrivilege()}}
 \item \href{#method-getServerVersion}{\code{UserService$getServerVersion()}}
 \item \href{#method-getInvited}{\code{UserService$getInvited()}}
+\item \href{#method-sendValidationMail}{\code{UserService$sendValidationMail()}}
+\item \href{#method-sendResetPasswordEmail}{\code{UserService$sendResetPasswordEmail()}}
+\item \href{#method-changeUserPassword}{\code{UserService$changeUserPassword()}}
+\item \href{#method-validateUser}{\code{UserService$validateUser()}}
+\item \href{#method-canCreatePrivateProject}{\code{UserService$canCreatePrivateProject()}}
 \item \href{#method-clone}{\code{UserService$clone()}}
 }
 }
@@ -126,6 +142,14 @@ UserService
 
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-connect2"></a>}}
+\subsection{Method \code{connect2()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{UserService$connect2(domain, usernameOrEmail, password)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-createUser"></a>}}
 \subsection{Method \code{createUser()}}{
 \subsection{Usage}{
@@ -146,6 +170,22 @@ UserService
 \subsection{Method \code{updatePassword()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{UserService$updatePassword(userId, password)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-updateBillingInfo"></a>}}
+\subsection{Method \code{updateBillingInfo()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{UserService$updateBillingInfo(userId, billingInfo)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-viesInfo"></a>}}
+\subsection{Method \code{viesInfo()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{UserService$viesInfo(country_code, vatNumber)}\if{html}{\out{</div>}}
 }
 
 }
@@ -210,6 +250,46 @@ UserService
 \subsection{Method \code{getInvited()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{UserService$getInvited(email)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-sendValidationMail"></a>}}
+\subsection{Method \code{sendValidationMail()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{UserService$sendValidationMail(email)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-sendResetPasswordEmail"></a>}}
+\subsection{Method \code{sendResetPasswordEmail()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{UserService$sendResetPasswordEmail(email)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-changeUserPassword"></a>}}
+\subsection{Method \code{changeUserPassword()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{UserService$changeUserPassword(token, password)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-validateUser"></a>}}
+\subsection{Method \code{validateUser()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{UserService$validateUser(token)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-canCreatePrivateProject"></a>}}
+\subsection{Method \code{canCreatePrivateProject()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{UserService$canCreatePrivateProject(teamOrUserId)}\if{html}{\out{</div>}}
 }
 
 }

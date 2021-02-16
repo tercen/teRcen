@@ -19,6 +19,8 @@ Team
 
 \item{\code{isValidated}}{of type bool inherited from super class \code{\link{User}}.}
 
+\item{\code{domain}}{of type String inherited from super class \code{\link{User}}.}
+
 \item{\code{roles}}{list of type String inherited from super class \code{\link{User}}.}
 
 \item{\code{invitedByUsername}}{of type String inherited from super class \code{\link{User}}.}
@@ -39,6 +41,8 @@ Team
 
 \item{\code{authors}}{list of type String inherited from super class \code{\link{Document}}.}
 
+\item{\code{isPublic}}{of type bool inherited from super class \code{\link{Document}}.}
+
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 
 \item{\code{rev}}{of type String inherited from super class \code{\link{PersistentObject}}.}
@@ -46,6 +50,8 @@ Team
 \item{\code{id}}{of type String inherited from super class \code{\link{IdObject}}.}
 
 \item{\code{teamAcl}}{object of class \code{\link{Acl}} inherited from super class \code{\link{User}}.}
+
+\item{\code{billingInfo}}{object of class \code{\link{BillingInfo}} inherited from super class \code{\link{User}}.}
 
 \item{\code{acl}}{object of class \code{\link{Acl}} inherited from super class \code{\link{Document}}.}
 
@@ -68,6 +74,8 @@ Team
 
 \item{\code{isValidated}}{of type bool inherited from super class \code{\link{User}}.}
 
+\item{\code{domain}}{of type String inherited from super class \code{\link{User}}.}
+
 \item{\code{roles}}{list of type String inherited from super class \code{\link{User}}.}
 
 \item{\code{invitedByUsername}}{of type String inherited from super class \code{\link{User}}.}
@@ -88,6 +96,8 @@ Team
 
 \item{\code{authors}}{list of type String inherited from super class \code{\link{Document}}.}
 
+\item{\code{isPublic}}{of type bool inherited from super class \code{\link{Document}}.}
+
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 
 \item{\code{rev}}{of type String inherited from super class \code{\link{PersistentObject}}.}
@@ -95,6 +105,8 @@ Team
 \item{\code{id}}{of type String inherited from super class \code{\link{IdObject}}.}
 
 \item{\code{teamAcl}}{object of class \code{\link{Acl}} inherited from super class \code{\link{User}}.}
+
+\item{\code{billingInfo}}{object of class \code{\link{BillingInfo}} inherited from super class \code{\link{User}}.}
 
 \item{\code{acl}}{object of class \code{\link{Acl}} inherited from super class \code{\link{Document}}.}
 

@@ -3,7 +3,7 @@
 \name{Step}
 \alias{Step}
 \title{Step}
-\format{\code{\link{R6Class}} object, super class \code{\link{IdObject}}, sub classes \code{\link{DataStep}}, \code{\link{MeltStep}}, \code{\link{JoinStep}}, \code{\link{WizardStep}}, \code{\link{CrossTabStep}}, \code{\link{InStep}}, \code{\link{GroupStep}}, \code{\link{OutStep}}, \code{\link{TableStep}}, \code{\link{NamespaceStep}}, \code{\link{RelationStep}}, \code{\link{ExportStep}}, \code{\link{ModelStep}}, \code{\link{ViewStep}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{IdObject}}, sub classes \code{\link{DataStep}}, \code{\link{MeltStep}}, \code{\link{JoinStep}}, \code{\link{WizardStep}}, \code{\link{CrossTabStep}}, \code{\link{GroupStep}}, \code{\link{InStep}}, \code{\link{OutStep}}, \code{\link{TableStep}}, \code{\link{NamespaceStep}}, \code{\link{RelationStep}}, \code{\link{ExportStep}}, \code{\link{ModelStep}}, \code{\link{ViewStep}}.}
 \description{
 Step
 

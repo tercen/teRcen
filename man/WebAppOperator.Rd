@@ -3,7 +3,7 @@
 \name{WebAppOperator}
 \alias{WebAppOperator}
 \title{WebAppOperator}
-\format{\code{\link{R6Class}} object, super class \code{\link{GitOperator}}, sub classes \code{\link{ShinyOperator}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{GitOperator}}, sub classes \code{\link{ShinyOperator}}, \code{\link{DockerWebAppOperator}}.}
 \description{
 WebAppOperator
 
@@ -17,6 +17,8 @@ WebAppOperator
 \describe{
 \item{\code{path}}{of type String inherited from super class \code{\link{GitOperator}}.}
 
+\item{\code{longDescription}}{of type String inherited from super class \code{\link{Operator}}.}
+
 \item{\code{description}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{name}}{of type String inherited from super class \code{\link{Document}}.}
@@ -28,6 +30,8 @@ WebAppOperator
 \item{\code{version}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{authors}}{list of type String inherited from super class \code{\link{Document}}.}
+
+\item{\code{isPublic}}{of type bool inherited from super class \code{\link{Document}}.}
 
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 
@@ -58,6 +62,8 @@ WebAppOperator
 \describe{
 \item{\code{path}}{of type String inherited from super class \code{\link{GitOperator}}.}
 
+\item{\code{longDescription}}{of type String inherited from super class \code{\link{Operator}}.}
+
 \item{\code{description}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{name}}{of type String inherited from super class \code{\link{Document}}.}
@@ -69,6 +75,8 @@ WebAppOperator
 \item{\code{version}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{authors}}{list of type String inherited from super class \code{\link{Document}}.}
+
+\item{\code{isPublic}}{of type bool inherited from super class \code{\link{Document}}.}
 
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 

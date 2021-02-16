@@ -35,6 +35,12 @@ CSVTask
 
 \item{\code{schemaId}}{of type String.}
 
+\item{\code{valueName}}{of type String.}
+
+\item{\code{variableName}}{of type String.}
+
+\item{\code{gatherNames}}{list of type String.}
+
 \item{\code{environment}}{list of class \code{\link{Pair}} inherited from super class \code{\link{Task}}.}
 
 \item{\code{state}}{object of class \code{\link{State}} inherited from super class \code{\link{Task}}.}
@@ -48,6 +54,10 @@ CSVTask
 \item{\code{completedDate}}{object of class \code{\link{Date}} inherited from super class \code{\link{Task}}.}
 
 \item{\code{aclContext}}{object of class \code{\link{AclContext}} inherited from super class \code{\link{Task}}.}
+
+\item{\code{schema}}{object of class \code{\link{Schema}}.}
+
+\item{\code{params}}{object of class \code{\link{CSVParserParam}}.}
 }
 \if{html}{\out{</div>}}
 }

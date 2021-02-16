@@ -49,7 +49,7 @@ FileService <- R6::R6Class("FileService", inherit = HttpClientService, public = 
     params = list()
     params[["fileDocumentId"]] = unbox(fileDocumentId)
     url = self$getServiceUri(uri)
-    response = self$client$get(url, query = list(params = toJSON(params)), response_type = "binary")
+    response = self$client$get(url, query = list(params = toJSON(params)))
     if (response$status != 200) {
         self$onResponseError(response, "download")
     } else {

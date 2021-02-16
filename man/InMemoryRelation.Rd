@@ -16,6 +16,8 @@ InMemoryRelation
 \if{html}{\out{<div class="r6-fields">}}
 \describe{
 \item{\code{id}}{of type String inherited from super class \code{\link{IdObject}}.}
+
+\item{\code{inMemoryTable}}{object of class \code{\link{Table}}.}
 }
 \if{html}{\out{</div>}}
 }

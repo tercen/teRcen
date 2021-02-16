@@ -3,7 +3,7 @@
 \name{StringProperty}
 \alias{StringProperty}
 \title{StringProperty}
-\format{\code{\link{R6Class}} object, super class \code{\link{Property}}, sub classes \code{\link{FactorsProperty}}, \code{\link{EnumeratedProperty}}, \code{\link{FormulaProperty}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{Property}}, sub classes \code{\link{EnumeratedProperty}}, \code{\link{FactorsProperty}}, \code{\link{FormulaProperty}}.}
 \description{
 StringProperty
 

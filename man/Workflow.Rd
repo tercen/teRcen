@@ -17,6 +17,8 @@ Workflow
 \describe{
 \item{\code{projectId}}{of type String inherited from super class \code{\link{ProjectDocument}}.}
 
+\item{\code{folderId}}{of type String inherited from super class \code{\link{ProjectDocument}}.}
+
 \item{\code{description}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{name}}{of type String inherited from super class \code{\link{Document}}.}
@@ -28,6 +30,8 @@ Workflow
 \item{\code{version}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{authors}}{list of type String inherited from super class \code{\link{Document}}.}
+
+\item{\code{isPublic}}{of type bool inherited from super class \code{\link{Document}}.}
 
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 
@@ -60,6 +64,8 @@ Workflow
 \describe{
 \item{\code{projectId}}{of type String inherited from super class \code{\link{ProjectDocument}}.}
 
+\item{\code{folderId}}{of type String inherited from super class \code{\link{ProjectDocument}}.}
+
 \item{\code{description}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{name}}{of type String inherited from super class \code{\link{Document}}.}
@@ -71,6 +77,8 @@ Workflow
 \item{\code{version}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{authors}}{list of type String inherited from super class \code{\link{Document}}.}
+
+\item{\code{isPublic}}{of type bool inherited from super class \code{\link{Document}}.}
 
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 

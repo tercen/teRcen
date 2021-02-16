@@ -21,6 +21,8 @@ CubeQueryTableSchema
 
 \item{\code{projectId}}{of type String inherited from super class \code{\link{ProjectDocument}}.}
 
+\item{\code{folderId}}{of type String inherited from super class \code{\link{ProjectDocument}}.}
+
 \item{\code{description}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{name}}{of type String inherited from super class \code{\link{Document}}.}
@@ -33,6 +35,8 @@ CubeQueryTableSchema
 
 \item{\code{authors}}{list of type String inherited from super class \code{\link{Document}}.}
 
+\item{\code{isPublic}}{of type bool inherited from super class \code{\link{Document}}.}
+
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 
 \item{\code{rev}}{of type String inherited from super class \code{\link{PersistentObject}}.}
@@ -41,7 +45,11 @@ CubeQueryTableSchema
 
 \item{\code{queryHash}}{of type String.}
 
+\item{\code{queryTableType}}{of type String.}
+
 \item{\code{columns}}{list of class \code{\link{ColumnSchema}} inherited from super class \code{\link{Schema}}.}
+
+\item{\code{relation}}{object of class \code{\link{Relation}} inherited from super class \code{\link{Schema}}.}
 
 \item{\code{acl}}{object of class \code{\link{Acl}} inherited from super class \code{\link{Document}}.}
 
@@ -68,6 +76,8 @@ CubeQueryTableSchema
 
 \item{\code{projectId}}{of type String inherited from super class \code{\link{ProjectDocument}}.}
 
+\item{\code{folderId}}{of type String inherited from super class \code{\link{ProjectDocument}}.}
+
 \item{\code{description}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{name}}{of type String inherited from super class \code{\link{Document}}.}
@@ -80,6 +90,8 @@ CubeQueryTableSchema
 
 \item{\code{authors}}{list of type String inherited from super class \code{\link{Document}}.}
 
+\item{\code{isPublic}}{of type bool inherited from super class \code{\link{Document}}.}
+
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 
 \item{\code{rev}}{of type String inherited from super class \code{\link{PersistentObject}}.}
@@ -87,6 +99,8 @@ CubeQueryTableSchema
 \item{\code{id}}{of type String inherited from super class \code{\link{IdObject}}.}
 
 \item{\code{columns}}{list of class \code{\link{ColumnSchema}} inherited from super class \code{\link{Schema}}.}
+
+\item{\code{relation}}{object of class \code{\link{Relation}} inherited from super class \code{\link{Schema}}.}
 
 \item{\code{acl}}{object of class \code{\link{Acl}} inherited from super class \code{\link{Document}}.}
 

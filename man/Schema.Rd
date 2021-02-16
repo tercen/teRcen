@@ -17,6 +17,8 @@ Schema
 \describe{
 \item{\code{projectId}}{of type String inherited from super class \code{\link{ProjectDocument}}.}
 
+\item{\code{folderId}}{of type String inherited from super class \code{\link{ProjectDocument}}.}
+
 \item{\code{description}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{name}}{of type String inherited from super class \code{\link{Document}}.}
@@ -28,6 +30,8 @@ Schema
 \item{\code{version}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{authors}}{list of type String inherited from super class \code{\link{Document}}.}
+
+\item{\code{isPublic}}{of type bool inherited from super class \code{\link{Document}}.}
 
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 
@@ -52,6 +56,8 @@ Schema
 \item{\code{url}}{object of class \code{\link{Url}} inherited from super class \code{\link{Document}}.}
 
 \item{\code{columns}}{list of class \code{\link{ColumnSchema}}.}
+
+\item{\code{relation}}{object of class \code{\link{Relation}}.}
 }
 \if{html}{\out{</div>}}
 }
@@ -59,6 +65,8 @@ Schema
 \if{html}{\out{<div class="r6-active-bindings">}}
 \describe{
 \item{\code{projectId}}{of type String inherited from super class \code{\link{ProjectDocument}}.}
+
+\item{\code{folderId}}{of type String inherited from super class \code{\link{ProjectDocument}}.}
 
 \item{\code{description}}{of type String inherited from super class \code{\link{Document}}.}
 
@@ -71,6 +79,8 @@ Schema
 \item{\code{version}}{of type String inherited from super class \code{\link{Document}}.}
 
 \item{\code{authors}}{list of type String inherited from super class \code{\link{Document}}.}
+
+\item{\code{isPublic}}{of type bool inherited from super class \code{\link{Document}}.}
 
 \item{\code{isDeleted}}{of type bool inherited from super class \code{\link{PersistentObject}}.}
 

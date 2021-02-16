@@ -3,7 +3,7 @@
 \name{Property}
 \alias{Property}
 \title{Property}
-\format{\code{\link{R6Class}} object, sub classes \code{\link{FactorsProperty}}, \code{\link{EnumeratedProperty}}, \code{\link{FormulaProperty}}, \code{\link{DoubleProperty}}, \code{\link{StringProperty}}, \code{\link{BooleanProperty}}.}
+\format{\code{\link{R6Class}} object, sub classes \code{\link{EnumeratedProperty}}, \code{\link{FactorsProperty}}, \code{\link{FormulaProperty}}, \code{\link{DoubleProperty}}, \code{\link{StringProperty}}, \code{\link{BooleanProperty}}.}
 \description{
 Property
 

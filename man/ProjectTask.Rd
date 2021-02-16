@@ -3,7 +3,7 @@
 \name{ProjectTask}
 \alias{ProjectTask}
 \title{ProjectTask}
-\format{\code{\link{R6Class}} object, super class \code{\link{Task}}, sub classes \code{\link{RunComputationTask}}, \code{\link{SaveComputationResultTask}}, \code{\link{ComputationTask}}, \code{\link{ExportWorkflowTask}}, \code{\link{RunWebAppTask}}, \code{\link{CSVTask}}, \code{\link{CubeQueryTask}}, \code{\link{ExportTableTask}}, \code{\link{ImportWorkflowTask}}, \code{\link{TestOperatorTask}}, \code{\link{ImportGitWorkflowTask}}.}
+\format{\code{\link{R6Class}} object, super class \code{\link{Task}}, sub classes \code{\link{RunComputationTask}}, \code{\link{SaveComputationResultTask}}, \code{\link{ComputationTask}}, \code{\link{ExportWorkflowTask}}, \code{\link{CSVTask}}, \code{\link{CubeQueryTask}}, \code{\link{ImportWorkflowTask}}, \code{\link{TestOperatorTask}}, \code{\link{ImportGitWorkflowTask}}, \code{\link{RunWebAppTask}}, \code{\link{ExportTableTask}}.}
 \description{
 ProjectTask
 
