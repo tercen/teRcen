@@ -371,7 +371,7 @@ OperatorContext <- R6Class(
         
       } else {
         fileDoc = self$client$fileService$get(self$task$fileResultId)
-        fileDoc$metadata$md5Hash = toString(openssl::md5(bytes))
+        # fileDoc$metadata$md5Hash = toString(openssl::md5(bytes))
         fileDoc$size = length(bytes)
         
         self$client$fileService$upload(fileDoc, bytes)
