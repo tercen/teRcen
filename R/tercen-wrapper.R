@@ -244,7 +244,7 @@ OperatorContextDev <- R6Class(
       fileDoc$projectId = workflow$projectId
       fileDoc$acl$owner = workflow$acl$owner
       fileDoc$metadata$contentType = 'application/octet-stream'
-      fileDoc$metadata$md5Hash = toString(openssl::md5(bytes))
+      # fileDoc$metadata$md5Hash = toString(openssl::md5(bytes))
       fileDoc$size = length(bytes)
       
       fileDoc = self$client$fileService$upload(fileDoc, bytes)
@@ -351,7 +351,7 @@ OperatorContext <- R6Class(
         fileDoc$projectId = self$task$projectId
         fileDoc$acl$owner = self$task$owner
         fileDoc$metadata$contentType = 'application/octet-stream'
-        fileDoc$metadata$md5Hash = toString(openssl::md5(bytes))
+        # fileDoc$metadata$md5Hash = toString(openssl::md5(bytes))
         fileDoc$size = length(bytes)
         
         
