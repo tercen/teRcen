@@ -12,7 +12,7 @@ Suggests:
     testthat
 Imports:
     R6,
-    teRcenHttp (>= 1.0.15),
+    teRcenHttp (>= 1.0.20),
     mtercen (>= 1.0.7),
     dplyr,
     tibble,
