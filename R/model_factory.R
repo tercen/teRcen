@@ -368,6 +368,9 @@ createObjectFromJson = function(json) {
     if (kind == "DataStep") {
         return(DataStep$new(json = json))
     }
+    if (kind == "SearchResult") {
+        return(SearchResult$new(json = json))
+    }
     if (kind == "ChartSize") {
         return(ChartSize$new(json = json))
     }

@@ -4,6 +4,7 @@
 #' @format \code{\link{R6Class}} object.
 #' @section Methods:
 #' \describe{
+#'    \item{\code{search(query,limit,useFactory,bookmark)}}{method}
 #'    \item{\code{getTercenOperatorLibrary(offset,limit)}}{method}
 #'    \item{\code{getTercenWorkflowLibrary(offset,limit)}}{method}
 #'    \item{\code{getTercenAppLibrary(offset,limit)}}{method}
@@ -33,6 +34,23 @@ DocumentService <- R6::R6Class("DocumentService", inherit = HttpClientService, p
     skip = 0, descending = TRUE, useFactory = FALSE) {
     return(self$findStartKeys("findOperatorByCreatedDate", startKey = startKey, endKey = endKey, 
         limit = limit, skip = skip, descending = descending, useFactory = useFactory))
+}, search = function(query, limit, useFactory, bookmark) {
+    answer = NULL
+    response = NULL
+    uri = paste0("api/v1/d", "/", "search")
+    params = list()
+    params[["query"]] = unbox(query)
+    params[["limit"]] = unbox(as.integer(limit))
+    params[["useFactory"]] = unbox(useFactory)
+    params[["bookmark"]] = unbox(bookmark)
+    url = self$getServiceUri(uri)
+    response = self$client$post(url, body = params)
+    if (response$status != 200) {
+        self$onResponseError(response, "search")
+    } else {
+        answer = createObjectFromJson(response$content)
+    }
+    return(answer)
 }, getTercenOperatorLibrary = function(offset, limit) {
     answer = NULL
     response = NULL
