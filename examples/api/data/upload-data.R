@@ -1,11 +1,14 @@
 library(tercen)
 library(openssl)
-
+ 
+ 
 serviceUri="http://127.0.0.1:5400/api/v1/"
+# serviceUri="http://172.17.0.1:5400/api/v1/"
 username="admin"
 password="admin"
 
-filename = '/home/alex/Downloads/data_analysis-Export.csv'
+filename = '~/projects/fcs_data/debarcoded.zip'
+# filename = '~/projects/fcs_data/debarcoded.csv'
 teamName = 'test-team'
 projectName = 'project'
  
@@ -31,7 +34,9 @@ fileDoc = FileDocument$new()
 fileDoc$name = 'atsne_data_analysis'
 fileDoc$projectId = project$id
 fileDoc$acl$owner = project$acl$owner
-fileDoc$metadata = CSVFileMetadata$new()
+fileDoc$size = length(bytes)
+
+# fileDoc$metadata = CSVFileMetadata$new()
 fileDoc$metadata$md5Hash = toString(openssl::md5(bytes))
 fileDoc$metadata$contentType = 'text/csv'
 fileDoc$metadata$separator = ','

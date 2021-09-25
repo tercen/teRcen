@@ -1,7 +1,7 @@
 Package: tercen
 Type: Package
 Title: Tercen R client api
-Version: 0.10.1
+Version: 0.10.7
 Date: 2020-08-27
 Author: Alexandre Maurel
 Maintainer: Alexandre Maurel <alexandre.maurel@tercen.com>
@@ -12,7 +12,7 @@ Suggests:
     testthat
 Imports:
     R6,
-    teRcenHttp (>= 1.0.15),
+    teRcenHttp (>= 1.0.21),
     mtercen (>= 1.0.7),
     dplyr,
     tibble,

@@ -235,8 +235,9 @@ OperatorContextDev <- R6Class(
         }
       }
       
-      bytes = toTSON(result$toTson())
+      # bytes = toTSON(result$toTson())
       
+      bytes = result$toTson()
       
       workflow = self$workflow
       
@@ -245,7 +246,8 @@ OperatorContextDev <- R6Class(
       fileDoc$projectId = workflow$projectId
       fileDoc$acl$owner = workflow$acl$owner
       fileDoc$metadata$contentType = 'application/octet-stream'
-      fileDoc$metadata$md5Hash = toString(openssl::md5(bytes))
+      # fileDoc$metadata$md5Hash = toString(openssl::md5(bytes))
+      # fileDoc$size = length(bytes)
       
       fileDoc = self$client$fileService$upload(fileDoc, bytes)
       
@@ -341,15 +343,22 @@ OperatorContext <- R6Class(
         }
       }
       
-      bytes = toTSON(result$toTson())
+      # bytes = toTSON(result$toTson())
+      
+      bytes = result$toTson()
+      
       
       if (nchar(self$task$fileResultId) == 0){
         # webapp scenario
         fileDoc = FileDocument$new()
+        
         fileDoc$name = 'result'
         fileDoc$projectId = self$task$projectId
         fileDoc$acl$owner = self$task$owner
         fileDoc$metadata$contentType = 'application/octet-stream'
+        # fileDoc$metadata$md5Hash = toString(openssl::md5(bytes))
+        # fileDoc$size = length(bytes)
+        
         
         fileDoc = self$client$fileService$upload(fileDoc, bytes)
         
@@ -367,6 +376,9 @@ OperatorContext <- R6Class(
         
       } else {
         fileDoc = self$client$fileService$get(self$task$fileResultId)
+        # fileDoc$metadata$md5Hash = toString(openssl::md5(bytes))
+        # fileDoc$size = length(bytes)
+        
         self$client$fileService$upload(fileDoc, bytes)
       }
     }
