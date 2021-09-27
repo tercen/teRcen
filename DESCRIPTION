@@ -12,6 +12,7 @@ Suggests:
     testthat
 Imports:
     R6,
+    tercenApi,
     teRcenHttp (>= 1.0.21),
     mtercen (>= 1.0.7),
     dplyr,
@@ -20,4 +21,5 @@ Imports:
     openssl
 URL: https://github.com/tercen/teRcen 
 BugReports: https://github.com/tercen/teRcen/issues
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1
+Encoding: UTF-8
