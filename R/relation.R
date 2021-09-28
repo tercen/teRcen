@@ -1,3 +1,5 @@
+library(uuid)
+
 #' @export
 save_relation = function(object,ctx){
   if (inherits(object, 'JoinOperator')){
@@ -95,7 +97,7 @@ as_relation = function(object) {
     stop('as_relation -- data.frame or tercen::Table is required')
   }
   relation = InMemoryRelation$new()
-  relation$id = uuid::UUIDgenerate()
+  relation$id = UUIDgenerate()
   tbl$properties$name = relation$id
   relation$inMemoryTable = tbl
   relation
@@ -108,7 +110,7 @@ as_composite_relation = function(object) {
     composite = relation
   } else if (inherits(relation, 'Relation')) {
     composite = CompositeRelation$new()
-    composite$id = uuid::UUIDgenerate()
+    composite$id = UUIDgenerate()
     composite$mainRelation = relation
   } else {
     stop('as_composite_relation -- a tercen::Relation is required')
