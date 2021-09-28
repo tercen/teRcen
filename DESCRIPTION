@@ -1,7 +1,7 @@
 Package: tercen
 Type: Package
 Title: Tercen R client api
-Version: 0.11.0
+Version: 0.11.1
 Date: 2020-08-27
 Author: Alexandre Maurel
 Maintainer: Alexandre Maurel <alexandre.maurel@tercen.com>
@@ -19,6 +19,8 @@ Imports:
     tibble,
     yaml,
     openssl
+Remotes:
+    tercen/tercenApi@0.11.0
 URL: https://github.com/tercen/teRcen 
 BugReports: https://github.com/tercen/teRcen/issues
 RoxygenNote: 7.1.1
