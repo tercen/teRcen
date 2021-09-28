@@ -3,6 +3,8 @@ library(teRcenHttp)
 library(tercenApi)
 library(mtercen)
 library(dplyr)
+library(uuid)
+
 # library(openssl)
  
 #' @export
