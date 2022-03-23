@@ -78,7 +78,7 @@ AbstractOperatorContext <- R6Class(
     cpusEnv = Pair$new()
               cpusEnv$key = 'cpus'
               cpusEnv$value = toString(nCpus)
-              newEnv = self$client$workerService$updateTaskEnv(taskId, list(cpusEnv))
+              newEnv = self$client$workerService$updateTaskEnv('', list(cpusEnv))
               return(as.integer(newEnv[[1]]$value))
 
         taskId = self$taskId
