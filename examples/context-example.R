@@ -1,13 +1,17 @@
 library(tercen)
+library(tercenApi)
 library(dplyr)
 
+options("tercen.serviceUri"= "http://127.0.0.1:5400/api/v1")
+options("tercen.username"= "admin")
+options("tercen.password"= "admin")
 getOption("tercen.serviceUri")
 getOption("tercen.username")
 getOption("tercen.password")
  
-# http://localhost:53322/index.html#ds/3aa8703da6b7534488c2f9632a0c0b0d/282-14
-options("tercen.workflowId"= "3aa8703da6b7534488c2f9632a0c0b0d")
-options("tercen.stepId"= "282-14")
+# http://127.0.0.1:5400/alex/w/e253a390e03810cea5eaaed98801e9f0/ds/e2212192-a0c8-44b5-9a82-1bd56bc4daae
+options("tercen.workflowId"= "e253a390e03810cea5eaaed98801e9f0")
+options("tercen.stepId"= "e2212192-a0c8-44b5-9a82-1bd56bc4daae")
 getOption("tercen.workflowId")
 getOption("tercen.stepId")
  
@@ -15,17 +19,16 @@ ctx = tercenCtx()
 ctx$names 
 
 ctx %>% as.matrix()
- 
 
-(ctx = tercenCtx()) %>% select()
+
+ctx %>% select()
 tercenCtx()$query
 tercenCtx()$select()
 tercenCtx()$rschema
 tercenCtx()$cschema
+tercenCtx()$rrelation
+tercenCtx()$crelation
 tercenCtx()$workflow
-tercenCtx()$workflow
-
-ctx = tercenCtx()
 
 rbenchmark::benchmark(
 "workflow"= {
@@ -44,9 +47,6 @@ columns = c("test", "replications", "elapsed",
 
 ctx %>% select()
 ctx %>% cselect()
-ctx = tercenCtx()
-
-ctx
 
 ctx$namespace
 ctx$query
