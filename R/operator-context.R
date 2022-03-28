@@ -87,23 +87,23 @@ AbstractOperatorContext <- R6Class(
         }
     },
     log = function(message){
-      taskId = self$taskId
-      if (!is.null(taskId)){
+      task = self$task
+      if (!is.null(task)){
         evt = TaskLogEvent$new()
         evt$message = message
-        evt$taskId = taskId
-        self$client$eventService$create(evt)
+        evt$taskId = task$id
+        self$client$eventService$sendChannel(task$channelId, evt)
       }
     },
     progress = function(message, actual, total){
-      taskId = self$taskId
-      if (!is.null(taskId)){
+      task = self$task
+      if (!is.null(task)){
         evt = TaskProgressEvent$new()
         evt$message = message
-        evt$taskId = taskId
+        evt$taskId = task$id
         evt$actual = actual
         evt$total = total
-        self$client$eventService$create(evt)
+        self$client$eventService$sendChannel(task$channelId, evt)
       }
     }
   ),
