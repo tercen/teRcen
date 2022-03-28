@@ -74,16 +74,22 @@ AbstractOperatorContext <- R6Class(
       })
       return(df)
     },
-    requestResources = function(nCpus=1) {
+    requestResources = function(nCpus=1, ram=0) {
+        cpusEnv = Pair$new()
+        cpusEnv$key = 'cpus'
+        cpusEnv$value = toString(nCpus)
+
+        ramEnv = Pair$new()
+        ramEnv$key = 'ram'
+        ramEnv$value = toString(ram)
+
+        requestedEnv = list(cpusEnv, ramEnv)
+
         taskId = self$taskId
         if (!is.null(taskId)){
-          cpusEnv = Pair$new()
-          cpusEnv$key = 'cpus'
-          cpusEnv$value = toString(nCpus)
-          newEnv = self$client$workerService$updateTaskEnv(taskId, list(cpusEnv))
-          return(as.integer(newEnv[[1]]$value))
+          return(self$client$workerService$updateTaskEnv(taskId, requestedEnv))
         } else {
-          return(1)
+          return(requestedEnv)
         }
     },
     log = function(message){
