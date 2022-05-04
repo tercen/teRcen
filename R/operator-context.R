@@ -78,7 +78,7 @@ AbstractOperatorContext <- R6Class(
       newEnv = list()
       if (!is.null(nCpus)){
         pair = Pair$new()
-        pair$key = 'cpus'
+        pair$key = 'cpu'
         pair$value = toString(nCpus)
         newEnv = append(newEnv, list(pair))
       }
