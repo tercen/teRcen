@@ -74,17 +74,32 @@ AbstractOperatorContext <- R6Class(
       })
       return(df)
     },
-    requestResources = function(nCpus=1) {
-        taskId = self$taskId
-        if (!is.null(taskId)){
-          cpusEnv = Pair$new()
-          cpusEnv$key = 'cpus'
-          cpusEnv$value = toString(nCpus)
-          newEnv = self$client$workerService$updateTaskEnv(taskId, list(cpusEnv))
-          return(as.integer(newEnv[[1]]$value))
-        } else {
-          return(1)
-        }
+    requestResources = function(nCpus=NULL, ram=NULL, ram_per_cpu=NULL) {
+      newEnv = list()
+      if (!is.null(nCpus)){
+        pair = Pair$new()
+        pair$key = 'cpus'
+        pair$value = toString(nCpus)
+        newEnv = append(newEnv, list(pair))
+      }
+      if (!is.null(ram)){
+        pair = Pair$new()
+        pair$key = 'ram'
+        pair$value = toString(ram)
+        newEnv = append(newEnv, list(pair))
+      }
+      if (!is.null(ram_per_cpu)){
+        pair = Pair$new()
+        pair$key = 'ram_per_cpu'
+        pair$value = toString(ram_per_cpu)
+        newEnv = append(newEnv, list(pair))
+      }
+      
+      taskId = self$taskId
+      if (!is.null(taskId)){
+        newEnv = self$client$workerService$updateTaskEnv(taskId, newEnv)
+      }
+      return(newEnv)
     },
     log = function(message){
       task = self$task
@@ -244,7 +259,7 @@ OperatorContextDev <- R6Class(
         self$task = self$client$taskService$get(taskId)
       }
     },
-
+    
     save = function(computed.df){
       
       if (inherits(computed.df, 'OperatorResult')){
