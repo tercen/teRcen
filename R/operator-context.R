@@ -21,6 +21,9 @@ AbstractOperatorContext <- R6Class(
       if (is.null(property)) return(default)
       return(type(property$value))
     },
+    availableCores = function(){
+      return (as.integer(system("nproc", intern = TRUE)))
+    }
     as.matrix = function(fill=0.0) {
       data = self$select(names=c(".ri", ".ci", ".y"))
       matrix(acast(data$.ri,
