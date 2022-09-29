@@ -34,6 +34,14 @@ AbstractOperatorContext <- R6Class(
              nrow = self$rschema$nRows,
              ncol=self$cschema$nRows)
     },
+    as.sparse.matrix = function() {
+      data = self$select(names=c(".ri", ".ci", ".y"))
+      Matrix::sparseMatrix(
+        i = data$.ri + 1L,
+        j = data$.ci + 1L,
+        x = data$.y
+      )
+    },
     select = function(names=list(), offset=0, nr=-1) {
       if (self$isPairwise){
         return (self$selectSchemaPairwise(self$schema, names=names,offset=offset,nr=nr))
