@@ -208,6 +208,16 @@ AbstractOperatorContext <- R6Class(
       color.factor.names = lapply(color.factors, function(factor) factor$name)
       return(color.factor.names) 
     },
+    chartTypes = function(value) {
+      if (!missing(value)) stop('read only')
+      chart.types.list = unlist(lapply(self$query$axisQueries, function(axisQuery) axisQuery$chartType))
+      return(chart.types.list) 
+    },
+    pointSizes = function(value) {
+      if (!missing(value)) stop('read only')
+      point.sizes.list = unlist(lapply(self$query$axisQueries, function(axisQuery) axisQuery$pointSize))
+      return(point.sizes.list) 
+    },
     xAxis = function(value) {
       if (!missing(value)) stop('read only')
       color.factors = lapply(self$query$axisQueries, function(axisQuery) axisQuery$xAxis)
