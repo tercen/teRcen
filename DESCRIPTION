@@ -16,9 +16,11 @@ Imports:
     teRcenHttp (>= 1.0.21),
     mtercen (>= 1.0.7),
     dplyr,
+    httr,
     tibble,
     yaml,
     openssl,
+    rstudioapi,
     uuid
 URL: https://github.com/tercen/teRcen 
 BugReports: https://github.com/tercen/teRcen/issues
