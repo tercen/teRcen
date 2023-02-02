@@ -25,6 +25,7 @@ teamName <- Sys.getenv("TERCEN_CRAN_TEAM")
 projectName <- Sys.getenv("TERCEN_CRAN_PROJECT")
 
 library(tercen)
+library(tercenApi)
 
 client = TercenClient$new(
   serviceUri = serviceUri,
