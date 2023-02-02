@@ -48,7 +48,9 @@ jobs:
       run: |
         install.packages('usethis')
         install.packages('pkgbuild')
-        install.packages('tercen', repos = 'https://cran.tercen.com/api/v1/rlib/tercen')
+        install.packages('dplyr')
+        install.packages('uuid')
+        install.packages('tercen', repos = c(TERCEN='https://cran.tercen.com/api/v1/rlib/tercen', CRAN='https://cran.tercen.com/api/v1/rlib/CRAN'))
       shell: Rscript {0}
       
     - name: Build and upload package script
