@@ -1,5 +1,5 @@
 ### Get tag and increment package version
-ref_name <- Sys.getenv("GITHUB_REF_NAME")t
+ref_name <- Sys.getenv("GITHUB_REF_NAME")
 
 semver_regex <- "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$"
 if(!grepl(pattern = semver_regex, ref_name)) {
