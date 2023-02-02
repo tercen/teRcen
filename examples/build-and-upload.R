@@ -7,7 +7,8 @@ usethis:::use_description_field(
 )
 
 ### Build package
-pkg_path <- pkgbuild::build()
+pkg_path <- pkgbuild::build(path = ".", dest_path = ".")
+message(pkg_path)
 
 ### Upload to Tercen
 
