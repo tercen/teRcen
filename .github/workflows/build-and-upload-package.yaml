@@ -46,7 +46,6 @@ jobs:
         
     - name: Install R packages
       run: |
-        install.packages('usethis')
         install.packages('pkgbuild')
         install.packages('dplyr')
         install.packages('uuid')
