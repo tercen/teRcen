@@ -35,13 +35,8 @@ jobs:
         r-version: ${{ matrix.config.r }}
         http-user-agent: ${{ matrix.config.http-user-agent }}
         
-    - name: Install R packages
-      run: |
-        install.packages('usethis')
-        install.packages('pkgbuild')
-      shell: Rscript {0}
-      
     - name: Build and upload package script
       run: |
-        source("./examples/build-and-upload.R", local = TRUE)
+        install.packages('pkgbuild')
+        source("./examples/build-and-upload.R")
       shell: Rscript {0}
