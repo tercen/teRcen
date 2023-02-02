@@ -18,7 +18,7 @@ pwd <- Sys.getenv("TERCEN_GITHUB_USER_PASSWORD")
 teamName <- Sys.getenv("TERCEN_CRAN_TEAM")
 projectName <- Sys.getenv("TERCEN_CRAN_PROJECT")
 
-pkgload::load_all()
+library(tercen)
 
 client = TercenClient$new(
   serviceUri = serviceUri,

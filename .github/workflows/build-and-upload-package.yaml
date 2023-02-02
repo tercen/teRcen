@@ -41,12 +41,14 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get install libcurl4-openssl-dev
+        apt-get update && apt-get install -y curl && curl --version
+        curl -v https://sh.rustup.rs --output rustup-init && chmod +x rustup-init && ./rustup-init -y -q
         
     - name: Install R packages
       run: |
         install.packages('usethis')
         install.packages('pkgbuild')
-        install.packages('pkgload')
+        install.packages('tercen', repos = 'https://cran.tercen.com/api/v1/rlib/tercen')
       shell: Rscript {0}
       
     - name: Build and upload package script
