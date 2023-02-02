@@ -3,12 +3,11 @@ ref_name <- Sys.getenv("GITHUB_REF_NAME")
 usethis:::use_description_field(
   name = "Version",
   value = ref_name,
-  base_path = "..",
   overwrite = TRUE
 )
 
 ### Build package
-pkg_path <- pkgbuild::build("..")
+pkg_path <- pkgbuild::build()
 
 ### Upload to Tercen
 
