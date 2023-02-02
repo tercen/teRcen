@@ -23,8 +23,8 @@ jobs:
       TERCEN_SERVICE_URI: ${{ secrets.TERCEN_SERVICE_URI }}
       TERCEN_GITHUB_USER_USERNAME: ${{ secrets.TERCEN_GITHUB_USER_USERNAME }}
       TERCEN_GITHUB_USER_PASSWORD: ${{ secrets.TERCEN_GITHUB_USER_PASSWORD }}
-      TERCEN_OPERATOR_STATS_TEAM: ${{ secrets.TERCEN_CRAN_TEAM }}
-      TERCEN_OPERATOR_STATS_PROJECT: ${{ secrets.TERCEN_CRAN_PROJECT }}
+      TERCEN_CRAN_TEAM: ${{ secrets.TERCEN_CRAN_TEAM }}
+      TERCEN_CRAN_PROJECT: ${{ secrets.TERCEN_CRAN_PROJECT }}
       GITHUB_REF_NAME: $GITHUB_REF_NAME
       
     # Steps represent a sequence of tasks that will be executed as part of the job
