@@ -49,6 +49,7 @@ jobs:
         install.packages('pkgbuild')
         install.packages('dplyr')
         install.packages('uuid')
+        install.packages('base64enc')
         install.packages('tercen', repos = c(TERCEN='https://cran.tercen.com/api/v1/rlib/tercen', CRAN='https://cran.tercen.com/api/v1/rlib/CRAN'))
       shell: Rscript {0}
       
