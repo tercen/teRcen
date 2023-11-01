@@ -1,6 +1,5 @@
-#' Convert File to Tercen Table
-#' 
-#' Serialise a file to a Tercen operator output table. 
+library(base64enc)
+
 #' @export
 file_to_tercen <- function(file_path, chunk_size_bits = 1e6, filename = NULL) {
   
