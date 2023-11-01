@@ -21,7 +21,8 @@ Imports:
     yaml,
     openssl,
     rstudioapi,
-    uuid
+    uuid,
+    base64enc
 URL: https://github.com/tercen/teRcen 
 BugReports: https://github.com/tercen/teRcen/issues
 RoxygenNote: 7.1.1
