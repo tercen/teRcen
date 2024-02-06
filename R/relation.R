@@ -82,7 +82,7 @@ convert.inmemory.relation = function(add.table, relation){
 }
   
 #' @export
-as_relation = function(object) {
+as_relation = function(object, relation_name = NULL) {
   if (inherits(object, 'Relation')) {
     return(object)
   } else if (inherits(object, 'data.frame')){
@@ -98,7 +98,11 @@ as_relation = function(object) {
   }
   relation = InMemoryRelation$new()
   relation$id = UUIDgenerate()
-  tbl$properties$name = relation$id
+  if(is.null(relation_name)) {
+    tbl$properties$name = relation$id
+  } else {
+    tbl$properties$name = relation_name
+  }
   relation$inMemoryTable = tbl
   relation
 }
