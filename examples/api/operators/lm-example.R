@@ -10,7 +10,7 @@ stepId = '425a662e-0b36-45ad-8e2a-f4be976cabd7'
 
 workflow = client$workflowService$get(workflowId)
 query = client$workflowService$getCubeQuery(workflowId, stepId)
-qtSchema = client$tableSchemaService$findByQueryHash(keys=list(query$qtHash))[[1]]
+qtSchema = client$tableSchemaService$get(query$qtHash)
 table = client$tableSchemaService$select(qtSchema$id, list('.values', '.x','.cindex','.rindex'), 0, qtSchema$nRows)
 df = as_tibble(table)
 # edit(df)

@@ -15,7 +15,7 @@ project = client$projectService$get(task$projectId)
 # workflow = client$workflowService$get(workflowId)
 # query = client$workflowService$getCubeQuery(workflowId, stepId)
 
-qtSchema = client$tableSchemaService$findByQueryHash(keys=list(query$qtHash))[[1]]
+qtSchema = client$tableSchemaService$get(query$qtHash)
 table = client$tableSchemaService$select(qtSchema$id, list('.values','.cindex','.rindex'), 0, qtSchema$nRows)
 df = as_tibble(table)
 

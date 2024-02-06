@@ -150,21 +150,21 @@ AbstractOperatorContext <- R6Class(
     schema = function(value) {
       if (!missing(value)) stop('read only')
       if (is.null(private$.schema)){
-        private$.schema = self$client$tableSchemaService$findByQueryHash(keys=list(self$query$qtHash))[[1]]
+        private$.schema = self$client$tableSchemaService$get(self$query$qtHash)
       }
       return ( private$.schema )
     },
     cschema = function(value) {
       if (!missing(value)) stop('read only')
       if (is.null(private$.cschema)){
-        private$.cschema = self$client$tableSchemaService$findByQueryHash(keys=list(self$query$columnHash))[[1]]
+        private$.cschema = self$client$tableSchemaService$get(self$query$columnHash)
       }
       return ( private$.cschema )
     },
     rschema = function(value) {
       if (!missing(value)) stop('read only')
       if (is.null(private$.rschema)){
-        private$.rschema = self$client$tableSchemaService$findByQueryHash(keys=list(self$query$rowHash))[[1]]
+        private$.rschema = self$client$tableSchemaService$get(self$query$rowHash)
       }
       return ( private$.rschema )
     },
