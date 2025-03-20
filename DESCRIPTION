@@ -20,7 +20,7 @@ Imports:
     rstudioapi,
     uuid,
     base64enc
-Remotes: tercen/tercenApi@0.13.3, tercen/teRcenHttp@1.0.21, tercen/mtercen@1.0.8
+Remotes: tercen/teRcenHttp@1.0.21, tercen/mtercen@1.0.8, tercen/tercenApi@0.13.3
 URL: https://github.com/tercen/teRcen 
 BugReports: https://github.com/tercen/teRcen/issues
 RoxygenNote: 7.1.1
