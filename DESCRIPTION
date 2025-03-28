@@ -21,7 +21,7 @@ Imports:
     uuid,
     base64enc,
     mtercen,
-    tercenHttp,
+    teRcenHttp,
     tercenApi
 URL: https://github.com/tercen/teRcen 
 BugReports: https://github.com/tercen/teRcen/issues
