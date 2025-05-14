@@ -43,11 +43,7 @@ AbstractOperatorContext <- R6Class(
       )
     },
     select = function(names=list(), offset=0, nr=-1) {
-      if (self$isPairwise){
-        return (self$selectSchemaPairwise(self$schema, names=names,offset=offset,nr=nr))
-      } else {
-        return (self$selectSchema(self$schema, names=names,offset=offset,nr=nr))
-      }
+      return (self$selectSchema(self$schema, names=names,offset=offset,nr=nr))
     },
     cselect = function(names=list(), offset=0, nr=-1) {
       return (self$selectSchema(self$cschema,names=names,offset=offset,nr=nr))
