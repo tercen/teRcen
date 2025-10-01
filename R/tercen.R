@@ -5,5 +5,5 @@
 #' @name tercen-package
 #' @aliases tercen
 #' @docType package
-#' @import R6 tercenApi teRcenHttp mtercen dplyr tibble openssl uuid base64enc
+#' @import R6 tercenApi teRcenHttp mtercen dplyr tibble uuid base64enc
 NULL
