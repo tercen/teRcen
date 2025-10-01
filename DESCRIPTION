@@ -1,7 +1,7 @@
 Package: tercen
 Type: Package
 Title: Tercen R client api
-Version: 0.16.1
+Version: 0.16.2
 Date: 2025-05-12
 Author: Alexandre Maurel
 Maintainer: Alexandre Maurel <alexandre.maurel@tercen.com>
@@ -13,11 +13,8 @@ Suggests:
 Imports:
     R6,
     dplyr,
-    httr,
     tibble,
     yaml,
-    openssl,
-    rstudioapi,
     uuid,
     base64enc,
     mtercen,

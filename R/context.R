@@ -5,8 +5,6 @@ library(mtercen)
 library(dplyr)
 library(uuid)
 
-# library(openssl)
- 
 #' @export
 tercenCtx <- function(workflowId=getOption("tercen.workflowId"),
                       stepId=getOption("tercen.stepId"), 

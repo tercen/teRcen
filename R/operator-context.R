@@ -3,7 +3,6 @@ library(teRcenHttp)
 library(tercenApi)
 library(mtercen)
 library(dplyr)
-# library(openssl)
 
 AbstractOperatorContext <- R6Class(
   "AbstractOperatorContext", 
